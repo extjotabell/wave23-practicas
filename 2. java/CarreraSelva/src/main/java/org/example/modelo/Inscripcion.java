@@ -7,11 +7,11 @@ public class Inscripcion {
     private Participante participante;
     private int monto;
 
-    public Inscripcion(int numeroInscripcion, Categoria categoria, Participante participante, int monto) {
+    public Inscripcion(int numeroInscripcion, Categoria categoria, Participante participante) {
         this.numeroInscripcion = numeroInscripcion;
         this.categoria = categoria;
         this.participante = participante;
-        this.monto = monto;
+        this.calcularMontoInscripcion();
     }
 
     public int getNumeroInscripcion() {
@@ -29,6 +29,37 @@ public class Inscripcion {
     public int getMonto() {
         return monto;
     }
+
+    private void calcularMontoInscripcion() {
+        int montoBase = 0;
+
+        switch (categoria.getNombre()) {
+            case "Circuito chico":
+                if (participante.getEdad() < 18) {
+                    montoBase = 1300;
+                } else {
+                    montoBase = 1500;
+                }
+                break;
+            case "Circuito medio":
+                if (participante.getEdad() < 18) {
+                    montoBase = 2000;
+                } else {
+                    montoBase = 2300;
+                }
+                break;
+            case "Circuito avanzado":
+                if (participante.getEdad() < 18) {
+                    throw new IllegalArgumentException("No se permite la inscripción de menores de 18 años a la categoría Circuito Avanzado");
+                } else {
+                    montoBase = 2800;
+                }
+                break;
+        }
+
+        this.monto = montoBase;
+    }
+
 
     @Override
     public String toString() {

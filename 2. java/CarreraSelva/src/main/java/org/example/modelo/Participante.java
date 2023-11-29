@@ -1,6 +1,6 @@
 package org.example.modelo;
 
-class Participante {
+public class Participante {
 
     private int numeroParticipante;
     private String dni;
