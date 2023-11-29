@@ -21,7 +21,7 @@ public class Main {
 
         // Inscribimos un participante a cualquier categoria
         Participante participante1 = new Participante(1, "123456789", "Sebastian", "Ospina", 23, "1234567890", "911", "A+");
-        inscripciones.add(new Inscripcion(1, categorias.get(1), participante1));
+        inscripciones.add(new Inscripcion(categorias.get(1), participante1));
 
         System.out.println(inscripciones.get(0));
         System.out.println("-----------------");
@@ -31,9 +31,9 @@ public class Main {
         Participante participante3 = new Participante(3, "123456789", "Participante 3", "Apellido 3", 30, "1234567890", "911", "A+");
         Participante participante4 = new Participante(4, "123456789", "Participante 4", "Apellido 4", 46, "1234567890", "911", "A+");
 
-        inscripciones.add(new Inscripcion(2, categorias.get(0), participante2));
-        inscripciones.add(new Inscripcion(3, categorias.get(2), participante3));
-        inscripciones.add(new Inscripcion(4, categorias.get(1), participante4));
+        inscripciones.add(inscribir(categorias.get(0), participante2));
+        inscripciones.add(inscribir(categorias.get(2), participante3));
+        inscripciones.add(inscribir(categorias.get(1), participante4));
 
         //Imprimir los inscritos a cada categoria
         mostrarInscritos(1);
@@ -62,6 +62,10 @@ public class Main {
         for (Inscripcion inscripcion : inscripciones.stream().filter(i -> i.getCategoria().getId() == categoriaId).collect(Collectors.toList())) {
             System.out.println(inscripcion);
         }
+    }
+
+    public static Inscripcion inscribir(Categoria categoria, Participante participante){
+        return new Inscripcion(categoria, participante);
     }
 
     public static void desinscribir(int numeroParticipante) {

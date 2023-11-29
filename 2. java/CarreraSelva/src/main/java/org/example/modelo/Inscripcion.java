@@ -2,16 +2,16 @@ package org.example.modelo;
 
 public class Inscripcion {
 
-    private int numeroInscripcion;
+    private static int numeroInscripcion = 0;
     private Categoria categoria;
     private Participante participante;
     private int monto;
 
-    public Inscripcion(int numeroInscripcion, Categoria categoria, Participante participante) {
-        this.numeroInscripcion = numeroInscripcion;
+    public Inscripcion(Categoria categoria, Participante participante) {
         this.categoria = categoria;
         this.participante = participante;
         this.calcularMontoInscripcion();
+        numeroInscripcion++;
     }
 
     public int getNumeroInscripcion() {
