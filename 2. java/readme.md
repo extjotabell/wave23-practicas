@@ -8,3 +8,10 @@ máxima que hubo entre todas las ciudades registradas y cuál fue la mínima.
 Sabiendo que cada índice de fila representa a una ciudad. Se necesita conocer la mayor y la menor temperatura entre todas las ciudades; al mismo 
 tiempo se deberá especificar el nombre de la ciudad. Por ejemplo, la menor temperatura la tuvo Tokio, con -10 º C.
 
+### 2. Carrera de la selva 
+Todos los años en la provincia de Misiones, al norte de Argentina se lleva a cabo un evento conocido como 
+“Carrera de la Selva”. El mismo se trata de una competición donde los mejores maratonistas y corredores de 
+Latinoamérica se reúnen para desafiar sus habilidades deportivas. La competencia cuenta con 3 categorías 
+dependiendo de su dificultad. En este proyecto se trabajan diferentes ejercicios usando estructuras dinámicas.
+
+
