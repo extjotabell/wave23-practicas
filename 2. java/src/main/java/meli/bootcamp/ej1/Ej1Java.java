@@ -3,7 +3,7 @@ package meli.bootcamp.ej1;
 /**
  * Ejercicio 1: Temperaturas globales
  */
-public class App {
+public class Ej1Java {
   public static void main(String[] args) {
     String[] ciudades = { "Londres", "Madrid", "Nueva York", "Buenos Aires", "Asuncion", "Sao Paulo", "Lima",
         "Santiado de Chile", "Lisboa", "Tokyo" };
