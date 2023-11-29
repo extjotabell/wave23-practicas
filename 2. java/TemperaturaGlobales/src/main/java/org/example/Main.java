@@ -23,6 +23,8 @@ public class Main {
                 "Tokio"
         };
 
+        int vector[] = new int[5];
+
         int temperatura[][] = {
                 {-2, 33},
                 {-3, 32},
@@ -35,7 +37,6 @@ public class Main {
                 {-1, 31},
                 {-10, 35}
         };
-
         int valMaximo = getValoresMinimoMaximoTemperaturas(temperatura)[VAL_MAXIMO];
         int valMinimo = getValoresMinimoMaximoTemperaturas(temperatura)[VAL_MINIMO];
 
