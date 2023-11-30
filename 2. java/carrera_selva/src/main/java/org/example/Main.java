@@ -70,10 +70,14 @@ public class Main {
         Categoria cat = categorias.get(opcionCat - 1);
         Participante p = new Participante(nombre, apellido, edad);
 
-        Inscripcion nuevaInscripcion = new Inscripcion(p, cat);
-        inscripciones.get(cat).add(nuevaInscripcion);
+        try {
+            Inscripcion nuevaInscripcion = new Inscripcion(p, cat);
+            inscripciones.get(cat).add(nuevaInscripcion);
 
-        System.out.println("Monto total a abonar: " + nuevaInscripcion.getMontoTotal());
+            System.out.println("Monto total a abonar: " + nuevaInscripcion.getMontoTotal());
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void realizarDesinscripcion(List<Categoria> categorias, Map<Categoria, List<Inscripcion>> inscripciones) {
