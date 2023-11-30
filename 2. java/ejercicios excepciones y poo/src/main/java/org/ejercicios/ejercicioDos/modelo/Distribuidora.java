@@ -29,6 +29,6 @@ public class Distribuidora {
             total += p.calcular(5);
         }
 
-        System.out.println("TOTAL VENDIDO: $" + total);
+        System.out.printf("TOTAL VENDIDO: $%.2f ", total);
     }
 }
