@@ -17,3 +17,7 @@ dependiendo de su dificultad. En este proyecto se trabajan diferentes ejercicios
 ### 3. Ejercicio OOP - Cálculo IMC
 Se realizan diferentes ejercicios para practicar la creación de clases, 
 instanciación de objetos y llamado de  métodos.
+
+### 4. Ejercicio OOP - Herencia, encapsulamiento y polimorfismo
+Se realizan diferentes ejercicios para prácticar los pilares de la programación orientada a objetos.
+
