@@ -153,7 +153,7 @@ public class Main {
         map.put(competitor1, inscription1);
         map.put(competitor2, inscription2);
         map.put(competitor3, inscription3);
-        map.put(competitor4, inscription1);
+        map.put(competitor4, inscription4);
 
     }
 }
