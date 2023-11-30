@@ -26,5 +26,9 @@ public class Main {
         category2.getInscriptions();
         category3.getInscriptions();
 
+        System.out.println("\nMonto recaudado por Circuito chico: $" + category1.calculateTotalAmount());
+        System.out.println("Monto recaudado por Circuito medio: $" + category2.calculateTotalAmount());
+        System.out.println("Monto recaudado por Circuito avanzado: $" + category3.calculateTotalAmount());
+
     }
 }

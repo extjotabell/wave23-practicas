@@ -49,4 +49,8 @@ public class Category {
         }
 
     }
+
+    public double calculateTotalAmount() {
+        return inscriptions.stream().mapToDouble(Inscription::getAmount).sum();
+    }
 }
