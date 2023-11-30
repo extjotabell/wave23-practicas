@@ -1,0 +1,73 @@
+package org.example;
+
+// Ejercicio 1, 2 y 5
+public class Persona {
+    private String nombre;
+    private int edad;
+    private String dni;
+    private double peso;
+    private double altura;
+
+    public Persona(){}
+
+    public Persona(String nombre, int edad, String dni) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.dni = dni;
+    }
+
+    public Persona(String nombre, int edad, String dni, double peso, double altura) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.dni = dni;
+        this.peso = peso;
+        this.altura = altura;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    private int calcularIMC () {
+        double imc = this.peso/(this.altura*this.altura);
+
+        if (imc < 20) {
+            return -1;
+        }
+
+        if (imc >= 20 && imc <= 25) {
+            return 0;
+        }
+
+        return 1;
+    }
+
+    public String nivelDePeso() {
+        int indice = this.calcularIMC();
+
+        if (indice == -1) {
+            return "bajo peso";
+        }
+
+        if (indice == 0) {
+            return "peso normal";
+        }
+
+        return "sobre peso";
+    }
+
+    public boolean esMayorDeEdad() {
+        return this.edad >= 18;
+    }
+
+    @Override
+    public String toString() {
+        return "Datos de las personas en nuestro sistema {" +
+                "nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", dni='" + dni + '\'' +
+                ", peso=" + peso +
+                ", altura=" + altura +
+                '}';
+    }
+}
