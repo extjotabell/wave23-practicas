@@ -14,4 +14,6 @@ Todos los años en la provincia de Misiones, al norte de Argentina se lleva a ca
 Latinoamérica se reúnen para desafiar sus habilidades deportivas. La competencia cuenta con 3 categorías 
 dependiendo de su dificultad. En este proyecto se trabajan diferentes ejercicios usando estructuras dinámicas.
 
-
+### 3. Ejercicio OOP - Cálculo IMC
+Se realizan diferentes ejercicios para practicar la creación de clases, 
+instanciación de objetos y llamado de  métodos.
