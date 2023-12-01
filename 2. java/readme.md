@@ -27,3 +27,5 @@ Se realizan diferentes ejercicios para poner en practica la creación y comporta
 ### 6. Lambdas y Streams:
 Ejercicios para practicar el uso de lambdas, streams con operaciones como filter,map, sorter, toList etc.
 
+### 7. Ejercicio abstractas y generics:
+Ejercicio Series numericas para practicas sobre clases abstractas y el uso de generics.
