@@ -3,15 +3,20 @@ package org.example;
 import java.util.Map;
 
 public class Factura {
+    private static int nextId;
+    private final int id;
     private final Cliente cliente;
     private final Map<Producto, Integer> productos;
     private final Double costoTotal;
 
     public Factura(Cliente cliente, Map<Producto, Integer> productos) {
+        this.id = ++ nextId;
         this.cliente = cliente;
         this.productos = productos;
         costoTotal = calcularCosto(productos);
     }
+
+    public int getId() { return id; }
 
     public Cliente getCliente() {
         return cliente;
@@ -26,7 +31,8 @@ public class Factura {
     }
 
     private static Double calcularCosto(Map<Producto, Integer> productos) {
-        return productos.keySet().stream().mapToDouble(Producto::getCosto).sum();
+        return productos.entrySet().stream().
+                mapToDouble(entry -> entry.getKey().getCosto() * entry.getValue()).sum();
     }
 
     @Override
