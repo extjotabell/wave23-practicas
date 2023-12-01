@@ -1,7 +1,7 @@
 package org.example;
 
 public class Participant {
-    private static Integer participantNumber;
+    private static Integer participantNumber = 0;
     private Integer dni;
     private String name;
     private String surname;
@@ -31,6 +31,19 @@ public class Participant {
 
     public Integer getDni() {
         return dni;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Participant that = (Participant) o;
+        return dni.equals(that.dni);
+    }
+
+    @Override
+    public int hashCode() {
+        return dni.hashCode();
     }
 
     @Override

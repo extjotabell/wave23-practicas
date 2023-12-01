@@ -16,6 +16,10 @@ public class Main {
         career.registerParticipant(result.sofiv(), 2);
         career.registerParticipant(result.lautic(), 3);
 
+        System.out.println("EMPIEZA EL TEST");
+        System.out.println(career.getParticipants());
+        System.out.println("TERMINA EL TEST");
+
         // Point D
         executePointD(career, idCategory);
 

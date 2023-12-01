@@ -1,7 +1,9 @@
 package org.example;
 
+import java.util.Comparator;
+
 public class Inscription {
-    private static Integer inscriptionNumber;
+    private static Integer inscriptionNumber = 0;
     private Category category;
     private Participant participant;
     private Integer amountToPay;
@@ -35,5 +37,18 @@ public class Inscription {
                 "Categoria: " + category + "\n" +
                 "Participante: " + "\n" + participant + "\n" +
                 "MontoAbonar: " + amountToPay + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Inscription that = (Inscription) o;
+        return participant.equals(that.participant);
+    }
+
+    @Override
+    public int hashCode() {
+        return participant.hashCode();
     }
 }
