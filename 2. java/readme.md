@@ -23,3 +23,7 @@ Se realizan diferentes ejercicios para prácticar los pilares de la programació
 
 ### 5. Ejercicio Clases abstractas e interfaces
 Se realizan diferentes ejercicios para poner en practica la creación y comportamiento entre clases abstractas e interfaces.
+
+### 6. Lambdas y Streams:
+Ejercicios para practicar el uso de lambdas, streams con operaciones como filter,map, sorter, toList etc.
+
