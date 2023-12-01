@@ -7,7 +7,7 @@ import org.example.modelo.transacciones.Transferencia;
 public class Ejecutivo extends Cliente{
 
     @Override
-    void realizarTransaccion(ITransaccion iTransaccion) {
+    public void realizarTransaccion(ITransaccion iTransaccion) {
         if (iTransaccion instanceof Deposito || iTransaccion instanceof Transferencia) {
             iTransaccion.transaccionOk();
         } else {

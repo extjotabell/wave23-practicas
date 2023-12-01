@@ -8,7 +8,7 @@ import org.example.modelo.transacciones.RetiroEfectivo;
 public class Basic extends Cliente{
 
         @Override
-        void realizarTransaccion(ITransaccion iTransaccion) {
+        public void realizarTransaccion(ITransaccion iTransaccion) {
             if (iTransaccion instanceof ConsultaSaldo || iTransaccion instanceof PagoServicios || iTransaccion instanceof RetiroEfectivo) {
                 iTransaccion.transaccionOk();
             } else {

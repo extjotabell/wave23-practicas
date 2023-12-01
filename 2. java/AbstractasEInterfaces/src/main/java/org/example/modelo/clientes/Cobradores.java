@@ -6,7 +6,7 @@ import org.example.modelo.transacciones.RetiroEfectivo;
 
 public class Cobradores extends Cliente{
     @Override
-    void realizarTransaccion(ITransaccion iTransaccion) {
+    public void realizarTransaccion(ITransaccion iTransaccion) {
         if (iTransaccion instanceof RetiroEfectivo || iTransaccion instanceof ConsultaSaldo) {
             iTransaccion.transaccionOk();
         } else {
