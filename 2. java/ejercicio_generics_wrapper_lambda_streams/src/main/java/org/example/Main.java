@@ -16,7 +16,30 @@ public class Main {
                                                 new Vehiculo("Chevrolet", "Spin", 2500),
                                                 new Vehiculo("Toyota", "Fortuner", 3000),
                                                 new Vehiculo("Renault", "Logan", 950)));
+        //Ejercicio 3
 
-        
+        garage.getVehiculos().stream().sorted(Comparator.comparingDouble(Vehiculo::getCosto)).forEach(System.out::println);
+
+        //Ejercicio 4
+        System.out.println();
+
+        garage.getVehiculos().stream().sorted(Comparator.comparing(Vehiculo::getMarca).thenComparing(Vehiculo::getCosto)).forEach(System.out::println);
+
+        //Extra por modelo y luego por precio
+
+        System.out.println();
+
+        garage.getVehiculos().stream().sorted(Comparator.comparing(Vehiculo::getModelo).thenComparing(Vehiculo::getCosto)).forEach(System.out::println);
+
+        //Ejercicio 5
+
+        System.out.println();
+        garage.getVehiculos().stream().filter((v) -> v.getCosto() < 1000).forEach(System.out::println);
+
+        System.out.println();
+        garage.getVehiculos().stream().filter((v) -> v.getCosto() >= 1000).forEach(System.out::println);
+
+        System.out.println();
+        System.out.println(garage.getVehiculos().stream().mapToDouble(Vehiculo::getCosto).average().toString());
     }
 }

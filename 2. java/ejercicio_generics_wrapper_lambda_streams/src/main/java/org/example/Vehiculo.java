@@ -3,6 +3,16 @@ package org.example;
 public class Vehiculo {
     private String modelo;
     private String marca;
+
+    @Override
+    public String toString() {
+        return "Vehiculo{" +
+                "modelo='" + modelo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", costo=" + costo +
+                '}';
+    }
+
     private double costo;
 
     public Vehiculo(String modelo, String marca, double costo) {
