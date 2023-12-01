@@ -2,7 +2,7 @@ package main;
 
 public class Main {
     public static void main(String[] args) {
-        String[] ciudades = {
+        String[] cities = {
                 "Londres",
                 "Madrid",
                 "Nueva York",
@@ -15,7 +15,7 @@ public class Main {
                 "Tokio"
         };
 
-        int[][] temperaturas = {
+        int[][] temperatures = {
                 {-2, 33},
                 {-3, 32},
                 {-8, 27},
@@ -33,20 +33,20 @@ public class Main {
         int tempMin = 0;
         int tempMax = 0;
 
-        for (int i = 0; i < temperaturas.length; i++) {
-            if(temperaturas[i][0] < tempMin){
-                tempMin = temperaturas[i][0];
+        for (int i = 0; i < temperatures.length; i++) {
+            if(temperatures[i][0] < tempMin){
+                tempMin = temperatures[i][0];
                 indexMin = i;
             }
 
-            if(temperaturas[i][1] > tempMax){
-                tempMax = temperaturas[i][1];
+            if(temperatures[i][1] > tempMax){
+                tempMax = temperatures[i][1];
                 indexMax = i;
             }
         }
 
-        System.out.println("La mayor temperatura fue en la ciudad de " + ciudades[indexMax] + " y es de " + tempMax);
-        System.out.println("la menor  temperatura la tuvo la ciudad de "+ ciudades[indexMin] + " y es " + tempMin);
+        System.out.println("La mayor temperatura fue en la ciudad de " + cities[indexMax] + " y es de " + tempMax);
+        System.out.println("la menor  temperatura la tuvo la ciudad de "+ cities[indexMin] + " y es " + tempMin);
 
     }
 }
