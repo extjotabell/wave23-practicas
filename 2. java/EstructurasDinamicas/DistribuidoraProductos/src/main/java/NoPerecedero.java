@@ -1,14 +1,9 @@
-public class NoPerecedero extends Producto{
+public class NoPerecedero extends Producto {
     private String tipo;
 
-    public NoPerecedero(String tipo, String nombre, double precios) {
-        super(nombre, precios);
+    public NoPerecedero(String tipo, String nombre, double precio) {
+        super(nombre, precio);
         this.tipo = tipo;
-    }
-
-    public void calcular(double cantidadDeProductos){
-        Producto producto = new Producto(getNombre(), getPrecios());
-        double multiplicar = cantidadDeProductos * producto.getPrecios();
     }
 
     public String getTipo() {
@@ -21,8 +16,6 @@ public class NoPerecedero extends Producto{
 
     @Override
     public String toString() {
-        return "NoPerecedero{" +
-                "tipo='" + tipo + '\'' +
-                '}';
+        return String.format("Nombre: %s, Precio: %f, Tipo: %s", this.nombre, this.precio, this.tipo);
     }
 }

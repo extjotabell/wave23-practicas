@@ -1,15 +1,11 @@
 public class Producto {
 
-    private String nombre;
-    private double precios;
+    protected String nombre;
+    protected double precio;
 
-    public Producto(String nombre, double precios) {
+    public Producto(String nombre, double precio) {
         this.nombre = nombre;
-        this.precios = precios;
-    }
-
-    public void calcular(double cantidadDeProductos){
-        double multiplicar = cantidadDeProductos * precios;
+        this.precio = precio;
     }
 
     public String getNombre() {
@@ -20,19 +16,22 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public double getPrecios() {
-        return precios;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setPrecios(double precios) {
-        this.precios = precios;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     @Override
-    public String toString() {
-        return "Producto{" +
-                "nombre='" + nombre + '\'' +
-                ", precios=" + precios +
-                '}';
+    public String toString(){
+        return String.format("Nombre: %s, Precio: %f", this.nombre, this.precio);
     }
+
+    public double calcular(int cantidad){
+        System.out.println(this.precio * cantidad);
+        return this.precio * cantidad;
+    }
+
 }
