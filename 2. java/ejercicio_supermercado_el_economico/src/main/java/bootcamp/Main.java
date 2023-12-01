@@ -8,6 +8,7 @@ De cada item o producto se guarda el código, nombre, cantidad comprada y costo 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,10 +26,10 @@ public class Main {
 
         Cliente.imprimirDatosClientes(clientes);
 
-        System.out.println();
-        Cliente.buscarClientePorDNI(clientes, "1");
-        System.out.println();
-        Cliente.buscarClientePorDNI(clientes, "2");
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Ingresa el dni del cliente a buscar a buscar: ");
+        String dni = teclado.nextLine();
+        Cliente.buscarClientePorDNI(clientes, dni);
 
 
     }
