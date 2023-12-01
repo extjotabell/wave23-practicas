@@ -1,10 +1,15 @@
-package org.example;
+package org.ejercicio_1;
 
-public class Cobradores implements ITransaccion {
+public class Basic implements ITransaccion {
 
     public void consultaDeSaldo(){
         System.out.println("Consultando saldo...");
         transaccionOk();
+    }
+
+    public void pagoDeServicios(){
+        System.out.println("Realizandose pago de servicios");
+        transaccionNoOk();
     }
 
     public void retiroDeEfectivo(){

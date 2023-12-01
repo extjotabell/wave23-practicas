@@ -1,4 +1,4 @@
-package org.example_1;
+package org.ejercicio_2;
 
 public class Curriculums implements Imprimible {
 
@@ -9,7 +9,7 @@ public class Curriculums implements Imprimible {
     private Persona persona;
 
     @Override
-    public String imprimiendo(){
-        return persona.toString();
+    public String imprimir(){
+        return "Curriculum: " +  persona.toString();
     }
 }

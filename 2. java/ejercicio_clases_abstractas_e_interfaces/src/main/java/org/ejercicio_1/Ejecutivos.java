@@ -1,4 +1,4 @@
-package org.example;
+package org.ejercicio_1;
 
 public class Ejecutivos implements ITransaccion{
 
