@@ -21,3 +21,5 @@ instanciación de objetos y llamado de  métodos.
 ### 4. Ejercicio OOP - Herencia, encapsulamiento y polimorfismo
 Se realizan diferentes ejercicios para prácticar los pilares de la programación orientada a objetos.
 
+### 5. Ejercicio Clases abstractas e interfaces
+Se realizan diferentes ejercicios para poner en practica la creación y comportamiento entre clases abstractas e interfaces.
