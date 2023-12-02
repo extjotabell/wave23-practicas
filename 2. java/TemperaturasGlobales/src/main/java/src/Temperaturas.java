@@ -9,13 +9,11 @@ public class Temperaturas {
         int [][] temperatura = {{-2, 33}, {-3, 32}, {-8, 27}, {4, 37}, {6, 42}, {5, 43},
                 {0, 39}, {-7, 26}, {-1, 31}, {-10, 35}};
 
-        // Inicialización de las variables para almacenar la temperatura máxima y mínima
         int temperaturaMaxima = Integer.MIN_VALUE;
         int temperaturaMinima = Integer.MAX_VALUE;
         String ciudadTempMaxima = "";
         String ciudadTempMinima = "";
 
-        // Bucle para encontrar la temperatura máxima y mínima y sus respectivas ciudades
         for (int i = 0; i < ciudades.length; i++) {
 
             if (temperatura[i][1] > temperaturaMaxima) {
