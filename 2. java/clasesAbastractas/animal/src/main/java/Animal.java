@@ -5,6 +5,5 @@ public abstract class Animal {
     public Animal(String raza) {
         this.raza = raza;
     }
-
     abstract void emitirSonido();
 }
