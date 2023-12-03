@@ -13,3 +13,7 @@ Primera parte de ejercicio para almacenar datos de clientes y facturas en un sup
 Archivo -> practicaExcepciones
 
 Ejercicio de control de excepciones.
+
+Archivo -> distribuidoraProductos
+
+Este ejercicio permite imprimir el total de un producto segun la cantidad y dias por caducar.
