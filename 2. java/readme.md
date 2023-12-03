@@ -9,3 +9,7 @@ Este ejercicio permite conocer el resultado del IMC de una persona y si es mayor
 Archivo -> superElEconomico
 
 Primera parte de ejercicio para almacenar datos de clientes y facturas en un supermercado.
+
+Archivo -> practicaExcepciones
+
+Ejercicio de control de excepciones.
