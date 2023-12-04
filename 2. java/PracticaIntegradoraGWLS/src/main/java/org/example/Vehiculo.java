@@ -1,6 +1,6 @@
 package org.example;
 
-public class Vehiculos {
+public class Vehiculo {
     private String modelo;
     private String marca;
     private double costo;
@@ -29,7 +29,7 @@ public class Vehiculos {
         this.costo = costo;
     }
 
-    public Vehiculos(String modelo, String marca, double costo) {
+    public Vehiculo(String modelo, String marca, double costo) {
         this.modelo = modelo;
         this.marca = marca;
         this.costo = costo;
