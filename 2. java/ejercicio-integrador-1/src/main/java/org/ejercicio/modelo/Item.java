@@ -46,4 +46,14 @@ public class Item {
     public void setCostoUnitario(double costoUnitario) {
         this.costoUnitario = costoUnitario;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "codigo='" + codigo +
+                ",  nombre='" + nombre +
+                ",  cantidadComprada=" + cantidadComprada +
+                ",  costoUnitario=" + costoUnitario +
+                '}' + '\n' ;
+    }
 }
