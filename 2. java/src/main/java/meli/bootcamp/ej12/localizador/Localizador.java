@@ -73,4 +73,27 @@ public class Localizador {
     return "Localizador: [cliente=" + cliente + ", total=" + total + ", paquete=\n\t" + paquete + "\n]";
   }
 
+  public List<Reserva> getPaquete() {
+    return this.paquete;
+  }
+
+  public List<Reserva> reservasHoteles() {
+    return this.paquete.stream().filter(r -> r.getTipo() == TipoReserva.HOTEL).toList();
+  }
+
+  public List<Reserva> reservasComidas() {
+    return this.paquete.stream().filter(r -> r.getTipo() == TipoReserva.COMIDA).toList();
+  }
+
+  public List<Reserva> reservasBoletosViaje() {
+    return this.paquete.stream().filter(r -> r.getTipo() == TipoReserva.BOLETO_VIAJE).toList();
+  }
+
+  public List<Reserva> reservasTransportes() {
+    return this.paquete.stream().filter(r -> r.getTipo() == TipoReserva.TRANSPORTE).toList();
+  }
+
+  public Double getTotal() {
+    return this.total;
+  }
 }

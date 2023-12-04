@@ -50,9 +50,21 @@ public class Ej12Java {
     Reserva r9 = new Reserva("Recorrido Buenos Aires", 1000.0, TipoReserva.TRANSPORTE);
     paquete3.add(r9);
 
-    System.out.println("------------------Paquete 2------------------");
+    System.out.println("------------------Paquete 3------------------");
     Localizador l3 = new Localizador(yo, paquete3);
     System.out.println(l3);
     RepositorioLocalizador.agregarLocalizador(l3);
+
+    System.out.println("------------------Parte 2------------------");
+    System.out.println("------------------1------------------");
+    System.out.println(RepositorioLocalizador.cantidadLocalizadoresVendidos());
+    System.out.println("------------------2------------------");
+    System.out.println(RepositorioLocalizador.cantidadTotalReservas());
+    System.out.println("------------------3------------------");
+    System.out.println(RepositorioLocalizador.diccionarioClasificacion());
+    System.out.println("------------------4------------------");
+    System.out.println(RepositorioLocalizador.totalVentas());
+    System.out.println("------------------5------------------");
+    System.out.println(RepositorioLocalizador.promedioVentas());
   }
 }
