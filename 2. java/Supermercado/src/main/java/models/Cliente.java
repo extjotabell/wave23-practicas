@@ -1,6 +1,6 @@
 package models;
 
-public class Cliente {
+public class Cliente implements Model {
     private String dni;
     private String nombre;
     private String apellido;

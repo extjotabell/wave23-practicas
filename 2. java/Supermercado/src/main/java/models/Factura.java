@@ -1,7 +1,5 @@
 package models;
 
-import interfaces.Model;
-
 import java.util.List;
 
 public class Factura implements Model {
@@ -11,7 +9,8 @@ public class Factura implements Model {
     private String id;
 
 
-    public Factura(Cliente cliente, List<Item> items) {
+    public Factura(String id, Cliente cliente, List<Item> items) {
+        this.id=id;
         this.cliente = cliente;
         this.items = items;
         this.total=items.stream().mapToDouble(Item::getTotal).sum();

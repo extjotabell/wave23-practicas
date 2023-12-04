@@ -1,6 +1,6 @@
 package models;
 
-public class Producto {
+public class Producto implements Model{
     private double costo;
     private String nombre;
     private String codigo;
@@ -33,5 +33,14 @@ public class Producto {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "costo=" + costo +
+                ", nombre='" + nombre + '\'' +
+                ", codigo='" + codigo + '\'' +
+                '}';
     }
 }
