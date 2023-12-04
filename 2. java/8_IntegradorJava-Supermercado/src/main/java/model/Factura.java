@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 public class Factura {
@@ -5,9 +7,9 @@ public class Factura {
     private ArrayList<Producto> listaProductos;
     private double totalCompra;
 
-    public Factura(Cliente cliente, double totalCompra) {
+    public Factura(Cliente cliente) {
         this.cliente = cliente;
-        this.totalCompra = totalCompra;
+        this.totalCompra = 0;
         this.listaProductos = new ArrayList<>();
     }
 
@@ -33,5 +35,12 @@ public class Factura {
 
     public void agregarProducto(Producto nuevoProducto){
         this.listaProductos.add(nuevoProducto);
+    }
+
+    public double calcularTotal(){
+        this.totalCompra = this.listaProductos.stream()
+                .mapToDouble( p -> p.getCostoUnitario() * p.getCantidadComprada())
+                .sum();
+        return this.totalCompra;
     }
 }
