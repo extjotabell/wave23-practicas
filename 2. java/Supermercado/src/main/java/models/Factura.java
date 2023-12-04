@@ -1,16 +1,28 @@
 package models;
 
+import interfaces.Model;
+
 import java.util.List;
 
-public class Factura {
+public class Factura implements Model {
     private Cliente cliente;
     private List<Item> items;
     private double total;
+    private String id;
+
 
     public Factura(Cliente cliente, List<Item> items) {
         this.cliente = cliente;
         this.items = items;
         this.total=items.stream().mapToDouble(Item::getTotal).sum();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setIdFactura(String id) {
+        this.id= id;
     }
 
     public Cliente getCliente() {
@@ -36,4 +48,16 @@ public class Factura {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    @Override
+    public String toString() {
+        return "Factura{" +
+                "cliente=" + cliente +
+                ", items=" + items +
+                ", total=" + total +
+                ", idFactura='" + id + '\'' +
+                '}';
+    }
+
+
 }

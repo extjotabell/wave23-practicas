@@ -11,7 +11,7 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public String getDni() {
+    public String getId() {
         return dni;
     }
 

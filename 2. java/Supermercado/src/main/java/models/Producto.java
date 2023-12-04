@@ -27,7 +27,7 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getCodigo() {
+    public String getId() {
         return codigo;
     }
 
