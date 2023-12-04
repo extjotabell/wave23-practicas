@@ -41,6 +41,6 @@ public class Cliente {
                 "dni='" + dni + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
-                '}';
+                '}' + '\n';
     }
 }
