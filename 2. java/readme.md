@@ -33,3 +33,4 @@ Ejercicio Series numericas para practicas sobre clases abstractas y el uso de ge
 ### 8. Ejercicio Integrador:
 Ejercicio integrador parte I, clases, colecciones y metodos.
 
+### 10. Ejercicio Dakar y Save the ropa: Repaso general de Java:  clases abstractas, interfacez, metodos, streams.
