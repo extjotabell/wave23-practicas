@@ -1,13 +1,20 @@
 package bootcamp;
 
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 public class Cliente {
    private String dni;
    private String nombre;
    private String apellido;
+
+   public static ArrayList<Cliente> clientes = new ArrayList<>(List.of(
+           new Cliente("1","Nicolás", "Diaz"),
+           new Cliente("2", "Silvia", "Rodriguez"),
+           new Cliente("3", "Víctor","Medina")
+   ));;
 
    public static void imprimirDatosClientes(List<Cliente> clientes) {
         clientes.forEach(System.out::println);
@@ -58,5 +65,16 @@ public class Cliente {
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 '}';
+    }
+
+    static public Cliente crearCliente() {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Ingresa el dni: ");
+        String dni = teclado.nextLine();
+        System.out.println("Ingresa el nombre: ");
+        String nombre = teclado.nextLine();
+        System.out.println("Ingresa el apellido: ");
+        String apellido = teclado.nextLine();
+        return new Cliente(dni, nombre, apellido);
     }
 }

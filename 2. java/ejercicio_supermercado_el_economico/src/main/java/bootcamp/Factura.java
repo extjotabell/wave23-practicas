@@ -1,8 +1,31 @@
 package bootcamp;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static bootcamp.Cliente.clientes;
+
 public class Factura {
+    static public List<Factura> facturas = new ArrayList<>();
+    static void agregarFactura(Factura factura){
+        Cliente cliente = factura.getCliente();
+        if (cliente == null) {
+            cliente = Cliente.crearCliente();
+        }
+        clientes.add(cliente);
+        double totalCompra = 0.0;
+        totalCompra = factura.items.stream().mapToDouble(Item::getCostoTotal).sum();
+        factura.setTotalCompra(totalCompra);
+    }
+
+    @Override
+    public String toString() {
+        return "Factura{" +
+                "cliente=" + cliente +
+                ", items=" + items +
+                ", totalCompra=" + totalCompra +
+                '}';
+    }
 
     private Cliente cliente;
     private List<Item> items;

@@ -6,17 +6,15 @@ Por otro lado, las facturas que se generan cuando un cliente hace una compra con
 De cada item o producto se guarda el código, nombre, cantidad comprada y costo unitario.
  */
 
+import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static bootcamp.Cliente.clientes;
+
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Cliente> clientes = new ArrayList<>(List.of(
-                new Cliente("1","Nicolás", "Diaz"),
-                new Cliente("2", "Silvia", "Rodriguez"),
-                new Cliente("3", "Víctor","Medina")
-        ));
 
         Cliente.imprimirDatosClientes(clientes);
 
@@ -31,6 +29,13 @@ public class Main {
         String dni = teclado.nextLine();
         Cliente.buscarClientePorDNI(clientes, dni);
 
+        Factura factura = new Factura(clientes.get(0),new ArrayList<Item>(List.of(
+                new Item("AXOIUE", "Pan", 4,5),
+                new Item("AOFMNIUE98", "Carne", 1.5, 70)
+                )));
+        Factura.agregarFactura(factura);
+
+        System.out.println(factura);
 
     }
 }

@@ -1,5 +1,7 @@
 package bootcamp;
 
+import java.util.ArrayList;
+
 public class Item {
     private String codigo;
     private String nombre;
@@ -50,5 +52,17 @@ public class Item {
         this.costoUnitario = costoUnitario;
     }
 
+    public double getCostoTotal() {
+        return this.getCostoUnitario() * this.cantidadComprada;
+    }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "codigo='" + codigo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", cantidadComprada=" + cantidadComprada +
+                ", costoUnitario=" + costoUnitario +
+                '}';
+    }
 }
