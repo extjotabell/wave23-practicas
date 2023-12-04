@@ -1,4 +1,5 @@
 EJERCICIO DAKAR
+Diagrama clases: https://github.com/extjotabell/wave23-practicas/assets/151570528/32a56099-f928-4dba-9795-8e9624dc8654
 
 1. Crear la clase vehículo que tenga los siguientes atributos:
 Velocidad
@@ -9,32 +10,33 @@ Peso
 Ruedas
 
 
-2. Modelar la clase Carrera que tiene los siguientes atributos:
+
+3. Modelar la clase Carrera que tiene los siguientes atributos:
 Distancia
 PremioEnDolares
 Nombre
 CantidadDeVehiculosPermitidos
 Lista de Vehiculos
 
-3. Se quiere agregar dos nuevas categorías de Vehiculos: 
+4. Se quiere agregar dos nuevas categorías de Vehiculos: 
 Autos
 Motos. 
 Los autos pesan 1.000 kilos y las motos 300 kilos, los autos tienen 4 ruedas y las motos 2.
 
-4. Una carrera además tiene un conjunto de vehículos que participarán de la misma. Entonces, ahora la carrera va a tener la responsabilidad de poder agregar a un vehículo, por lo que debemos definir los siguientes métodos: 
+5. Una carrera además tiene un conjunto de vehículos que participarán de la misma. Entonces, ahora la carrera va a tener la responsabilidad de poder agregar a un vehículo, por lo que debemos definir los siguientes métodos: 
 public void darDeAltaAuto(velocidad,aceleracion,AnguloDeGiro,patente);
 public void darDeAltaMoto(velocidad,aceleracion,AnguloDeGiro,patente);
 Ambos métodos agregan un vehículo siempre y cuando haya cupo.
 
-5. También vamos a tener la posibilidad de eliminar a un vehículo mediante dos métodos:
+6. También vamos a tener la posibilidad de eliminar a un vehículo mediante dos métodos:
 public void eliminarVehiculo(vehículo);
 	public void eliminarVehiculoConPatente(String unaPatente);
 
-6. Queremos poder definir el ganador de una carrera: 
+7. Queremos poder definir el ganador de una carrera: 
 El ganador será aquel que tenga el máximo valor determinado por la siguiente fórmula:
 Velocidad * ½ Aceleracion / (AnguloDeGiro*(Peso-Cantidad de Ruedas * 100)
 
-7. Las carreras también cuentan con vehículos socorristas que ante alguna emergencia van y reparan a un vehículo. Como los autos son muy diferentes a las motos, existen dos clases distintas de vehículos socorristas. Uno de estos solo sabe socorrer autos y otro solo sabe socorrer motos.
+8. Las carreras también cuentan con vehículos socorristas que ante alguna emergencia van y reparan a un vehículo. Como los autos son muy diferentes a las motos, existen dos clases distintas de vehículos socorristas. Uno de estos solo sabe socorrer autos y otro solo sabe socorrer motos.
 Agregar las clases
 	SocorristaAuto
 	SocorristaMoto
