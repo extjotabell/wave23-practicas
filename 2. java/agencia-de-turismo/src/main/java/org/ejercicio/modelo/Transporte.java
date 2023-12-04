@@ -1,33 +1,29 @@
 package org.ejercicio.modelo;
-public class Comida implements IServicio {
 
+public class Transporte implements IServicio{
     protected IServicio iServicio;
     private String descripcion;
     private Double costo;
-    private String tipo;
 
-    public Comida(IServicio iServicio, String descripcion, Double costo, String tipo) {
+    public Transporte(IServicio iServicio, String descripcion, Double costo) {
         this.iServicio = iServicio;
         this.descripcion = descripcion;
         this.costo = costo;
-        this.tipo = tipo;
     }
 
     @Override
     public String toString() {
-        return "Comida{" +
+        return "Transporte{" +
                 "iServicio=" + iServicio +
                 ", descripcion='" + descripcion + '\'' +
                 ", costo=" + costo +
-                ", tipo='" + tipo + '\'' +
                 '}';
     }
 
     @Override
     public String obtenerDescripcion() {
-        return this.iServicio.obtenerDescripcion() + "\n Descripcion comida: " + this.descripcion + "\n Costo comida: " + this.costo + "\n Tipo comida: " + this.tipo + "\n\n";
+        return this.iServicio.obtenerDescripcion() + "\n Descripcion transporte: " + this.descripcion + "\n Costo transporte: " + this.costo;
     }
-
 
     @Override
     public Double obtenerCosto() {
@@ -36,8 +32,7 @@ public class Comida implements IServicio {
 
     @Override
     public String servicios() {
-        return this.iServicio.servicios() + " Comida";
+        return this.iServicio.servicios() + " Transporte";
     }
-
 
 }
