@@ -38,4 +38,8 @@ public class Supermercado {
 
         return clienteBuscado;
     }
+
+    public boolean esCliente(Cliente c) {
+        return this.clientes.contains(c);
+    }
 }

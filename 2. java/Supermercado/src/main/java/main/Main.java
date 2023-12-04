@@ -13,7 +13,18 @@ public class Main {
         sm.agregarCliente(c2);
         sm.agregarCliente(c3);
 
-        System.out.println("CLIENTES ACTUALES\n");
+        // Cliente nuevo
+        Cliente clienteNuevo = new Cliente("1234567", "Sandro", "Perez");
+
+        Item i1 = new Item(1, "Pan Bimbo Artesano", 2, 1500);
+        Item i2 = new Item(2, "Arroz Carrefour", 2, 1200);
+        Item i3 = new Item(3, "Soda Manaos", 6, 500);
+        List<Item> items = new ArrayList<>(Arrays.asList(i1, i2, i3));
+        Factura f1 = new Factura(sm, clienteNuevo, items);
+
+        System.out.println("Total compra: " + f1.getTotalCompra());
+
+        /*System.out.println("CLIENTES ACTUALES\n");
         sm.mostrarClientes();
         System.out.println("--------------------------------");
 
@@ -34,6 +45,8 @@ public class Main {
         }
         else {
             System.out.println("El cliente con DNI " + DNIBuscado + " no existe");
-        }
+        }*/
+
+
     }
 }

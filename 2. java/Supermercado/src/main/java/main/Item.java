@@ -12,4 +12,8 @@ public class Item {
         this.cantComprada = cantComprada;
         this.costoUnitario = costoUnitario;
     }
+
+    public double getPrecio() {
+        return this.cantComprada * this.costoUnitario;
+    }
 }
