@@ -8,9 +8,14 @@ public class Factura {
     private List<Item> items;
     private double totalFactura;
 
-    public Factura(Cliente cliente) {
+    public Factura(Cliente cliente, List<Item> items) {
         this.cliente = cliente;
-        this.items = new ArrayList<>();
+        this.items = items;
+        this.totalFactura = calcularTotalFactura();
+    }
+
+    private double calcularTotalFactura() {
+        return items.stream().map(i -> i.getCantidadComprada() * i.getCostoUnitario()).mapToDouble(Double::doubleValue).sum();
     }
 
     public Cliente getCliente() {
