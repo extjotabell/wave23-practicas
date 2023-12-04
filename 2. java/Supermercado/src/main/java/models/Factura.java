@@ -10,10 +10,10 @@ public class Factura implements Model {
 
 
     public Factura(String id, Cliente cliente, List<Item> items) {
-        this.id=id;
+        this.id = id;
         this.cliente = cliente;
         this.items = items;
-        this.total=items.stream().mapToDouble(Item::getTotal).sum();
+        this.total = items.stream().mapToDouble(Item::getTotal).sum();
     }
 
     public String getId() {
@@ -21,7 +21,7 @@ public class Factura implements Model {
     }
 
     public void setIdFactura(String id) {
-        this.id= id;
+        this.id = id;
     }
 
     public Cliente getCliente() {

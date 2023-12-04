@@ -9,8 +9,8 @@ public class Item {
         this.cantidad = cantidad;
     }
 
-    public double getTotal(){
-        return producto.getCosto()*cantidad;
+    public double getTotal() {
+        return producto.getCosto() * cantidad;
     }
 
     public Producto getProducto() {

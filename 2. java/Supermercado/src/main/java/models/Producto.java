@@ -1,6 +1,6 @@
 package models;
 
-public class Producto implements Model{
+public class Producto implements Model {
     private double costo;
     private String nombre;
     private String codigo;
