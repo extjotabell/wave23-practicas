@@ -8,18 +8,20 @@ import models.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class CRUD<T extends Model>{
+public abstract class CRUD<T extends Model> {
     private TipoExcepcion tipo;
 
 
     List<T> models;
+
     public CRUD(TipoExcepcion tipo) {
-        models=new ArrayList<>();
-        this.tipo=tipo;
+        models = new ArrayList<>();
+        this.tipo = tipo;
     }
-    public T getById(String id) throws ElementNotFoundException{
+
+    public T getById(String id) throws ElementNotFoundException {
         return models.stream().filter(model -> model.getId().equalsIgnoreCase(id))
-                .findFirst().orElseThrow(()->FactoryException.createException(tipo, id));
+                .findFirst().orElseThrow(() -> FactoryException.createException(tipo, id));
     }
 
     public boolean delete(String id) {
@@ -47,7 +49,7 @@ public abstract class CRUD<T extends Model>{
         System.out.println();
     }
 
-    public boolean exists(T element){
+    public boolean exists(T element) {
         return models.contains(element);
     }
 
