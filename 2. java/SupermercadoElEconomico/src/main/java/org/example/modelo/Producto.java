@@ -1,6 +1,6 @@
 package org.example.modelo;
 
-public class Producto {
+public class Producto{
     private static int codigo = 0;
     private String nombre;
     private int cantidad;
@@ -40,5 +40,14 @@ public class Producto {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", cantidad=" + cantidad +
+                ", precio=" + precio +
+                '}';
     }
 }

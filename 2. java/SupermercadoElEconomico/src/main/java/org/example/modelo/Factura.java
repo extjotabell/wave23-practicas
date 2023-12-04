@@ -35,4 +35,13 @@ public class Factura {
     private void calcularTotal() {
         this.total = productos.stream().mapToDouble(Producto::getPrecio).sum();
     }
+
+    @Override
+    public String toString() {
+        return "Factura{" +
+                "cliente=" + cliente +
+                ", productos=" + productos +
+                ", total=" + total +
+                '}';
+    }
 }
