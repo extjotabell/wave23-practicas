@@ -5,48 +5,59 @@ import java.util.List;
 import java.util.Optional;
 
 public class Main {
-    public static void eliminarCliente(List<Cliente> clientes, Cliente cliente){
-        clientes.remove(cliente);
-    }
-
-    public static  void imprimirClientes(List<Cliente> clientes){
-        clientes.forEach(System.out::println);
-    }
-
-    public static  void buscarCliente(List<Cliente> clientes, int dni){
-        Optional<Cliente> buscado = clientes.stream()
-                .filter(cliente -> cliente.getDni() == dni).findFirst();
-
-        buscado.ifPresentOrElse(
-                (cliente)
-                        -> {
-                    System.out.println("Cliente encontrado: ");
-                    System.out.println(cliente);
-                },
-                ()
-                        ->{
-                    System.out.println("Cliente no encontrado");
-                });
-
-    }
 
     public static void main(String[] args) {
         List<Cliente> clientes  = new ArrayList<>();
+        List<Factura> facturas = new ArrayList<>();
+
+        SuperMercado superMercado = new SuperMercado(clientes, facturas);
+        superMercado.agregarCliente(new Cliente(1, "Diana", "Ramírez"));
+        superMercado.agregarCliente(new Cliente(2, "Manuel", "Barajas"));
+        superMercado.agregarCliente(new Cliente(3, "Lisandro", "Monreal"));
         Cliente cliente1 = new Cliente(4, "José", "Gamboa");
-        clientes.add(new Cliente(1, "Diana", "Ramírez"));
-        clientes.add(new Cliente(2, "Manuel", "Barajas"));
-        clientes.add(new Cliente(3, "Lisandro", "Monreal"));
-        clientes.add(cliente1);
+        superMercado.agregarCliente(cliente1);
+
+
         System.out.println("Imprimiendo clientes");
-        imprimirClientes(clientes);
+        superMercado.imprimirClientes();
         System.out.println();
         System.out.println("Eliminando cliente");
-        eliminarCliente(clientes,cliente1);
+        superMercado.eliminarCliente(cliente1);
         System.out.println();
         System.out.println("Imprimiendo clientes");
-        imprimirClientes(clientes);
+        superMercado.imprimirClientes();
         System.out.println();
         System.out.println("Buscando cliente");
-        buscarCliente(clientes, 4);
+        superMercado.buscarCliente(4);
+
+        Item item1 = new Item("123","jabón roma", 2,60);
+        Item item2 = new Item("1234", "shampoo sedal", 1, 50);
+        Item item3 = new Item("12345","pasta de dientes colgate", 3,25.5);
+
+
+        List<Item> listaItem = new ArrayList<>();
+        Factura factura1 = new  Factura(cliente1,listaItem);
+
+        factura1.agregarItem(item1);
+        factura1.agregarItem(item2);
+        factura1.agregarItem(item3);
+        Factura factura2 = new Factura(new Cliente(3, "Lisandro", "Monreal"),listaItem);
+
+        factura2.agregarItem(item1);
+        factura2.agregarItem(item2);
+        factura2.agregarItem(item3);
+
+        superMercado.agregarFactura(factura1);
+        System.out.println(factura1);
+        System.out.println();
+
+        superMercado.agregarFactura(factura2);
+        System.out.println(factura2);
+        System.out.println();
+
+        System.out.println("Imprimiendo clientes");
+        superMercado.imprimirClientes();
+        System.out.println();
+
     }
 }

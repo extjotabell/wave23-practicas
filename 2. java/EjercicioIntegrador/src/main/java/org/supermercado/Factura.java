@@ -36,6 +36,14 @@ public class Factura {
         this.total = total;
     }
 
+    public void calcularTotal(){
+        total = lista.stream().mapToDouble(Item::getCosto).sum();
+    }
+
+    public void agregarItem(Item item){
+        lista.add(item);
+    }
+
     @Override
     public String toString() {
         return "Factura{" +
