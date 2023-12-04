@@ -19,95 +19,114 @@ public class Carrera {
         this.cantidadDeVehiculosPermitidos = cantidadDeVehiculosPermitidos;
     }
 
-    public void darDeAltaAuto(Double velocidad, Double aceleracion, Double anguloDeGiro, String patente){
+    public void darDeAltaAuto(Double velocidad, Double aceleracion, Double anguloDeGiro, String patente) {
         try {
+            if (patente == null || velocidad == null || aceleracion == null || anguloDeGiro == null) {
+                throw new IllegalArgumentException("Los parámetros no pueden ser nulos");
+            }
+
             if (listaDeVehiculos.size() < cantidadDeVehiculosPermitidos) {
                 listaDeVehiculos.add(new Auto(velocidad, aceleracion, anguloDeGiro, patente));
             } else {
-                throw new RuntimeException("No se pueden agregar mas vehiculos");
+                throw new RuntimeException("No se pueden agregar más vehículos");
             }
-        }catch (RuntimeException e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void darDeAltaMoto(Double velocidad, Double aceleracion, Double anguloDeGiro, String patente){
+    public void darDeAltaMoto(Double velocidad, Double aceleracion, Double anguloDeGiro, String patente) {
         try {
-            if(listaDeVehiculos.size() < cantidadDeVehiculosPermitidos){
+            if (patente == null || velocidad == null || aceleracion == null || anguloDeGiro == null) {
+                throw new IllegalArgumentException("Los parámetros no pueden ser nulos");
+            }
+
+            if (listaDeVehiculos.size() < cantidadDeVehiculosPermitidos) {
                 listaDeVehiculos.add(new Moto(velocidad, aceleracion, anguloDeGiro, patente));
             } else {
-                throw new RuntimeException("No se pueden agregar mas vehiculos");
+                throw new RuntimeException("No se pueden agregar más vehículos");
             }
-        } catch (RuntimeException e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 
-    public Vehiculo definirGanador(){
-        Vehiculo ganador = null;
-        Double maximo = 0.0;
-        for(Vehiculo vehiculo : listaDeVehiculos){
-            Double valor = vehiculo.getVelocidad() * 0.5 * vehiculo.getAceleracion() / (vehiculo.getAnguloDeGiro() * (vehiculo.getPeso() - vehiculo.getRuedas() * 100));
-            if(valor > maximo){
-                maximo = valor;
-                ganador = vehiculo;
+    public Vehiculo definirGanador() {
+        try {
+            if (listaDeVehiculos.isEmpty()) {
+                throw new IllegalStateException("No hay vehículos en la lista");
             }
-        }
-        return ganador;
-    }
 
+            Vehiculo ganador = null;
+            Double maximo = 0.0;
+
+            for (Vehiculo vehiculo : listaDeVehiculos) {
+                Double valor = vehiculo.getVelocidad() * 0.5 * vehiculo.getAceleracion() / (vehiculo.getAnguloDeGiro() * (vehiculo.getPeso() - vehiculo.getRuedas() * 100));
+
+                if (valor > maximo) {
+                    maximo = valor;
+                    ganador = vehiculo;
+                }
+            }
+
+            if (ganador == null) {
+                throw new RuntimeException("No se pudo determinar un ganador");
+            }
+
+            return ganador;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
     public void socorrerAuto(String patente) {
-        if (patente == null) {
-            System.out.println("No se proporcionó una patente válida.");
-            return;
-        }
-
-        boolean vehiculoEncontrado = false;
-        for (Vehiculo vehiculo : listaDeVehiculos) {
-            if (vehiculo.getPatente().equals(patente)) {
-                if (vehiculo instanceof Auto) {
-                    socorristaAuto.socorrer((Auto) vehiculo);
-                    eliminarVehiculo(vehiculo);
-                    System.out.println("El auto con patente " + patente + " fue socorrido.");
-                } else {
-                    System.out.println("No se puede socorrer un auto con un vehículo diseñado para motos.");
-                }
-                vehiculoEncontrado = true;
-                break;
+        try {
+            if (patente == null) {
+                throw new IllegalArgumentException("La patente no puede ser nula");
             }
-        }
 
-        if (!vehiculoEncontrado) {
-            System.out.println("La patente no está registrada en la carrera.");
+            for (Vehiculo vehiculo : listaDeVehiculos) {
+                if (vehiculo.getPatente().equals(patente)) {
+                    if (vehiculo instanceof Auto) {
+                        socorristaAuto.socorrer((Auto) vehiculo);
+                        eliminarVehiculo(vehiculo);
+                        System.out.println("El auto con patente " + patente + " fue socorrido.");
+                    } else {
+                        throw new RuntimeException("No se puede socorrer un auto con un vehículo diseñado para motos.");
+                    }
+                    return;
+                }
+            }
+
+            throw new RuntimeException("La patente no está registrada en la carrera.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
-    public void socorrerMoto(String patente){
-        if (patente == null) {
-            System.out.println("No se proporcionó una patente válida.");
-            return;
-        }
-
-        boolean vehiculoEncontrado = false;
-        for (Vehiculo vehiculo : listaDeVehiculos) {
-            if (vehiculo.getPatente().equals(patente)) {
-                if (vehiculo instanceof Moto) {
-                    socorristaMoto.socorrer((Moto) vehiculo);
-                    eliminarVehiculo(vehiculo);
-                    System.out.println("La moto con patente " + patente + " fue socorrida.");
-                } else {
-                    System.out.println("No se puede socorrer una moto con un vehículo diseñado para autos.");
-                }
-                vehiculoEncontrado = true;
-                break;
+    public void socorrerMoto(String patente) {
+        try {
+            if (patente == null) {
+                throw new IllegalArgumentException("La patente no puede ser nula");
             }
-        }
 
-        if (!vehiculoEncontrado) {
-            System.out.println("La patente no está registrada en la carrera.");
-        }
+            for (Vehiculo vehiculo : listaDeVehiculos) {
+                if (vehiculo.getPatente().equals(patente)) {
+                    if (vehiculo instanceof Moto) {
+                        socorristaMoto.socorrer((Moto) vehiculo);
+                        eliminarVehiculo(vehiculo);
+                        System.out.println("La moto con patente " + patente + " fue socorrida.");
+                    } else {
+                        throw new RuntimeException("No se puede socorrer una moto con un vehículo diseñado para autos.");
+                    }
+                    return;
+                }
+            }
 
+            throw new RuntimeException("La patente no está registrada en la carrera.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void eliminarVehiculo(Vehiculo vehiculo){
