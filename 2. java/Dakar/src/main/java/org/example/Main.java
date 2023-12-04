@@ -11,6 +11,14 @@ public class Main {
 
         carrera.darDeAltaAuto(150.0, 10.0, 30.0, "ABC123");
         carrera.darDeAltaMoto(120.0, 8.0, 25.0, "XYZ789");
+        carrera.darDeAltaAuto(200.0, 15.0, 40.0, "QWE456");
+        carrera.darDeAltaMoto(100.0, 5.0, 20.0, "IOP852");
+
+        carrera.socorrerAuto("ABC123");
+        carrera.socorrerMoto("IOP852");
+        //Deberia soltar error
+        carrera.socorrerAuto("XYZ789");
+
 
         Vehiculo ganador = carrera.definirGanador();
 
