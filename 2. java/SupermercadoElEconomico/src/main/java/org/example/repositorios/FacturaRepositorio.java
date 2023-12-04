@@ -10,4 +10,6 @@ public class FacturaRepositorio extends CRUD<Factura> {
     public FacturaRepositorio(List<Factura> entidades) {
         super(entidades);
     }
+
+
 }

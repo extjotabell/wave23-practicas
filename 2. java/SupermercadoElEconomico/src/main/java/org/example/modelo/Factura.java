@@ -5,11 +5,12 @@ import java.util.List;
 public class Factura {
     private Cliente cliente;
     private List<Producto> productos;
-    private double total;
+    private Double total;
 
     public Factura(Cliente cliente, List<Producto> productos) {
         this.cliente = cliente;
         this.productos = productos;
+        this.calcularTotal();
     }
 
     public Cliente getCliente() {
@@ -33,7 +34,11 @@ public class Factura {
     }
 
     private void calcularTotal() {
-        this.total = productos.stream().mapToDouble(Producto::getPrecio).sum();
+        double total = 0;
+        for (Producto producto : productos) {
+            total += producto.getPrecio() * producto.getCantidad();
+        }
+        this.total = total;
     }
 
     @Override
