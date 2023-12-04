@@ -1,11 +1,12 @@
 package org.example.modelo;
 
 import org.example.interfaces.Modelo;
+import org.example.repositorios.LocalizadorRepositorio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Localizador implements Modelo {
+public class Localizador implements Modelo{
 
     private String id;
     private Cliente cliente;
@@ -18,13 +19,13 @@ public class Localizador implements Modelo {
         this.reservas = new ArrayList<>();
     }
 
-    public void calcularTotal() {
-        if (reservas.size() >= 2){
-            this.total = reservas.stream().mapToDouble(Reserva::getPrecio).sum() * 0.95;
-            System.out.println("Descuento aplicado");
-            return;
-        }
-        this.total = reservas.stream().mapToDouble(Reserva::getPrecio).sum();
+    public void calcularTotal(Double descuento) {
+        double descuentoFinal = 1 - descuento;
+        this.total = reservas.stream().mapToDouble(Reserva::getPrecio).sum() * descuentoFinal;
+    }
+
+    public boolean tieneTipoReserva(TipoReserva tipoReserva) {
+        return this.reservas.stream().anyMatch(reserva -> reserva.getTipoReserva() == tipoReserva);
     }
 
     @Override
