@@ -1,2 +1,5 @@
-package org.example;public interface Imprimible {
+package org.example.Ejercicio2;
+
+public interface Imprimible<T> {
+    void imprimir(T documento);
 }
