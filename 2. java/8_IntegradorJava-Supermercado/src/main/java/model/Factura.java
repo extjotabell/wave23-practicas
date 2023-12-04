@@ -3,14 +3,25 @@ package model;
 import java.util.ArrayList;
 
 public class Factura {
+
+    private String numeroFactura;
     private Cliente cliente;
     private ArrayList<Producto> listaProductos;
     private double totalCompra;
 
-    public Factura(Cliente cliente) {
+    public Factura(Cliente cliente, String numeroFactura) {
+        this.numeroFactura = numeroFactura;
         this.cliente = cliente;
         this.totalCompra = 0;
         this.listaProductos = new ArrayList<>();
+    }
+
+    public String getNumeroFactura() {
+        return numeroFactura;
+    }
+
+    public void setNumeroFactura(String numeroFactura) {
+        this.numeroFactura = numeroFactura;
     }
 
     public Cliente getCliente() {

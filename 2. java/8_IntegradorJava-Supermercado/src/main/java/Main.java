@@ -95,7 +95,7 @@ public class Main {
         Producto producto2 = new Producto("2222", "Huevo", 5.5, 2);
         Producto producto3 = new Producto("3333", "Galletas", 4.2, 3);
 
-        Factura factura1 = new Factura(cliente1);
+        Factura factura1 = new Factura(cliente1, "1111");
 
         factura1.agregarProducto(producto1);
         factura1.agregarProducto(producto2);
