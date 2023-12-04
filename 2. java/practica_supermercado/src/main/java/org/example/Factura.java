@@ -5,9 +5,9 @@ import java.util.Map;
 public class Factura {
     private static int nextId;
     private final int id;
-    private final Cliente cliente;
-    private final Map<Producto, Integer> productos;
-    private final Double costoTotal;
+    private Cliente cliente;
+    private Map<Producto, Integer> productos;
+    private Double costoTotal;
 
     public Factura(Cliente cliente, Map<Producto, Integer> productos) {
         this.id = ++ nextId;
@@ -28,6 +28,18 @@ public class Factura {
 
     public Double getCostoTotal() {
         return costoTotal;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setProductos(Map<Producto, Integer> productos) {
+        this.productos = productos;
+    }
+
+    public void setCostoTotal(Double costoTotal) {
+        this.costoTotal = costoTotal;
     }
 
     private static Double calcularCosto(Map<Producto, Integer> productos) {
