@@ -24,7 +24,14 @@ public class CifradoRestController {
     for (int i = 0; i < mensaje.length(); i++) {
       if (mensaje.charAt(i) != ' ') {
         int desplazamiento = clave.charAt(pos) - '0';
-        char c = (char) ((int) mensaje.charAt(i) + desplazamiento);
+        int numeroChar = (int) mensaje.charAt(i);
+        char c = '-';
+        if (numeroChar + desplazamiento > 90) {
+          int resto = (numeroChar + desplazamiento) % 90;
+          c = (char) (resto + 64);
+        } else {
+          c = (char) ((int) mensaje.charAt(i) + desplazamiento);
+        }
         cifrado += c;
         pos = (pos + 1) % n;
       }
