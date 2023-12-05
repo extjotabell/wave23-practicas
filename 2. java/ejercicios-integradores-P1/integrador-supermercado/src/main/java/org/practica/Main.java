@@ -16,9 +16,9 @@ public class Main {
         Cliente client2 = new Cliente(5678, "Emilia", "Lopez");
         Cliente client3 = new Cliente(1212, "Maria", "Torres");
 
-        repoClientes.addCliente(client1);
-        repoClientes.addCliente(client2);
-        repoClientes.addCliente(client3);
+        repoClientes.create(client1);
+        repoClientes.create(client2);
+        repoClientes.create(client3);
 
         clientes = repoClientes.getClientes();
         clientes.forEach(System.out::println);
@@ -29,7 +29,7 @@ public class Main {
         String dni = scanner.next();
         Optional<Cliente> client = clientes.stream().filter(c-> String.valueOf(c.getDni()).equals(dni)).findFirst();
         if(client.isPresent()){
-            repoClientes.removeCliente(client.get());
+            repoClientes.remove(client.get());
             System.out.println("Cliente Borrado correctamente.\n");
         } else {
             System.out.println("No se encontró el cliente con el dni ingresado.\n");
@@ -56,11 +56,9 @@ public class Main {
 
         Factura factura1 = new Factura(client1, items);
 
-        repoFacturas.addFactura(factura1, repoClientes); //Agrego nueva factura a repositorio de facturas
+        repoFacturas.createFacturaAndValidate(factura1, repoClientes); //Agrego nueva factura a repositorio de facturas
 
         System.out.println("Total factura 1 :" + factura1.getTotalFactura());
-
-
 
     }
 }

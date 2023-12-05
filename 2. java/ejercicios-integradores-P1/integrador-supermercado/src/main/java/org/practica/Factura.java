@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Factura {
+    private int codigo;
     private Cliente cliente;
     private List<Item> items;
     private double totalFactura;
@@ -32,6 +33,14 @@ public class Factura {
 
     public void addItem(Item newItem) {
         items.add(newItem);
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public double getTotalFactura() {
