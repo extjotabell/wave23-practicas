@@ -26,11 +26,14 @@ public class Agencia {
 
     public double aplicarDescuento(Cliente cliente){
         double descuento = 0.0;
-        if(historialVentas.get(cliente) != null){
-            if(historialVentas.get(cliente).size() % 2 == 0){
+        if(repositorio.buscarLocalizadoresPorCliente(cliente).size()>=2){
                 descuento = 0.05;
-            };
         }
         return descuento;
     }
+
+    public Repositorio getRepositorio() {
+        return repositorio;
+    }
+
 }
