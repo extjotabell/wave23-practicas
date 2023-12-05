@@ -2,7 +2,6 @@ package meli.bootcamp.ej11;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 import meli.bootcamp.ej11.cliente.Cliente;
