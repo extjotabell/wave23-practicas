@@ -13,7 +13,13 @@ public class EncriptarController {
 
     @GetMapping("/encriptar23")
     public String codificar23(@RequestBody String mensaje) {
-        String mensajeFormateado = mensaje.toUpperCase().replace(" ", "");
+        if (mensaje.length() <= 1 || mensaje.length() >= 10000) {
+            return "El mensaje de entrada no cumple con las restricciones de tamaño";
+        }
+
+        String mensajeFormateado = mensaje
+                                    .toUpperCase()
+                                    .replaceAll("[^A-Z]", "");
         String mensajeEncriptado = "";
         char caracter;
         int posAbecedario, indiceNuevoCaracter;
@@ -36,12 +42,17 @@ public class EncriptarController {
         }
 
         return "El mensaje: " + mensaje + "\n" + "Luego del encriptado es: " + mensajeEncriptado;
-
     }
 
     @GetMapping("/encriptar012")
     public String codificar012(@RequestBody String mensaje) {
-        String mensajeFormateado = mensaje.toUpperCase().replace(" ", "");
+        if (mensaje.length() <= 1 || mensaje.length() >= 10000) {
+            return "El mensaje de entrada no cumple con las restricciones de tamaño";
+        }
+
+        String mensajeFormateado = mensaje
+                .toUpperCase()
+                .replaceAll("[^A-Z]", "");
         String mensajeEncriptado = "";
         Character caracter;
         int posAbecedario, indiceNuevoCaracter, contador = 1;
@@ -71,6 +82,5 @@ public class EncriptarController {
         }
 
         return "El mensaje: " + mensaje + "\n" + "Luego del encriptado es: " + mensajeEncriptado;
-
     }
 }
