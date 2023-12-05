@@ -1,24 +1,24 @@
 package org.example;
 
 public class Item {
-    private String lcodigo, nombr;
+    private String codigo, nombre;
     private int cantidad;
     private double costoUnitario;
 
     public String getLcodigo() {
-        return lcodigo;
+        return codigo;
     }
 
     public void setLcodigo(String lcodigo) {
-        this.lcodigo = lcodigo;
+        this.codigo = lcodigo;
     }
 
     public String getNombr() {
-        return nombr;
+        return nombre;
     }
 
-    public void setNombr(String nombr) {
-        this.nombr = nombr;
+    public void setNombr(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getCantidad() {
@@ -41,9 +41,9 @@ public class Item {
         return this.costoUnitario * this.cantidad;
     }
 
-    public Item(String lcodigo, String nombr, int cantidad, double costoUnitario) {
-        this.lcodigo = lcodigo;
-        this.nombr = nombr;
+    public Item(String codigo, String nombre, int cantidad, double costoUnitario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
         this.cantidad = cantidad;
         this.costoUnitario = costoUnitario;
     }
