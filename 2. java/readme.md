@@ -21,3 +21,7 @@ Este ejercicio permite imprimir el total de un producto segun la cantidad y dias
 Archivo -> ejercicioBanco
 
 Este ejercicio permite imprimir los tipos de trasancciones que puede llevar a cabo cada tipo de cliente.
+
+Archivo -> programaImprimir
+
+Este ejercicio permite imprimir diferentes tipos de documentos.
