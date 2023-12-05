@@ -44,4 +44,14 @@ public class Product {
     public void setUnitCost(Double unitCost) {
         this.unitCost = unitCost;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "code=" + code +
+                ", name='" + name + '\'' +
+                ", purchasedAmount=" + purchasedAmount +
+                ", unitCost=" + unitCost +
+                '}';
+    }
 }

@@ -36,4 +36,13 @@ public class Expense {
     public void setTotalPurchase(Double totalPurchase) {
         this.totalPurchase = totalPurchase;
     }
+
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "client=" + client +
+                ", products=" + products +
+                ", totalPurchase=" + totalPurchase +
+                '}';
+    }
 }
