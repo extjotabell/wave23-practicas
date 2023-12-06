@@ -29,3 +29,7 @@ Este ejercicio permite imprimir diferentes tipos de documentos.
 Archivo -> ejercicioAnimales: Clases Abstractas e Interfaces
 
 Este ejercicio permite imprimir los diferentes sonidos de animales.
+
+Archivo -> agenciaAutos: Clases Abstractas e Interfaces
+
+Este ejercicio permite disponer diferentes configuraciones para los vehiculos, según los accesorios requeridos por los clientes.
