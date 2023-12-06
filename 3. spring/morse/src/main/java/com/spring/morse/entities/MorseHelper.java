@@ -7,7 +7,6 @@ import java.util.Map;
 public class MorseHelper {
     private static final HashMap<String, Character> codigosMorse = new HashMap<>();
 
-
     static {
         codigosMorse.put(".-", 'A');
         codigosMorse.put("-...", 'B');
@@ -60,7 +59,7 @@ public class MorseHelper {
         List<String> morseLetters = List.of(morseWord.split(" "));
 
         StringBuilder cadena = new StringBuilder();
-        
+
         for(String morseLetter: morseLetters){
             Character letraABC = codigosMorse.get(morseLetter);
             cadena.append(letraABC.toString());
