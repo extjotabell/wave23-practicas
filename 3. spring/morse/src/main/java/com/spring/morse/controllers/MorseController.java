@@ -3,7 +3,7 @@ package com.spring.morse.controllers;
 import com.spring.morse.entities.MorseHelper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;∫
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MorseController {
