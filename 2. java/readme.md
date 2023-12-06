@@ -33,3 +33,7 @@ Este ejercicio permite imprimir los diferentes sonidos de animales.
 Archivo -> agenciaAutos: Clases Abstractas e Interfaces
 
 Este ejercicio permite disponer diferentes configuraciones para los vehiculos, según los accesorios requeridos por los clientes.
+
+Archivo -> recapitulandoJava: Generics, Wrapper, Lambda, Streams
+
+Este ejercicio permite ordenar de diferentes formas una lista de vehiculos. 
