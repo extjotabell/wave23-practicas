@@ -124,7 +124,7 @@ Agregar a la clase carrera un socorrista de autos y uno de motos,.
 Agregar a la carrera la responsabilidad de socorrer una moto y un auto:
 
 public void socorrerAuto(String patente);
-	public void socorrerMoto(String patente);
+public void socorrerMoto(String patente);
 
 
 
