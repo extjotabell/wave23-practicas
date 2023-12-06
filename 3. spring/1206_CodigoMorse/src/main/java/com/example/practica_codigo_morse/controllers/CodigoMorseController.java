@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/codigoMorse")
+@RequestMapping("/morse")
 public class CodigoMorseController {
 
     private final CodigoMorseService codigoMorseService;
@@ -18,14 +18,14 @@ public class CodigoMorseController {
         this.codigoMorseService = codigoMorseService;
     }
 
-    @PostMapping("/convertirMorse")
-    public String convertirMorse(@RequestBody CodigoMorseRequest request) {
-        return codigoMorseService.convertirMorse(request.getMensaje());
+    @PostMapping("/morseATexto")
+    public String morseATexto(@RequestBody CodigoMorseRequest request) {
+        return codigoMorseService.morseATexto(request.getMensaje());
     }
 
-    @PostMapping("/crearMorse")
-    public String crearMorse(@RequestBody CodigoMorseRequest request) {
-        return codigoMorseService.crearMorse(request.getMensaje());
+    @PostMapping("/textoAMorse")
+    public String textoAMorse(@RequestBody CodigoMorseRequest request) {
+        return codigoMorseService.textoAMorse(request.getMensaje());
     }
 
 }
