@@ -14,14 +14,18 @@ Archivo -> practicaExcepciones
 
 Ejercicio de control de excepciones.
 
-Archivo -> distribuidoraProductos
+Archivo -> distribuidoraProductos: POO
 
 Este ejercicio permite imprimir el total de un producto segun la cantidad y dias por caducar.
 
-Archivo -> ejercicioBanco
+Archivo -> ejercicioBanco: Clases Abstractas e Interfaces
 
 Este ejercicio permite imprimir los tipos de trasancciones que puede llevar a cabo cada tipo de cliente.
 
-Archivo -> programaImprimir
+Archivo -> programaImprimir: Clases Abstractas e Interfaces
 
 Este ejercicio permite imprimir diferentes tipos de documentos.
+
+Archivo -> ejercicioAnimales: Clases Abstractas e Interfaces
+
+Este ejercicio permite imprimir los diferentes sonidos de animales.
