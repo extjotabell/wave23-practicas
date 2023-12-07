@@ -42,3 +42,7 @@ Archivo -> seriesNumericas: Clases Abstractas
 
 Este ejercicio permite generar series progresivas.
 
+Archivo -> agenciaTurismo 
+
+Este ejercicio permite generar descuentos a diferentes tipos de clientes.
+
