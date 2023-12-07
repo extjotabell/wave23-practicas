@@ -1,4 +1,4 @@
-package com.ospina.deportistas.servicio;
+package com.ospina.deportistas.servicio.deporte;
 
 import com.ospina.deportistas.entidad.Deporte;
 import com.ospina.deportistas.excepcion.DeporteNoEncontradoExcepcion;

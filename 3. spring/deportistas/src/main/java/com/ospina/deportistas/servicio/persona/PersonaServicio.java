@@ -1,4 +1,4 @@
-package com.ospina.deportistas.servicio;
+package com.ospina.deportistas.servicio.persona;
 
 import com.ospina.deportistas.entidad.PersonaDeportistaDTO;
 

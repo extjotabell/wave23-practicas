@@ -4,11 +4,13 @@ public class Persona {
     private String nombre;
     private String apellido;
     private Integer edad;
+    private Deporte deporte;
 
-    public Persona(String nombre, String apellido, Integer edad) {
+    public Persona(String nombre, String apellido, Integer edad, Deporte deporte) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.deporte = deporte;
     }
 
     public String getNombre() {
@@ -33,5 +35,13 @@ public class Persona {
 
     public void setEdad(Integer edad) {
         this.edad = edad;
+    }
+
+    public Deporte getDeporte() {
+        return deporte;
+    }
+
+    public void setDeporte(Deporte deporte) {
+        this.deporte = deporte;
     }
 }

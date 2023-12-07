@@ -2,7 +2,7 @@ package com.ospina.deportistas.controlador;
 
 import com.ospina.deportistas.entidad.Deporte;
 import com.ospina.deportistas.excepcion.DeporteNoEncontradoExcepcion;
-import com.ospina.deportistas.servicio.DeporteServicio;
+import com.ospina.deportistas.servicio.deporte.DeporteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
