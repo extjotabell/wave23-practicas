@@ -1,4 +1,4 @@
-package com.mercadolibre.encryption.model;
+package com.mercadolibre.encryption.entity;
 
 public class EncryptRequest {
     private String text;
