@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "2202749f-bbc4-4317-b56e-c18d0d6800af",
+		"name": "codemorse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "decode",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		},
+		{
+			"name": "encode",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		}
+	]
+}
