@@ -11,7 +11,7 @@ import meli.bootcamp.spring.learning.exceptions.ej4.MensajeInvalidoException;
 import meli.bootcamp.spring.learning.services.ej4.CodigoMorseService;
 
 @RestController
-@RequestMapping("/ej4")
+@RequestMapping("ej4")
 public class MorseController {
   private CodigoMorseService servicio;
 
