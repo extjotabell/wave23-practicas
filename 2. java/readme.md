@@ -37,3 +37,8 @@ Este ejercicio permite disponer diferentes configuraciones para los vehiculos, s
 Archivo -> recapitulandoJava: Generics, Wrapper, Lambda, Streams
 
 Este ejercicio permite ordenar de diferentes formas una lista de vehiculos. 
+
+Archivo -> seriesNumericas: Clases Abstractas
+
+Este ejercicio permite generar series progresivas.
+
