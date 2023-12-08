@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        String cities[] = {
+        final String[] cities = new String[]{
                 "Londres",
                 "Madrid",
                 "Nueva York",
@@ -13,7 +13,7 @@ public class Main {
                 "Tokio"
         };
 
-        int temperatures[][] = {
+        final int[][] temperatures = {
                 {-2, 33},
                 {-3, 32},
                 {-8, 27},
@@ -26,25 +26,25 @@ public class Main {
                 {-10, 35}
         };
 
-        int numCities = cities.length;
-        int maxTemp = temperatures[0][1];
-        int maxIndexCity = 0;
-        int minTemp = temperatures[0][0];
-        int minIndexCity = 0;
+        final int numCities = cities.length;
+        int maxTemp = Integer.MIN_VALUE;
+        int maxTempCityIndex = 0;
+        int minTemp = Integer.MAX_VALUE;
+        int minTempCityIndex = 0;
 
         for (int i = 0; i < numCities; i++) {
             if (maxTemp <= temperatures[i][1]) {
                 maxTemp = temperatures[i][1];
-                maxIndexCity = i;
+                maxTempCityIndex = i;
             }
             if (minTemp >= temperatures[i][0]) {
                 minTemp = temperatures[i][0];
-                minIndexCity = i;
+                minTempCityIndex = i;
             }
         }
 
-        System.out.println("Max: " + cities[maxIndexCity] + " temp: " + maxTemp);
-        System.out.println("Min: " + cities[minIndexCity] + " temp: " + minTemp);
+        System.out.println("City with max temp: " + cities[maxTempCityIndex] + ", temp: " + maxTemp);
+        System.out.println("City with min temp: " + cities[minTempCityIndex] + ", temp: " + minTemp);
 
     }
 }
