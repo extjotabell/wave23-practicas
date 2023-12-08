@@ -1,5 +1,8 @@
-package org.mercadolibre.model;
+package org.mercadolibre.entity;
 
+/**
+ * Represents a customer with basic information such as DNI, name, and lastname.
+ */
 public class Customer {
 
     private String dni;
