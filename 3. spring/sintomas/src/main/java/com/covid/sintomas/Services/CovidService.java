@@ -4,21 +4,23 @@ import com.covid.sintomas.DTOS.PersonasSintomasDTO;
 import com.covid.sintomas.DTOS.SintomaDTO;
 import com.covid.sintomas.Entities.Persona;
 import com.covid.sintomas.Entities.Sintoma;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class CovidService {
 
-    static final public Map<Persona, List<Sintoma>> sintomasPersonas = new HashMap<>();
+    private final Map<Persona, List<Sintoma>> sintomasPersonas = new HashMap<>();
 
-    static {
+    public CovidService() {
         sintomasPersonas.put(Persona.personas.get(0),new ArrayList<>(List.of(Sintoma.sintomas.get(2))));
         sintomasPersonas.put(Persona.personas.get(1),new ArrayList<>(List.of()));
         sintomasPersonas.put(Persona.personas.get(2),new ArrayList<>(List.of(Sintoma.sintomas.get(4), Sintoma.sintomas.get(3))));
         sintomasPersonas.put(Persona.personas.get(3),new ArrayList<>(List.of(Sintoma.sintomas.get(0), Sintoma.sintomas.get(1))));
     }
 
-    static public List<PersonasSintomasDTO> generarListaPersonasRiesgoYSintomas() {
+    public List<PersonasSintomasDTO> generarListaPersonasRiesgoYSintomas() {
         return sintomasPersonas.entrySet().stream().filter(entry -> entry.getKey().getEdad() > 60 && !entry.getValue().isEmpty()).map(CovidService::mapAPersonaDTO).toList();
     }
 
@@ -32,7 +34,7 @@ public class CovidService {
                 });
     }
 
-    public static SintomaDTO buscarSintomaPorNombre(String name) {
+    public SintomaDTO buscarSintomaPorNombre(String name) {
         return CovidService.convierteSintomaADTO(Sintoma.sintomas.stream().filter(sintoma ->
                 sintoma.getNombre().equals(name)).findFirst().get());
     }
@@ -43,7 +45,7 @@ public class CovidService {
         return new PersonasSintomasDTO(persona.getNombre() + " " + persona.getApellido(), sintomas.stream().map(CovidService::convierteSintomaADTO).toList());
     }
 
-    public static List<SintomaDTO> generarListaSintomas() {
+    public List<SintomaDTO> generarListaSintomas() {
         return Sintoma.sintomas.stream().map(CovidService::convierteSintomaADTO).toList();
     }
 }
