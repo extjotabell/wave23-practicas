@@ -9,9 +9,9 @@ public class Main {
     Categoria circuitoMedio = new Categoria(2, "Circuito Medio", "5 km por selva, arroyos y barro");
     Categoria circuitoAvanzado = new Categoria(3, "Circuito Avanzado", "10 km por selva, arroyos, barro y escalada en piedra");
 
-    Participante participante1 = new Participante(1, "Pepe", "Lopez", 40300200, "H+", 21, 1190909076, 11808080 );
-    Participante participante2 = new Participante(2, "Maria", "Lopez", 40200200, "H+", 18, 1190909076, 11808080 );
-    Participante participante3 = new Participante(3, "Pedro", "Lopez", 40400200, "H+", 35, 1190909076, 11808080 );
+    Participante participante1 = new Participante(1, "Pepe", "Lopez", 40300200, "H+", 21, Integer.toString(1190909076), "11808080" );
+    Participante participante2 = new Participante(2, "Maria", "Lopez", 40200200, "H+", 18, Integer.toString(1190909076), "11808080" );
+    Participante participante3 = new Participante(3, "Pedro", "Lopez", 40400200, "H+", 35, Integer.toString(1190909076), "11808080" );
 
     HashMap<Participante, Inscripcion> mapaInscripcion = new HashMap<>();
     mapaInscripcion.put(participante1, new Inscripcion(1, circuitoChico, participante1));

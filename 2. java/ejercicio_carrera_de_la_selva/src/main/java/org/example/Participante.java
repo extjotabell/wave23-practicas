@@ -7,10 +7,10 @@ public class Participante {
     private int dni;
     private String grupoSanguineo;
     private int edad;
-    private int numeroEmergencia;
-    private int numeroCelular;
+    private String numeroEmergencia;
+    private String numeroCelular;
 
-    public Participante(int numeroParticipante, String nombre, String apellido, int dni, String grupoSanguineo, int edad, int numeroEmergencia, int numeroCelular) {
+    public Participante(int numeroParticipante, String nombre, String apellido, int dni, String grupoSanguineo, int edad, String numeroEmergencia, String numeroCelular) {
         this.numeroParticipante = numeroParticipante;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -69,19 +69,19 @@ public class Participante {
         this.edad = edad;
     }
 
-    public int getNumeroEmergencia() {
+    public String getNumeroEmergencia() {
         return numeroEmergencia;
     }
 
-    public void setNumeroEmergencia(int numeroEmergencia) {
+    public void setNumeroEmergencia(String numeroEmergencia) {
         this.numeroEmergencia = numeroEmergencia;
     }
 
-    public int getNumeroCelular() {
+    public String getNumeroCelular() {
         return numeroCelular;
     }
 
-    public void setNumeroCelular(int numeroCelular) {
+    public void setNumeroCelular(String numeroCelular) {
         this.numeroCelular = numeroCelular;
     }
 }
