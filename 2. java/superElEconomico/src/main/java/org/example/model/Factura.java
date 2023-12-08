@@ -10,11 +10,11 @@ public class Factura {
     public Factura() {
     }
 
-    public Factura(Long codigo, Cliente cli, List<Item> listaItems, double total) {
+    public Factura(Long codigo, Cliente cli, List<Item> listaItems) {
         this.codigo = codigo;
         this.cli = cli;
         this.listaItems = listaItems;
-        this.total = total;
+        this.total = this.calcularTotal();
     }
 
     public Long getCodigo() {
@@ -47,6 +47,20 @@ public class Factura {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    private double calcularTotal() {
+        return listaItems.stream().map(i -> i.getCantidad() * i.getCostoUnitario()).mapToDouble(Double::doubleValue).sum();
+    }
+
+    @Override
+    public String toString() {
+        return "Factura{" +
+                "codigo=" + codigo +
+                ", cli=" + cli +
+                ", listaItems=" + listaItems +
+                ", total=" + total +
+                '}';
     }
 }
 
