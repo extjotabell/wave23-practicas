@@ -3,7 +3,7 @@ package bootcamp;
 import java.util.ArrayList;
 
 public class Item {
-    private String codigo;
+    private Long codigo;
     private String nombre;
 
     /*
@@ -13,18 +13,18 @@ public class Item {
     private double cantidadComprada;
     private double costoUnitario;
 
-    public Item(String codigo, String nombre, double cantidadComprada, double costoUnitario) {
+    public Item(Long codigo, String nombre, double cantidadComprada, double costoUnitario) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.cantidadComprada = cantidadComprada;
         this.costoUnitario = costoUnitario;
     }
 
-    public String getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

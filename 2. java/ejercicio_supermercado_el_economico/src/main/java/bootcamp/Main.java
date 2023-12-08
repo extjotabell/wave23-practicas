@@ -6,34 +6,39 @@ Por otro lado, las facturas que se generan cuando un cliente hace una compra con
 De cada item o producto se guarda el código, nombre, cantidad comprada y costo unitario.
  */
 
-import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static bootcamp.Cliente.clientes;
-
 public class Main {
     public static void main(String[] args) {
 
-        Cliente.imprimirDatosClientes(clientes);
+        ClienteImp clienteRepository = new ClienteImp();
 
-        clientes.remove(1);
+        clienteRepository.save(new Cliente(1L,"Nicolás", "Diaz"));
+        clienteRepository.save(new Cliente(2L,"Silvia", "Rodriguez"));
+        clienteRepository.save(new Cliente(3L,"Victor", "Medina"));
+
+        clienteRepository.printElements();
+
+        clienteRepository.delete(1L);
 
         System.out.println();
 
-        Cliente.imprimirDatosClientes(clientes);
+        clienteRepository.printElements();
 
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Ingresa el dni del cliente a buscar a buscar: ");
-        String dni = teclado.nextLine();
-        Cliente.buscarClientePorDNI(clientes, dni);
+        System.out.println("Ingresa el dni del cliente a buscar: ");
+        Long dni = teclado.nextLong();
+        clienteRepository.buscarClientePorDNI(dni);
 
-        Factura factura = new Factura(clientes.get(0),new ArrayList<Item>(List.of(
-                new Item("AXOIUE", "Pan", 4,5),
-                new Item("AOFMNIUE98", "Carne", 1.5, 70)
-                )));
-        Factura.agregarFactura(factura);
+        ItemImp itemRepository = new ItemImp();
+
+        itemRepository.save(new Item(2L, "Pan",4, 5));
+        itemRepository.save(new Item(3L, "carne", 1.5, 70));
+
+        Factura factura = new Factura(clienteRepository.search(2L).get(),itemRepository);
+        Factura.agregarFactura(factura, clienteRepository);
 
         System.out.println(factura);
 
