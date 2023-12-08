@@ -1,29 +1,29 @@
 package org.ejercicio_1;
 
-public class Basic implements ITransaccion {
+import java.util.ArrayList;
+import java.util.List;
 
-    public void consultaDeSaldo(){
-        System.out.println("Consultando saldo...");
-        transaccionOk();
+public class Basic {
+
+    private ConsultaSaldo consultaSaldo;
+    private PagoServicio pagoServicio;
+    private RetiroDeEfectivo retiroDeEfectivo;
+
+    public Basic() {
+        consultaSaldo = new ConsultaSaldo();
+        pagoServicio = new PagoServicio();
+        retiroDeEfectivo = new RetiroDeEfectivo();
     }
 
-    public void pagoDeServicios(){
-        System.out.println("Realizandose pago de servicios");
-        transaccionNoOk();
+    public ConsultaSaldo getConsultaSaldo() {
+        return consultaSaldo;
     }
 
-    public void retiroDeEfectivo(){
-        System.out.println("Realizandose retiro de efectivo");
-        transaccionNoOk();
+    public PagoServicio getPagoServicio() {
+        return pagoServicio;
     }
 
-    @Override
-    public void transaccionOk() {
-        System.out.println("OK");
-    }
-
-    @Override
-    public void transaccionNoOk() {
-        System.out.println("NO OK");
+    public RetiroDeEfectivo getRetiroDeEfectivo() {
+        return retiroDeEfectivo;
     }
 }

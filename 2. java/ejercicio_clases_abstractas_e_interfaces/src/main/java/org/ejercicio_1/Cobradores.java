@@ -1,24 +1,22 @@
 package org.ejercicio_1;
 
-public class Cobradores implements ITransaccion {
+import java.util.ArrayList;
+import java.util.List;
 
-    public void consultaDeSaldo(){
-        System.out.println("Consultando saldo...");
-        transaccionOk();
+public class Cobradores {
+    private RetiroDeEfectivo retiroDeEfectivo;
+    private ConsultaSaldo consultaSaldo;
+
+    public Cobradores() {
+        retiroDeEfectivo = new RetiroDeEfectivo();
+        consultaSaldo = new ConsultaSaldo();
     }
 
-    public void retiroDeEfectivo(){
-        System.out.println("Realizandose retiro de efectivo");
-        transaccionNoOk();
+    public RetiroDeEfectivo getRetiroDeEfectivo() {
+        return retiroDeEfectivo;
     }
 
-    @Override
-    public void transaccionOk() {
-        System.out.println("OK");
-    }
-
-    @Override
-    public void transaccionNoOk() {
-        System.out.println("NO OK");
+    public ConsultaSaldo getConsultaSaldo() {
+        return consultaSaldo;
     }
 }
