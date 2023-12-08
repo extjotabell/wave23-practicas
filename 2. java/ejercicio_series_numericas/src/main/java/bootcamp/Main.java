@@ -2,7 +2,7 @@ package bootcamp;
 
 public class Main {
     public static void main(String[] args) {
-        //Explanaitions of changes:
+        //Explanation of changes:
         /*
         Either solution is in general a bad idea, is better to use one concrete type,
         like BigDecimal or Double and based on those operations implement the Prototype.
@@ -22,5 +22,13 @@ public class Main {
         System.out.println(serie2.siguiente());
         serie2.estableceInicio(2.0);
         System.out.println(serie2.siguiente());
+
+        //This is a better approach!
+        SerieDoubleExponenciadora serie3 = new SerieDoubleExponenciadora(-3.0, 4.0);
+        serie3.siguiente();
+        System.out.println(serie3.siguiente());
+        serie3.reiniciar();
+        serie3.estableceInicio(-2.0);
+        System.out.println(serie3.siguiente());
     }
 }
