@@ -1,4 +1,4 @@
-package com.ospina.edadPersona.entidad;
+package com.Rest.edadPersona.entidad;
 
 public class RequestPersona {
     private String nombre;

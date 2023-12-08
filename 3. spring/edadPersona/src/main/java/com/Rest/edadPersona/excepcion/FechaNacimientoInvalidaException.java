@@ -1,4 +1,4 @@
-package com.ospina.edadPersona.excepcion;
+package com.Rest.edadPersona.excepcion;
 
 public class FechaNacimientoInvalidaException extends Exception{
 

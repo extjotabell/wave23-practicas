@@ -1,4 +1,4 @@
-package com.ospina.edadPersona;
+package com.Rest.edadPersona;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

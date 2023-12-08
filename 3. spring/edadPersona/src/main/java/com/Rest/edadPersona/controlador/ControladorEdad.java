@@ -1,9 +1,9 @@
-package com.ospina.edadPersona.controlador;
+package com.Rest.edadPersona.controlador;
 
-import com.ospina.edadPersona.entidad.RequestPersona;
-import com.ospina.edadPersona.entidad.ResponsePersona;
-import com.ospina.edadPersona.excepcion.FechaNacimientoInvalidaException;
-import com.ospina.edadPersona.servicio.ServicioEdad;
+import com.Rest.edadPersona.excepcion.FechaNacimientoInvalidaException;
+import com.Rest.edadPersona.servicio.ServicioEdad;
+import com.Rest.edadPersona.entidad.RequestPersona;
+import com.Rest.edadPersona.entidad.ResponsePersona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

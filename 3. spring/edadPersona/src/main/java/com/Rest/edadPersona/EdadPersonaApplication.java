@@ -1,4 +1,4 @@
-package com.ospina.edadPersona;
+package com.Rest.edadPersona;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

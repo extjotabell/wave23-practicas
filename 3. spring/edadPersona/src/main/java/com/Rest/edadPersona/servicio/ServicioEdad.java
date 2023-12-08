@@ -1,6 +1,6 @@
-package com.ospina.edadPersona.servicio;
+package com.Rest.edadPersona.servicio;
 
-import com.ospina.edadPersona.excepcion.FechaNacimientoInvalidaException;
+import com.Rest.edadPersona.excepcion.FechaNacimientoInvalidaException;
 import org.springframework.stereotype.Service;
 
 import java.time.DateTimeException;
