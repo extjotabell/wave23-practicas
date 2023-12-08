@@ -1,10 +1,10 @@
-package com.NumerosRomanos.conversioDecimalAEnteros;
+package com.CodigoMorse.CodigoMorse;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConversioDecimalAEnterosApplicationTests {
+class CodigoMorseApplicationTests {
 
 	@Test
 	void contextLoads() {

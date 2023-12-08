@@ -1,8 +1,8 @@
-package com.ospina.CodigoMorse.controlador;
+package com.CodigoMorse.CodigoMorse.controlador;
 
-import com.ospina.CodigoMorse.modelo.EspanolRespuesta;
-import com.ospina.CodigoMorse.modelo.MorseRespuesta;
-import com.ospina.CodigoMorse.servicio.MorseServicio;
+import com.CodigoMorse.CodigoMorse.modelo.EspanolRespuesta;
+import com.CodigoMorse.CodigoMorse.modelo.MorseRespuesta;
+import com.CodigoMorse.CodigoMorse.servicio.MorseServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +18,8 @@ public class ControladorMorse {
         return morseServicio.convertir(morse.getMorse());
     }
 
-    @GetMapping("/inverso")
-    public String inverso(@RequestBody EspanolRespuesta espanol) {
+    @GetMapping("/invertir")
+    public String invertir(@RequestBody EspanolRespuesta espanol) {
         return morseServicio.inverso(espanol.getEspanol());
     }
 }

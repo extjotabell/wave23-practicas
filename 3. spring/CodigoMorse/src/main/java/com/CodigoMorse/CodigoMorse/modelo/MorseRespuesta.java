@@ -1,4 +1,4 @@
-package com.ospina.CodigoMorse.modelo;
+package com.CodigoMorse.CodigoMorse.modelo;
 
 public class MorseRespuesta {
 

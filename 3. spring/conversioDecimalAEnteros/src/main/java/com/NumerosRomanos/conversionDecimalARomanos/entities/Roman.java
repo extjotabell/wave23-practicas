@@ -1,4 +1,4 @@
-package com.NumerosRomanos.conversioDecimalAEnteros.entities;
+package com.NumerosRomanos.conversionDecimalARomanos.entities;
 
 import java.util.TreeMap;
 

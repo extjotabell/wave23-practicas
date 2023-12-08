@@ -1,13 +1,13 @@
-package com.NumerosRomanos.conversioDecimalAEnteros;
+package com.CodigoMorse.CodigoMorse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConversioDecimalAEnterosApplication {
+public class CodigoMorseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConversioDecimalAEnterosApplication.class, args);
+		SpringApplication.run(CodigoMorseApplication.class, args);
 	}
 
 }

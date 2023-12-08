@@ -1,13 +1,14 @@
-package com.ospina.CodigoMorse.servicio;
+package com.CodigoMorse.CodigoMorse.servicio;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class MorseServicio {
-    static Map<String,String > morseMap = new HashMap<>();
+    static BiMap<String,String > morseMap = HashBiMap.create();
        static {
            morseMap.put(".-", "A");
            morseMap.put("-...", "B");
@@ -49,23 +50,18 @@ public class MorseServicio {
            morseMap.put("-.-.--", "!");
            morseMap.put(".-.-.-", ".");
            morseMap.put("--..--", ",");
-           morseMap.put("   ", " ");
        }
 
 
     public String convertir(String morse) {
-        String[] words = morse.split("   ");
+        String[] words = morse.split(" {3}");
         StringBuilder spanishText = new StringBuilder();
 
         for (String word : words) {
             String[] morseChars = word.split(" ");
             for (String morseChar : morseChars) {
-                if (morseMap.containsKey(morseChar)) {
-                    spanishText.append(morseMap.get(morseChar));
-                } else {
-                    // Si el código Morse no se encuentra en el mapa, se mantiene sin cambios
-                    spanishText.append(morseChar);
-                }
+                // Si el código Morse no se encuentra en el mapa, se mantiene sin cambios
+                spanishText.append(morseMap.getOrDefault(morseChar, "X"));
             }
             spanishText.append(" ");
         }
@@ -74,19 +70,14 @@ public class MorseServicio {
 
     public String inverso(String espanol) {
         StringBuilder morseText = new StringBuilder();
-        String[] palabras = espanol.split(" ");
 
-        for(String palabra : palabras) {
-            for (char spanishChar : palabra.toCharArray()) {
-                for (Map.Entry<String, String> entry : morseMap.entrySet()) {
-                    if (entry.getValue().equals(String.valueOf(spanishChar).toUpperCase())) {
-                        morseText.append(entry.getKey()).append(" ");
-                        break;
-                    }
+            for (char spanishChar : espanol.toUpperCase().toCharArray()) {
+                if (Character.isSpaceChar(spanishChar)) morseText.append("  ");
+                else {
+                    morseText.append(morseMap.inverse().getOrDefault(String.valueOf(spanishChar), "X") + " ");
                 }
             }
-            morseText.append("  ");
-        }
+
         return morseText.toString().trim();
     }
 }
