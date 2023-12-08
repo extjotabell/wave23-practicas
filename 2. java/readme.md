@@ -46,3 +46,6 @@ Archivo -> agenciaTurismo
 
 Este ejercicio permite generar descuentos a diferentes tipos de clientes.
 
+Archivo -> dakar: Ejercicios integradores
+
+Este ejercicio permite definir el ganador de una carrera de diferentes tipos de vehiculos. 
