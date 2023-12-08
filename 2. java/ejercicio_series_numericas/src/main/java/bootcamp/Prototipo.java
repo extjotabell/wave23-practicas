@@ -3,24 +3,24 @@ package bootcamp;
 import java.awt.font.NumericShaper;
 
 //Es posible usar genericos y considero que mejor, pero por razones didacticas lo harè de esta manera
-public abstract class Prototipo {
+public abstract class Prototipo<T extends Number> {
 
-    protected Number inicial;
-    protected Number current;
+    protected T inicial;
+    protected T current;
 
-    protected Number factor;
+    protected T factor;
 
-    Prototipo(Number factor, Number inicial) {
+    Prototipo(T factor, T inicial) {
         this.factor = factor;
         this.estableceInicio(inicial);
     }
-    public abstract Number siguiente();
+    public abstract T siguiente();
 
     public void reiniciar() {
         current = inicial;
     }
 
-    public void estableceInicio(Number inicial) {
+    public void estableceInicio(T inicial) {
         this.inicial = inicial;
         this.current = inicial;
     }

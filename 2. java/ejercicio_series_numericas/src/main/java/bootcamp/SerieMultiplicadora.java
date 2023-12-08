@@ -1,13 +1,14 @@
 package bootcamp;
 
-public class SerieMultiplicadora extends Prototipo {
+public class SerieMultiplicadora<T extends Number> extends Prototipo<T> {
 
-    SerieMultiplicadora(Number factor, Number inicial) {
+    SerieMultiplicadora(T factor, T inicial) {
         super(factor, inicial);
     }
 
-    public Number siguiente() {
-        this.current = (current.doubleValue() * factor.doubleValue());
+    public T siguiente() {
+        //This could throw a Dynamic Cast Exception
+        this.current = (T) (Number) (current.doubleValue() * factor.doubleValue());
         return current;
     }
 
