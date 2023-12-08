@@ -9,7 +9,7 @@ public class Perro extends Animal implements IComerCarne {
         System.out.println("guau");
     }
 
-    public void comer() {
+    public void comerCarne() {
         System.out.println("Perro come carne");
     }
 

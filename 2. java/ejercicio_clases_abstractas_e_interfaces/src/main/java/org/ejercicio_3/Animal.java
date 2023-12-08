@@ -8,8 +8,8 @@ public abstract class Animal {
     //Tal vez hubiera sido mejor crear una interfaz de comer ...
     static void comerAnimal(List<Animal> animals) {
         for (Animal animal: animals) {
-            if (animal.carnivoro) ((IComerCarne) animal).comer();
-            if (animal.hervivoro) ((IComerHierva) animal).comer();
+            if (animal.carnivoro) ((IComerCarne) animal).comerCarne();
+            if (animal.hervivoro) ((IComerHierva) animal).comerHierva();
         }
     }
 

@@ -9,7 +9,7 @@ public class Vaca extends Animal implements IComerHierva {
         System.out.println("muuuu");
     }
 
-    public void comer() {
+    public void comerHierva() {
         System.out.println("Vaca come hierva");
     }
 }
