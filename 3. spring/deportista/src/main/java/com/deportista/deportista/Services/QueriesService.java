@@ -10,19 +10,19 @@ import com.deportista.deportista.Entities.DeporteEntity;
 
 import java.util.Optional;
 
-public final class QueriesService {
+public class QueriesService {
 
-    private QueriesService() {}
-    public static ListaDeporteResponseDTO getListaDeportes() {
+    public QueriesService() {}
+    public ListaDeporteResponseDTO getListaDeportes() {
         return new ListaDeporteResponseDTO(BaseDeDatosService.DEPORTE_ENTITIES);
     }
 
-    public static Optional<DeporteResponseDTO> conseguirDeportePorNombre(NameSportRequestDTO nameSportDTO) {
+    public Optional<DeporteResponseDTO> conseguirDeportePorNombre(NameSportRequestDTO nameSportDTO) {
         return BaseDeDatosService.DEPORTE_ENTITIES.stream().filter(DeporteEntity -> DeporteEntity.getNombre().
                 equals(nameSportDTO.getNombre())).map(d -> new DeporteResponseDTO(d.getNivel())).findFirst();
     }
 
-    public static ListaPersonasDeportistasResponseDTO conseguirPersonasDeportistas() {
+    public ListaPersonasDeportistasResponseDTO conseguirPersonasDeportistas() {
         return new ListaPersonasDeportistasResponseDTO(BaseDeDatosService.joinPersonaDeporte.entrySet().stream()
                 .filter(e -> !e.getValue().isEmpty())
                 .map(e ->
