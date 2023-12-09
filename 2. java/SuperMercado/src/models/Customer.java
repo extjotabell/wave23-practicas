@@ -1,7 +1,12 @@
+package models;
+
 public class Customer {
     private int dni;
     private String name;
     private String lastName;
+
+    public Customer() {
+    }
 
     public Customer(int dni, String name, String lastName) {
         this.dni = dni;
