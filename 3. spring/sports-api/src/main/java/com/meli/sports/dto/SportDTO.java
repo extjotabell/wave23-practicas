@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class DeporteNivelDTO {
-    private String nivel;
+public class SportDTO {
+    private String name;
+    private String level;
 }

@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "af35083d-0fca-4ecc-b11d-93a68273a5e4",
+		"name": "sports",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/v1/sports/findSports"
+			},
+			"response": []
+		},
+		{
+			"name": "getByName",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"nombre\": \"Basket\",\n\"nivel\": \"Principiante\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/findSports/Tennis"
+			},
+			"response": []
+		},
+		{
+			"name": "get persons",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"nombre\": \"Basket\",\n\"nivel\": \"Principiante\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/findSports/Tennis"
+			},
+			"response": []
+		}
+	]
+}

@@ -5,12 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Persona {
+public class Person {
     private long id;
-    private String nombre;
-    private String apellido;
-    private int edad;
+    private String name;
+    private String lastName;
+    private int age;
+    private List<Sport> sports;
 }
