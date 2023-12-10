@@ -1,3 +1,4 @@
+package model;
 public class Cliente {
 
     private String nombre;
@@ -9,6 +10,11 @@ public class Cliente {
         this.apellido = apellido;
         this.dni = dni;
     }
+
+    public Cliente(){
+
+    }
+
 
     public String getNombre() {
         return nombre;
@@ -36,6 +42,8 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Nombre='" + nombre + '\'' + ", Apellido='" + apellido + '\'' + ", DNI=" + dni;
+        return "Nombre: " + nombre + " |-| " +
+                "Apellido: " + apellido + " |-| " +
+                "DNI: " + dni;
     }
 }

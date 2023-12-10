@@ -1,4 +1,10 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Item {
+    private List<Item> listaItem = new ArrayList<>();
 
     private String codigoProducto;
     private String nombreProducto;
@@ -43,5 +49,7 @@ public class Item {
     public void setCostoUnitario(double costoUnitario) {
         this.costoUnitario = costoUnitario;
     }
+
+
 
 }

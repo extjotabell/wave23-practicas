@@ -1,6 +1,6 @@
-package services;
+package com.spring.agePerson.services;
 
-import entities.Person;
+import com.spring.agePerson.entities.Person;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

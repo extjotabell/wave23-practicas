@@ -1,4 +1,4 @@
-package entities;
+package com.spring.agePerson.entities;
 
 import java.time.LocalDate;
 import java.time.Period;
