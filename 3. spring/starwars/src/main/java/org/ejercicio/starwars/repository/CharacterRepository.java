@@ -15,16 +15,16 @@ import java.util.List;
 @Repository
 public class CharacterRepository implements ICharacterRepository {
 
-    private List<Character> characterList() {
+    private List<Character> getInformation() {
         Gson gson = new Gson();
-        StringBuilder fichero = new StringBuilder();
+        StringBuilder file = new StringBuilder();
 
-        String rutaCompleta = "src/main/resources/starwars.json";
+        String fullRoute = "src/main/resources/starwars.json";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(rutaCompleta))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                fichero.append(linea);
+        try (BufferedReader br = new BufferedReader(new FileReader(fullRoute))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                file.append(line);
             }
 
         } catch (IOException ex) {
@@ -33,12 +33,12 @@ public class CharacterRepository implements ICharacterRepository {
 
         Type characterListType = new TypeToken<List<Character>>() {
         }.getType();
-        return gson.fromJson(fichero.toString(), characterListType);
+        return gson.fromJson(file.toString(), characterListType);
     }
 
     @Override
     public List<Character> findCharactersByName(String name) {
-        List<Character> data = characterList();
+        List<Character> data = getInformation();
         return data.stream().filter(character -> character.getName().contains(name)).toList();
     }
 }
