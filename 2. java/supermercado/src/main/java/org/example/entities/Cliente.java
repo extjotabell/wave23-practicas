@@ -1,23 +1,23 @@
 package org.example.entities;
 
-import java.util.Objects;
-
 public class Cliente {
-    private Integer dni;
+    private Long dni;
     private String nombre;
     private String apellido;
 
-    public Cliente(Integer dni, String nombre, String apellido) {
+    public Cliente(){};
+
+    public Cliente(Long dni, String nombre, String apellido) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    public Integer getDni() {
+    public Long getDni() {
         return dni;
     }
 
-    public void setDni(Integer dni) {
+    public void setDni(Long dni) {
         this.dni = dni;
     }
 
@@ -39,10 +39,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "dni=" + dni +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                '}';
+        return nombre + " " + apellido +
+                ", DNI: " + dni;
     }
 }
