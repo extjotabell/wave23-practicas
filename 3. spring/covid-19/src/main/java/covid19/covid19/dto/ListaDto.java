@@ -2,16 +2,17 @@ package covid19.covid19.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @NoArgsConstructor
-public class ListaSintomasDto {
+@Data
+public class ListaDto<T> {
 
-    ArrayList<SintomaDto> sintomas = new ArrayList<>();
+    ArrayList<T> listado = new ArrayList<T>();
 
-    public ArrayList<SintomaDto> getSintomas() {
-        return sintomas;
+    public ArrayList<T> getListado() {
+        return listado;
     }
 }

@@ -1,13 +1,13 @@
 package covid19.covid19.dto;
 
-public class SintomaDto {
-    private String nombre;
+public class NivelGravedadDto {
+    private String nivel;
 
-    public SintomaDto(String nombre) {
-        this.nombre = nombre;
+    public NivelGravedadDto(String nivel) {
+        this.nivel = nivel;
     }
 
-    public String getNombre(){
-        return this.nombre;
+    public String getNivel() {
+        return this.nivel;
     }
 }

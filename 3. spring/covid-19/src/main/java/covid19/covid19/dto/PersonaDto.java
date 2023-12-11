@@ -1,13 +1,16 @@
 package covid19.covid19.dto;
 
-public class SintomaDto {
+import lombok.Data;
+
+import java.io.Serializable;
+
+@Data
+public class PersonaDto{
     private String nombre;
+    private String apellido;
 
-    public SintomaDto(String nombre) {
+    public PersonaDto(String nombre, String apellido) {
         this.nombre = nombre;
-    }
-
-    public String getNombre(){
-        return this.nombre;
+        this.apellido = apellido;
     }
 }
