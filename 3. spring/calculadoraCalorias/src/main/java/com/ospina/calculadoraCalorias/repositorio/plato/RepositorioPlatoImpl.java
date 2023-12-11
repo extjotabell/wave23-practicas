@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public class RepositorioPlatoImpl implements RepositorioPlato{
 
-        
     private final RepositorioComida repositorioComida;
     private List<Plato> platos = new ArrayList<>();
     List<Ingrediente> ingredientes;
@@ -29,29 +28,34 @@ public class RepositorioPlatoImpl implements RepositorioPlato{
             System.err.println("Error inicialzando ingredientes: " + e.getMessage());
             ingredientes = new ArrayList<>();
         }
-        Ingrediente pollo = buscarIngredientePorNombre(ingredientes, "Pollo"); 
+        Ingrediente pollo = buscarIngredientePorNombre(ingredientes, "Pollo");
         Ingrediente papas = buscarIngredientePorNombre(ingredientes, "Papas cocidas");
         Ingrediente salsaTomate = buscarIngredientePorNombre(ingredientes, "Salsa de tomate en conserva");
-        platos.add(new Plato("Milanesa con papas fritas", new ArrayList<>(List.of(pollo, papas, salsaTomate))));
+        if (pollo != null && papas != null && salsaTomate != null) {
+            platos.add(new Plato("Milanesa con papas fritas", new ArrayList<>(List.of(pollo, papas, salsaTomate))));
+        }
 
         Ingrediente lechuga = buscarIngredientePorNombre(ingredientes, "Lechuga");
         Ingrediente tomate = buscarIngredientePorNombre(ingredientes, "Tomates");
         Ingrediente cebolla = buscarIngredientePorNombre(ingredientes, "Cebolla");
         Ingrediente zanahoria = buscarIngredientePorNombre(ingredientes, "Zanahoria");
-        platos.add(new Plato("Ensalada del chef", new ArrayList<>(List.of(lechuga, tomate, cebolla, zanahoria))));
+        if (lechuga != null && tomate != null && cebolla != null && zanahoria != null)
+            platos.add(new Plato("Ensalada del chef", new ArrayList<>(List.of(lechuga, tomate, cebolla, zanahoria))));
 
 
         Ingrediente mayonesa = buscarIngredientePorNombre(ingredientes, "Mayonesa");
         Ingrediente hamburguesa = buscarIngredientePorNombre(ingredientes, "Hamburguesa");
         Ingrediente panDeCenteno = buscarIngredientePorNombre(ingredientes, "Pan de centeno");
-        platos.add(new Plato("Hamburguesa pan centeno", new ArrayList<>(List.of(mayonesa, tomate, hamburguesa, panDeCenteno))));
+        if (mayonesa != null && hamburguesa != null && panDeCenteno != null && tomate != null)
+            platos.add(new Plato("Hamburguesa pan centeno", new ArrayList<>(List.of(mayonesa, tomate, hamburguesa, panDeCenteno))));
 
         Ingrediente champinon = buscarIngredientePorNombre(ingredientes, "Champiñón y otras setas");
-        Ingrediente salsaTomateP = buscarIngredientePorNombre(ingredientes, "Salsa de tomate en conserva");
-        Ingrediente harina = buscarIngredientePorNombre(ingredientes, "Harina de trigo integrada");
-        Ingrediente queso = buscarIngredientePorNombre(ingredientes, "Queso Mozzarella");
+        Ingrediente harina = buscarIngredientePorNombre(ingredientes, "Harina de trigo integral");
+        Ingrediente queso = buscarIngredientePorNombre(ingredientes, "Queso mozzarella");
         Ingrediente salchichon = buscarIngredientePorNombre(ingredientes, "Salchichón");
-        platos.add(new Plato("Pizza", new ArrayList<>(List.of(champinon, salsaTomateP, harina, queso, salchichon))));
+        if (champinon != null && salsaTomate != null && harina != null && queso != null && salchichon != null)
+            platos.add(new Plato("Pizza", new ArrayList<>(List.of(champinon, salsaTomate, harina, queso, salchichon))));
+
     }
 
     @Override
