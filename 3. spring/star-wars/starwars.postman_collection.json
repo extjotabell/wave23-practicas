@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "3407d6cb-a867-474a-b284-94eb5b6fbe23",
+		"name": "starwars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "getAll Filter by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
