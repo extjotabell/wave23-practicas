@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mercadolibre.starWars.entity.Character;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
-import utils.exception.JsonReadException;
+import com.mercadolibre.starWars.utils.exception.JsonReadException;
 
 import java.io.File;
 import java.io.IOException;

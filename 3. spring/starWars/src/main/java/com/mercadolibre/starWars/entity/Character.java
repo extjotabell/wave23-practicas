@@ -2,12 +2,14 @@ package com.mercadolibre.starWars.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Represents a character in the Star Wars universe.
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Character {
     private String name;
     private Integer height;
@@ -20,6 +22,4 @@ public class Character {
     private String homeworld;
     private String species;
 
-    public Character() {
-    }
 }

@@ -1,4 +1,4 @@
-package utils.exception;
+package com.mercadolibre.starWars.utils.exception;
 
 /**
  * Exception thrown when there is an error reading a JSON file.

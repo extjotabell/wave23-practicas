@@ -5,7 +5,7 @@ import com.mercadolibre.starWars.entity.Character;
 import com.mercadolibre.starWars.repository.ICharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utils.mapper.CharacterMapper;
+import com.mercadolibre.starWars.utils.mapper.CharacterMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;

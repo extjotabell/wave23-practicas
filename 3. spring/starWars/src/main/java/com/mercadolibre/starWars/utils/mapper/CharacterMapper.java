@@ -1,4 +1,4 @@
-package utils.mapper;
+package com.mercadolibre.starWars.utils.mapper;
 
 import com.mercadolibre.starWars.entity.Character;
 import com.mercadolibre.starWars.dto.CharacterResponseDTO;
