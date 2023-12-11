@@ -1,12 +1,14 @@
-package org.mercadolibre.TourismAgency.model;
+package org.mercadolibre.TourismAgency.entity;
 
+/**
+ * Represents a customer within the Tourism Agency system.
+ * Each customer is identified by a unique DNI (Documento Nacional de Identidad),
+ * and has associated first name, last name attributes.
+ */
 public class Customer {
     private int dni;
     private String name;
     private String lastname;
-
-    public Customer() {
-    }
 
     public Customer(int dni, String name, String lastname) {
         this.dni = dni;
