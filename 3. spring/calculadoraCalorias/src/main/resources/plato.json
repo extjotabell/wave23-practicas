@@ -1,0 +1,69 @@
+[
+  {
+    "nombre": "Pizza",
+    "ingredientes" : [
+      {
+        "cantidad" : 10,
+        "nombre": "Aceitunas verdes"
+      },
+      {
+        "cantidad" : 1,
+        "nombre" : "Harina de trigo refinada"
+      },
+      {
+        "cantidad": 1,
+        "nombre": "Salsa de tomate en conserva"
+      },
+      {
+        "cantidad": 1,
+        "nombre": "Aceite de girasol"
+      },
+      {
+        "cantidad": 1,
+        "nombre": "Queso crema"
+      }
+    ]
+  },
+  {
+    "nombre": "Empanada de Pollo",
+    "ingredientes": [
+      {
+        "cantidad": 20,
+        "nombre" : "Pollo"
+      },
+      {
+        "cantidad": 1,
+        "nombre": "Harina de maíz"
+      },
+      {
+        "cantidad": 1,
+        "nombre": "Manteca"
+      },
+      {
+        "cantidad": 5,
+        "nombre": "Huevo entero"
+      }
+    ]
+  },
+  {
+    "nombre": "Galletitas",
+    "ingredientes" : [
+      {
+        "cantidad" : 1,
+        "nombre": "Harina de trigo refinada"
+      },
+      {
+        "cantidad" : 1,
+        "name" : "Manteca"
+      },
+      {
+        "cantidad" : 1,
+        "name" : "Huevo entero"
+      },
+      {
+        "cantidad" : 1,
+        "name" : "Azúcar"
+      }
+    ]
+  }
+]
