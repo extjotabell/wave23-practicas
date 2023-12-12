@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("v1/api/vehicles")
@@ -25,9 +24,8 @@ public class VehicleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<VehicleDTO>> getById(@PathVariable long id){
-        HttpStatus httpStatus = vehicleService.getById(id).isPresent() ?HttpStatus.FOUND : HttpStatus.NOT_FOUND;
-        return new ResponseEntity<>(vehicleService.getById(id), httpStatus);
+    public ResponseEntity<VehicleDTO> getById(@PathVariable long id){
+        return new ResponseEntity<>(vehicleService.getById(id), HttpStatus.FOUND);
     }
 
     @GetMapping("/dates" )

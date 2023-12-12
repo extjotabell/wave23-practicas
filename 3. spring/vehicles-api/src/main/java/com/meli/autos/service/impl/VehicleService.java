@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.autos.dto.request.VehicleEntryDTO;
 import com.meli.autos.dto.response.VehicleDTO;
 import com.meli.autos.entity.Vehicle;
+import com.meli.autos.exception.custom.VehicleException;
 import com.meli.autos.mapper.VehicleMapper;
 import com.meli.autos.repository.IVehicleRepository;
 import com.meli.autos.service.IVehicleService;
@@ -33,10 +34,13 @@ public class VehicleService implements IVehicleService {
     }
 
     @Override
-    public Optional<VehicleDTO> getById(long id) {
-        return vehicleRepository.getAll().stream()
-                                         .filter(v-> v.getId() == id).findFirst()
-                                         .map(VehicleMapper::vehicleToVehicleDTO);
+    public VehicleDTO getById(long id) {
+        Optional<VehicleDTO> vehicleDTO = vehicleRepository.getAll().stream()
+                .filter(v-> v.getId() == id).findFirst()
+                .map(VehicleMapper::vehicleToVehicleDTO);
+        if (vehicleDTO.isEmpty() )throw new VehicleException(VehicleException.VEHICLE_ID_EXCEPTION);
+
+        return vehicleDTO.get();
     }
 
     @Override

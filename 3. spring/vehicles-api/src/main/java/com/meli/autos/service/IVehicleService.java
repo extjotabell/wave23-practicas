@@ -2,10 +2,8 @@ package com.meli.autos.service;
 
 import com.meli.autos.dto.request.VehicleEntryDTO;
 import com.meli.autos.dto.response.VehicleDTO;
-import org.springframework.http.HttpStatusCode;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IVehicleService {
 
@@ -13,7 +11,7 @@ public interface IVehicleService {
 
     VehicleDTO addVehicle(VehicleEntryDTO vehicleDTO);
 
-    Optional<VehicleDTO> getById(long id);
+    VehicleDTO getById(long id);
 
     List<VehicleDTO> getAllByDateRange(String since, String to);
 
