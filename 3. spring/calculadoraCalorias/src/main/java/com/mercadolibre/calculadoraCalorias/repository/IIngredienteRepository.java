@@ -1,5 +1,12 @@
 package com.mercadolibre.calculadoraCalorias.repository;
 
-public interface IPlatoRepository {
-    void test();
+import com.mercadolibre.calculadoraCalorias.entity.Ingrediente;
+
+import java.util.List;
+
+public interface IIngredienteRepository {
+
+    List<Ingrediente> buscarTodos();
+
+    Ingrediente buscarIngrediente(String nombre);
 }

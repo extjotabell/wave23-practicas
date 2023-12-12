@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-public class Ingredientes {
+public class Ingrediente {
     private String name;
     private Integer calories;
 }

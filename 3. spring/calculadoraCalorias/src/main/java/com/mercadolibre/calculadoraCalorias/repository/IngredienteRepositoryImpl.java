@@ -4,17 +4,22 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mercadolibre.calculadoraCalorias.entity.Ingredientes;
+import com.mercadolibre.calculadoraCalorias.entity.Ingrediente;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
 import java.io.*;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class PlatoRepositoryImpl implements IPlatoRepository {
+public class IngredienteRepositoryImpl implements IIngredienteRepository {
 
-    private List<Ingredientes> ingredientes;
+    private List<Ingrediente> ingredientes;
+
+    public IngredienteRepositoryImpl() {
+        loadData();
+    }
 
     private void loadData() {
         File file = null;
@@ -24,21 +29,37 @@ public class PlatoRepositoryImpl implements IPlatoRepository {
             e.printStackTrace();
         }
         ObjectMapper mapper = new ObjectMapper();
-        TypeReference<List<Ingredientes>> typeReference = new TypeReference<>() {};
-        List<Ingredientes> list = null;
+        TypeReference<List<Ingrediente>> typeReference = new TypeReference<>() {};
+        List<Ingrediente> list = null;
         try {
             list = mapper.readValue(file, typeReference);
-        } catch (StreamReadException e) {
-            throw new RuntimeException(e);
-        } catch (DatabindException e) {
+        } catch (StreamReadException | DatabindException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        ingredientes = list;
     }
+
     @Override
-    public void test() {
+    public Ingrediente buscarIngrediente(String nombre) {
+        Optional<Ingrediente> optional = ingredientes.stream().filter(
+                i -> i.getName().equalsIgnoreCase(nombre)
+        ).findFirst();
+
+        if (optional.isPresent()) {
+            return optional.get();
+        } else {
+            System.out.println("No se encontró el ingrediente: " + nombre);
+            return null;
+        }
 
     }
+
+    @Override
+    public List<Ingrediente> buscarTodos() {
+        return ingredientes;
+    }
+
+
 }
