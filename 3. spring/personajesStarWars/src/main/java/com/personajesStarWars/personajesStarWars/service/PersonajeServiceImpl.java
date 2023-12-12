@@ -1,12 +1,8 @@
 package com.personajesStarWars.personajesStarWars.service;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.personajesStarWars.personajesStarWars.dto.PersonajeDto;
 import com.personajesStarWars.personajesStarWars.entity.Personaje;
-import com.personajesStarWars.personajesStarWars.repository.IPersonsajeRepository;
 import com.personajesStarWars.personajesStarWars.repository.PersonajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
