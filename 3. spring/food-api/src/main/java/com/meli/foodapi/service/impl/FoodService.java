@@ -5,10 +5,13 @@ import com.meli.foodapi.dto.Request.DishEntryDTO;
 import com.meli.foodapi.dto.Response.DishDTO;
 import com.meli.foodapi.dto.Response.IngredientDTO;
 import com.meli.foodapi.entity.Dish;
+import com.meli.foodapi.mapper.DishMapper;
 import com.meli.foodapi.repository.IFoodRepository;
 import com.meli.foodapi.service.IFoodService;
+import com.meli.foodapi.entity.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -19,11 +22,6 @@ public class FoodService  implements IFoodService {
 
     @Autowired
     IFoodRepository foodRepository;
-
-    @Override
-    public List<DishDTO> getAll() {
-        return null;
-    }
 
     @Override
     public DishDTO findDish(String name, int weight) {

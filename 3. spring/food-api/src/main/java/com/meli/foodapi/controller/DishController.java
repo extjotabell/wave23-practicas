@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/dishes")
+@RequestMapping("/api/v1/dishes")
 public class DishController {
 
     @Autowired
@@ -27,6 +27,7 @@ public class DishController {
     public ResponseEntity<List<DishDTO>> getDishes(@RequestBody List<DishEntryDTO> entrydishes){
         return new ResponseEntity<>(foodService.findDishes(entrydishes), HttpStatus.OK);
     }
+
 
 
 }
