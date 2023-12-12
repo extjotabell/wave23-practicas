@@ -1,4 +1,4 @@
-package com.covid19.covid19.entify;
+package com.covid19.covid19.model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;

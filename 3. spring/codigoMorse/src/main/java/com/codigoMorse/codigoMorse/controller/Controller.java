@@ -1,7 +1,7 @@
 package com.codigoMorse.codigoMorse.controller;
-import com.codigoMorse.codigoMorse.entities.Espanol;
-import com.codigoMorse.codigoMorse.entities.Morse;
-import com.codigoMorse.codigoMorse.servicio.MorseServicio;
+import com.codigoMorse.codigoMorse.model.Espanol;
+import com.codigoMorse.codigoMorse.model.Morse;
+import com.codigoMorse.codigoMorse.service.MorseServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

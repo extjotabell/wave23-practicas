@@ -1,4 +1,4 @@
-package com.deportistas.deportistas.entities;
+package com.deportistas.deportistas.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

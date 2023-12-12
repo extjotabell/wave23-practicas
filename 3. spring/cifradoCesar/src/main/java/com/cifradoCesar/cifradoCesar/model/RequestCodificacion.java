@@ -1,4 +1,4 @@
-package com.cifradoCesar.cifradoCesar.entities;
+package com.cifradoCesar.cifradoCesar.model;
 
 public class RequestCodificacion {
     private String mensajerequest;

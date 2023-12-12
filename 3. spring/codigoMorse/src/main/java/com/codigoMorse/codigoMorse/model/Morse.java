@@ -1,4 +1,4 @@
-package com.codigoMorse.codigoMorse.entities;
+package com.codigoMorse.codigoMorse.model;
 
 public class Morse {
     private String morse;

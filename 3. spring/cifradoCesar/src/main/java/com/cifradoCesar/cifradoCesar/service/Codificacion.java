@@ -1,4 +1,4 @@
-package com.cifradoCesar.cifradoCesar.servicio;
+package com.cifradoCesar.cifradoCesar.service;
 import org.springframework.stereotype.Service;
 
 @Service

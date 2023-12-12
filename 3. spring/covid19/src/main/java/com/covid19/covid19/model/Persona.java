@@ -1,4 +1,4 @@
-package com.covid19.covid19.entify;
+package com.covid19.covid19.model;
 
 import java.util.List;
 import lombok.AllArgsConstructor;

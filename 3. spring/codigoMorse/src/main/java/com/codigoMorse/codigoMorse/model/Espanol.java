@@ -1,4 +1,4 @@
-package com.codigoMorse.codigoMorse.entities;
+package com.codigoMorse.codigoMorse.model;
 
 public class Espanol {
     private String espanol;

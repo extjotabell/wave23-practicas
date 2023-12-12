@@ -1,6 +1,6 @@
 package com.cifradoCesar.cifradoCesar.controller;
-import com.cifradoCesar.cifradoCesar.entities.RequestCodificacion;
-import com.cifradoCesar.cifradoCesar.servicio.Codificacion;
+import com.cifradoCesar.cifradoCesar.model.RequestCodificacion;
+import com.cifradoCesar.cifradoCesar.service.Codificacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
