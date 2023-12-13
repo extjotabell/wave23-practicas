@@ -1,5 +1,6 @@
 package com.pereiravilches.calculadoraDeCalorias.controller;
 
+import com.pereiravilches.calculadoraDeCalorias.exception.PlateNotFoundException;
 import com.pereiravilches.calculadoraDeCalorias.service.IFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,16 +21,28 @@ public class CaloriasController {
 
     @GetMapping
     public ResponseEntity<?> calcularCantidadCalorias(@RequestParam String plato) {
-        return new ResponseEntity<>(foodService.calcularCalorias(plato), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(foodService.calcularCalorias(plato), HttpStatus.OK);
+        } catch (PlateNotFoundException e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
     }
 
     @GetMapping("platos")
     public ResponseEntity<?> calcularCantidadCalorias(@RequestParam List<String> platos) {
-        return new ResponseEntity<>(foodService.calcularCaloriasListPlatos(platos), HttpStatus.OK);
+        try{
+            return new ResponseEntity<>(foodService.calcularCaloriasListPlatos(platos), HttpStatus.OK);
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
     }
 
     @GetMapping("findAllPlatos")
     public ResponseEntity<?> verTodosLosPlatos(){
-        return new ResponseEntity<>(foodService.findAllPlatos(), HttpStatus.OK);
+        try{
+            return new ResponseEntity<>(foodService.findAllPlatos(), HttpStatus.OK);
+        }catch (Exception e){
+         return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

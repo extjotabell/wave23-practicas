@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pereiravilches.calculadoraDeCalorias.DTO.IngredienteDTO;
 import com.pereiravilches.calculadoraDeCalorias.DTO.PlatoDTO;
 import com.pereiravilches.calculadoraDeCalorias.DTO.ResponseDTO;
+import com.pereiravilches.calculadoraDeCalorias.exception.PlateNotFoundException;
 import com.pereiravilches.calculadoraDeCalorias.repository.IFoodRepository;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +20,15 @@ public class FoodServiceImpl implements IFoodService {
     IFoodRepository repository;
     ObjectMapper mapper = new ObjectMapper();
 
+    @SneakyThrows
     @Override
     public ResponseDTO calcularCalorias(String plato) {
         PlatoDTO platoDTO = findPlatoByName(plato);
-        return new ResponseDTO(getCantidadTotalCalorias(platoDTO), platoDTO.getIngredienteList(), findIngredienteMasCalorias(platoDTO));
+        if(platoDTO !=null){
+            return new ResponseDTO(getCantidadTotalCalorias(platoDTO), platoDTO.getIngredienteList(), findIngredienteMasCalorias(platoDTO));
+        }else {
+            throw new PlateNotFoundException("El plato con el nombre: " + plato + " no se encuentra en el menu");
+        }
     }
 
     @Override
