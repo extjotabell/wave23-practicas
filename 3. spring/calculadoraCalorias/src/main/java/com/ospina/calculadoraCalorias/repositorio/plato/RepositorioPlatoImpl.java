@@ -68,6 +68,11 @@ public class RepositorioPlatoImpl implements RepositorioPlato{
         return platos.stream().filter(plato -> plato.getNombre().equals(nombre)).findFirst().orElse(null);
     }
 
+    @Override
+    public List<Plato> obtenerPorNombres(List<String> nombres) {
+        return platos.stream().filter(plato -> nombres.contains(plato.getNombre())).collect(java.util.stream.Collectors.toList());
+    }
+
     public List<Ingrediente> obtenerIngredientes() {
         return repositorioComida.obtenerTodos();
     }

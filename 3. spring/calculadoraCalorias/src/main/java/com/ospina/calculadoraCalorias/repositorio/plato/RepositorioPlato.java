@@ -8,4 +8,5 @@ public interface RepositorioPlato{
     List<Plato> obtenerTodos();
 
     Plato obtenerPorNombre(String nombre);
+    List<Plato> obtenerPorNombres(List<String> nombres);
 }

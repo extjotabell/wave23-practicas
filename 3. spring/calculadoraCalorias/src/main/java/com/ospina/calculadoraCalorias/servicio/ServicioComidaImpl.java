@@ -9,6 +9,7 @@ import com.ospina.calculadoraCalorias.repositorio.plato.RepositorioPlato;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,6 +37,26 @@ public class ServicioComidaImpl implements ServicioComida {
             return platoDTO;
         } catch (Exception e) {
             System.err.println("Error encontrando plato: " + e.getMessage());
+            throw new PlatoNoEncontradoExcepcion();
+        }
+    }
+
+    @Override
+    public List<PlatoDTO> obtenerDatosVarios(List<RequestPlato> requestPlatos) throws PlatoNoEncontradoExcepcion {
+        try {
+            List<Plato> platosEncontrados = repositorioPlato.obtenerPorNombres(requestPlatos.stream().map(RequestPlato::getNombre).collect(Collectors.toList()));
+            List<PlatoDTO> platosDTO = new ArrayList<>();
+            for (Plato platoEncontrado : platosEncontrados) {
+                PlatoDTO platoDTO = new PlatoDTO();
+                platoDTO.setNombre(platoEncontrado.getNombre());
+                platoDTO.setTotalCalorias(platoEncontrado.getTotalCalorias());
+                platoDTO.setIngredientes(platoEncontrado.getIngredientes());
+                platoDTO.setIngredienteMasCalorico(ingredienteMasCalorico(platoEncontrado));
+                platosDTO.add(platoDTO);
+            }
+            return platosDTO;
+        } catch (Exception e) {
+            System.err.println("Error encontrando platos: " + e.getMessage());
             throw new PlatoNoEncontradoExcepcion();
         }
     }
