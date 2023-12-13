@@ -1,0 +1,23 @@
+[
+  {
+    "nombre": "Risotto",
+    "ingredientes" : [
+        {
+          "cantidad" : 1,
+          "nombre": "Arroz"
+        },
+      {
+        "cantidad" : 1,
+        "name" : "Cebolla"
+      },
+      {
+        "cantidad" : 1,
+        "name" : "Manteca"
+      },
+      {
+        "cantidad" : 1,
+        "name" : "Aceite de girasol"
+      }
+    ]
+  }
+]
