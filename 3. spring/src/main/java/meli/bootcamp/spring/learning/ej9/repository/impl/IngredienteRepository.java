@@ -26,7 +26,7 @@ public class IngredienteRepository implements IIngredienteRepository {
   private List<Ingrediente> load() {
     File file = null;
     try {
-      file = ResourceUtils.getFile("classpath:food.json");
+      file = ResourceUtils.getFile("classpath:static/food.json");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }

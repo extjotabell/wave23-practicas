@@ -33,7 +33,7 @@ public class PersonajeRepository {
   private List<Personaje> load() {
     File file = null;
     try {
-      file = ResourceUtils.getFile("classpath:starwars.json");
+      file = ResourceUtils.getFile("classpath:static/starwars.json");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
