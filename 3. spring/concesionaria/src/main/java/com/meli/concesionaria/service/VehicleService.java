@@ -3,6 +3,7 @@ package com.meli.concesionaria.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.concesionaria.dto.VehicleDTO;
 import com.meli.concesionaria.entity.Vehicle;
+import com.meli.concesionaria.exceptions.NotFoundException;
 import com.meli.concesionaria.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
@@ -33,6 +34,10 @@ public class VehicleService {
             vehicleDTOList.add(objectMapper.convertValue(vehicle,VehicleDTO.class));
         });
 
+        if(vehicleDTOList.isEmpty()){
+            throw new NotFoundException("No se encontraron vehiculos");
+        }
+
         return vehicleDTOList;
     }
 
@@ -43,6 +48,9 @@ public class VehicleService {
         vehicleList.stream().forEach(vehicle -> {
             vehicleDTOList.add(objectMapper.convertValue(vehicle,VehicleDTO.class));
         });
+        if(vehicleDTOList.isEmpty()){
+            throw new NotFoundException("No hay vehiculos para fechas indicadas");
+        }
 
         return vehicleDTOList;
     }
@@ -55,12 +63,19 @@ public class VehicleService {
             vehicleDTOList.add(objectMapper.convertValue(vehicle,VehicleDTO.class));
         });
 
+        if(vehicleDTOList.isEmpty()){
+            throw new NotFoundException("No se encontraron vehiculos");
+        }
+
         return vehicleDTOList;
     }
 
     public VehicleDTO getById(long id) {
         Vehicle vehicle = repo.getById(id);
         VehicleDTO vehicleDTO = objectMapper.convertValue(vehicle,VehicleDTO.class);
+        if(Objects.isNull(vehicleDTO)){
+            throw new NotFoundException("No se encontro el vehiculo de id="+id);
+        }
         return vehicleDTO;
     }
 }
