@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Repository
 public class ConcesionariaRepositoryImpl implements IConcesionariaRepository{
@@ -22,9 +23,13 @@ public class ConcesionariaRepositoryImpl implements IConcesionariaRepository{
 
     @Override
     public Vehiculo getVehiculoById(Integer id) {
-        return vehiculoList.stream()
-                .filter(vehiculo -> vehiculo.getId().equals(id))
-                .findFirst().get();
+        try{
+            return vehiculoList.stream()
+                    .filter(vehiculo -> vehiculo.getId().equals(id))
+                    .findFirst().get();
+        }catch (NoSuchElementException e){
+            return null;
+        }
     }
 
     @Override
