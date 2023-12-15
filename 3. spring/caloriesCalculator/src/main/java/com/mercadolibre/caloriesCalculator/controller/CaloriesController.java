@@ -31,11 +31,6 @@ public class CaloriesController {
        return new ResponseEntity<>(service.calculateDishCalories(nameDish, weight), HttpStatus.OK);
     }
 
-     /*
-    Bonus: Por otra parte, el dueño del restaurante está interesado en la posibilidad de que sus clientes,
-    además de enviar plato por plato, puedan enviar una lista de platos y obtener estos mismos puntos diferenciados
-    por cada uno de los platos brindados.
-     */
     @PostMapping("/totalCaloriesList")
     public ResponseEntity<?>getCaloriesDishList(@RequestBody List<DishesWeightDto> dishesDto){
         return new ResponseEntity<>(service.calculateDishCaloriesList(dishesDto), HttpStatus.OK);
