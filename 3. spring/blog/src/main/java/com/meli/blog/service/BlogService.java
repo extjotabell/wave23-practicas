@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class BlogService implements IBlogService{
@@ -25,10 +26,10 @@ public class BlogService implements IBlogService{
     @Override
     public BlogDTO saveBlog(BlogDTO blogDTO) {
         Blog blog = mapper.convertValue(blogDTO, Blog.class);
-        if(repository.findById(blogDTO.getId()) != null){
+        if(repository.findById(blog.getId()) != null){
             throw new ConflictException("El blog de id "+blogDTO.getId()+" ya existe.");
         }
-        repository.save(blog);
+        repository.save(Objects.requireNonNull(blog));
         return blogDTO;
     }
 
