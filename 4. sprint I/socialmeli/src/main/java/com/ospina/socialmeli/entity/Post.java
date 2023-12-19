@@ -12,9 +12,19 @@ public class Post {
     private LocalDate date;
     private int category;
     private Double price;
-    private boolean hasDiscount;
+    private boolean hasDiscount = false;
+    private Double discount;
 
-    private Post(Long id, Seller seller, Product product, LocalDate date, int category, Double price, boolean hasDiscount) {
+    private Post(Long id, Seller seller, Product product, LocalDate date, int category, Double price) {
+        this.id = id;
+        this.seller = seller;
+        this.product = product;
+        this.date = date;
+        this.category = category;
+        this.price = price;
+    }
+
+    public Post(Long id, Seller seller, Product product, LocalDate date, int category, Double price, boolean hasDiscount, Double discount) {
         this.id = id;
         this.seller = seller;
         this.product = product;
@@ -22,9 +32,24 @@ public class Post {
         this.category = category;
         this.price = price;
         this.hasDiscount = hasDiscount;
+        this.discount = discount;
     }
 
-    public static Post build(Long id, Seller seller, Product product, LocalDate date, int category, Double price, boolean hasDiscount) {
+    public static Post build(Long id, Seller seller, Product product, LocalDate date, int category, Double price) {
+        validatePost(id, seller, product, date, category, price);
+
+        return new Post(id, seller, product, date, category, price);
+    }
+
+    public static Post build(Long id, Seller seller, Product product, LocalDate date, int category, Double price, boolean hasDiscount, Double discount) {
+        validatePost(id, seller, product, date, category, price);
+        ArgumentValidator.validateRequired(hasDiscount, "hasDiscount is required");
+        ArgumentValidator.validateRequired(discount, "discount is required");
+        ArgumentValidator.validatePositive(discount, "discount must be positive");
+        return new Post(id, seller, product, date, category, price, hasDiscount, discount);
+    }
+
+    private static void validatePost(Long id, Seller seller, Product product, LocalDate date, int category, Double price) {
         ArgumentValidator.validateRequired(id, "Id is required");
         ArgumentValidator.validatePositive(id, "Id is required");
         ArgumentValidator.validateRequired(seller, "Seller is required");
@@ -33,9 +58,7 @@ public class Post {
         ArgumentValidator.validateRequired(category, "Category is required");
         ArgumentValidator.validatePositive(category, "Category is required");
         ArgumentValidator.validateRequired(price, "Price is required");
-        ArgumentValidator.validatePositive(price, "Price is required");
-        ArgumentValidator.validateRequired(hasDiscount, "Has discount is required");
-        return new Post(id, seller, product, date, category, price, hasDiscount);
+        ArgumentValidator.validatePositive(price, "Price must be positive");
     }
 
     public Long getId() {
@@ -88,5 +111,13 @@ public class Post {
 
     public void setHasDiscount(boolean hasDiscount) {
         this.hasDiscount = hasDiscount;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
     }
 }

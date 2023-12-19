@@ -5,6 +5,7 @@ import com.ospina.socialmeli.dto.request.PostRequestDTO;
 import com.ospina.socialmeli.dto.response.FollowedPostsListDTO;
 import com.ospina.socialmeli.dto.response.PostResponseDTO;
 import com.ospina.socialmeli.dto.response.PromoCountResponseDTO;
+import com.ospina.socialmeli.dto.response.PromoPostsFromSellerListDTO;
 import com.ospina.socialmeli.entity.Post;
 import com.ospina.socialmeli.entity.Seller;
 import com.ospina.socialmeli.entity.User;
@@ -77,6 +78,16 @@ public class ProductServiceImpl implements ProductService{
                 .filter(post -> !post.getDate().isBefore(LocalDate.now().minusWeeks(2))).toList();
 
         return PostMapper.mapToFollowedPostsListDTO(allFollowedByUser, userId, order);
+    }
+
+    @Override
+    public PromoPostsFromSellerListDTO promoPostsList(Long userId) {
+        Seller seller = getOnlySeller(userId);
+        List<Post> promoPosts = seller.getPosts().values().stream()
+                .filter(Post::isHasDiscount)
+                .toList();
+
+        return PostMapper.mapToPromoPostsFromSellerListDTO(promoPosts, userId, seller.getUsername());
     }
 
     @Override

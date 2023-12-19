@@ -4,7 +4,9 @@ import com.ospina.socialmeli.dto.ProductDTO;
 import com.ospina.socialmeli.dto.request.PostPromoRequestDTO;
 import com.ospina.socialmeli.dto.request.PostRequestDTO;
 import com.ospina.socialmeli.dto.response.FollowedPostsListDTO;
+import com.ospina.socialmeli.dto.response.PostPromoResponseDTO;
 import com.ospina.socialmeli.dto.response.PostResponseDTO;
+import com.ospina.socialmeli.dto.response.PromoPostsFromSellerListDTO;
 import com.ospina.socialmeli.entity.Post;
 import com.ospina.socialmeli.entity.Seller;
 
@@ -32,6 +34,21 @@ public class PostMapper {
         );
     }
 
+    public static PostPromoResponseDTO toPostPromoResponseDTO(Post post){
+        ProductDTO productDTO = ProductMapper.toProductDTO(post.getProduct());
+
+        return new PostPromoResponseDTO(
+            post.getSeller().getId(),
+            post.getId(),
+            post.getDate(),
+            productDTO,
+            post.getCategory(),
+            post.getPrice(),
+            post.isHasDiscount(),
+            post.getDiscount()
+        );
+    }
+
     public static Post toPost(PostRequestDTO postRequestDTO, Seller seller, Long id){
         return Post.build(
             id,
@@ -39,8 +56,7 @@ public class PostMapper {
             ProductMapper.toProduct(postRequestDTO.getProduct()),
             parseDate(postRequestDTO.getDate()),
             postRequestDTO.getCategory(),
-            postRequestDTO.getPrice(),
-            false
+            postRequestDTO.getPrice()
         );
     }
 
@@ -63,7 +79,8 @@ public static Post toPostPromo(PostPromoRequestDTO postPromoRequestDTO, Seller s
         parseDate(postPromoRequestDTO.getDate()),
         postPromoRequestDTO.getCategory(),
         price.doubleValue(),
-        postPromoRequestDTO.getHasPromo()
+        postPromoRequestDTO.getHasPromo(),
+        postPromoRequestDTO.getDiscount()
     );
 }
 
@@ -86,6 +103,11 @@ public static Post toPostPromo(PostPromoRequestDTO postPromoRequestDTO, Seller s
 
         return new FollowedPostsListDTO(userId, posts.stream()
                 .map(PostMapper::toPostResponseDTO).toList());
+    }
+
+    public static PromoPostsFromSellerListDTO mapToPromoPostsFromSellerListDTO(List<Post> posts, Long userId, String userName) {
+        return new PromoPostsFromSellerListDTO(userId, userName, posts.stream()
+                .map(PostMapper::toPostPromoResponseDTO).toList());
     }
 
 }
