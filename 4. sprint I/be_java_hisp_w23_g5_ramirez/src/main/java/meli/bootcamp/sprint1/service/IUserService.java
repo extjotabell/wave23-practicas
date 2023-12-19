@@ -17,9 +17,6 @@ public interface IUserService {
 
   BaseResponseDto followUser(int userId, int userIdToFollow);
 
-  // Cambiar a UserDto
-  List<User> getAll();
-
   FollowersDto getFollowersByUserId(int userId);
 
   UserFollowedDto getFollowed(Integer id, String order);

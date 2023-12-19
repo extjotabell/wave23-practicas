@@ -33,7 +33,7 @@ public class UserController {
     return ResponseEntity.ok(this.userService.getFollowersByUserId(userId));
   }
 
-  @GetMapping("/users/{userId}/follow/{userIdToFollow}")
+  @PostMapping("/users/{userId}/follow/{userIdToFollow}")
   public ResponseEntity<?> followUser(
       @PathVariable int userId,
       @PathVariable int userIdToFollow) {
@@ -45,12 +45,6 @@ public class UserController {
       @RequestParam(required = false, defaultValue = "date_desc") String order) {
 
     return ResponseEntity.ok(this.userService.getLastPosts(userId, order));
-  }
-
-  // TODO: DELETE THE FOLLOWING
-  @GetMapping("test")
-  public ResponseEntity<?> test() {
-    return ResponseEntity.ok(this.userService.getAll());
   }
 
   @GetMapping("/users/{userId}/followed/list")

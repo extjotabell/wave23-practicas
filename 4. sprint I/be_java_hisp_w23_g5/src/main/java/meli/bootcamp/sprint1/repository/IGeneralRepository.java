@@ -10,8 +10,6 @@ public interface IGeneralRepository {
 
   Category findCategoryById(int id);
 
-  List<User> findAll();
-
   boolean unfollowUser(List<Integer> followedUsers, List<Integer> followers, int userIdToUnfollow,
       int removeFromFollowers);
 }

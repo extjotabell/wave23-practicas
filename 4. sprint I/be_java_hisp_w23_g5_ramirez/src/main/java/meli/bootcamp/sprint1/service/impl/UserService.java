@@ -35,7 +35,7 @@ import meli.bootcamp.sprint1.util.Mapper;
 
 @Service
 public class UserService implements IUserService {
-  private IGeneralRepository repository;
+  private final IGeneralRepository repository;
 
   public UserService(GeneralRepository repository) {
     this.repository = repository;
@@ -90,12 +90,6 @@ public class UserService implements IUserService {
     userToFollow.newFollower(userId);
 
     return new BaseResponseDto("User followed");
-
-  }
-
-  @Override
-  public List<User> getAll() {
-    return this.repository.findAll();
   }
 
   @Override
@@ -133,6 +127,7 @@ public class UserService implements IUserService {
     return userDto;
   }
 
+  @Override
   public BaseResponseDto unfollowUser(int userId, int userIdToUnfollow) {
     User userFollower = repository.findUserById(userId);
     User userFollowed = repository.findUserById(userIdToUnfollow);
@@ -149,8 +144,7 @@ public class UserService implements IUserService {
       throw new BadRequestException("User " + userId + " is not a seller");
     }
 
-    boolean unfollowed = this.repository.unfollowUser(userFollower.getFollowed(), userFollowed.getFollowers(),
-        userIdToUnfollow, userId);
+    boolean unfollowed = this.repository.unfollowUser(userFollower.getFollowed(), userFollowed.getFollowers(), userIdToUnfollow, userId);
 
     if (unfollowed) {
       return new BaseResponseDto("User " + userIdToUnfollow + " was unfollowed");
@@ -159,6 +153,7 @@ public class UserService implements IUserService {
     }
   }
 
+  @Override
   public FollowersDto getFollowersByUserId(int userId) {
     User user = this.repository.findUserById(userId);
     if (user == null) {
@@ -167,6 +162,7 @@ public class UserService implements IUserService {
     return new FollowersDto(user.getId(), user.getName(), user.getFollowers().size());
   }
 
+  @Override
   public UserFollowedDto getFollowed(Integer id, String order) {
     User user = this.repository.findUserById(id);
 
@@ -241,6 +237,7 @@ public class UserService implements IUserService {
     return new LastPostsDto(userId, postsDto);
   }
 
+  @Override
   public LastPostsDto getLastPosts(int userId, String order) {
     if ("date_asc".equals(order) || "date_desc".equals(order)) {
       return getLastPostsOrdered(userId, order);
@@ -249,6 +246,7 @@ public class UserService implements IUserService {
     }
   }
 
+  @Override
   public UserFollowedDto getFollowed(Integer id) {
     User user = this.repository.findUserById(id);
 
@@ -314,5 +312,4 @@ public class UserService implements IUserService {
     this.repository.removeUser(user);
     return new BaseResponseDto("User deleted");
   }
-
 }
