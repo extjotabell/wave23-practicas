@@ -3,11 +3,13 @@ package com.meli.socialmeli.controllers;
 import com.meli.socialmeli.dtos.request.PostDTO;
 import com.meli.socialmeli.dtos.request.PromoPostDTO;
 import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
+import com.meli.socialmeli.exceptions.custom.DataSourceException;
 import com.meli.socialmeli.services.IProductService;
 import com.meli.socialmeli.services.impl.ProductServiceImpl;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingRequestValueException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,6 +46,7 @@ public class ProductController {
 
     @GetMapping("/promo-post/count")
     public ResponseEntity<?> getCountPromoPosts(@RequestParam Optional<Integer> user_id){
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        if(user_id.isEmpty()){ throw new DataSourceException("user_id is needed"); }
+        return new ResponseEntity<>(iProductService.getCountPromoPosts(user_id.get()), HttpStatus.OK);
     }
 }

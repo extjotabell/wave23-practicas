@@ -113,6 +113,15 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public PromoProductsCountDTO getCountPromoPosts(Integer userId) {
-        return null;
+
+        if(userId == null){ throw new BadRequestException("user_id must be send"); }
+
+        User user = userRepository.finById(userId);
+        if(user == null){ throw new NotFoundException("Invalid user"); }
+        int promoPostsCount = (int) user.getPosts()
+                .stream()
+                .filter(Post::isHas_promo)
+                .count();
+        return new PromoProductsCountDTO(user.getUser_id(), user.getUser_name(), promoPostsCount);
     }
 }
