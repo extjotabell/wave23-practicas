@@ -1,0 +1,218 @@
+[
+  {
+    "user_id": 100,
+    "user_name": "Roach",
+    "followers": [],
+    "followed": [],
+    "posts": [
+      {
+        "post_id": 100,
+        "date": "2023-12-11",
+        "category": 400,
+        "price": 154454.4,
+        "has_promo": true,
+        "discount": 0.25,
+        "product": {
+          "product_id": 100,
+          "product_name": "Silla Ergonomica",
+          "type": "Generico",
+          "brand": "Especial",
+          "notes": "Especial",
+          "color": "Azul"
+        }
+      },
+      {
+        "post_id": 1100,
+        "date": "2023-12-10",
+        "category": 300,
+        "price": 101490.9,
+        "has_promo": true,
+        "discount": 0.1,
+        "product": {
+          "product_id": 1100,
+          "product_name": "Portatil",
+          "type": "Generico",
+          "brand": "Racer",
+          "notes": "Especial",
+          "color": "Negro"
+        }
+      },
+      {
+        "post_id": 2100,
+        "date": "2023-12-17",
+        "category": 300,
+        "price": 80062.4,
+        "has_promo": false,
+        "discount": 0.1,
+        "product": {
+          "product_id": 2100,
+          "product_name": "Portatil",
+          "type": "Generico",
+          "brand": "Especial",
+          "notes": "Ilimitada",
+          "color": "Gris"
+        }
+      },
+      {
+        "post_id": 3100,
+        "date": "2023-12-11",
+        "category": 200,
+        "price": 228411.4,
+        "has_promo": false,
+        "discount": 0.2,
+        "product": {
+          "product_id": 3100,
+          "product_name": "Mouse",
+          "type": "Especial",
+          "brand": "Generico",
+          "notes": "Ilimitada",
+          "color": "Azul"
+        }
+      }
+    ]
+  },
+  {
+    "user_id": 1100,
+    "user_name": "Dudley",
+    "followers": [],
+    "followed": [],
+    "posts": [
+      {
+        "post_id": 100,
+        "date": "2023-12-15",
+        "category": 200,
+        "price": 274169.1,
+        "has_promo": true,
+        "discount": 0.2,
+        "product": {
+          "product_id": 100,
+          "product_name": "Silla Ergonomica",
+          "type": "Gamer",
+          "brand": "Especial",
+          "notes": "Especial",
+          "color": "Rojo"
+        }
+      }
+    ]
+  },
+  {
+    "user_id": 2100,
+    "user_name": "Moreno",
+    "followers": [],
+    "followed": [],
+    "posts": [
+      {
+        "post_id": 100,
+        "date": "2023-12-17",
+        "category": 100,
+        "price": 934017.2,
+        "has_promo": true,
+        "discount": 0.25,
+        "product": {
+          "product_id": 100,
+          "product_name": "Silla Ergonomica",
+          "type": "Especial",
+          "brand": "Racer",
+          "notes": "Ilimitada",
+          "color": "Azul"
+        }
+      }
+    ]
+  },
+  {
+    "user_id": 3100,
+    "user_name": "Peters",
+    "followers": [],
+    "followed": [],
+    "posts": [
+      {
+        "post_id": 100,
+        "date": "2023-12-13",
+        "category": 400,
+        "price": 526911.3,
+        "has_promo": true,
+        "discount": 0.2,
+        "product": {
+          "product_id": 100,
+          "product_name": "Portatil",
+          "type": "Generico",
+          "brand": "Especial",
+          "notes": "Especial",
+          "color": "Negro"
+        }
+      },
+      {
+        "post_id": 1100,
+        "date": "2023-12-15",
+        "category": 300,
+        "price": 691372.5,
+        "has_promo": true,
+        "discount": 0.2,
+        "product": {
+          "product_id": 1100,
+          "product_name": "Portatil",
+          "type": "Gamer",
+          "brand": "Especial",
+          "notes": "Ilimitada",
+          "color": "Blanco"
+        }
+      },
+      {
+        "post_id": 2100,
+        "date": "2023-12-16",
+        "category": 300,
+        "price": 375052.3,
+        "has_promo": true,
+        "discount": 0.1,
+        "product": {
+          "product_id": 2100,
+          "product_name": "Silla Ergonomica",
+          "type": "Gamer",
+          "brand": "Racer",
+          "notes": "Garantia extendida",
+          "color": "Negro"
+        }
+      },
+      {
+        "post_id": 3100,
+        "date": "2023-12-17",
+        "category": 300,
+        "price": 889832.2,
+        "has_promo": false,
+        "discount": 0.2,
+        "product": {
+          "product_id": 3100,
+          "product_name": "Silla Ergonomica",
+          "type": "Generico",
+          "brand": "Racer",
+          "notes": "Especial",
+          "color": "Verde"
+        }
+      }
+    ]
+  },
+  {
+    "user_id": 4100,
+    "user_name": "Garner",
+    "followers": [],
+    "followed": [],
+    "posts": [
+      {
+        "post_id": 100,
+        "date": "2023-12-11",
+        "category": 100,
+        "price": 255009.7,
+        "has_promo": false,
+        "discount": 0.1,
+        "product": {
+          "product_id": 100,
+          "product_name": "Portatil",
+          "type": "Especial",
+          "brand": "Especial",
+          "notes": "Garantia extendida",
+          "color": "Negro"
+        }
+      }
+    ]
+  }
+]
