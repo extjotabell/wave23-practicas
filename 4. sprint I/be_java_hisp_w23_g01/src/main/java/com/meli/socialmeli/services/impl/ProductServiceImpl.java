@@ -1,6 +1,7 @@
 package com.meli.socialmeli.services.impl;
 
 import com.meli.socialmeli.dtos.request.PostDTO;
+import com.meli.socialmeli.dtos.request.PromoPostDTO;
 import com.meli.socialmeli.dtos.response.MessageDTO;
 import com.meli.socialmeli.dtos.response.PostNoPromoDTO;
 import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
@@ -92,5 +93,10 @@ public class ProductServiceImpl implements IProductService {
             user.addPost(Mappers.mapNewPost(post, user.getPosts().get(numberPosts - 1).getPost_id() + 1000));
         }
         return new MessageDTO("The User "+ user.getUser_id() + " has created new post.");
+    }
+
+    @Override
+    public MessageDTO createPromoPost(PromoPostDTO promoPostDTO) {
+        return null;
     }
 }
