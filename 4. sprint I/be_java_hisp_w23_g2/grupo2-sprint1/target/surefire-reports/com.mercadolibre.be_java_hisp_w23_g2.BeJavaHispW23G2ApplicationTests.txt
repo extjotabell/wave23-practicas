@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.mercadolibre.be_java_hisp_w23_g2.BeJavaHispW23G2ApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.933 s -- in com.mercadolibre.be_java_hisp_w23_g2.BeJavaHispW23G2ApplicationTests
