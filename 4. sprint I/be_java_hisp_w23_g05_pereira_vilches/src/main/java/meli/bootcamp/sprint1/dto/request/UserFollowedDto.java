@@ -2,6 +2,7 @@ package meli.bootcamp.sprint1.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import meli.bootcamp.sprint1.dto.response.UserDto;
 
 import java.util.List;
 
@@ -11,6 +12,6 @@ public class UserFollowedDto {
 
     private Integer user_id;
     private String user_name;
-    private List<FollowedDto> followed;
+    private List<UserDto> followed;
 
 }

@@ -3,18 +3,13 @@ package meli.bootcamp.sprint1.service.impl;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.time.LocalDate;
 import java.util.Optional;
 
 import meli.bootcamp.sprint1.dto.response.*;
-import meli.bootcamp.sprint1.dto.request.FollowedDto;
 import meli.bootcamp.sprint1.dto.request.UserFollowedDto;
 import meli.bootcamp.sprint1.exception.EmptyListException;
 
-import meli.bootcamp.sprint1.dto.request.FollowedDto;
-import meli.bootcamp.sprint1.dto.request.UserFollowedDto;
-import meli.bootcamp.sprint1.exception.EmptyListException;
 import org.springframework.stereotype.Service;
 
 import meli.bootcamp.sprint1.dto.request.NewPostDto;
@@ -30,7 +25,7 @@ import meli.bootcamp.sprint1.util.Mapper;
 
 @Service
 public class UserService implements IUserService {
-  private IGeneralRepository repository;
+  private final IGeneralRepository repository;
 
   public UserService(GeneralRepository repository) {
     this.repository = repository;
@@ -39,9 +34,7 @@ public class UserService implements IUserService {
   @Override
   public BaseResponseDto addPost(NewPostDto newPost) {
     User user = this.repository.findUserById(newPost.getUser_id());
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    verifyUserExists(user);
 
     Product newProductEntity = Mapper.map(newPost.getProduct(), Product.class);
 
@@ -89,43 +82,30 @@ public class UserService implements IUserService {
   }
 
   @Override
-  public List<User> getAll() {
-    return this.repository.findAll();
+  public List<UserInfoDto> getAll() {
+    return this.repository.findAll().stream().map(u -> Mapper.map(u,UserInfoDto.class)).toList();
   }
 
   @Override
-  public UserDtoUS0003 getFollowersById(int id, String order) {
+  public UserFollowersDto getFollowersById(int id, String order) {
     User user = repository.findUserById(id);
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    verifyUserExists(user);
 
-    List<Integer> followers = user.getFollowers();
-
-    if (followers == null || followers.isEmpty()) {
+    if (user.getFollowers().isEmpty()) {
       throw new EmptyListException("The User " + id + " has no followers users");
     }
 
-    List<FollowersDtoUS0003> followersDtoUS0003List = new ArrayList<>();
-
-    for (Integer idFollower : followers) {
-      User findFollower = repository.findUserById(idFollower);
-      FollowersDtoUS0003 followersDtoUS0003 = new FollowersDtoUS0003(findFollower.getId(), findFollower.getName());
-      followersDtoUS0003List.add(followersDtoUS0003);
-    }
+    List<UserDto> followers = user.getFollowers().stream()
+            .map(u -> new UserDto(u, this.repository.findUserById(u).getName()))
+            .toList();
 
     if (order == null || order.equals("name_asc")) {
-      followersDtoUS0003List = followersDtoUS0003List.stream()
-              .sorted(Comparator.comparing(FollowersDtoUS0003::getUser_name))
-              .toList();
+      followers = sortedAscByName(followers);
     } else if (order.equals("name_desc")) {
-      followersDtoUS0003List = followersDtoUS0003List.stream()
-              .sorted(Comparator.comparing(FollowersDtoUS0003::getUser_name).reversed())
-              .toList();
+      followers = sortedDescByName(followers);
     }
 
-    UserDtoUS0003 userDto = new UserDtoUS0003(user.getId(), user.getName(), followersDtoUS0003List);
-    return userDto;
+    return new UserFollowersDto(user.getId(), user.getName(), followers);
   }
   public BaseResponseDto unfollowUser(int userId, int userIdToUnfollow) {
     User userFollower = repository.findUserById(userId);
@@ -152,54 +132,41 @@ public class UserService implements IUserService {
     }
   }
 
-  public FollowersDto getFollowersByUserId(int userId) {
+  public FollowersCountDto getFollowersByUserId(int userId) {
     User user = this.repository.findUserById(userId);
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
-    return new FollowersDto(user.getId(), user.getName(), user.getFollowers().size());
+    verifyUserExists(user);
+    return new FollowersCountDto(user.getId(), user.getName(), user.getFollowers().size());
   }
   
   public UserFollowedDto getFollowed(Integer id, String order) {
     User user = this.repository.findUserById(id);
 
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    verifyUserExists(user);
 
     if (user.getFollowed().isEmpty()) {
       throw new EmptyListException("The User " + id + " has no followed users");
     }
 
-    List<FollowedDto> followed = user.getFollowed().stream()
-            .map(u -> new FollowedDto(u, this.repository.findUserById(u).getName()))
+    List<UserDto> followed = user.getFollowed().stream()
+            .map(u -> new UserDto(u, this.repository.findUserById(u).getName()))
             .toList();
 
     if (order == null || order.equals("name_asc")) {
-      followed = followed.stream()
-              .sorted(Comparator.comparing(FollowedDto::getUser_name))
-              .toList();
+      followed = sortedAscByName(followed);
     } else if (order.equals("name_desc")) {
-      followed = followed.stream()
-              .sorted(Comparator.comparing(FollowedDto::getUser_name).reversed())
-              .toList();
+      followed = sortedDescByName(followed);
     }
 
-    UserFollowedDto userFollowedDto = new UserFollowedDto(user.getId(), user.getName(), followed);
-
-    return userFollowedDto;
+    return new UserFollowedDto(user.getId(), user.getName(), followed);
   }
-
 
   @Override
   public LastPostsDto getLastPostsFromFollowed(int userId) {
     User user = this.repository.findUserById(userId);
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    verifyUserExists(user);
     List<Integer> followedId = user.getFollowed();
-    List<User> followed = followedId.stream().map(id -> this.repository.findUserById(id)).toList();
-    List<PostDto> postsDto = new ArrayList<PostDto>();
+    List<User> followed = followedId.stream().map(this.repository::findUserById).toList();
+    List<PostDto> postsDto = new ArrayList<>();
     for (User follow : followed) {
       List<PostDto> postsToAdd = follow.getPosts().stream()
           .filter(post -> isFromLastTwoWeeks(post.getDate()))
@@ -244,34 +211,11 @@ public class UserService implements IUserService {
     }
   }
 
-  public UserFollowedDto getFollowed(Integer id) {
-    User user = this.repository.findUserById(id);
-
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
-
-    if (user.getFollowed().isEmpty()){
-      throw new EmptyListException("The User " + id + " has no followed users");
-    }
-
-    List<FollowedDto> followed = new ArrayList<>();
-
-    user.getFollowed().stream().forEach((u) -> followed.add(new FollowedDto(u, this.repository.findUserById(u).getName()))
-    );
-
-    UserFollowedDto userFollowedDto = new UserFollowedDto(user.getId(), user.getName(), followed);
-
-    return userFollowedDto;
-  }
-
   @Override
   public PromoProductsDto getPostWithPromo(int userId) {
     User user = this.repository.findUserById(userId);
 
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    verifyUserExists(user);
 
     if (user.getPosts().isEmpty()){
       throw new EmptyListException("The User " + userId + " has no promo posts yet");
@@ -281,6 +225,24 @@ public class UserService implements IUserService {
             .filter(Post::isHas_promo).count();
 
     return new PromoProductsDto(user.getId(), user.getName(), posts);
+  }
+
+  private void verifyUserExists(User user) {
+    if (user == null) {
+      throw new BadRequestException("User not found");
+    }
+  }
+
+  private List<UserDto> sortedAscByName(List<UserDto> listUsers) {
+    return listUsers.stream()
+            .sorted(Comparator.comparing(UserDto::getUser_name))
+            .toList();
+  }
+
+  private List<UserDto> sortedDescByName(List<UserDto> listUsers) {
+    return listUsers.stream()
+            .sorted(Comparator.comparing(UserDto::getUser_name).reversed())
+            .toList();
   }
 
 }

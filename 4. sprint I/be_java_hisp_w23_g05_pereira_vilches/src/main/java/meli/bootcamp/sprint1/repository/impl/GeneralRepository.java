@@ -17,8 +17,8 @@ import meli.bootcamp.sprint1.repository.IGeneralRepository;
 
 @Repository
 public class GeneralRepository implements IGeneralRepository {
-  private List<User> users;
-  private List<Category> categories;
+  private final List<User> users;
+  private final List<Category> categories;
 
   public GeneralRepository() {
     this.categories = this.loadCategories();

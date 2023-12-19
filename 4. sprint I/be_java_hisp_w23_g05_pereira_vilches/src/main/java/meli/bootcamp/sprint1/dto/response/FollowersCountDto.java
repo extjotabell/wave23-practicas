@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class FollowersDto {
+public class FollowersCountDto {
     private int user_id;
     private String user_name;
     private int followers_count;

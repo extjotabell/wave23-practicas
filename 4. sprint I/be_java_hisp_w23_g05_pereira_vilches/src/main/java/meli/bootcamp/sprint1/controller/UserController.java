@@ -10,18 +10,16 @@ import meli.bootcamp.sprint1.dto.request.NewPostDto;
 import meli.bootcamp.sprint1.service.IUserService;
 import meli.bootcamp.sprint1.service.impl.UserService;
 
-import java.util.List;
-
 @RestController
 public class UserController {
-  private IUserService userService;
+  private final IUserService userService;
 
   public UserController(UserService userService) {
     this.userService = userService;
   }
 
   @GetMapping("test")
-  public ResponseEntity<?> test(){
+  public ResponseEntity<?> getAll(){
     return ResponseEntity.ok(this.userService.getAll());
   }
 
@@ -31,22 +29,18 @@ public class UserController {
   }
 
   @GetMapping("/users/{userId}/followers/count")
-  public ResponseEntity<FollowersDto> getFollowers(@PathVariable int userId){
+  public ResponseEntity<FollowersCountDto> getFollowers(@PathVariable int userId){
     return ResponseEntity.ok(this.userService.getFollowersByUserId(userId));
   }
 
   @PostMapping("/users/{userId}/follow/{userIdToFollow}")
-  public ResponseEntity<?> followUser(
-          @PathVariable int userId,
-          @PathVariable int userIdToFollow
-  ){
+  public ResponseEntity<?> followUser(@PathVariable int userId, @PathVariable int userIdToFollow){
     return ResponseEntity.ok(this.userService.followUser(userId,userIdToFollow));
   }
 
   @GetMapping("/products/followed/{userId}/list")
   public ResponseEntity<LastPostsDto> lastPosts(@PathVariable int userId,
                                                 @RequestParam(required = false, defaultValue = "date_desc") String order){
-
     return ResponseEntity.ok(this.userService.getLastPosts(userId, order));
   }
 
@@ -56,7 +50,7 @@ public class UserController {
   }
 
   @GetMapping("/users/{id}/followers/list")
-  public ResponseEntity<UserDtoUS0003> getFollowersById(@PathVariable int id, @RequestParam(required = false) String order) {
+  public ResponseEntity<UserFollowersDto> getFollowersById(@PathVariable int id, @RequestParam(required = false) String order) {
     return new ResponseEntity<>(userService.getFollowersById(id, order), HttpStatus.OK);
   }
 
