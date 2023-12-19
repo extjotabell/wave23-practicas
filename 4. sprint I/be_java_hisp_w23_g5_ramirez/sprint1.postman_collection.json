@@ -1,43 +1,29 @@
 {
 	"info": {
-		"_postman_id": "42ab595d-8f45-445c-a34c-4a703484a34a",
+		"_postman_id": "1a241023-d073-4592-b0df-e0a598e8e26f",
 		"name": "SPRINT 1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31595552",
-		"_collection_link": "https://red-space-580359.postman.co/workspace/Grupo-5---Bootcamp~7a6a25a7-ae00-4319-aa68-fbf81f400a77/collection/31595552-42ab595d-8f45-445c-a34c-4a703484a34a?action=share&source=collection_link&creator=31595552"
+		"_exporter_id": "31595552"
 	},
 	"item": [
 		{
 			"name": "US 0001",
 			"item": [
 				{
-					"name": "✅ User followed",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "GET /users/{userId}/follow/{userIdToFollow}",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"fuel_type\": \"gas\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "localhost:8080/users/1/follow/2",
+							"raw": "{{URL}}/users/{userId}/follow/{userIdToFollow}",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"users",
-								"1",
+								"{userId}",
 								"follow",
-								"2"
+								"{userIdToFollow}"
 							]
 						}
 					},
@@ -48,11 +34,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/users/45/follow/2",
+									"raw": "{{URL}}/users/45/follow/2",
 									"host": [
-										"localhost"
+										"{{URL}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"45",
@@ -72,11 +57,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/users/1/follow/2",
+									"raw": "{{URL}}/users/1/follow/2",
 									"host": [
-										"localhost"
+										"{{URL}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"1",
@@ -96,16 +80,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/users/1/follow/2",
+									"raw": "{{URL}}/users/7/follow/1",
 									"host": [
-										"localhost"
+										"{{URL}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
-										"1",
+										"7",
 										"follow",
-										"2"
+										"1"
 									]
 								}
 							},
@@ -120,11 +103,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/users/1/follow/2",
+									"raw": "{{URL}}/users/1/follow/2",
 									"host": [
-										"localhost"
+										"{{URL}}"
 									],
-									"port": "8080",
 									"path": [
 										"users",
 										"1",
@@ -182,10 +164,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "❌ User not found",
@@ -205,10 +187,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -218,7 +200,7 @@
 			"name": "US 0003",
 			"item": [
 				{
-					"name": "GET /users/1/followers/list",
+					"name": "GET /users/{userId}/followers/list",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -237,7 +219,7 @@
 					},
 					"response": [
 						{
-							"name": "Get followers",
+							"name": "✅",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -254,13 +236,36 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
-							"name": "Get followers empty list",
+							"name": "❌ No followers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/users/2/followers/list",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"2",
+										"followers",
+										"list"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "❌ User not found",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -277,33 +282,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
-						},
-						{
-							"name": "Get followers - User not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/users/45/followers/list",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"users",
-										"45",
-										"followers",
-										"list"
-									]
-								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -313,7 +295,7 @@
 			"name": "US 0004",
 			"item": [
 				{
-					"name": "{{URL}}/users/1/followed/list",
+					"name": "GET /users/{userId}/followed/list",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -332,7 +314,7 @@
 					},
 					"response": [
 						{
-							"name": "Get followed",
+							"name": "✅",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -349,13 +331,13 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
-							"name": "User not found",
+							"name": "❌ User not found",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -372,10 +354,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -391,7 +373,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"29-04-2021\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 1,\n    \"price\": 1500.50\n}",
+							"raw": "{\n    \"user_id\": 7,\n    \"date\": \"2023-12-13\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 1,\n    \"price\": 1500.50\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -411,7 +393,7 @@
 					},
 					"response": [
 						{
-							"name": "✅ Post added (change date format)",
+							"name": "✅ Post added",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -435,10 +417,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "❌ User not found",
@@ -447,7 +429,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"user_id\": 1000,\n    \"date\": \"29-04-2021\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 1,\n    \"price\": 1500.50\n}",
+									"raw": "{\n    \"user_id\": 1000,\n    \"date\": \"2023-12-15\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 1,\n    \"price\": 1500.50\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -465,10 +447,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "❌ Category not found",
@@ -477,7 +459,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"user_id\": 1,\n    \"date\": \"29-04-2021\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 1000,\n    \"price\": 1500.50\n}",
+									"raw": "{\n    \"user_id\": 1,\n    \"date\": \"2023-12-15\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 1000,\n    \"price\": 1500.50\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -495,10 +477,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -513,14 +495,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/products/followed/2/list",
+							"raw": "{{URL}}/products/followed/1/list",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"products",
 								"followed",
-								"2",
+								"1",
 								"list"
 							]
 						}
@@ -544,10 +526,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "❌ User not found",
@@ -567,10 +549,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -580,44 +562,71 @@
 			"name": "US 0007",
 			"item": [
 				{
-					"name": "Unfollow user",
+					"name": "POST /users/{userId}/unfollow/{userIdToUnfollow}",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/4/unfollow/1",
+							"raw": "{{URL}}/users/1/unfollow/7",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"users",
-								"4",
+								"1",
 								"unfollow",
-								"1"
+								"7"
 							]
 						}
 					},
-					"response": []
-				},
-				{
-					"name": "Follow user",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/users/3/follow/6",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"users",
-								"3",
-								"follow",
-								"6"
-							]
+					"response": [
+						{
+							"name": "✅",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/users/1/unfollow/7",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"1",
+										"unfollow",
+										"7"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "❌ User not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/users/100/unfollow/7",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"100",
+										"unfollow",
+										"7"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
@@ -651,7 +660,7 @@
 					},
 					"response": [
 						{
-							"name": "Order desc",
+							"name": "✅ Order desc",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -674,18 +683,18 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
-							"name": "Order asc",
+							"name": "✅ Order asc",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{URL}}/users/1/followers/list?order=asvd",
+									"raw": "{{URL}}/users/1/followers/list?order=name_asc",
 									"host": [
 										"{{URL}}"
 									],
@@ -698,7 +707,217 @@
 									"query": [
 										{
 											"key": "order",
-											"value": "asvd"
+											"value": "name_asc"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "US 0010",
+			"item": [
+				{
+					"name": "POST /products/promo-post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 7,\n    \"date\": \"2023-12-16\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 2,\n    \"price\": 1500.50,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/products/promo-post",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "✅",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 7,\n    \"date\": \"2023-12-16\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 2,\n    \"price\": 1500.50,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/products/promo-post",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										"promo-post"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "❌ User not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 100,\n    \"date\": \"2023-12-16\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 2,\n    \"price\": 1500.50,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/products/promo-post",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										"promo-post"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "❌ Category not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 7,\n    \"date\": \"2023-12-16\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/products/promo-post",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										"promo-post"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "US 0011",
+			"item": [
+				{
+					"name": "GET /products/promo-post/count?user_id=",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/products/promo-post/count?user_id=7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "✅",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/products/promo-post/count?user_id=7",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										"promo-post",
+										"count"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "❌ User not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/products/promo-post/count?user_id=100",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										"promo-post",
+										"count"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "100"
 										}
 									]
 								}
@@ -713,21 +932,70 @@
 			]
 		},
 		{
-			"name": "TEST",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/test",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"test"
+			"name": "US 0012",
+			"item": [
+				{
+					"name": "DELETE /users/{userId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "✅",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/users/7",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"7"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "❌ User not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/users/100",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"100"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
 					]
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

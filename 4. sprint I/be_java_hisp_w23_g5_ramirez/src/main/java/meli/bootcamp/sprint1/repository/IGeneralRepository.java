@@ -14,4 +14,6 @@ public interface IGeneralRepository {
 
   boolean unfollowUser(List<Integer> followedUsers, List<Integer> followers, int userIdToUnfollow,
       int removeFromFollowers);
+
+  boolean removeUser(User user);
 }

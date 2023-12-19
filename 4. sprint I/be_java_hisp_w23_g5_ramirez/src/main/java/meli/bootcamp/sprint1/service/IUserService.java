@@ -3,11 +3,13 @@ package meli.bootcamp.sprint1.service;
 import java.util.List;
 
 import meli.bootcamp.sprint1.dto.request.NewPostDto;
+import meli.bootcamp.sprint1.dto.request.NewPromoPostDto;
 import meli.bootcamp.sprint1.dto.request.UserFollowedDto;
 import meli.bootcamp.sprint1.dto.response.BaseResponseDto;
 import meli.bootcamp.sprint1.dto.response.UserDtoUS0003;
 import meli.bootcamp.sprint1.dto.response.FollowersDto;
 import meli.bootcamp.sprint1.dto.response.LastPostsDto;
+import meli.bootcamp.sprint1.dto.response.PromoPostCountDto;
 import meli.bootcamp.sprint1.entity.User;
 
 public interface IUserService {
@@ -33,5 +35,11 @@ public interface IUserService {
   LastPostsDto getLastPosts(int userId, String order);
 
   UserFollowedDto getFollowed(Integer id);
+
+  BaseResponseDto addPromoPost(NewPromoPostDto newPromoPost);
+
+  PromoPostCountDto countPromoPosts(int userId);
+
+  BaseResponseDto remove(int userId);
 
 }

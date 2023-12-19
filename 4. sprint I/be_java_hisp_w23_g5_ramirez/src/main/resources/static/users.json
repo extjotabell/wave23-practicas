@@ -1,15 +1,13 @@
 [
   {
     "name": "Ailen Pereira",
-    "isSeller": true,
-    "followers": [3,2,4],
-    "followed": [3,2,4],
+    "followers": [],
+    "followed": [],
     "posts": [],
     "id": "1"
   },
   {
     "name": "Brenda Torrico",
-    "isSeller": false,
     "followers": [],
     "followed": [],
     "posts": [],
@@ -17,7 +15,6 @@
   },
   {
     "name": "Fatima Noble",
-    "isSeller": false,
     "followers": [],
     "followed": [],
     "posts": [],
@@ -25,23 +22,20 @@
   },
   {
     "name": "Geronimo Schmidt",
-    "isSeller": true,
-    "followers": [1,2,3],
+    "followers": [],
     "followed": [],
     "posts": [],
     "id": "4"
   },
   {
     "name": "Lucas Salerno",
-    "isSeller": false,
     "followers": [],
-    "followed": [6, 7, 8],
+    "followed": [],
     "posts": [],
     "id": "5"
   },
   {
     "name": "Martin Marquez",
-    "isSeller": false,
     "followers": [],
     "followed": [],
     "posts": [],
@@ -49,7 +43,6 @@
   },
   {
     "name": "Tiago Ramirez",
-    "isSeller": false,
     "followers": [],
     "followed": [],
     "posts": [],
@@ -57,7 +50,6 @@
   },
   {
     "name": "Nicolas Reinaldo",
-    "isSeller": false,
     "followers": [],
     "followed": [],
     "posts": [],

@@ -82,4 +82,10 @@ public class GeneralRepository implements IGeneralRepository {
       int removeFromFollowers) {
     return followedUsers.removeIf(u -> u == userIdToUnfollow) && followers.removeIf(u -> u == removeFromFollowers);
   }
+
+  @Override
+  public boolean removeUser(User user) {
+    this.users.remove(user);
+    return true;
+  }
 }

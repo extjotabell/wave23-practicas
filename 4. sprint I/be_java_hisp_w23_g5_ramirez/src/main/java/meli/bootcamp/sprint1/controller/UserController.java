@@ -4,11 +4,13 @@ import meli.bootcamp.sprint1.dto.response.UserDtoUS0003;
 import org.springframework.http.HttpStatus;
 import meli.bootcamp.sprint1.dto.response.FollowersDto;
 import meli.bootcamp.sprint1.dto.response.LastPostsDto;
+import meli.bootcamp.sprint1.dto.response.PromoPostCountDto;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import meli.bootcamp.sprint1.dto.request.NewPostDto;
+import meli.bootcamp.sprint1.dto.request.NewPromoPostDto;
 import meli.bootcamp.sprint1.dto.response.BaseResponseDto;
 import meli.bootcamp.sprint1.service.IUserService;
 import meli.bootcamp.sprint1.service.impl.UserService;
@@ -65,5 +67,20 @@ public class UserController {
   @PostMapping("users/{userId}/unfollow/{userIdToUnfollow}")
   public ResponseEntity<BaseResponseDto> unfollowUser(@PathVariable int userId, @PathVariable int userIdToUnfollow) {
     return ResponseEntity.ok(this.userService.unfollowUser(userId, userIdToUnfollow));
+  }
+
+  @PostMapping("products/promo-post")
+  public ResponseEntity<BaseResponseDto> newPromoPost(@RequestBody NewPromoPostDto newPost){
+    return ResponseEntity.ok(this.userService.addPromoPost(newPost));
+  }
+
+  @GetMapping("products/promo-post/count")
+  public ResponseEntity<PromoPostCountDto> countPromoPosts(@RequestParam(required = true) int user_id){
+    return ResponseEntity.ok(this.userService.countPromoPosts(user_id));
+  }
+
+  @DeleteMapping("users/{userId}")
+  public ResponseEntity<BaseResponseDto> deleteUser(@PathVariable int userId){
+    return ResponseEntity.ok(this.userService.remove(userId));
   }
 }

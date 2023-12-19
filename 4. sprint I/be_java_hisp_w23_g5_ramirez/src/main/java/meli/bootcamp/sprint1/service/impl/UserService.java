@@ -13,16 +13,18 @@ import meli.bootcamp.sprint1.exception.EmptyListException;
 import meli.bootcamp.sprint1.dto.response.LastPostsDto;
 import meli.bootcamp.sprint1.dto.response.PostDto;
 import meli.bootcamp.sprint1.dto.response.ProductDto;
-
+import meli.bootcamp.sprint1.dto.response.PromoPostCountDto;
 import meli.bootcamp.sprint1.dto.response.FollowersDtoUS0003;
 import meli.bootcamp.sprint1.dto.response.UserDtoUS0003;
 
 import org.springframework.stereotype.Service;
 
 import meli.bootcamp.sprint1.dto.request.NewPostDto;
+import meli.bootcamp.sprint1.dto.request.NewPromoPostDto;
 import meli.bootcamp.sprint1.dto.response.BaseResponseDto;
 import meli.bootcamp.sprint1.entity.Category;
 import meli.bootcamp.sprint1.entity.Post;
+import meli.bootcamp.sprint1.entity.PromoPost;
 import meli.bootcamp.sprint1.entity.Product;
 import meli.bootcamp.sprint1.entity.User;
 import meli.bootcamp.sprint1.exception.BadRequestException;
@@ -71,7 +73,7 @@ public class UserService implements IUserService {
       throw new BadRequestException("User with id " + userIdToFollow + " not found");
     }
 
-    if (!userToFollow.isSeller()) {
+    if (userToFollow.getPosts().isEmpty()) {
       throw new BadRequestException("User must be a seller to follow");
     }
 
@@ -143,7 +145,7 @@ public class UserService implements IUserService {
       throw new BadRequestException("Followed list and following lists are empty");
     }
 
-    if (!userFollowed.isSeller()) {
+    if (userFollowed.getPosts().isEmpty()) {
       throw new BadRequestException("User " + userId + " is not a seller");
     }
 
@@ -266,6 +268,51 @@ public class UserService implements IUserService {
     UserFollowedDto userFollowedDto = new UserFollowedDto(user.getId(), user.getName(), followed);
 
     return userFollowedDto;
+  }
+
+  @Override
+  public BaseResponseDto addPromoPost(NewPromoPostDto newPromoPost) {
+    User user = this.repository.findUserById(newPromoPost.getUser_id());
+    if (user == null) {
+      throw new BadRequestException("User not found");
+    }
+
+    Product newProductEntity = Mapper.map(newPromoPost.getProduct(), Product.class);
+
+    Category category = this.repository.findCategoryById(newPromoPost.getCategory());
+    if (category == null) {
+      throw new BadRequestException("Category not found");
+    }
+
+    Post newPostEntity = new PromoPost(newProductEntity, newPromoPost.getDate(), category,
+        newPromoPost.getPrice(), newPromoPost.getDiscount());
+
+    user.addPost(newPostEntity);
+
+    return new BaseResponseDto("Promo post added");
+  }
+
+  @Override
+  public PromoPostCountDto countPromoPosts(int userId) {
+    User user = this.repository.findUserById(userId);
+    if (user == null) {
+      throw new BadRequestException("User not found");
+    }
+    int count = (int) user.getPosts().stream().filter(p -> p instanceof PromoPost).count();
+    return new PromoPostCountDto(userId, user.getName(), count);
+  }
+
+  @Override
+  public BaseResponseDto remove(int userId) {
+    User user = this.repository.findUserById(userId);
+    if (user == null) {
+      throw new BadRequestException("User not found");
+    }
+    user.getFollowed().forEach(followedId-> this.unfollowUser(userId, followedId));
+    user.getFollowers().forEach(followerId-> this.unfollowUser(followerId,userId));
+
+    this.repository.removeUser(user);
+    return new BaseResponseDto("User deleted");
   }
 
 }
