@@ -59,7 +59,7 @@ public class SocialMeliController {
     }
 
     @PostMapping("/products/promo-post")
-    public ResponseEntity<?> getPromoPosts(@RequestBody PostPromoDTO post){
+    public ResponseEntity<?> savePostPromo(@RequestBody PostPromoDTO post){
         return new ResponseEntity<>(socialMediaService.savePost(post), HttpStatus.OK);
     }
 }
