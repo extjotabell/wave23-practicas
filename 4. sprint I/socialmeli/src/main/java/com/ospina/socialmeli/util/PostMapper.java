@@ -39,7 +39,8 @@ public class PostMapper {
             ProductMapper.toProduct(postRequestDTO.getProduct()),
             parseDate(postRequestDTO.getDate()),
             postRequestDTO.getCategory(),
-            postRequestDTO.getPrice()
+            postRequestDTO.getPrice(),
+            false
         );
     }
 
@@ -61,7 +62,8 @@ public static Post toPostPromo(PostPromoRequestDTO postPromoRequestDTO, Seller s
         ProductMapper.toProduct(postPromoRequestDTO.getProduct()),
         parseDate(postPromoRequestDTO.getDate()),
         postPromoRequestDTO.getCategory(),
-        price.doubleValue()
+        price.doubleValue(),
+        postPromoRequestDTO.getHasPromo()
     );
 }
 

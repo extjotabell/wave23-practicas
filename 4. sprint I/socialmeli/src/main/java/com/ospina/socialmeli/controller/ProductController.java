@@ -3,6 +3,7 @@ package com.ospina.socialmeli.controller;
 import com.ospina.socialmeli.dto.request.PostRequestDTO;
 import com.ospina.socialmeli.dto.request.PostPromoRequestDTO;
 import com.ospina.socialmeli.dto.response.PostResponseDTO;
+import com.ospina.socialmeli.dto.response.PromoCountResponseDTO;
 import com.ospina.socialmeli.service.product.ProductService;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.http.HttpStatus;
@@ -41,5 +42,11 @@ public class ProductController {
     public ResponseEntity<?> followedPostsList(@PathVariable Long userId,
                                                @RequestParam(required = false) String order) {
         return ResponseEntity.ok().body(productService.followedPostsList(userId, order));
+    }
+
+    ///products/promo-post/count?user_id={userId}
+    @GetMapping("/promo-post/count")
+    public ResponseEntity<PromoCountResponseDTO> promoPostCount(@RequestParam Long user_id) {
+        return ResponseEntity.ok().body(productService.promoPostCount(user_id));
     }
 }

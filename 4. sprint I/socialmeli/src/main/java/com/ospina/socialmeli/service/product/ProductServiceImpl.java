@@ -4,6 +4,7 @@ import com.ospina.socialmeli.dto.request.PostPromoRequestDTO;
 import com.ospina.socialmeli.dto.request.PostRequestDTO;
 import com.ospina.socialmeli.dto.response.FollowedPostsListDTO;
 import com.ospina.socialmeli.dto.response.PostResponseDTO;
+import com.ospina.socialmeli.dto.response.PromoCountResponseDTO;
 import com.ospina.socialmeli.entity.Post;
 import com.ospina.socialmeli.entity.Seller;
 import com.ospina.socialmeli.entity.User;
@@ -12,6 +13,7 @@ import com.ospina.socialmeli.exception.NotFoundException;
 import com.ospina.socialmeli.repository.product.ProductRepository;
 import com.ospina.socialmeli.repository.seller.SellerRepository;
 import com.ospina.socialmeli.repository.user.UserRepository;
+import com.ospina.socialmeli.util.DTOMapper;
 import com.ospina.socialmeli.util.PostMapper;
 import org.springframework.stereotype.Service;
 
@@ -77,6 +79,17 @@ public class ProductServiceImpl implements ProductService{
         return PostMapper.mapToFollowedPostsListDTO(allFollowedByUser, userId, order);
     }
 
+    @Override
+    public PromoCountResponseDTO promoPostCount(Long userId) {
+        Seller seller = getOnlySeller(userId);
+        Long promoCount = seller.getPosts().values().stream()
+                .filter(Post::isHasDiscount)
+                .count();
+
+        return DTOMapper.mapToPromoCountResponseDTO(seller, promoCount);
+
+    }
+
     private Seller getSeller(Long userId) {
         return sellerRepository.read(userId)
                 .or(() -> userRepository.read(userId).map(user -> {
@@ -86,6 +99,11 @@ public class ProductServiceImpl implements ProductService{
                     return newSeller;
                 }))
                 .orElseThrow(() -> new NotFoundException("User with id " + userId + " not found"));
+    }
+
+    private Seller getOnlySeller(Long userId) {
+        return sellerRepository.read(userId)
+                .orElseThrow(() -> new NotFoundException("Seller with id " + userId + " not found"));
     }
 
     private void checkIfProductAlreadyPosted(Long productId) {
