@@ -38,8 +38,8 @@ public class ProductController {
         return new ResponseEntity<>(iProductService.newPost(post), HttpStatus.OK);
     }
 
-    @PostMapping("/products/promo-post")
+    @PostMapping("/promo-post")
     public ResponseEntity<?> createPromoPost(@RequestBody PromoPostDTO promoPostDTO){
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(iProductService.createPromoPost(promoPostDTO), HttpStatus.OK);
     }
 }

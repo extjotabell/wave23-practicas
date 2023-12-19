@@ -8,6 +8,7 @@ import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
 import com.meli.socialmeli.dtos.response.ProductDTO;
 import com.meli.socialmeli.entities.Post;
 import com.meli.socialmeli.entities.User;
+import com.meli.socialmeli.exceptions.custom.BadRequestException;
 import com.meli.socialmeli.exceptions.custom.NotFoundException;
 import com.meli.socialmeli.repositories.IProductRepository;
 import com.meli.socialmeli.repositories.IUserRepository;
@@ -87,8 +88,7 @@ public class ProductServiceImpl implements IProductService {
 
         if (user.getPosts().isEmpty()){
             user.getPosts().add(Mappers.mapNewPost(post,100));
-        }
-        else {
+        } else {
             int numberPosts = user.getPosts().size();
             user.addPost(Mappers.mapNewPost(post, user.getPosts().get(numberPosts - 1).getPost_id() + 1000));
         }
@@ -97,6 +97,20 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public MessageDTO createPromoPost(PromoPostDTO promoPostDTO) {
-        return null;
+        User user = userRepository.finById(promoPostDTO.getUserId());
+        if(user == null) throw new NotFoundException("Invalid user");
+
+        if(promoPostDTO.isHasPromo() && promoPostDTO.getDiscount() <= 0.0){
+            throw new BadRequestException("Invalid discount");
+        }
+
+        if(user.getPosts().isEmpty()){
+            user.getPosts().add(Mappers.mapNewPromoPost(promoPostDTO, 100));
+        }else {
+            int numberPosts = user.getPosts().size();
+            user.addPost(Mappers.mapNewPromoPost(promoPostDTO, user.getPosts().get(numberPosts - 1).getPost_id() + 1000));
+        }
+
+        return new MessageDTO("Promo post created");
     }
 }
