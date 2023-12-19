@@ -5,6 +5,7 @@
     "followers": [3,2,4],
     "followed": [3,2,4],
     "posts": [],
+    "favorites": [],
     "id": "1"
   },
   {
@@ -13,6 +14,7 @@
     "followers": [],
     "followed": [],
     "posts": [],
+    "favorites": [],
     "id": "2"
   },
   {
@@ -21,6 +23,7 @@
     "followers": [],
     "followed": [],
     "posts": [],
+    "favorites": [],
     "id": "3"
   },
   {
@@ -29,6 +32,7 @@
     "followers": [1,2,3],
     "followed": [],
     "posts": [],
+    "favorites": [],
     "id": "4"
   },
   {
@@ -37,6 +41,7 @@
     "followers": [],
     "followed": [6, 7, 8],
     "posts": [],
+    "favorites": [],
     "id": "5"
   },
   {
@@ -45,6 +50,7 @@
     "followers": [],
     "followed": [],
     "posts": [],
+    "favorites": [],
     "id": "6"
   },
   {
@@ -53,6 +59,7 @@
     "followers": [],
     "followed": [],
     "posts": [],
+    "favorites": [],
     "id": "7"
   },
   {
@@ -61,6 +68,7 @@
     "followers": [],
     "followed": [],
     "posts": [],
+    "favorites": [],
     "id": "8"
   }
 ]

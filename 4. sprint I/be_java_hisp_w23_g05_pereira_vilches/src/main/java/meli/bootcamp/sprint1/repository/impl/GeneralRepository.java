@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import meli.bootcamp.sprint1.entity.Post;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
@@ -80,5 +81,15 @@ public class GeneralRepository implements IGeneralRepository {
 
   public boolean unfollowUser(List<Integer> followedUsers, List<Integer> followers, int userIdToUnfollow, int removeFromFollowers) {
     return followedUsers.removeIf(u -> u == userIdToUnfollow) && followers.removeIf(u -> u == removeFromFollowers);
+  }
+
+  @Override
+  public Post findPostById(int postId) {
+    List<Post> allPosts = users.stream()
+            .flatMap(user -> user.getPosts().stream())
+            .toList();
+    return allPosts.stream()
+            .filter(post -> post.getId() == postId)
+            .findFirst().orElse(null);
   }
 }

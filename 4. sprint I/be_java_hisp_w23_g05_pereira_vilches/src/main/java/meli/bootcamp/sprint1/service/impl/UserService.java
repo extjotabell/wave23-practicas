@@ -43,7 +43,7 @@ public class UserService implements IUserService {
       throw new BadRequestException("Category not found");
     }
 
-    Post newPostEntity = new Post(newProductEntity, newPost.getDate(), category, newPost.getPrice(), newPost.isHas_promo(), newPost.getDiscount());
+    Post newPostEntity = new Post(newProductEntity, newPost.getUser_id(), newPost.getDate(), category, newPost.getPrice(), newPost.isHas_promo(), newPost.getDiscount());
 
     user.addPost(newPostEntity);
 
@@ -225,6 +225,25 @@ public class UserService implements IUserService {
             .filter(Post::isHas_promo).count();
 
     return new PromoProductsDto(user.getId(), user.getName(), posts);
+  }
+
+  @Override
+  public BaseResponseDto addPostToFavorites(int userId, int postId) {
+    User user = this.repository.findUserById(userId);
+    verifyUserExists(user);
+
+    Post post = this.repository.findPostById(postId);
+    if(post == null){
+      throw new BadRequestException("Post not found");
+    }
+
+    if(post.getUser_id() == userId){
+      throw new BadRequestException("Cannot add your own posts to favorites");
+    }
+
+    user.getFavorites().add(post);
+
+    return new BaseResponseDto("Post added to favorites");
   }
 
   private void verifyUserExists(User user) {

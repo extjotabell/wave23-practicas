@@ -69,4 +69,10 @@ public class UserController {
     return ResponseEntity.ok(this.userService.getPostWithPromo(user_id));
   }
 
+  //BONUS:
+  @PostMapping("/posts/{userId}/favorites/{postId}")
+  public ResponseEntity<?> addToFavorites(@PathVariable int userId,
+                                          @PathVariable int postId){
+    return ResponseEntity.ok(this.userService.addPostToFavorites(userId,postId));
+  }
 }

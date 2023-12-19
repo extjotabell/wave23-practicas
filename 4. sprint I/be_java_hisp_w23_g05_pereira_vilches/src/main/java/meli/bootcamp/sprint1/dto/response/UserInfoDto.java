@@ -19,5 +19,5 @@ public class UserInfoDto {
     private List<Post> posts;
     private List<Integer> followed;
     private List<Integer> followers;
-
+    private List<Post> favorites;
 }

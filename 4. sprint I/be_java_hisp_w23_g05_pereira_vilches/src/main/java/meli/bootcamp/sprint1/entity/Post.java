@@ -15,6 +15,7 @@ public class Post {
   @JsonAlias("post_id")
   private int id;
   private static int nextId = 0;
+  private int user_id;
   private Product product;
   private LocalDate date;
   private Category category;
@@ -24,9 +25,10 @@ public class Post {
   @JsonInclude(JsonInclude.Include.NON_NULL)
   private double discount;
 
-  public Post(Product product, LocalDate date, Category category, double price, boolean hasPromo, double discount) {
+  public Post(Product product, int user_id, LocalDate date, Category category, double price, boolean hasPromo, double discount) {
     this.id = ++nextId;
     this.product = product;
+    this.user_id = user_id;
     this.date = date;
     this.category = category;
     this.price = price;

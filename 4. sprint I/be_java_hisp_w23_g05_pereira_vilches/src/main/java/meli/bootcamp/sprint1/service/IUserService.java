@@ -28,4 +28,6 @@ public interface IUserService {
   LastPostsDto getLastPosts(int userId, String order);
 
   PromoProductsDto getPostWithPromo(int userId);
+
+  BaseResponseDto addPostToFavorites(int userId, int postId);
 }
