@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
-
+import java.util.Optional;
 
 
 @RestController
@@ -41,5 +40,10 @@ public class ProductController {
     @PostMapping("/promo-post")
     public ResponseEntity<?> createPromoPost(@RequestBody PromoPostDTO promoPostDTO){
         return new ResponseEntity<>(iProductService.createPromoPost(promoPostDTO), HttpStatus.OK);
+    }
+
+    @GetMapping("/promo-post/count")
+    public ResponseEntity<?> getCountPromoPosts(@RequestParam Optional<Integer> user_id){
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }
