@@ -2,12 +2,14 @@ package com.sprint.be_java_hisp_w23_g04.utils;
 
 import com.sprint.be_java_hisp_w23_g04.dto.DBUserDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO;
+import com.sprint.be_java_hisp_w23_g04.dto.request.PostPromoDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.PostResponseDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.ProductDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.UserDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.UserFollowDTO;
 import com.sprint.be_java_hisp_w23_g04.entity.Post;
 import com.sprint.be_java_hisp_w23_g04.entity.Product;
+import com.sprint.be_java_hisp_w23_g04.entity.PostPromo;
 import com.sprint.be_java_hisp_w23_g04.entity.User;
 
 import java.util.ArrayList;
@@ -59,6 +61,11 @@ public class UserMapper {
 
     public static Post mapPost(PostDTO post, int postId) {
         return new Post(postId, post.getDate(), mapProduct(post.getProduct()), post.getCategory(), post.getPrice());
+    }
+
+    public static PostPromo mapPost(PostPromoDTO post, int postId) {
+        return new PostPromo(postId, post.getDate(), mapProduct(post.getProduct()), post.getCategory(), post.getPrice(),
+                post.isHasPromo(), post.getDiscount());
     }
 
     public static UserFollowDTO mapUserFollow(User user) {

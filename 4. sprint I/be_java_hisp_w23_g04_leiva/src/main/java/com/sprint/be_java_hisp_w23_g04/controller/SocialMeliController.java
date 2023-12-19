@@ -1,6 +1,7 @@
 package com.sprint.be_java_hisp_w23_g04.controller;
 
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO;
+import com.sprint.be_java_hisp_w23_g04.dto.request.PostPromoDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,5 +56,10 @@ public class SocialMeliController {
     @GetMapping("/products/followed/{userId}/list")
     public ResponseEntity<?> getFilteredPost(@PathVariable int userId,@RequestParam(defaultValue = "date_asc") String order){
         return new ResponseEntity<>(socialMediaService.getFilteredPosts(userId,order), HttpStatus.OK);
+    }
+
+    @PostMapping("/products/promo-post")
+    public ResponseEntity<?> getPromoPosts(@RequestBody PostPromoDTO post){
+        return new ResponseEntity<>(socialMediaService.savePost(post), HttpStatus.OK);
     }
 }

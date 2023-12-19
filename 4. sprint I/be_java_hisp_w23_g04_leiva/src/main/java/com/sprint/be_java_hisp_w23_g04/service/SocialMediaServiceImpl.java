@@ -1,6 +1,7 @@
 package com.sprint.be_java_hisp_w23_g04.service;
 
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO;
+import com.sprint.be_java_hisp_w23_g04.dto.request.PostPromoDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.FollowedListDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.UserDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.UserFollowDTO;
@@ -100,7 +101,6 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
                 .toList();
     }
 
-
     @Override
     public FollowersListDTO getFollowersByUserId(int userId, String order) {
         User user = this.socialMediaRepository.findUser(userId);
@@ -124,7 +124,7 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         verifyUserExist(user);
         int postId = socialMediaRepository.getNextPostId(user);
 
-        posts.add(UserMapper.mapPost(post, postId));
+        posts.add(mapPostDTOToEntity(post, postId));
         posts.addAll(user.getPosts());
         user.setPosts(posts);
 
@@ -185,6 +185,14 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         return list.stream()
                 .sorted((p1, p2) -> p2.getDate().compareTo(p1.getDate()))
                 .collect(Collectors.toList());
+    }
+
+    private Post mapPostDTOToEntity(PostDTO dto, int postId) {
+        if (dto instanceof PostPromoDTO) {
+            return UserMapper.mapPost((PostPromoDTO) dto, postId);
+        } else {
+            return UserMapper.mapPost(dto, postId);
+        }
     }
 
 }
