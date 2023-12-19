@@ -1,5 +1,6 @@
 package com.ospina.socialmeli.service.product;
 
+import com.ospina.socialmeli.dto.request.PostPromoRequestDTO;
 import com.ospina.socialmeli.dto.request.PostRequestDTO;
 import com.ospina.socialmeli.dto.response.FollowedPostsListDTO;
 import com.ospina.socialmeli.dto.response.PostResponseDTO;
@@ -32,32 +33,30 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public PostResponseDTO postProduct(PostRequestDTO postRequestDTO) {
-        // If user is not a seller, turn it into a seller
-        Seller seller = sellerRepository.read(postRequestDTO.getUserId())
-                .or(() -> userRepository.read(postRequestDTO.getUserId()).map(user -> {
-                    Seller newSeller = Seller.build(user);
-                    sellerRepository.create(newSeller);
-                    userRepository.delete(user.getId());
-                    return newSeller;
-                }))
-                .orElseThrow(() -> new NotFoundException("User with id " + postRequestDTO.getUserId() + " not found"));
-
-
-        // Check if product is already posted (id is unique)
+        Seller seller = getSeller(postRequestDTO.getUserId());
         Long productId = postRequestDTO.getProduct().getProductId();
-        boolean isProductAlreadyPosted = productRepository.findAll().stream()
-            .anyMatch(post -> post.getProduct().getId().equals(productId));
 
-        if (isProductAlreadyPosted) {
-            throw new AlreadyExistsException(
-                "Product with id " + productId + " already posted"
-            );
-        }
+        checkIfProductAlreadyPosted(productId);
 
         Long id = productRepository.getNextId();
         Post post = PostMapper.toPost(postRequestDTO, seller, id);
 
-        // Save product to repository and add it to seller's posts
+        productRepository.create(post);
+        seller.getPosts().put(id, post);
+
+        return PostMapper.toPostResponseDTO(post);
+    }
+
+    @Override
+    public PostResponseDTO postPromoProduct(PostPromoRequestDTO postPromoRequestDTO) {
+        Seller seller = getSeller(postPromoRequestDTO.getUserId());
+        Long productId = postPromoRequestDTO.getProduct().getProductId();
+
+        checkIfProductAlreadyPosted(productId);
+
+        Long id = productRepository.getNextId();
+        Post post = PostMapper.toPostPromo(postPromoRequestDTO, seller, id);
+
         productRepository.create(post);
         seller.getPosts().put(id, post);
 
@@ -76,5 +75,27 @@ public class ProductServiceImpl implements ProductService{
                 .filter(post -> !post.getDate().isBefore(LocalDate.now().minusWeeks(2))).toList();
 
         return PostMapper.mapToFollowedPostsListDTO(allFollowedByUser, userId, order);
+    }
+
+    private Seller getSeller(Long userId) {
+        return sellerRepository.read(userId)
+                .or(() -> userRepository.read(userId).map(user -> {
+                    Seller newSeller = Seller.build(user);
+                    sellerRepository.create(newSeller);
+                    userRepository.delete(user.getId());
+                    return newSeller;
+                }))
+                .orElseThrow(() -> new NotFoundException("User with id " + userId + " not found"));
+    }
+
+    private void checkIfProductAlreadyPosted(Long productId) {
+        boolean isProductAlreadyPosted = productRepository.findAll().stream()
+                .anyMatch(post -> post.getProduct().getId().equals(productId));
+
+        if (isProductAlreadyPosted) {
+            throw new AlreadyExistsException(
+                    "Product with id " + productId + " already posted"
+            );
+        }
     }
 }

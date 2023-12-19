@@ -1,18 +1,18 @@
 package com.ospina.socialmeli.util;
 
 import com.ospina.socialmeli.dto.ProductDTO;
+import com.ospina.socialmeli.dto.request.PostPromoRequestDTO;
 import com.ospina.socialmeli.dto.request.PostRequestDTO;
 import com.ospina.socialmeli.dto.response.FollowedPostsListDTO;
 import com.ospina.socialmeli.dto.response.PostResponseDTO;
 import com.ospina.socialmeli.entity.Post;
-import com.ospina.socialmeli.entity.Product;
 import com.ospina.socialmeli.entity.Seller;
-import com.ospina.socialmeli.exception.ValidationException;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class PostMapper {
 
@@ -33,21 +33,42 @@ public class PostMapper {
     }
 
     public static Post toPost(PostRequestDTO postRequestDTO, Seller seller, Long id){
-        Product product = ProductMapper.toProduct(postRequestDTO.getProduct());
-
-        // Parse string of dd-MM-yyyy to LocalDate
-        ArgumentValidator.validateRequired(postRequestDTO.getDate(), "Date is required");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate date = LocalDate.parse(postRequestDTO.getDate(), formatter);
-
         return Post.build(
             id,
             seller,
-            product,
-            date,
+            ProductMapper.toProduct(postRequestDTO.getProduct()),
+            parseDate(postRequestDTO.getDate()),
             postRequestDTO.getCategory(),
             postRequestDTO.getPrice()
         );
+    }
+
+
+
+public static Post toPostPromo(PostPromoRequestDTO postPromoRequestDTO, Seller seller, Long id){
+    BigDecimal price = BigDecimal.valueOf(postPromoRequestDTO.getPrice());
+
+    if (postPromoRequestDTO.getHasPromo()) {
+        BigDecimal discount = BigDecimal.valueOf(postPromoRequestDTO.getDiscount());
+        price = price.subtract(price.multiply(discount));
+    }
+
+    price = price.setScale(2, RoundingMode.HALF_UP);
+
+    return Post.build(
+        id,
+        seller,
+        ProductMapper.toProduct(postPromoRequestDTO.getProduct()),
+        parseDate(postPromoRequestDTO.getDate()),
+        postPromoRequestDTO.getCategory(),
+        price.doubleValue()
+    );
+}
+
+    private static LocalDate parseDate(String dateStr) {
+        ArgumentValidator.validateRequired(dateStr, "Date is required");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(dateStr, formatter);
     }
 
     public static FollowedPostsListDTO mapToFollowedPostsListDTO(List<Post> posts, Long userId, String order) {

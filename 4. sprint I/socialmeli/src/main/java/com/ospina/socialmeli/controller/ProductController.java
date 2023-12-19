@@ -1,6 +1,7 @@
 package com.ospina.socialmeli.controller;
 
 import com.ospina.socialmeli.dto.request.PostRequestDTO;
+import com.ospina.socialmeli.dto.request.PostPromoRequestDTO;
 import com.ospina.socialmeli.dto.response.PostResponseDTO;
 import com.ospina.socialmeli.service.product.ProductService;
 import org.springframework.format.datetime.DateFormatter;
@@ -27,6 +28,12 @@ public class ProductController {
     @PostMapping("/post")
     public ResponseEntity<PostResponseDTO> postProduct(@RequestBody PostRequestDTO postRequestDTO) {
         PostResponseDTO postResponseDTO = productService.postProduct(postRequestDTO);
+        return new ResponseEntity<>(postResponseDTO, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/promo-post")
+    public ResponseEntity<PostResponseDTO> postPromoProduct(@RequestBody PostPromoRequestDTO postPromoRequestDTO) {
+        PostResponseDTO postResponseDTO = productService.postPromoProduct(postPromoRequestDTO);
         return new ResponseEntity<>(postResponseDTO, HttpStatus.CREATED);
     }
 
