@@ -2,10 +2,7 @@ package com.meli.socialmeli.services.impl;
 
 import com.meli.socialmeli.dtos.request.PostDTO;
 import com.meli.socialmeli.dtos.request.PromoPostDTO;
-import com.meli.socialmeli.dtos.response.MessageDTO;
-import com.meli.socialmeli.dtos.response.PostNoPromoDTO;
-import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
-import com.meli.socialmeli.dtos.response.ProductDTO;
+import com.meli.socialmeli.dtos.response.*;
 import com.meli.socialmeli.entities.Post;
 import com.meli.socialmeli.entities.User;
 import com.meli.socialmeli.exceptions.custom.BadRequestException;
@@ -112,5 +109,10 @@ public class ProductServiceImpl implements IProductService {
         }
 
         return new MessageDTO("Promo post created");
+    }
+
+    @Override
+    public PromoProductsCountDTO getCountPromoPosts(Integer userId) {
+        return null;
     }
 }
