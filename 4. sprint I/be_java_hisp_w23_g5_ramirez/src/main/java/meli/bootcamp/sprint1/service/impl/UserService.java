@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.Set;
 
 import meli.bootcamp.sprint1.dto.response.FollowersDto;
 import meli.bootcamp.sprint1.dto.request.FollowedDto;
@@ -99,7 +100,7 @@ public class UserService implements IUserService {
       throw new BadRequestException("User not found");
     }
 
-    List<Integer> followers = user.getFollowers();
+    Set<Integer> followers = user.getFollowers();
 
     if (followers == null || followers.isEmpty()) {
       throw new EmptyListException("The User " + id + " has no followers users");
@@ -130,27 +131,24 @@ public class UserService implements IUserService {
   @Override
   public BaseResponseDto unfollowUser(int userId, int userIdToUnfollow) {
     User userFollower = repository.findUserById(userId);
+    if (userFollower == null) {
+      throw new BadRequestException("User not found");
+    }
+
     User userFollowed = repository.findUserById(userIdToUnfollow);
-
-    if (userFollower == null || userFollowed == null) {
-      throw new BadRequestException("User/s not found");
+    if (userFollowed == null) {
+      throw new BadRequestException("User to unfollow not found");
     }
 
-    if (userFollower.getFollowed().isEmpty() && userFollowed.getFollowed().isEmpty()) {
-      throw new BadRequestException("Followed list and following lists are empty");
+    if (!userFollower.getFollowed().stream().anyMatch(followedId -> followedId == userIdToUnfollow)) {
+      throw new BadRequestException("User " + userId + " is not following the user " + userIdToUnfollow);
     }
 
-    if (userFollowed.getPosts().isEmpty()) {
-      throw new BadRequestException("User " + userId + " is not a seller");
-    }
+    userFollower.removeFollow(userIdToUnfollow);
 
-    boolean unfollowed = this.repository.unfollowUser(userFollower.getFollowed(), userFollowed.getFollowers(), userIdToUnfollow, userId);
+    userFollowed.removeFollower(userId);
 
-    if (unfollowed) {
-      return new BaseResponseDto("User " + userIdToUnfollow + " was unfollowed");
-    } else {
-      return new BaseResponseDto("Error unfollowing user, user " + userId + " doesn't follow user " + userIdToUnfollow);
-    }
+    return new BaseResponseDto("User " + userIdToUnfollow + " was unfollowed");
   }
 
   @Override
@@ -199,7 +197,7 @@ public class UserService implements IUserService {
     if (user == null) {
       throw new BadRequestException("User not found");
     }
-    List<Integer> followedId = user.getFollowed();
+    Set<Integer> followedId = user.getFollowed();
     List<User> followed = followedId.stream().map(id -> this.repository.findUserById(id)).toList();
     List<PostDto> postsDto = new ArrayList<PostDto>();
     for (User follow : followed) {
@@ -306,8 +304,8 @@ public class UserService implements IUserService {
     if (user == null) {
       throw new BadRequestException("User not found");
     }
-    user.getFollowed().forEach(followedId-> this.unfollowUser(userId, followedId));
-    user.getFollowers().forEach(followerId-> this.unfollowUser(followerId,userId));
+    user.getFollowed().forEach(followedId -> this.unfollowUser(userId, followedId));
+    user.getFollowers().forEach(followerId -> this.unfollowUser(followerId, userId));
 
     this.repository.removeUser(user);
     return new BaseResponseDto("User deleted");
