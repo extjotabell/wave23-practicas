@@ -1,10 +1,8 @@
 package meli.bootcamp.sprint1.service.impl;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 import meli.bootcamp.sprint1.dto.response.*;
 import meli.bootcamp.sprint1.exception.EmptyListException;
@@ -32,19 +30,15 @@ public class UserService implements IUserService {
 
   @Override
   public BaseResponseDto addPost(NewPostDto newPost) {
-    User user = this.repository.findUserById(newPost.getUser_id());
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    User user = Optional.ofNullable(this.repository.findUserById(newPost.getUser_id()))
+            .orElseThrow(()-> new BadRequestException("User not found"));
 
     Product newProductEntity = Mapper.map(newPost.getProduct(), Product.class);
 
-    Category category = this.repository.findCategoryById(newPost.getCategory());
-    if (category == null) {
-      throw new BadRequestException("Category not found");
-    }
+    Category category = Optional.ofNullable(this.repository.findCategoryById(newPost.getCategory()))
+            .orElseThrow(()->new BadRequestException("Category not found"));
 
-    Post newPostEntity = new Post(newProductEntity, newPost.getDate(), category, newPost.getPrice(),newPost.isHas_promo(),newPost.getDiscount());
+    Post newPostEntity = createPost(newPost, newProductEntity, category);
 
     user.addPost(newPostEntity);
 
@@ -53,22 +47,13 @@ public class UserService implements IUserService {
 
   @Override
   public BaseResponseDto followUser(int userId, int userIdToFollow) {
-    User user = this.repository.findUserById(userId);
-    User userToFollow = this.repository.findUserById(userIdToFollow);
+    User user = Optional.ofNullable(this.repository.findUserById(userId))
+            .orElseThrow(()-> new BadRequestException("User with id " + userId + " not found"));
+    User userToFollow = Optional.ofNullable(this.repository.findUserById(userIdToFollow))
+            .orElseThrow(()->new BadRequestException("User with id " + userIdToFollow + " not found"));
 
-    if (user == null) {
-      throw new BadRequestException("User with id " + userId + " not found");
-    } else if (userToFollow == null) {
-      throw new BadRequestException("User with id " + userIdToFollow + " not found");
-    }
-
-    if (!userToFollow.isSeller()) {
-      throw new BadRequestException("User must be a seller to follow");
-    }
-
-    if (userId == userIdToFollow) {
-      throw new BadRequestException("You can't follow yourself!");
-    }
+    validateIsSeller(userToFollow);
+    validateEqualsId(userId, userIdToFollow);
 
     Optional<Integer> userFollowedId = user.getFollowed().stream().filter(id -> id == userIdToFollow).findFirst();
 
@@ -83,34 +68,19 @@ public class UserService implements IUserService {
 
   @Override
   public UserDto getFollowersById(int id, String order) {
-    User user = repository.findUserById(id);
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    User user = Optional.ofNullable(this.repository.findUserById(id))
+            .orElseThrow(()-> new BadRequestException("User not found"));
 
-    List<Integer> followers = user.getFollowers();
+    List<Integer> followers = Optional.ofNullable(user.getFollowers())
+            .filter(follower -> !follower.isEmpty())
+            .orElseThrow(()-> new EmptyListException("The User " + id + " has no followers users"));
 
-    if (followers == null || followers.isEmpty()) {
-      throw new EmptyListException("The User " + id + " has no followers users");
-    }
+    List<FollowerDto> followerDtoList = followers.stream()
+            .map(idFollower -> repository.findUserById(idFollower))
+            .map(findFollower -> new FollowerDto(findFollower.getId(), findFollower.getName()))
+            .collect(Collectors.toList());
 
-    List<FollowerDto> followerDtoList = new ArrayList<>();
-
-    for (Integer idFollower : followers) {
-      User findFollower = repository.findUserById(idFollower);
-      FollowerDto followerDto = new FollowerDto(findFollower.getId(), findFollower.getName());
-      followerDtoList.add(followerDto);
-    }
-
-    if (order == null || order.equals("name_asc")) {
-      followerDtoList = followerDtoList.stream()
-          .sorted(Comparator.comparing(FollowerDto::getUser_name))
-          .toList();
-    } else if (order.equals("name_desc")) {
-      followerDtoList = followerDtoList.stream()
-          .sorted(Comparator.comparing(FollowerDto::getUser_name).reversed())
-          .toList();
-    }
+    followerDtoList = getOrderFollowerDtos(order, followerDtoList);
 
     UserDto userDto = new UserDto(user.getId(), user.getName(), followerDtoList);
     return userDto;
@@ -118,20 +88,13 @@ public class UserService implements IUserService {
 
   @Override
   public BaseResponseDto unfollowUser(int userId, int userIdToUnfollow) {
-    User userFollower = repository.findUserById(userId);
-    User userFollowed = repository.findUserById(userIdToUnfollow);
+    User userFollower = Optional.ofNullable(this.repository.findUserById(userId))
+            .orElseThrow(()-> new BadRequestException("User not found"));
 
-    if (userFollower == null || userFollowed == null) {
-      throw new BadRequestException("User/s not found");
-    }
+    User userFollowed = Optional.ofNullable(this.repository.findUserById(userId))
+            .orElseThrow(()-> new BadRequestException("Followed list and following lists are empty"));
 
-    if (userFollower.getFollowed().isEmpty() && userFollowed.getFollowed().isEmpty()) {
-      throw new BadRequestException("Followed list and following lists are empty");
-    }
-
-    if (!userFollowed.isSeller()) {
-      throw new BadRequestException("User " + userId + " is not a seller");
-    }
+    validateIsSeller(userFollowed);
 
     boolean unfollowed = this.repository.unfollowUser(userFollower.getFollowed(), userFollowed.getFollowers(), userIdToUnfollow, userId);
 
@@ -144,20 +107,15 @@ public class UserService implements IUserService {
 
   @Override
   public FollowersDto getFollowersByUserId(int userId) {
-    User user = this.repository.findUserById(userId);
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    User user = Optional.ofNullable(this.repository.findUserById(userId))
+            .orElseThrow(()-> new BadRequestException("User not found"));
     return new FollowersDto(user.getId(), user.getName(), user.getFollowers().size());
   }
 
   @Override
   public UserFollowedDto getFollowed(Integer id, String order) {
-    User user = this.repository.findUserById(id);
-
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    User user = Optional.ofNullable(this.repository.findUserById(id))
+            .orElseThrow(()-> new BadRequestException("User not found"));
 
     if (user.getFollowed().isEmpty()) {
       throw new EmptyListException("The User " + id + " has no followed users");
@@ -167,27 +125,16 @@ public class UserService implements IUserService {
         .map(u -> new FollowedDto(u, this.repository.findUserById(u).getName()))
         .toList();
 
-    if (order == null || order.equals("name_asc")) {
-      followed = followed.stream()
-          .sorted(Comparator.comparing(FollowedDto::getUser_name))
-          .toList();
-    } else if (order.equals("name_desc")) {
-      followed = followed.stream()
-          .sorted(Comparator.comparing(FollowedDto::getUser_name).reversed())
-          .toList();
-    }
+    followed = getOrderFollowedDtos(order, followed);
 
-    UserFollowedDto userFollowedDto = new UserFollowedDto(user.getId(), user.getName(), followed);
-
-    return userFollowedDto;
+    return new UserFollowedDto(user.getId(), user.getName(), followed);
   }
 
   @Override
   public LastPostsDto getLastPostsFromFollowed(int userId) {
-    User user = this.repository.findUserById(userId);
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
+    User user = Optional.ofNullable(this.repository.findUserById(userId))
+                    .orElseThrow(()-> new BadRequestException("User not found"));
+
     List<Integer> followedId = user.getFollowed();
     List<User> followed = followedId.stream().map(id -> this.repository.findUserById(id)).toList();
     List<PostDto> postsDto = new ArrayList<PostDto>();
@@ -199,7 +146,7 @@ public class UserService implements IUserService {
             ProductDto productDto = new ProductDto(product.getId(), product.getName(), product.getType(),
                 product.getBrand(), product.getColor(), product.getNotes());
             return new PostDto(follow.getId(), post.getId(), post.getDate(), productDto, post.getCategory().getId(),
-                post.getPrice());
+                post.getPrice(),post.isHas_promo(),post.getDiscount());
           })
           .toList();
       postsDto.addAll(postsToAdd);
@@ -236,17 +183,12 @@ public class UserService implements IUserService {
   }
   @Override
   public US0011Dto countPromoPostByUserId(int userId) {
-    User user = this.repository.findUserById(userId);
+    User user = Optional.ofNullable(this.repository.findUserById(userId))
+                        .orElseThrow(()-> new BadRequestException("User not found"));
 
-    if(user==null){
-      throw new BadRequestException("User not found.");
-    }
-
-    List<Post> postList = user.getPosts();
-
-    if(postList.isEmpty()){
-      throw new EmptyListException("User has not post added.");
-    }
+    List<Post> postList = Optional.ofNullable(user.getPosts())
+                                  .filter(posts -> !posts.isEmpty())
+                                  .orElseThrow(()-> new BadRequestException("User has not post added."));
 
     int has_promo_count = (int) postList.stream()
             .filter(Post::isHas_promo)
@@ -257,39 +199,70 @@ public class UserService implements IUserService {
 
   @Override
   public US0012Dto getProductsByPrice(Double since, Double to, int user_id) {
-    User user = this.repository.findUserById(user_id);
-    if(user==null){
-      throw new BadRequestException("User not found.");
-    }
-    if(since==null || to==null){
-      throw new BadRequestException("Since or to must be not null");
-    }
-    if(since<0){
-      throw new BadRequestException("Since cant be negative.");
-    }
-    if(to <=0){
-      throw new BadRequestException("To must be greater than 0.");
-    }
+    User user = Optional.ofNullable(this.repository.findUserById(user_id))
+            .orElseThrow(() -> new BadRequestException("User not found."));
 
-    List<Post> postList = user.getPosts();
+    ValidateInputsUS0012(since,to);
 
-    if(postList.isEmpty()){
-      throw new EmptyListException("User's posts list empty.");
-    }
+    List<Post> postList = Optional.ofNullable(user.getPosts())
+                                  .filter(posts -> !posts.isEmpty())
+                                  .orElseThrow(() -> new BadRequestException("User's posts list empty."));
 
-    List<PostDto> posts = new ArrayList<>();
-
-    postList.stream().forEach(post -> {
-      if(post.getPrice() >= since && post.getPrice() <= to){
-        posts.add(
-                new PostDto(user.getId(),post.getId(),post.getDate(),
-                        new ProductDto(post.getProduct().getId(),post.getProduct().getName(),post.getProduct().getType(),post.getProduct().getBrand(),post.getProduct().getColor(),post.getProduct().getNotes()),
-                        post.getCategory().getId(),post.getPrice()));
-      }else{
-        throw new EmptyListException("There are no posts in that price range for user id: "+user.getId());
-      }
-    });
+    List<PostDto> posts = postList.stream()
+                                  .filter(post -> post.getPrice() >= since && post.getPrice() <= to)
+                                  .map(post-> createPostDto(user,post))
+                                  .collect(Collectors.toList());
 
     return new US0012Dto(user.getName(),posts);
+  }
+  private void ValidateInputsUS0012(Double since, Double to){
+    Objects.requireNonNull(since,"Since must be not null");
+    Objects.requireNonNull(to,"To must be not null");
+
+    if(since < 0) throw new BadRequestException("Since can't be negative");
+    if(to <= 0) throw new BadRequestException("To must be greater than 0.");
+  }
+  private PostDto createPostDto(User user, Post post) {
+    return new PostDto(user.getId(), post.getId(), post.getDate(),
+            new ProductDto(post.getProduct().getId(), post.getProduct().getName(), post.getProduct().getType(), post.getProduct().getBrand(), post.getProduct().getColor(), post.getProduct().getNotes()),
+            post.getCategory().getId(), post.getPrice(), post.isHas_promo(),post.getDiscount());
+  }
+  private Post createPost(NewPostDto newPost, Product newProductEntity, Category category) {
+    Post newPostEntity = new Post(newProductEntity, newPost.getDate(), category, newPost.getPrice(), newPost.isHas_promo(), newPost.getDiscount());
+    return newPostEntity;
+  }
+  private void validateEqualsId(int userId, int userIdToFollow) {
+    if (userId == userIdToFollow) {
+      throw new BadRequestException("You can't follow yourself!");
+    }
+  }
+  private void validateIsSeller(User userToFollow) {
+    if (!userToFollow.isSeller()) {
+      throw new BadRequestException("User must be a seller to follow");
+    }
+  }
+  private List<FollowedDto> getOrderFollowedDtos(String order, List<FollowedDto> followed) {
+    if (order == null || order.equals("name_asc")) {
+      followed = followed.stream()
+              .sorted(Comparator.comparing(FollowedDto::getUser_name))
+              .toList();
+    } else if (order.equals("name_desc")) {
+      followed = followed.stream()
+              .sorted(Comparator.comparing(FollowedDto::getUser_name).reversed())
+              .toList();
+    }
+    return followed;
+  }
+  private List<FollowerDto> getOrderFollowerDtos(String order, List<FollowerDto> followerDtoList) {
+    if (order == null || order.equals("name_asc")) {
+      followerDtoList = followerDtoList.stream()
+              .sorted(Comparator.comparing(FollowerDto::getUser_name))
+              .toList();
+    } else if (order.equals("name_desc")) {
+      followerDtoList = followerDtoList.stream()
+              .sorted(Comparator.comparing(FollowerDto::getUser_name).reversed())
+              .toList();
+    }
+    return followerDtoList;
   }
 }
