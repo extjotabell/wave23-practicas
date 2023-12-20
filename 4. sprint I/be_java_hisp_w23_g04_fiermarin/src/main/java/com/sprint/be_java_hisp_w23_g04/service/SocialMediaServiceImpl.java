@@ -146,7 +146,9 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
 
         socialMediaRepository.unfollowUser(userId, unfollowId);
 
-        return new SimpleMessageDTO("El usuario " + unfollowedUser.getName() + " Id: " + unfollowedUser.getId() + " ya no es seguido por el usuario " + user.getName() + " Id: " + user.getId());
+        return new SimpleMessageDTO("El usuario " + unfollowedUser.getName()
+                + " Id: " + unfollowedUser.getId() + " ya no es seguido por el usuario "
+                + user.getName() + " Id: " + user.getId());
     }
 
     @Override
@@ -157,16 +159,12 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         Verifications.verifyUserHasFollowedSellers(user);
 
         LocalDate filterDate = LocalDate.now().minusWeeks(2);
-        List<PostResponseDTO> filteredPosts = new ArrayList<>();
-
-        for (User seller : user.getFollowed()) {
-            for (Post post : seller.getPosts()) {
-                if (post.getDate().isAfter(filterDate)) {
-                    PostResponseDTO postDTO = PostRequestDTOMapper(userId, post);
-                    filteredPosts.add(postDTO);
-                }
-            }
-        }
+        List<PostResponseDTO> filteredPosts =
+                user.getFollowed().stream()
+                        .flatMap(seller -> socialMediaRepository.findUser(seller.getId()).getPosts().stream()
+                                .filter(post -> post.getDate().isAfter(filterDate))
+                                .map(post -> PostMapper.PostRequestDTOMapper(userId, post)))
+                        .collect(Collectors.toList());
 
         Verifications.validateEmptyResponseList(filteredPosts);
 
