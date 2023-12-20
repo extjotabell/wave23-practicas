@@ -181,6 +181,22 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         return new FilteredPostsDTO(userId, filteredPosts);
     }
 
+    @Override
+    public PostPromoCountDTO promoPostCount(int userId) {
+        User user = socialMediaRepository.findUser(userId);
+        verifyUserExist(user);
+
+        int promoProductsCount = 0;
+
+        for (Post post : user.getPosts()) {
+            if (post instanceof PostPromo && ((PostPromo) post).isHasPromo()) {
+                promoProductsCount++;
+            }
+        }
+
+        return new PostPromoCountDTO(userId, user.getName(), promoProductsCount);
+    }
+
     private List<PostResponseDTO> orderAsc(List<PostResponseDTO> list){
        return list.stream()
                 .sorted(Comparator.comparing(PostDTO::getDate))

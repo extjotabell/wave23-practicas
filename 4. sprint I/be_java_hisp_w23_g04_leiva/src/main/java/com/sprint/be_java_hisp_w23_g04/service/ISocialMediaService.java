@@ -21,4 +21,6 @@ public interface ISocialMediaService {
     SimpleMessageDTO unfollowUser(int userId, int unfollowId);
 
     FilteredPostsDTO getFilteredPosts(int userId, String order);
+
+    PostPromoCountDTO promoPostCount(int userId);
 }

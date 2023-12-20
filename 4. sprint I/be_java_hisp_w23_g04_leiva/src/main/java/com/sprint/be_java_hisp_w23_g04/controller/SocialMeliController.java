@@ -62,4 +62,9 @@ public class SocialMeliController {
     public ResponseEntity<?> savePostPromo(@RequestBody PostPromoDTO post){
         return new ResponseEntity<>(socialMediaService.savePost(post), HttpStatus.OK);
     }
+
+    @GetMapping("/products/promo-post/count")
+    public ResponseEntity<?> getPromoCount(@RequestParam int userId){
+        return new ResponseEntity<>(socialMediaService.promoPostCount(userId), HttpStatus.OK);
+    }
 }
