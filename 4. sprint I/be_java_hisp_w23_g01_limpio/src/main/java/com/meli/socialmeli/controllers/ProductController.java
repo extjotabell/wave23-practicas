@@ -39,8 +39,7 @@ public class ProductController {
     public ResponseEntity<?> newPromoPost(@RequestBody PromoPostDTO post){
         return new ResponseEntity<>(iProductService.newPromoPost(post), HttpStatus.OK);
     }
-
-    //Obtener la cantidad de productos en promoción de un determinado vendedor
+    
     @GetMapping("/promo-post/count")
     public ResponseEntity<?> getPromoPostCount(@RequestParam("user_id") int user_id){
         return new ResponseEntity<>(iProductService.newPromoPostCount(user_id), HttpStatus.OK);
