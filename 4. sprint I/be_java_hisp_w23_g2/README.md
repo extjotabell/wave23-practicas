@@ -74,7 +74,8 @@ Maven (version 3.9.5)
 ### Installation
 
 ### Clone the repository:
-- git clone
+- git clone https://github.com/hdesanvicente/grupo2-sprint1.git
+- cd grupo2-sprint1.git
 
 ### Build the project:
 mvn clean install
