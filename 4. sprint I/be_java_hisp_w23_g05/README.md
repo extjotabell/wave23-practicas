@@ -166,20 +166,7 @@ Obtener la cantidad de productos en promoción de un determinado vendedor
 | `user_name ` | `String`    | Cadena de caracteres que representa el nombre del usuario|
 | `promo_products_count ` | `int`    | Cantidad numérica de productos en promoción de un determinado usuario.|
 
-## Requerimiento Bonus
 
-#### US 0012: 
-Buscar productos por categoría.
-Como usuario interesado en productos, quiero buscar productos por categoría para encontrar artículos específicos de una categoría determinada.
-
-
-```http
-  GET /products/search?category_id={idCategory}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `categoryId ` | `int`    | Número que identifica a cada categoria|
 ​
 ## Endpoints y responsables de su programación
 ​
