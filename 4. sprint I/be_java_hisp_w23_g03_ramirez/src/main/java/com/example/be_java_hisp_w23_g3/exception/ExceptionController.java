@@ -66,4 +66,10 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exceptionDto);
     }
 
+    @ExceptionHandler(EmptyPromosList.class)
+    public ResponseEntity<?> EmptyPromosList(EmptyPromosList e){
+        ExceptionDto exceptionDto = new ExceptionDto(e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exceptionDto);
+    }
+
 }

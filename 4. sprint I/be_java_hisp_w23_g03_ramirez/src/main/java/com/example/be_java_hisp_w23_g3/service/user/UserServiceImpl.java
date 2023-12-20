@@ -10,6 +10,8 @@ import com.example.be_java_hisp_w23_g3.util.DTOMapper;
 import com.example.be_java_hisp_w23_g3.util.UserMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -77,5 +79,15 @@ public class UserServiceImpl implements UserService {
         sellerToUnfollow.getFollower().remove(user);
         user.getFollowing().remove(sellerToUnfollow);
         return new MessageResponseDTO("You have just unfollowed a seller");
+    }
+
+    @Override
+    public List<PromoDTO> getMyPromos(Long userID) {
+        User  user = getUser(userID);
+        List<PromoDTO> listPromos = userRepository.getMyPromos(user.getFollowing());
+        if(listPromos.isEmpty()){
+            throw new EmptyPromosList("You have no promos active");
+        }
+        return listPromos;
     }
 }

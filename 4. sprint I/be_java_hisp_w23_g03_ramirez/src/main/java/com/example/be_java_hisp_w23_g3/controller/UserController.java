@@ -43,4 +43,11 @@ public class UserController {
     public ResponseEntity<?> unFollowSeller(@PathVariable Long userId, @PathVariable Long userIdToUnfollow){
         return ResponseEntity.ok().body(userService.unFollowSeller(userId, userIdToUnfollow));
     }
+
+    @GetMapping("/{userID}/promos")
+    public ResponseEntity<?> getMyPromos(@PathVariable Long userID) {
+        return ResponseEntity.ok().body(userService.getMyPromos(userID));
+    }
+
+
 }

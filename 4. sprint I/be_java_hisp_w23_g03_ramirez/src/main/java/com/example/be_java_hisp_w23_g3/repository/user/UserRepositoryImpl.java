@@ -1,7 +1,12 @@
 package com.example.be_java_hisp_w23_g3.repository.user;
 
+import com.example.be_java_hisp_w23_g3.dto.response.PromoDTO;
+import com.example.be_java_hisp_w23_g3.entity.Post;
+import com.example.be_java_hisp_w23_g3.entity.PostPromo;
 import com.example.be_java_hisp_w23_g3.entity.Seller;
 import com.example.be_java_hisp_w23_g3.entity.User;
+import com.example.be_java_hisp_w23_g3.util.ProductMapper;
+import com.example.be_java_hisp_w23_g3.util.SellerMapper;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
@@ -47,6 +52,22 @@ public class UserRepositoryImpl implements UserRepository {
         return user.getFollowing().stream()
                 .filter(u -> u.getId().equals(sellerId))
                 .findFirst();
+    }
+
+    @Override
+    public List<PromoDTO> getMyPromos(Set<Seller> sellers){
+        List<Post> listPromos = new ArrayList<>();
+        for (Seller seller: sellers) {
+            listPromos.addAll(seller.getPosts().values());
+        }
+        List<PromoDTO> listPromoDTO = listPromos.stream()
+               .filter(post -> post instanceof PostPromo)
+               .map(post -> new PromoDTO(ProductMapper.toProductDTO(post.getProduct()),
+                       post.getSeller().getUsername()))
+               .toList();
+
+        return listPromoDTO;
+
     }
 
 }
