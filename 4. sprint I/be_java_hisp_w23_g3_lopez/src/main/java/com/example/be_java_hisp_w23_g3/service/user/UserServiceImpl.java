@@ -2,11 +2,11 @@ package com.example.be_java_hisp_w23_g3.service.user;
 
 import com.example.be_java_hisp_w23_g3.dto.request.UserRequestDTO;
 import com.example.be_java_hisp_w23_g3.dto.response.*;
-import com.example.be_java_hisp_w23_g3.entity.Seller;
-import com.example.be_java_hisp_w23_g3.entity.User;
-import com.example.be_java_hisp_w23_g3.exception.*;
-import com.example.be_java_hisp_w23_g3.repository.seller.SellerRepository;
-import com.example.be_java_hisp_w23_g3.repository.user.UserRepository;
+import com.example.be_java_hisp_w23_g3.entity.user.Seller;
+import com.example.be_java_hisp_w23_g3.entity.user.User;
+import com.example.be_java_hisp_w23_g3.exception.exception.*;
+import com.example.be_java_hisp_w23_g3.repository.user.seller.SellerRepository;
+import com.example.be_java_hisp_w23_g3.repository.user.user.UserRepository;
 import com.example.be_java_hisp_w23_g3.util.mapper.DTOMapper;
 import com.example.be_java_hisp_w23_g3.util.mapper.UserMapper;
 import org.springframework.stereotype.Service;
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public FollowersCountDTO getFollowersCount(Long userId) {
+    public FollowersCountResponseDTO getFollowersCount(Long userId) {
         return DTOMapper.mapToFollowersCountDTO(getSeller(userId));
     }
 
@@ -52,12 +52,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public FollowersListDTO getFollowersList(Long userId, String order) {
+    public FollowersListResponseDTO getFollowersList(Long userId, String order) {
         return UserMapper.mapToFollowersListDTO(getSeller(userId), order);
     }
 
     @Override
-    public FollowedListDTO getFollowedSellersList(Long userID, String order) {
+    public FollowedListResponseDTO getFollowedSellersList(Long userID, String order) {
         return UserMapper.mapToFollowedListDTO(getUser(userID), order);
     }
 

@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class FollowedPostsListDTO {
+public class FollowedPostsResponseDTO {
     @JsonProperty("user_id")
     private Long userId;
     private List<PostResponseDTO> posts;
 
-    public FollowedPostsListDTO(Long userId, List<PostResponseDTO> posts) {
+    public FollowedPostsResponseDTO(Long userId, List<PostResponseDTO> posts) {
         this.userId = userId;
         this.posts = posts;
     }

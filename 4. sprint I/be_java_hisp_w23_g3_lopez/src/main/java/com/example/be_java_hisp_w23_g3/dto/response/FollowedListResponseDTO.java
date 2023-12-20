@@ -3,14 +3,18 @@ package com.example.be_java_hisp_w23_g3.dto.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class ProductCountDTO {
+public class FollowedListResponseDTO {
+
     @JsonProperty("user_id")
-    private Long userId;
+    public Long userID;
     @JsonProperty("user_name")
-    private String userName;
-    @JsonProperty("promo_products_count")
-    private int promoProductsCount;
+    public String userName;
+    public List<SellerResponseDTO> followed;
 }

@@ -7,11 +7,11 @@ public interface UserService {
 
     UserResponseDTO createUser(UserRequestDTO userRequestDTO);
 
-    FollowersListDTO getFollowersList(Long userId, String order);
+    FollowersListResponseDTO getFollowersList(Long userId, String order);
 
-    FollowersCountDTO getFollowersCount(Long id);
+    FollowersCountResponseDTO getFollowersCount(Long id);
 
-    FollowedListDTO getFollowedSellersList(Long userID, String order);
+    FollowedListResponseDTO getFollowedSellersList(Long userID, String order);
 
     MessageResponseDTO followSeller(Long userId, Long userIdToFollow);
 

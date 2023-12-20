@@ -1,9 +1,9 @@
-package com.example.be_java_hisp_w23_g3.entity;
+package com.example.be_java_hisp_w23_g3.entity.product;
 
-import com.example.be_java_hisp_w23_g3.util.ArgumentValidator;
+import com.example.be_java_hisp_w23_g3.entity.user.Seller;
+import com.example.be_java_hisp_w23_g3.util.Validator;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Post {
     private Long id;
@@ -36,31 +36,31 @@ public class Post {
     }
 
     public static Post build(Long id, Seller seller, Product product, LocalDate date, int category, Double price) {
-        ArgumentValidator.validateRequired(id, "Id is required");
-        ArgumentValidator.validatePositive(id, "Id is required");
-        ArgumentValidator.validateRequired(seller, "Seller is required");
-        ArgumentValidator.validateRequired(product, "Product is required");
-        ArgumentValidator.validateRequired(date, "Date is required");
-        ArgumentValidator.validateRequired(category, "Category is required");
-        ArgumentValidator.validatePositive(category, "Category is required");
-        ArgumentValidator.validateRequired(price, "Price is required");
-        ArgumentValidator.validatePositive(price, "Price is required");
+        Validator.validateRequired(id, "Id is required");
+        Validator.validatePositive(id, "Id is required");
+        Validator.validateRequired(seller, "Seller is required");
+        Validator.validateRequired(product, "Product is required");
+        Validator.validateRequired(date, "Date is required");
+        Validator.validateRequired(category, "Category is required");
+        Validator.validatePositive(category, "Category is required");
+        Validator.validateRequired(price, "Price is required");
+        Validator.validatePositive(price, "Price is required");
         return new Post(id, seller, product, date, category, price);
     }
 
     public static Post build(Long id, Seller seller, Product product, LocalDate date, int category, Double price, boolean hasPromo, Double discount) {
-        ArgumentValidator.validateRequired(id, "Id is required");
-        ArgumentValidator.validatePositive(id, "Id is required");
-        ArgumentValidator.validateRequired(seller, "Seller is required");
-        ArgumentValidator.validateRequired(product, "Product is required");
-        ArgumentValidator.validateRequired(date, "Date is required");
-        ArgumentValidator.validateRequired(category, "Category is required");
-        ArgumentValidator.validatePositive(category, "Category is required");
-        ArgumentValidator.validateRequired(price, "Price is required");
-        ArgumentValidator.validatePositive(price, "Price is required");
-        ArgumentValidator.validateRequired(hasPromo, "Has Promo is required");
-        ArgumentValidator.validateRequired(discount, "Discount is required");
-        ArgumentValidator.validatePositive(discount, "Discount is required");
+        Validator.validateRequired(id, "Id is required");
+        Validator.validatePositive(id, "Id is required");
+        Validator.validateRequired(seller, "Seller is required");
+        Validator.validateRequired(product, "Product is required");
+        Validator.validateRequired(date, "Date is required");
+        Validator.validateRequired(category, "Category is required");
+        Validator.validatePositive(category, "Category is required");
+        Validator.validateRequired(price, "Price is required");
+        Validator.validatePositive(price, "Price is required");
+        Validator.validateRequired(hasPromo, "Has Promo is required");
+        Validator.validateRequired(discount, "Discount is required");
+        Validator.validatePositive(discount, "Discount is required");
         return new Post(id, seller, product, date, category, price, hasPromo, discount);
     }
 

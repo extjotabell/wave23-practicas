@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class FollowersListDTO {
+public class FollowersListResponseDTO {
 
     @JsonProperty("user_id")
     private Long userId;

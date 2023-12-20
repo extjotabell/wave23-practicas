@@ -1,7 +1,7 @@
 package com.example.be_java_hisp_w23_g3.util.mapper;
 
 import com.example.be_java_hisp_w23_g3.dto.response.ProductResponseDTO;
-import com.example.be_java_hisp_w23_g3.entity.Product;
+import com.example.be_java_hisp_w23_g3.entity.product.Product;
 
 public class ProductMapper {
 

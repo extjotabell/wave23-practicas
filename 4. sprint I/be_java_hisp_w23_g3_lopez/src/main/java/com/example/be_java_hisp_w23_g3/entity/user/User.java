@@ -1,6 +1,6 @@
-package com.example.be_java_hisp_w23_g3.entity;
+package com.example.be_java_hisp_w23_g3.entity.user;
 
-import com.example.be_java_hisp_w23_g3.util.ArgumentValidator;
+import com.example.be_java_hisp_w23_g3.util.Validator;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,17 +23,17 @@ public class User {
     }
 
     public static User build(Long id, String username) {
-        ArgumentValidator.validateRequired(id, "Id is required");
-        ArgumentValidator.validateRequired(username, "Username is required");
-        ArgumentValidator.validateMinLength(username, 5, "Username must have at least 5 characters");
+        Validator.validateRequired(id, "Id is required");
+        Validator.validateRequired(username, "Username is required");
+        Validator.validateMinLength(username, 5, "Username must have at least 5 characters");
         return new User(id, username);
     }
 
     public static User build(Long id, String username, Set<Seller> following) {
-        ArgumentValidator.validateRequired(id, "Id is required");
-        ArgumentValidator.validateRequired(username, "Username is required");
-        ArgumentValidator.validateMinLength(username, 5, "Username must have at least 5 characters");
-        ArgumentValidator.validateRequired(following, "Following is required");
+        Validator.validateRequired(id, "Id is required");
+        Validator.validateRequired(username, "Username is required");
+        Validator.validateMinLength(username, 5, "Username must have at least 5 characters");
+        Validator.validateRequired(following, "Following is required");
         return new User(id, username, following);
     }
 

@@ -1,6 +1,6 @@
-package com.example.be_java_hisp_w23_g3.entity;
+package com.example.be_java_hisp_w23_g3.entity.product;
 
-import com.example.be_java_hisp_w23_g3.util.ArgumentValidator;
+import com.example.be_java_hisp_w23_g3.util.Validator;
 
 public class Product {
     private final Long id;
@@ -20,13 +20,13 @@ public class Product {
     }
 
     public static Product build(Long id, String name, String type, String brand, String color, String notes) {
-        ArgumentValidator.validateRequired(id, "Product Id is required");
-        ArgumentValidator.validatePositive(id, "Product id is required");
-        ArgumentValidator.validateRequired(name, "Product name is required");
-        ArgumentValidator.validateRequired(type, "Product type is required");
-        ArgumentValidator.validateRequired(brand, "Product brand is required");
-        ArgumentValidator.validateRequired(color, "Product color is required");
-        ArgumentValidator.validateRequired(notes, "Product notes are required");
+        Validator.validateRequired(id, "Product Id is required");
+        Validator.validatePositive(id, "Product id is required");
+        Validator.validateRequired(name, "Product name is required");
+        Validator.validateRequired(type, "Product type is required");
+        Validator.validateRequired(brand, "Product brand is required");
+        Validator.validateRequired(color, "Product color is required");
+        Validator.validateRequired(notes, "Product notes are required");
         return new Product(id, name, type, brand, color, notes);
     }
 

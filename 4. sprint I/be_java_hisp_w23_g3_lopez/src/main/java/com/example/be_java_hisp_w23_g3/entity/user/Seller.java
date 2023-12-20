@@ -1,6 +1,7 @@
-package com.example.be_java_hisp_w23_g3.entity;
+package com.example.be_java_hisp_w23_g3.entity.user;
 
-import com.example.be_java_hisp_w23_g3.util.ArgumentValidator;
+import com.example.be_java_hisp_w23_g3.entity.product.Post;
+import com.example.be_java_hisp_w23_g3.util.Validator;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,8 +29,8 @@ public class Seller extends User {
     }
 
     public static Seller build(User user, Set<User> follower,Map<Long, Post> posts) {
-        ArgumentValidator.validateRequired(posts, "Posts is required");
-        ArgumentValidator.validateRequired(follower, "Follower is required");
+        Validator.validateRequired(posts, "Posts is required");
+        Validator.validateRequired(follower, "Follower is required");
         return new Seller(user.getId(), user.getUsername(), user.getFollowing(), follower, posts);
     }
 

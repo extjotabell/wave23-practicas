@@ -2,11 +2,11 @@ package com.example.be_java_hisp_w23_g3.util.mapper;
 
 import com.example.be_java_hisp_w23_g3.dto.request.PostPromoRequestDTO;
 import com.example.be_java_hisp_w23_g3.dto.request.PostRequestDTO;
-import com.example.be_java_hisp_w23_g3.dto.response.FollowedPostsListDTO;
+import com.example.be_java_hisp_w23_g3.dto.response.FollowedPostsResponseDTO;
 import com.example.be_java_hisp_w23_g3.dto.response.PostPromoResponseDTO;
 import com.example.be_java_hisp_w23_g3.dto.response.PostResponseDTO;
-import com.example.be_java_hisp_w23_g3.entity.Post;
-import com.example.be_java_hisp_w23_g3.entity.Seller;
+import com.example.be_java_hisp_w23_g3.entity.product.Post;
+import com.example.be_java_hisp_w23_g3.entity.user.Seller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -68,7 +68,7 @@ public class PostMapper {
         );
     }
 
-    public static FollowedPostsListDTO mapToFollowedPostsListDTO(List<Post> posts, Long userId, String order) {
+    public static FollowedPostsResponseDTO mapToFollowedPostsListDTO(List<Post> posts, Long userId, String order) {
         Comparator<Post> comparator;
         if (ORDER_DATE_DESC.equalsIgnoreCase(order)) {
             comparator = Comparator.comparing(Post::getDate).reversed();
@@ -77,7 +77,7 @@ public class PostMapper {
         } else {
             comparator = Comparator.comparing(Post::getDate);
         }
-        return new FollowedPostsListDTO(userId, posts.stream()
+        return new FollowedPostsResponseDTO(userId, posts.stream()
                 .sorted(comparator)
                 .map(PostMapper::toPostResponseDTO)
                 .collect(Collectors.toList()));

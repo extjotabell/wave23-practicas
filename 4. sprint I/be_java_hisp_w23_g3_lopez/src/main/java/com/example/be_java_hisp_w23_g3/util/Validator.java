@@ -1,6 +1,6 @@
 package com.example.be_java_hisp_w23_g3.util;
 
-import com.example.be_java_hisp_w23_g3.exception.ValidationException;
+import com.example.be_java_hisp_w23_g3.exception.exception.ValidationException;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -9,8 +9,8 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ArgumentValidator {
-    private ArgumentValidator() {}
+public class Validator {
+    private Validator() {}
 
     public static void validateRequired(Object value, String message) {
         if (value == null) throw new ValidationException(message);

@@ -2,18 +2,18 @@ package com.example.be_java_hisp_w23_g3.service.product;
 
 import com.example.be_java_hisp_w23_g3.dto.request.PostPromoRequestDTO;
 import com.example.be_java_hisp_w23_g3.dto.request.PostRequestDTO;
-import com.example.be_java_hisp_w23_g3.dto.response.FollowedPostsListDTO;
+import com.example.be_java_hisp_w23_g3.dto.response.FollowedPostsResponseDTO;
 import com.example.be_java_hisp_w23_g3.dto.response.PostPromoResponseDTO;
 import com.example.be_java_hisp_w23_g3.dto.response.PostResponseDTO;
-import com.example.be_java_hisp_w23_g3.dto.response.ProductCountDTO;
-import com.example.be_java_hisp_w23_g3.entity.Post;
-import com.example.be_java_hisp_w23_g3.entity.Seller;
-import com.example.be_java_hisp_w23_g3.entity.User;
-import com.example.be_java_hisp_w23_g3.exception.AlreadyExistsException;
-import com.example.be_java_hisp_w23_g3.exception.NotFoundException;
+import com.example.be_java_hisp_w23_g3.dto.response.ProductCountResponseDTO;
+import com.example.be_java_hisp_w23_g3.entity.product.Post;
+import com.example.be_java_hisp_w23_g3.entity.user.Seller;
+import com.example.be_java_hisp_w23_g3.entity.user.User;
+import com.example.be_java_hisp_w23_g3.exception.exception.AlreadyExistsException;
+import com.example.be_java_hisp_w23_g3.exception.exception.NotFoundException;
 import com.example.be_java_hisp_w23_g3.repository.product.ProductRepository;
-import com.example.be_java_hisp_w23_g3.repository.seller.SellerRepository;
-import com.example.be_java_hisp_w23_g3.repository.user.UserRepository;
+import com.example.be_java_hisp_w23_g3.repository.user.seller.SellerRepository;
+import com.example.be_java_hisp_w23_g3.repository.user.user.UserRepository;
 import com.example.be_java_hisp_w23_g3.util.mapper.PostMapper;
 import org.springframework.stereotype.Service;
 
@@ -59,18 +59,18 @@ public class ProductServiceImpl implements ProductService{
         return PostMapper.toPostPromoResponseDTO(post);
     }
 
-    public ProductCountDTO countPromoPosts(Long userId) {
+    public ProductCountResponseDTO countPromoPosts(Long userId) {
         Seller seller = getSeller(userId, false);
         int count = seller.getPosts().values().stream()
                 .filter(Post::isHasPromo)
                 .toList()
                 .size();
 
-        return new ProductCountDTO(userId, seller.getUsername(), count);
+        return new ProductCountResponseDTO(userId, seller.getUsername(), count);
     }
 
     @Override
-    public FollowedPostsListDTO followedPostsList(Long userId, String order) {
+    public FollowedPostsResponseDTO followedPostsList(Long userId, String order) {
         User user = getUser(userId);
         List<Long> followedSellersIds = user.getFollowing().stream().map(Seller::getId).toList();
         List<Post> allFollowedByUser = getFollowedPosts(followedSellersIds);

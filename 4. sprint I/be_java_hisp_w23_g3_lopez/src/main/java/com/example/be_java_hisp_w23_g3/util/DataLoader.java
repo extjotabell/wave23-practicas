@@ -1,10 +1,10 @@
-package com.example.be_java_hisp_w23_g3.repository;
+package com.example.be_java_hisp_w23_g3.util;
 
-import com.example.be_java_hisp_w23_g3.entity.Seller;
-import com.example.be_java_hisp_w23_g3.entity.User;
+import com.example.be_java_hisp_w23_g3.entity.user.Seller;
+import com.example.be_java_hisp_w23_g3.entity.user.User;
 import com.example.be_java_hisp_w23_g3.repository.product.ProductRepository;
-import com.example.be_java_hisp_w23_g3.repository.seller.SellerRepository;
-import com.example.be_java_hisp_w23_g3.repository.user.UserRepository;
+import com.example.be_java_hisp_w23_g3.repository.user.seller.SellerRepository;
+import com.example.be_java_hisp_w23_g3.repository.user.user.UserRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
