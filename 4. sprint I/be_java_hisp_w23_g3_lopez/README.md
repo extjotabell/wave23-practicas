@@ -29,6 +29,69 @@ Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de pr
 | Bonus 1       | Conseguir un producto individual por su ID                                                                            | Emmanuel López Rodríguez                           |
 | Bonus 2       | Crear un usuario nuevo                                                                                                | Emmanuel López Rodríguez                           |
 
+## Documentación de los Endpoints bonus
+
+### Bonus 1
+
+Conseguir un producto individual por su ID: ```GET: /products/post/{postId}```
+
+**Response:**
+
+- **200 OK:**
+    ```json
+    {
+      "user_id": 234,
+      "date": "29-04-2021",
+      "product": {
+        "product_id": 1,
+        "product_name": "Silla Gamer",
+        "type": "Gamer",
+        "brand": "Racer",
+        "color": "Red & Black",
+        "notes": "Special Edition"
+      },
+      "category": 100,
+      "price": 1500.50,
+      "has_promo": true,
+      "discount": 0.25
+    }
+    ```
+- **404 Not Found:**
+    ```json
+    {
+      "message": "Post not found"
+    }
+    ```
+
+### Bonus 2
+
+Crear un usuario nuevo: ```POST: /users/```.  En este caso el id del usuario se genera automáticamente.
+
+**Request:**
+
+```json
+{
+  "user_name": "Juan Perez"
+}
+```
+
+**Response:**
+
+- **201 Created:**
+    ```json
+    {
+      "user_id": 234,
+      "user_name": "Juan Perez"
+    }
+    ```
+  
+- **400 Bad Request:**
+    ```json
+    {
+      "message": "User already exists"
+    }
+    ```
+
 ## Integrantes
 
 - Diana Isabel Ramírez García

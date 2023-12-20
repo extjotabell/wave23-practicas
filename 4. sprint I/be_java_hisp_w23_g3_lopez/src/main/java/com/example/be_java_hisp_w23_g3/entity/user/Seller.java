@@ -25,7 +25,7 @@ public class Seller extends User {
     }
 
     public static Seller build(User user) {
-        return new Seller(user.getId(), user.getUsername());
+        return new Seller(user.getId(), user.getUsername(), user.getFollowing(), new HashSet<>(), new HashMap<>());
     }
 
     public static Seller build(User user, Set<User> follower,Map<Long, Post> posts) {
