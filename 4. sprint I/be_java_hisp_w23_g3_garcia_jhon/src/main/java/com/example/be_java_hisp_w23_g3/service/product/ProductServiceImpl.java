@@ -105,22 +105,19 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public PostPromoCountDTO getPostsPromoCount(Long userID){
-        Seller seller = sellerRepository.read(userID)
-                .orElseThrow(() -> new NotFoundException("Seller with id " + userID + " Not found"));
+        Seller seller = getSeller(userID);
         return DTOMapper.mapToPostPromoCountDTO(seller);
     }
 
     @Override
     public PostsPromoListResponseDTO getPostsPromoBySeller(Long userID){
-        Seller seller = sellerRepository.read(userID)
-                .orElseThrow(() -> new NotFoundException("Seller with id " + userID + " not found"));
+        Seller seller = getSeller(userID);
         return DTOMapper.mapToPostPromoListDTO(seller);
     }
 
     @Override
     public PricePostsProductsDTO getPricePostsProducts(Long userID){
-        Seller seller = sellerRepository.read(userID)
-                .orElseThrow(() -> new NotFoundException("Seller with id " + userID + " not found"));
+        Seller seller = getSeller(userID);
         return DTOMapper.mapToPricePostsProductsDTO(seller);
     }
 }
