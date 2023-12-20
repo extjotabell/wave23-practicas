@@ -199,4 +199,17 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public PromoCountDTO getProductsInPromoByUserId(Integer userID) {
+        User user = socialMediaRepository.findUser(userID);
+
+        verifyUserExist(user);
+
+        long postPromoCount = user.getPosts().stream()
+                .filter(post -> post instanceof PostPromo && ((PostPromo) post).isHasPromo())
+                .count();
+
+        return new PromoCountDTO(user.getId(), user.getName(), Math.toIntExact(postPromoCount));
+    }
+
 }

@@ -3,6 +3,8 @@ package com.sprint.be_java_hisp_w23_g04.service;
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostPromoDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
 import java.util.List;
 
@@ -22,4 +24,6 @@ public interface ISocialMediaService {
     SimpleMessageDTO unfollowUser(int userId, int unfollowId);
 
     FilteredPostsDTO getFilteredPosts(int userId, String order);
+
+    PromoCountDTO getProductsInPromoByUserId(Integer userID);
 }
