@@ -8,6 +8,9 @@ Presentación de una versión Beta de lo que va a ser conocido como “SocialMel
 ​
 En el archivo `SPRINT 1.postman_collection.json` se encuentra la colección de Postman para ejecutar las pruebas.
 
+## Requerimientos 
+
+- 📁: [Requerimiento Grupal](https://github.com/extjotabell/wave23-practicas/blob/5c379e4c3f1144465e764f2f863d53b321241c7f/4.%20sprint%20I/be_java_hisp_w23_g05/Esp_de_Req_t%C3%A9cnicos_funcionales_Sprint_N%C2%BA_1.pdf)
 
 ## API Reference
 
