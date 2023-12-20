@@ -13,21 +13,21 @@ Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de pr
 
 ## Endpoints y responsables
 
-| Requerimiento | Descripción                                                                                                           | Responsable                                        |
-|---------------|-----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| US0001        | Poder realizar la acción de “Follow” (seguir) a un determinado vendedor                                               | Diana Isabel Ramírez García                        |
-| US0002        | Obtener el resultado de la cantidad de usuarios que siguen a un determinado vendedor                                  | Miguel Ochoa Mejía                                 |
-| US0003        | Obtener un listado de todos los usuarios que siguen a un determinado vendedor (¿Quién me sigue?)                      | Sebastian Ospina García                            |
-| US0004        | Obtener  un listado de todos los vendedores a los cuales sigue un determinado usuario (¿A quién sigo?)                | Jhon Edison García García                          |
-| US0005        | Dar de alta una nueva publicación                                                                                     | Emmanuel López Rodríguez                           |
-| US0006        | Obtener un listado de las publicaciones realizadas por los vendedores que un usuario sigue en las últimas dos semanas | Jorge Rodrigo Marcos Martínez y Miguel Ochoa Mejía |
-| US0007        | Poder realizar la acción de “Unfollow” (dejar de seguir) a un determinado vendedor.                                   | Diana Isabel Ramírez García                        |
-| US0008        | Ordenamiento alfabético ascendente y descendente                                                                      | Miguel Ochoa Mejía                                 |
-| US0009        | Ordenamiento por fecha ascendente y descendente                                                                       | Sebastian Ospina García                            |
-| US0010        | Llevar a cabo la publicación de un nuevo producto en promoción                                                        | Miguel Ochoa Mejía                                 |
-| US0011        | Obtener la cantidad de productos en promoción de un determinado vendedor                                              | Miguel Ochoa Mejía                                 |
-| Bonus 1       | Obtener un listado de todos los productos en promoción de un determinado vendedor                                     | Miguel Ochoa Mejía                                 |
-| Bonus 2       | Obtener un listado de todos los productos en promoción de los vendedores seguidos por un determinado usuario          | Miguel Ochoa Mejía                                 |
+| Requerimiento | Descripción                                                                                                                                                   | Responsable                                        |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| US0001        | Poder realizar la acción de “Follow” (seguir) a un determinado vendedor                                                                                       | Diana Isabel Ramírez García                        |
+| US0002        | Obtener el resultado de la cantidad de usuarios que siguen a un determinado vendedor                                                                          | Miguel Ochoa Mejía                                 |
+| US0003        | Obtener un listado de todos los usuarios que siguen a un determinado vendedor (¿Quién me sigue?)                                                              | Sebastian Ospina García                            |
+| US0004        | Obtener  un listado de todos los vendedores a los cuales sigue un determinado usuario (¿A quién sigo?)                                                        | Jhon Edison García García                          |
+| US0005        | Dar de alta una nueva publicación                                                                                                                             | Emmanuel López Rodríguez                           |
+| US0006        | Obtener un listado de las publicaciones realizadas por los vendedores que un usuario sigue en las últimas dos semanas                                         | Jorge Rodrigo Marcos Martínez y Miguel Ochoa Mejía |
+| US0007        | Poder realizar la acción de “Unfollow” (dejar de seguir) a un determinado vendedor.                                                                           | Diana Isabel Ramírez García                        |
+| US0008        | Ordenamiento alfabético ascendente y descendente                                                                                                              | Miguel Ochoa Mejía                                 |
+| US0009        | Ordenamiento por fecha ascendente y descendente                                                                                                               | Sebastian Ospina García                            |
+| US0010        | Llevar a cabo la publicación de un nuevo producto en promoción                                                                                                | Miguel Ochoa Mejía                                 |
+| US0011        | Obtener la cantidad de productos en promoción de un determinado vendedor                                                                                      | Miguel Ochoa Mejía                                 |
+| Bonus 1       | Obtener un listado de todos los productos en promoción de un determinado vendedor                                                                             | Miguel Ochoa Mejía                                 |
+| Bonus 2       | Obtener un listado de los productos en promoción de los vendedores seguidos por un determinado usuario (solo productos publicados en las ultimas dos semanas) | Miguel Ochoa Mejía                                 |
 
 
 ## Integrantes
