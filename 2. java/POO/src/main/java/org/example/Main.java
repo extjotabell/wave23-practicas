@@ -11,6 +11,6 @@ public class Main {
         System.out.println("El paciente: " + persona3.getNombre() + " con " + persona3.getEdad() + " Anios de Edad " + " Peso de: " + persona3.getPeso() + "Kg. Y altura de: " +persona3.getAltura() + "mtrs");
         System.out.println("Tiene un IMC de: " + persona3.calcularIMC(persona3));
         System.out.println("¿Es mayor de edad?: " + persona3.esMayorEdad(persona3));
-        
+
     }
 }
