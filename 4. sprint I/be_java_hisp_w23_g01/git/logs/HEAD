@@ -1,0 +1,12 @@
+0000000000000000000000000000000000000000 5ed7c9f67ff54d1fb904135ab11e8c912663a512 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703100870 -0600	initial pull
+5ed7c9f67ff54d1fb904135ab11e8c912663a512 5ed7c9f67ff54d1fb904135ab11e8c912663a512 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703100883 -0600	checkout: moving from main to dev
+5ed7c9f67ff54d1fb904135ab11e8c912663a512 5ed7c9f67ff54d1fb904135ab11e8c912663a512 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703100920 -0600	checkout: moving from dev to meza_fernando
+5ed7c9f67ff54d1fb904135ab11e8c912663a512 5ed7c9f67ff54d1fb904135ab11e8c912663a512 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101477 -0600	reset: moving to HEAD
+5ed7c9f67ff54d1fb904135ab11e8c912663a512 5ed7c9f67ff54d1fb904135ab11e8c912663a512 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101485 -0600	checkout: moving from meza_fernando to main
+5ed7c9f67ff54d1fb904135ab11e8c912663a512 7a8f13faf58e7245937f3ece4b56bbcd35f489c5 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101489 -0600	pull origin main: Fast-forward
+7a8f13faf58e7245937f3ece4b56bbcd35f489c5 5ed7c9f67ff54d1fb904135ab11e8c912663a512 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101494 -0600	checkout: moving from main to dev
+5ed7c9f67ff54d1fb904135ab11e8c912663a512 b193290b13d2f197a7c766c6a85420d142f76579 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101517 -0600	pull origin dev --rebase (start): checkout b193290b13d2f197a7c766c6a85420d142f76579
+b193290b13d2f197a7c766c6a85420d142f76579 d3ea8f5d21ed86eadd5f3646710b63954bd0b2ca ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101517 -0600	pull origin dev --rebase (pick): Modify name
+d3ea8f5d21ed86eadd5f3646710b63954bd0b2ca d3ea8f5d21ed86eadd5f3646710b63954bd0b2ca ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101517 -0600	pull origin dev --rebase (finish): returning to refs/heads/dev
+d3ea8f5d21ed86eadd5f3646710b63954bd0b2ca 5ed7c9f67ff54d1fb904135ab11e8c912663a512 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101562 -0600	checkout: moving from dev to meza_fernando
+5ed7c9f67ff54d1fb904135ab11e8c912663a512 7a8f13faf58e7245937f3ece4b56bbcd35f489c5 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703101568 -0600	merge main: Fast-forward
