@@ -24,10 +24,9 @@ Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de pr
 | US0007        | Poder realizar la acción de “Unfollow” (dejar de seguir) a un determinado vendedor.                                   | Diana Isabel Ramírez García                        |
 | US0008        | Ordenamiento alfabético ascendente y descendente                                                                      | Miguel Ochoa Mejía                                 |
 | US0009        | Ordenamiento por fecha ascendente y descendente                                                                       | Sebastian Ospina García                            |
-| US0010        | Llevar a cabo la publicación de un nuevo producto en promoción
-| Diana Isabel Ramírez García                        |
-| US0011        | Obtener la cantidad de productos en promoción de un determinado vendedor
-| Diana Isabel Ramírez García                        |
+| US0010        | Llevar a cabo la publicación de un nuevo producto en promoción                                                        | Diana Isabel Ramírez García                        |
+| US0011        | Obtener la cantidad de productos en promoción de un determinado vendedor                                               | Diana Isabel Ramírez García                        |
+
 
 ## Integrantes
 
