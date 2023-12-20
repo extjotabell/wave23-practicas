@@ -39,7 +39,7 @@ public class Mapper {
     }
 
     public Post mapPostDTOToPost(PostDTO postDTO) {
-        return new Post(postDTO.getUserId(),postDTO.getId(), postDTO.getDate(),mapProductDTOToProduct(postDTO.getProduct()),postDTO.getCategory(),postDTO.getPrice());
+        return new Post(postDTO.getId(),postDTO.getUserId(), postDTO.getDate(),mapProductDTOToProduct(postDTO.getProduct()),postDTO.getCategory(),postDTO.getPrice());
     }
 
     public ProductDTO mapProductToProductDTO(Product product) {

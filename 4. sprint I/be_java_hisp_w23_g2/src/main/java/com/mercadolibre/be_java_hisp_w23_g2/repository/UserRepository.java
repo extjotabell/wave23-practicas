@@ -70,8 +70,10 @@ public class UserRepository implements IUserRepository {
     @Override
     public User followUser(int userId, int userIdToFollow) {
         User user = findUserById(userId);
+        User user1 = findUserById(userIdToFollow);
 
-        user.getFollowed().add(findUserById(userIdToFollow));
+        user.getFollowed().add(user1);
+        user1.getFollowers().add(user);
         return user;
     }
 
