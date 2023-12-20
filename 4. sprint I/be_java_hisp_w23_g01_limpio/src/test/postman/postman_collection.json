@@ -1,0 +1,725 @@
+{
+	"info": {
+		"_postman_id": "8d5ce558-e134-422c-90ce-616aebecaa2a",
+		"name": "Sprint 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612957"
+	},
+	"item": [
+		{
+			"name": "US 001",
+			"item": [
+				{
+					"name": "Add follower",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/100/follow/1100",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"100",
+								"follow",
+								"1100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add existing follower",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/100/follow/1100",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"100",
+								"follow",
+								"1100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "follow itself",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/100/follow/100",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"100",
+								"follow",
+								"100"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US 002",
+			"item": [
+				{
+					"name": "Followers count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/1100/followers/count",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"1100",
+								"followers",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US 003 with 008",
+			"item": [
+				{
+					"name": "Get followers - Name asc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/1100/followers/list?order=name_asc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"1100",
+								"followers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "name_asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get followers - Name desc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/1100/followers/list?order=name_desc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"1100",
+								"followers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "name_desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get followers - asc by default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/1100/followers/list",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"1100",
+								"followers",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get followers - id invalid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/1502/followers/list",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"1502",
+								"followers",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US 004 with 008",
+			"item": [
+				{
+					"name": "Get followed - name asc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/100/followed/list?order=name_asc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"100",
+								"followed",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "name_asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get followed - desc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/100/followed/list?order=name_desc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"100",
+								"followed",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "name_desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US 005",
+			"item": [
+				{
+					"name": "New Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1100,\n    \"date\": \"2023-12-16\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Test post\",\n        \"type\": \"Test type\",\n        \"brand\": \"Test brand\",\n        \"color\": \"Test color\",\n        \"notes\": \"Test notes\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/post",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"post"
+							]
+						},
+						"description": "Crea nueva publicacion para el usuario indicado"
+					},
+					"response": []
+				},
+				{
+					"name": "New Post - id invalid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 10,\n    \"date\": \"2021-09-04\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/post",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US 006 with 009",
+			"item": [
+				{
+					"name": "Posts last to weeks- date asc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/followed/100/list?order=date_asc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"followed",
+								"100",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "date_asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts last to weeks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/followed/100/list",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"followed",
+								"100",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts last to weeks - without followed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/followed/1100/list",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"followed",
+								"1100",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts last two weeks - date desc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/followed/100/list?order=date_desc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"followed",
+								"100",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "date_desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US 007",
+			"item": [
+				{
+					"name": "Unfollow user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/100/unfollow/2100",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"100",
+								"unfollow",
+								"2100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid id follower",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/2890/unfollow/2100",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"2890",
+								"unfollow",
+								"2100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid id followed",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/100/unfollow/2145",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"100",
+								"unfollow",
+								"2145"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US0010",
+			"item": [
+				{
+					"name": "Add new product promo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 100,\n    \"date\": \"2021-09-04\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/promo-post",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product promo already exists",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 100,\n    \"date\": \"2021-09-04\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/promo-post",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid product promo parameters",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 100,\n    \"date\": \"2021-09-04\",\n    \"product\": {\n        \"product_id\": 1,\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/promo-post",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid discount when has_promo is false",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 100,\n    \"date\": \"2021-09-04\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50,\n    \"has_promo\": false,\n    \"discount\": 0.12\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/products/promo-post",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US0011",
+			"item": [
+				{
+					"name": "Get count of promotions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products/promo-post/count?user_id=100",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Load test data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const followersData = [",
+							"    {",
+							"        follower: 100,",
+							"        followed: 2100",
+							"    },",
+							"    {",
+							"        follower: 2100,",
+							"        followed: 1100",
+							"    },",
+							"    {",
+							"        follower: 3100,",
+							"        followed: 1100",
+							"    },",
+							"    {",
+							"        follower: 4100,",
+							"        followed: 1100",
+							"    }",
+							"]",
+							"",
+							"for(let i = 0; i < followersData.length; i++){",
+							"    const data = followersData[i];",
+							"    const requestInfo = {",
+							"        url: `${pm.variables.get(\"baseURL\")}/users/${data.follower}/follow/${data.followed}`,",
+							"        method: \"POST\"",
+							"    }",
+							"",
+							"    pm.sendRequest(",
+							"        requestInfo, (error, response) => {",
+							"            if(error){",
+							"                console.log(error);",
+							"            }else{",
+							"                console.log(response);",
+							"            }",
+							"    })",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/users",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/users",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080"
+		}
+	]
+}
