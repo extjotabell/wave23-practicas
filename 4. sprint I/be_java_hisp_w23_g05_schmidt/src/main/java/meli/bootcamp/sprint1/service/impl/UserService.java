@@ -82,8 +82,7 @@ public class UserService implements IUserService {
 
     followerDtoList = getOrderFollowerDtos(order, followerDtoList);
 
-    UserDto userDto = new UserDto(user.getId(), user.getName(), followerDtoList);
-    return userDto;
+    return new UserDto(user.getId(), user.getName(), followerDtoList);
   }
 
   @Override
