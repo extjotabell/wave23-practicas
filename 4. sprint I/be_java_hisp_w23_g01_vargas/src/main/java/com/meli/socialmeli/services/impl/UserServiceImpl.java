@@ -171,9 +171,10 @@ public class UserServiceImpl implements IUserService {
         List<UserInfoDTO> suggestions= userRepository.findAll()
                                                      .stream()
                                                      .filter(u -> !u.getPosts().isEmpty()
-                                                                && !followedSellers.contains(u))
+                                                                && !followedSellers.contains(u)
+                                                                && u.getUser_id() != userFound.get().getUser_id())
                                                      .filter(u -> u.getPosts().stream()
-                                                                            .anyMatch(p -> categories.contains(p.getCategory())))
+                                                                   .anyMatch(p -> categories.contains(p.getCategory())))
                                                      .map(u -> new UserInfoDTO(u.getUser_id(), u.getUser_name()))
                                                      .toList();
 
