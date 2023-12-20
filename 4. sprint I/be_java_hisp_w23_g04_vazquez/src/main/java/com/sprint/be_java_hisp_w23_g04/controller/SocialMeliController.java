@@ -64,8 +64,8 @@ public class SocialMeliController {
     }
 
     @GetMapping("/products/promo-post/count")
-    public ResponseEntity<?> getProductsInPromoByUserId(@RequestParam Integer userId) {
-        return new ResponseEntity<>(socialMediaService.getProductsInPromoByUserId(userId), HttpStatus.OK);
+    public ResponseEntity<?> getProductsInPromoByUserId(@RequestParam Integer user_id) {
+        return new ResponseEntity<>(socialMediaService.getProductsInPromoByUserId(user_id), HttpStatus.OK);
     }
 
     @PutMapping("users/{userId}/modify-promo/{promoPostId}")
