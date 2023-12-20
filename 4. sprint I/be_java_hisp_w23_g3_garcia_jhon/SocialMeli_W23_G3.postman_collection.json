@@ -1,22 +1,20 @@
 {
 	"info": {
-		"_postman_id": "e4b7f017-69b9-42d1-addb-186665b8eac1",
+		"_postman_id": "6d253b7e-fc9b-45d3-ad38-758a57cbc3ff",
 		"name": "SocialMeli",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31612332",
-		"_collection_link": "https://socialmeli-w23-g3.postman.co/workspace/SocialMeli-W23-G3~6050674e-6fac-4fbb-9cb6-0866bafb900b/collection/31877782-e4b7f017-69b9-42d1-addb-186665b8eac1?action=share&source=collection_link&creator=31612332"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "US-0001: Follow a user",
 			"item": [
 				{
-					"name": "(200) OK",
+					"name": "(200) OK - User can follow a seller",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/users/2/follow/9",
+							"raw": "{{LOCAL}}/users/2/follow/10",
 							"host": [
 								"{{LOCAL}}"
 							],
@@ -24,14 +22,14 @@
 								"users",
 								"2",
 								"follow",
-								"9"
+								"10"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "(200) OK -Seller can follow seller",
+					"name": "(200) OK - Seller can follow seller",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -56,7 +54,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/users/2/follow/1",
+							"raw": "{{LOCAL}}/users/2/follow/3",
 							"host": [
 								"{{LOCAL}}"
 							],
@@ -64,7 +62,7 @@
 								"users",
 								"2",
 								"follow",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -166,13 +164,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/users/9/followers/list",
+							"raw": "{{LOCAL}}/users/7/followers/list",
 							"host": [
 								"{{LOCAL}}"
 							],
 							"path": [
 								"users",
-								"9",
+								"7",
 								"followers",
 								"list"
 							]
@@ -257,7 +255,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"09-12-2023\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}\n",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"09-12-2023\",\n    \"product\": {\n        \"product_id\": 10,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -461,7 +459,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/users/1/unfollow/9",
+							"raw": "{{LOCAL}}/users/1/unfollow/12",
 							"host": [
 								"{{LOCAL}}"
 							],
@@ -469,7 +467,7 @@
 								"users",
 								"1",
 								"unfollow",
-								"9"
+								"12"
 							]
 						}
 					},
@@ -722,6 +720,250 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "US-0010: Add a new promo post",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 9,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_id\": 46,\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": 200,\n    \"price\": 120.99,\n    \"discount\": 0.45\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400): Already Posted",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 9,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_id\": 3,\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": 200,\n    \"price\": 120.99,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): User not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 123,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_id\": 2,\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": 200,\n    \"price\": 120.99,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0011: Count Promo Posts",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post/count?user_id=9",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post/count?user_id=999",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "999"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): Not Found - Only Seller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post/count?user_id=5",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bonus 1: List of Promo Post of Seller",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post/list?user_id=9",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"list"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post/list?user_id=999",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"list"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "999"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bonus 2: Price of post products",
+			"item": [
+				{
+					"name": "(200) OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "(404) Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
 				}
 			]
 		}
