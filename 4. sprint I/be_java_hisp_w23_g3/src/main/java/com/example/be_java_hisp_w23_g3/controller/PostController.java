@@ -44,4 +44,10 @@ public class PostController {
     public ResponseEntity<?> getPromoPostsList(@RequestParam(name = "user_id") Long userId) {
         return ResponseEntity.ok().body(postService.getPromoPostsList(userId));
     }
+
+    @GetMapping("/followed/promo-post/list")
+    public ResponseEntity<?> getFollowedPromoPostsList(@RequestParam(name = "user_id") Long userId,
+                                                       @RequestParam(required = false) String order) {
+        return ResponseEntity.ok().body(postService.getFollowedPromoPostsList(userId, order));
+    }
 }

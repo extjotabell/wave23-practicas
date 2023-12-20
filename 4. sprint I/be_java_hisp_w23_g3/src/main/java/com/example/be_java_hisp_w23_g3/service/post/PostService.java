@@ -12,4 +12,5 @@ public interface PostService {
     void setNewPromoPost(RequestPromoPostDTO promoPostDTO);
     PromoPostCountDTO getPromoPostCount(Long userId);
     PromoPostsListDTO getPromoPostsList(Long userId);
+    FollowedPostsListDTO getFollowedPromoPostsList(Long userId, String order);
 }

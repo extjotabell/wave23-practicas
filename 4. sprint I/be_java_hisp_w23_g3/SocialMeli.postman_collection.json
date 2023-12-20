@@ -948,6 +948,20 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "US-0013: List of followed promo posts",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"variable": [

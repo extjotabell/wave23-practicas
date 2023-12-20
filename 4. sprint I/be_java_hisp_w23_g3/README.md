@@ -9,7 +9,7 @@ Mercado Libre sigue creciendo y para el año que viene  tiene como objetivo empe
 
 Para ejecutar la API es necesario descargar los archivos de este repositorio y abrirlos con un IDE, de preferencia **IntelliJ IDEA**. Dentro del IDE basta con ejecutar el archivo **BeJavaHispW23G3Application** ubicado en **src/main/java/be_java_hisp_w23_g3**. La API corre por defecto en el **puerto 8080 de localhost.**
 
-Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de prueba del API están recogidos en esta colección: **SocialMeli.postman_collection.json**.
+Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de prueba del API están recogidos en esta colección: **SocialMeli.postman_collection.json**, en esta coleccion se puede extraer la documentacion de la API.
 
 ## Endpoints y responsables
 
@@ -26,41 +26,9 @@ Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de pr
 | US0009        | Ordenamiento por fecha ascendente y descendente                                                                       | Sebastian Ospina García                            |
 | US0010        | Llevar a cabo la publicación de un nuevo producto en promoción                                                        | Miguel Ochoa Mejía                                 |
 | US0011        | Obtener la cantidad de productos en promoción de un determinado vendedor                                              | Miguel Ochoa Mejía                                 |
-| Bonus 1       | Obtener un listado de todos los productos en promoción de un determinado vendedor                                     | Miguel Ochoa Mejía                                 |      
+| Bonus 1       | Obtener un listado de todos los productos en promoción de un determinado vendedor                                     | Miguel Ochoa Mejía                                 |
+| Bonus 2       | Obtener un listado de todos los productos en promoción de los vendedores seguidos por un determinado usuario          | Miguel Ochoa Mejía                                 |
 
-## Documentación de los Endpoints bonus
-
-### Bonus 1
-
-Conseguir un producto individual por su ID: ```GET: /products/post/{postId}```
-
-**Response:**
-
-- **200 OK:**
-    ```json
-    {
-      "user_id": 234,
-      "date": "2023-12-09",
-      "product": {
-        "product_id": 1,
-        "product_name": "Silla Gamer",
-        "type": "Gamer",
-        "brand": "Racer",
-        "color": "Red & Black",
-        "notes": "Special Edition"
-      },
-      "category": 100,
-      "price": 1500.50,
-      "has_promo": true,
-      "discount": 0.25
-    }
-    ```
-- **404 Not Found:**
-    ```json
-    {
-      "message": "Post not found"
-    }
-    ```
 
 ## Integrantes
 

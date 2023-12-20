@@ -97,4 +97,19 @@ public class PostServiceImpl implements PostService {
 
         return DTOMapper.mapToPromoPostsListDTO(promoPosts, seller.getId(), seller.getUsername());
     }
+
+    @Override
+    public FollowedPostsListDTO getFollowedPromoPostsList(Long userId, String order) {
+        User user = userRepository.read(userId)
+                .or(() -> sellerRepository.read(userId))
+                .orElseThrow(() -> new NotFoundException("No se ha encontrado un usuario con el ID: " + userId));
+
+        List<Long> followedSellersIds = user.getFollowing().stream().map(Seller::getId).toList();
+
+        List<Post> allFollowedByUser = postRepository.readBatchBySellerIds(followedSellersIds).stream()
+                .filter(post -> post instanceof PromoPost &&
+                        !post.getDate().isBefore(LocalDate.now().minusWeeks(2))).toList();
+
+        return DTOMapper.mapToFollowedPostsListDTO(allFollowedByUser, userId, order);
+    }
 }
