@@ -52,6 +52,18 @@ The be_java_hisp_w23_g2 project is a social platform that allows users to follow
   - localhost:8080/products/followed/{userId}/list?order=date_asc
   - Endpoint perform the “List the products from followed in date order” action to a user
   - Responsible: [Hernan De San Vicente]
+- [POST US-0010]
+  - localhost:8080/products/promo-post
+  - Endpoint perform the “Add a promo post” action to a user
+  - Responsible: [Martin Lackington]
+- [GET US-0011]
+  - localhost:8080/products/promo-post/count?user_id={userId}
+  - Endpoint perform the “Count promo post” action to a user
+  - Responsible: [Martin Lackington]
+- [GET BONUS]
+  - localhost:8080/price-filter/{min}/{max}
+  - Endpoint perform the “Filter product by price” action to a user
+  - Responsible: [Martin Lackington]
 
 ## Technologies Used
 - Java
