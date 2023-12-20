@@ -15,7 +15,6 @@ public class ExceptionConfig {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorDTO> handlerValidationException(MethodArgumentNotValidException e){
-        System.out.println("Capturando ? ");
         return ResponseEntity.badRequest()
                              .body(new ErrorDTO(ErrorDTO.generalMessage,
                                                 e.getAllErrors().stream()
