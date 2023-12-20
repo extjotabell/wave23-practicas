@@ -167,6 +167,17 @@ Obtener la cantidad de productos en promoción de un determinado vendedor
 | `promo_products_count ` | `int`    | Cantidad numérica de productos en promoción de un determinado usuario.|
 
 
+#### US 0012: 
+Dar de baja un usuario con todo lo que eso implica.
+
+```http
+  DELETE /users/{userId}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `userId ` | `int`    | Número que identifica al usuario actual|
+
 ​
 ## Endpoints y responsables de su programación
 ​

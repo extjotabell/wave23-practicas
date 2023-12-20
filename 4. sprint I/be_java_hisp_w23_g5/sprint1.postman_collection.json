@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "0f4aa3bf-e51c-4676-8a4e-c707274c1f89",
-		"name": "SPRINT 1 Grupal",
+		"name": "sprint1 grupal",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "31595552"
 	},
@@ -708,6 +708,97 @@
 										{
 											"key": "order",
 											"value": "name_asc"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "US 0009",
+			"item": [
+				{
+					"name": "GET /users/{userId}/followers/list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/1/followers/list",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"followers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "name_desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Order desc",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/users/1/followers/list?order=name_desc",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"1",
+										"followers",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "name_desc"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Order asc",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/users/1/followers/list?order=asvd",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"1",
+										"followers",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "asvd"
 										}
 									]
 								}
