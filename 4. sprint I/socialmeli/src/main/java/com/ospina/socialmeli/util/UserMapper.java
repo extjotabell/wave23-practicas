@@ -5,8 +5,6 @@ import com.ospina.socialmeli.entity.Seller;
 import com.ospina.socialmeli.entity.User;
 
 import java.util.Comparator;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class UserMapper {
 
