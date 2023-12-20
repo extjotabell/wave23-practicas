@@ -48,8 +48,6 @@ public class PostMapper {
         Comparator<Post> comparator;
         if (ORDER_DATE_DESC.equalsIgnoreCase(order)) {
             comparator = Comparator.comparing(Post::getDate).reversed();
-        } else if (ORDER_DATE_ASC.equalsIgnoreCase(order)) {
-            comparator = Comparator.comparing(Post::getDate);
         } else {
             comparator = Comparator.comparing(Post::getDate);
         }

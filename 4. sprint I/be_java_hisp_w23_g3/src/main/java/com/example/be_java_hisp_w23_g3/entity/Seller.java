@@ -17,6 +17,12 @@ public class Seller extends User {
         this.posts = new HashMap<>();
     }
 
+    private Seller(Long id, String username, Set<Seller> following) {
+        super(id, username, following);
+        this.follower = new HashSet<>();
+        this.posts = new HashMap<>();
+    }
+
     private Seller(Long id, String username, Set<Seller> following, Set<User> follower, Map<Long, Post> posts) {
         super(id, username, following);
         this.follower = follower;
@@ -24,7 +30,7 @@ public class Seller extends User {
     }
 
     public static Seller build(User user) {
-        return new Seller(user.getId(), user.getUsername());
+        return new Seller(user.getId(), user.getUsername(), user.getFollowing());
     }
 
     public static Seller build(User user, Set<User> follower,Map<Long, Post> posts) {
