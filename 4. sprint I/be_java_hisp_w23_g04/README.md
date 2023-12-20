@@ -33,7 +33,7 @@ La colección de Postman de postman se encuentra en el directorio del proyecto b
 
 La colección está organizada por carpetas, cada una correspondiente a un endpoint diferente de la API. Facilitando la navegación y ejecución de pruebas especificas para cada funcionalidad.
 
-#### Pasos para utilizar la colección de Postman:
+#### Pasos para utilizar la colección de Postman: 
 
 1. **Importar colección:** Se debe iniciar Postman y podes importar la colección seleccionando **`File > Import`** y luego buscando el archivo de collección en **`resourses/SocialMeli.postman_collection.json`**
 2. **Ejecutar pruebas:** Navega por las carpetas de la colección para encontrar las pruebas específicas para cada endpoint.
@@ -60,10 +60,10 @@ La colección está organizada por carpetas, cada una correspondiente a un endpo
 | `userId`       | int  | Número que identifica al usuario actual |
 | `userIdToFollow`| int  | Número que identifica al usuario a seguir |
 
-#### Responsable:
+#### Responsable: 
 Camila Mamani Llanquichoque
 
-### US 0002:
+### US 0002: 
 
 Obtener el Número de Seguidores de un Vendedor
 
@@ -91,10 +91,10 @@ Obtener el Número de Seguidores de un Vendedor
 |----------------|------|-----------------------------------------|
 | `userId`       | int  | Número que identifica al usuario actual |
 
-#### Responsable:
+#### Responsable: 
 Matias Nicolas Fiermarin
 
-### US 0003:
+### US 0003: 
 
 Obtener un Listado de Todos los Usuarios que Siguen a un Determinado Vendedor (¿Quién me sigue?)
 
@@ -135,10 +135,10 @@ Obtener un Listado de Todos los Usuarios que Siguen a un Determinado Vendedor (�
 |----------------|------|-----------------------------------------|
 | `userId`       | int  | Número que identifica al usuario actual |
 
-#### Responsable:
+#### Responsable: 
 Tomas Eliseo Vazquez Moreyra
 
-### US 0004:
+### US 0004: 
 
 Obtener  un listado de todos los vendedores a los cuales sigue un determinado usuario (¿A quién sigo?)
 
@@ -178,10 +178,10 @@ Obtener  un listado de todos los vendedores a los cuales sigue un determinado us
 |----------------|------|-----------------------------------------|
 | `userId`       | int  | Número que identifica al usuario actual |
 
-#### Responsable:
+#### Responsable: 
 Federico Tagliabue
 
-US 0005:
+US 0005: 
 
 Dar de alta una nueva publicación
 
@@ -234,10 +234,10 @@ Dar de alta una nueva publicación
 | `category`    | int       | Identificador que sirve para conocer la categoría a la que pertenece un producto. Por ejemplo: 100: Sillas, 58: Teclados |
 | `price`       | double    | Precio del producto                                          |
 
-#### Responsable:
+#### Responsable: 
 Florencia Denise Leiva
 
-### US 0006:
+### US 0006: 
 
 Obtener un listado de las publicaciones realizadas por los vendedores que un usuario sigue en las últimas dos semanas (para esto tener en cuenta ordenamiento por fecha, publicaciones más recientes primero).
 
@@ -294,10 +294,10 @@ Obtener un listado de las publicaciones realizadas por los vendedores que un usu
 |----------------|------|-----------------------------------------|
 | `userId`       | int  | Número que identifica al usuario actual |
 
-#### Responsable:
+#### Responsable: 
 Cinthya Alexandra Fernandez
 
-### US 0007:
+### US 0007: 
 
 Poder realizar la acción de “Unfollow” (dejar de seguir) a un determinado vendedor.
 
@@ -314,10 +314,10 @@ Poder realizar la acción de “Unfollow” (dejar de seguir) a un determinado v
 | `userId`           | int  | Número que identifica al usuario actual                      |
 | `userIdToUnfollow` | int  | Número que identifica al usuario a dejar de seguir           |
 
-#### Responsable:
+#### Responsable: 
 Gabriel Jesus Gutierrez Semidey
 
-### US 0008:
+### US 0008: 
 
 Ordenamiento alfabético ascendente y descendente
 ##### **Nota:** Este ordenamiento aplica solo para US-003 y US-004.
@@ -325,7 +325,7 @@ Ordenamiento alfabético ascendente y descendente
 #### Endpoint
 
 - **Método:** GET
-- **Ejemplos:**
+- **Ejemplos:** 
 1. `/users/{UserID}/followers/list?order=name_asc`
 2. `/users/{UserID}/followers/list?order=name_desc`
 3. `/users/{UserID}/followed/list?order=name_asc`
@@ -339,10 +339,10 @@ Ordenamiento alfabético ascendente y descendente
 | `name_asc` | Alfabético ascendente   |
 | `name_desc`| Alfabético descendente  |
 
-#### Responsable:
+#### Responsable: 
 Federico Tagliabue y Tomas Eliseo Vazquez Moreyra
 
-### US 0009:
+### US 0009: 
 
 Ordenamiento por fecha ascendente y descendente
 ##### **Nota:** Este ordenamiento aplica solo para US-006.
@@ -350,7 +350,7 @@ Ordenamiento por fecha ascendente y descendente
 #### Endpoint
 
 - **Método:** GET
-- **Ejemplos:**
+- **Ejemplos:** 
 1. `/products/followed/{userId}/list?order=date_asc`
 2. `/products/followed/{userId}/list?order=date_desc`
 
@@ -362,96 +362,8 @@ Ordenamiento por fecha ascendente y descendente
 | `date_asc` | Fecha ascendente (de más antigua a más nueva)   |
 | `date_desc`| Fecha descendente (de más nueva a más antigua)  |
 
-#### Responsable:
+#### Responsable: 
 Cinthya Alexandra Fernandez
-
-### US 0010:
-
-Llevar a cabo la publicación de un nuevo producto en promoción
-
-#### Endpoint
-
-- **Método:** POST
-
-- **Ejemplos:**
-
-`/products/promo-post`
-
-#### Formato de Body
-
-  ```json
-  {
-    "user_id": 234,
-    "date": "29-04-2021",
-    "product": {
-      "product_id": 1,
-      "product_name": "Silla Gamer",
-      "type": "Gamer",
-      "brand": "Racer",
-      "color": "Red & Black",
-      "notes": "Special Edition"
-    },
-    "category": 100,
-    "price": 1500.50,
-    "has_promo": true,
-    "discount": 0.25
-}
-  ```
-
-#### Respuestas
-
-- **Status Code 200:** Status Code 200 (todo OK)
-- **Status Code 400:** Status Code 400 (Bad Request)
-
-### US 0011:
-
-Obtener la cantidad de productos en promoción de un determinado vendedor
-
-#### Endpoint
-
-- **Método:** GET
-
-- **Ejemplos:**
-
-`/products/promo-post/count?user_id={userId}`
-
-#### Filtros y Parámetros
-
-| order       | Descripción             |
-|-------------|-------------------------|
-| `user_id`   |  Número que identifica a cada usuario |
-
-
-- **Formato de Respuesta:**
-
-  ```json
-  {  
-     "user_id" : 234,
-     "user_name": "vendedor1",
-     "promo_products_count": 23
-  }
-  ```
-
-### US 0012:
-
-Modificar el valor del descuento en una publicación específica perteneciente a un usuario en particular. 
-
-#### Endpoint
-
-- **Método:** GET
-
-- **Ejemplos:**
-
-`/users/{userId}/modify-promo/{promoPostId}?newDiscount=doubleValue`
-
-#### Filtros y Parámetros
-
-| order         | Descripción                          |
-|---------------|--------------------------------------|
-| `userId`      | Número que identifica a cada usuario |
-| `promoPostId` | Número que identifica al posteo      |
-| `newDiscount` | Nuevo valor del descuento            |
-
 
 ## Integrantes
 - Camila Mamani Llanquichoque
@@ -465,3 +377,5 @@ Modificar el valor del descuento en una publicación específica perteneciente a
 ## Cierre y agradecimientos
 
 ...
+
+
