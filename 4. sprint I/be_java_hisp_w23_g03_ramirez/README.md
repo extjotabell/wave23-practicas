@@ -27,6 +27,40 @@ Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de pr
 | US0010        | Llevar a cabo la publicación de un nuevo producto en promoción                                                        | Diana Isabel Ramírez García                        |
 | US0011        | Obtener la cantidad de productos en promoción de un determinado vendedor                                               | Diana Isabel Ramírez García                        |
 
+## Documentación Bonus endpoint
+
+US 0012: Obtener una lista de promos de todos los vendedores que sigo.
+
+
+## Method - Sign
+GET: users/{userID}/promos
+
+## Response OK 
+```json
+[
+    {
+        "product": {
+            "product_id": 75,
+            "product_name": "Teclado Mecánico",
+            "type": "Mechanical",
+            "brand": "TechPro",
+            "color": "RGB",
+            "notes": "Customizable lighting"
+        },
+        "seller": "Oscar Ramirez"
+    }
+]
+```
+## Parámetros
+
+userID - Long - Número que identifica al usuario actual
+
+### Nota
+Para mostrar el resultado se recomienda seguir los siguientes pasos:
+1. Seguir a un vendedor US0001
+2. Que el vendedor realice un post con promo US0010
+3. Buscar las promos US0012
+
 
 ## Integrantes
 
