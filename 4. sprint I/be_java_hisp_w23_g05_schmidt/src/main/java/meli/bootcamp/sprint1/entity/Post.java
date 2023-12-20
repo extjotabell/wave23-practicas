@@ -3,10 +3,8 @@ package meli.bootcamp.sprint1.entity;
 import java.time.LocalDate;
 
 
-
 import com.fasterxml.jackson.annotation.JsonAlias;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -34,3 +32,4 @@ public class Post {
   }
 
 }
+

@@ -6,7 +6,7 @@ Presentación de una versión Beta de lo que va a ser conocido como “SocialMel
 
 ## Definiciones de Equipo
 ​
-En el archivo `SPRINT 1.postman_collection.json` se encuentra la colección de Postman para ejecutar las pruebas.
+En el archivo `Individual.postman_collection.json` se encuentra la colección de Postman para ejecutar las pruebas.
 
 
 ## API Reference

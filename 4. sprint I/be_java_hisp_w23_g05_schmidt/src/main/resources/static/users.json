@@ -27,7 +27,7 @@
     "name": "Geronimo Schmidt",
     "isSeller": true,
     "followers": [1,2,3],
-    "followed": [1],
+    "followed": [],
     "posts": [],
     "id": "4"
   },
