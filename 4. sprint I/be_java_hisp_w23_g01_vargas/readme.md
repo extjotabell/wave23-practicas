@@ -137,7 +137,51 @@ URL base: http://localhost:8080
 
    **Ejemplo:** /users/234/unfollow/123
 
-8. 
+
+8. **[POST] US 0010:** Llevar a cabo la publicación de un nuevo producto en promoción
+   
+   ***Reponsable: Zuly Vargas***
+
+
+    /products/promo-post
+
+   ```json
+      {
+       "user_id": 234,
+       "date": "29-04-2021",
+       "product": {
+           "product_id": 1,
+           "product_name": "Silla Gamer",
+           "type": "Gamer",
+           "brand": "Racer",
+           "color": "Red & Black",
+           "notes": "Special Edition"
+       },
+       "category": 100,
+       "price": 1500.50,
+       "has_promo": true,
+       "discount": 0.25
+      }
+```
+
+9. **[GET] US 0011:** Obtener la cantidad de productos en promoción de un determinado vendedor
+
+   ***Reponsable: Zuly Vargas***
+
+    /products/promo-post/count?user_id={userId}
+
+   **Ejemplo:** /products/promo-post/count?user_id=100
+
+
+10. **[GET] US 0012**: Obtener listado de vendedores sugeridos basado en categorias de interés.
+
+    ***Reponsable: Zuly Vargas***
+
+     /{userId}/seller-suggestions   
+
+     **Ejemplo:** /users/100/seller-suggestions
+
+
 ## Integrantes:
 - Andres Alejandro Limpio
 - Alfredo Tonatiuh Diaz
