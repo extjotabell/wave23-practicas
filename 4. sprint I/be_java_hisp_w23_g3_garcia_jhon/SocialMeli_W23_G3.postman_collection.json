@@ -733,7 +733,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": 9,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_id\": 46,\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": 200,\n    \"price\": 120.99,\n    \"discount\": 0.45\n}",
+							"raw": "{\n    \"user_id\": 9,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_id\": 46,\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": 200,\n    \"price\": 120.99,\n    \"has_promo\": true,\n    \"discount\": 0.45\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -898,20 +898,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/products/promo-post/list?user_id=9",
+							"raw": "{{LOCAL}}/products/promo-post/user/9/list",
 							"host": [
 								"{{LOCAL}}"
 							],
 							"path": [
 								"products",
 								"promo-post",
+								"user",
+								"9",
 								"list"
-							],
-							"query": [
-								{
-									"key": "user_id",
-									"value": "9"
-								}
 							]
 						}
 					},
@@ -923,20 +919,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/products/promo-post/list?user_id=999",
+							"raw": "{{LOCAL}}/products/promo-post/user/10/list",
 							"host": [
 								"{{LOCAL}}"
 							],
 							"path": [
 								"products",
 								"promo-post",
+								"user",
+								"10",
 								"list"
-							],
-							"query": [
-								{
-									"key": "user_id",
-									"value": "999"
-								}
 							]
 						}
 					},
@@ -952,7 +944,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "{{LOCAL}}/products/post/user/9/calculate-price",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post",
+								"user",
+								"9",
+								"calculate-price"
+							]
+						}
 					},
 					"response": []
 				},
@@ -961,7 +965,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "{{LOCAL}}/products/post/user/99/calculate-price",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post",
+								"user",
+								"99",
+								"calculate-price"
+							]
+						}
 					},
 					"response": []
 				}
