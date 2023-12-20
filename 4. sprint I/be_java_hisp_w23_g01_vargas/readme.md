@@ -162,7 +162,6 @@ URL base: http://localhost:8080
        "has_promo": true,
        "discount": 0.25
       }
-```
 
 9. **[GET] US 0011:** Obtener la cantidad de productos en promoción de un determinado vendedor
 
