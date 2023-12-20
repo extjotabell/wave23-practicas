@@ -61,6 +61,7 @@ public class UserServiceImpl implements UserService {
         return UserMapper.mapToFollowedListDTO(getUser(userID), order);
     }
 
+    @Override
     public MessageResponseDTO followSeller(Long userId, Long userIdToFollow) {
         if(userId.equals(userIdToFollow)){
             throw new FollowingMyselfException("You can't follow yourself");
@@ -77,6 +78,7 @@ public class UserServiceImpl implements UserService {
         return new MessageResponseDTO("Following a new Seller!");
     }
 
+    @Override
     public MessageResponseDTO unFollowSeller(Long userId, Long userIdToUnfollow) {
         if(userId.equals(userIdToUnfollow)){
             throw new UnFollowingMyselfException("You can't unfollow yourself");
