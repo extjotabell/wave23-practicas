@@ -100,7 +100,7 @@ Group: [PostManCollection](src/main/resources/Sprint%201.postman_collection.json
 Individual: [PostManCollection](src/main/resources/Sprint%201%20-%20Individual.postman_collection.json)
 
 ### Technical Requirements 
-[TechnicalRequirements](src/main/resources/3.%20b.%20Esp.%20de%20Req.%20técnicos%20funcionales%20-%20Sprint%20Nº%201%20-%20Spring%20(1).docx.pdf)   cvwnemclwe
+[TechnicalRequirements](src/main/resources/3.%20b.%20Esp.%20de%20Req.%20técnicos%20funcionales%20-%20Sprint%20Nº%201%20-%20Spring%20(1).docx.pdf)
 
 
 
