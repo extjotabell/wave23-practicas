@@ -14,3 +14,6 @@
 [remote "originReal"]
 	url = git@github.com:zulyvargasrz/be_java_hisp_w23_g01.git
 	fetch = +refs/heads/*:refs/remotes/originReal/*
+[branch "meza_fernando"]
+	remote = origin
+	merge = refs/heads/meza_fernando
