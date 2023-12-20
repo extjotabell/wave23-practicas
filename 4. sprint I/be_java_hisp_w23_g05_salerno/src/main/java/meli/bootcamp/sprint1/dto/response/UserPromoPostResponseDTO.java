@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class UserPromoPostResponseDTO {
 
-    private Integer user_id;
+    private int user_id;
     private String user_name;
     private List<PromoPostResponseDTO> posts;
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import meli.bootcamp.sprint1.dto.response.NewProductDto;
 
 @Getter
 @NoArgsConstructor
@@ -18,7 +19,7 @@ public class NewPostDto {
   private NewProductDto product;
   private int category;
   private double price;
-  private Boolean has_promo;
-  private Double discount;
+  private boolean has_promo;
+  private double discount;
 
 }

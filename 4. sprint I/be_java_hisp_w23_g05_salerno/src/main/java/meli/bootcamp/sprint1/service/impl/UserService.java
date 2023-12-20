@@ -7,8 +7,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import meli.bootcamp.sprint1.dto.response.*;
-import meli.bootcamp.sprint1.dto.request.FollowedDto;
-import meli.bootcamp.sprint1.dto.request.UserFollowedDto;
 import meli.bootcamp.sprint1.exception.EmptyListException;
 
 import org.springframework.stereotype.Service;
@@ -39,7 +37,7 @@ public class UserService implements IUserService {
       throw new BadRequestException("User not found");
     }
 
-    if (newPost.getHas_promo() != null && newPost.getHas_promo() == true){
+    if (newPost.isHas_promo() == true){
       throw new BadRequestException("Product has a promotion. (Use Add Promo Post instead)");
     }
 
@@ -68,17 +66,17 @@ public class UserService implements IUserService {
       throw new BadRequestException("User with id " + userIdToFollow + " not found");
     }
 
-    if(!userToFollow.isSeller()){
+    if (!userToFollow.isSeller()) {
       throw new BadRequestException("User must be a seller to follow");
     }
 
-    if(userId == userIdToFollow){
+    if (userId == userIdToFollow) {
       throw new BadRequestException("You can't follow yourself!");
     }
 
     Optional<Integer> userFollowedId = user.getFollowed().stream().filter(id -> id == userIdToFollow).findFirst();
 
-    if(userFollowedId.isPresent())
+    if (userFollowedId.isPresent())
       return new BaseResponseDto("The user is already followed");
 
     user.newFollow(userIdToFollow);
@@ -88,12 +86,7 @@ public class UserService implements IUserService {
   }
 
   @Override
-  public List<User> getAll() {
-    return this.repository.findAll();
-  }
-
-  @Override
-  public UserDtoUS0003 getFollowersById(int id, String order) {
+  public UserDto getFollowersById(int id, String order) {
     User user = repository.findUserById(id);
     if (user == null) {
       throw new BadRequestException("User not found");
@@ -105,28 +98,29 @@ public class UserService implements IUserService {
       throw new EmptyListException("The User " + id + " has no followers users");
     }
 
-    List<FollowersDtoUS0003> followersDtoUS0003List = new ArrayList<>();
+    List<FollowerDto> followerDtoList = new ArrayList<>();
 
     for (Integer idFollower : followers) {
       User findFollower = repository.findUserById(idFollower);
-      FollowersDtoUS0003 followersDtoUS0003 = new FollowersDtoUS0003(findFollower.getId(), findFollower.getName());
-      followersDtoUS0003List.add(followersDtoUS0003);
+      FollowerDto followerDto = new FollowerDto(findFollower.getId(), findFollower.getName());
+      followerDtoList.add(followerDto);
     }
 
     if (order == null || order.equals("name_asc")) {
-      followersDtoUS0003List = followersDtoUS0003List.stream()
-              .sorted(Comparator.comparing(FollowersDtoUS0003::getUser_name))
-              .toList();
+      followerDtoList = followerDtoList.stream()
+          .sorted(Comparator.comparing(FollowerDto::getUser_name))
+          .toList();
     } else if (order.equals("name_desc")) {
-      followersDtoUS0003List = followersDtoUS0003List.stream()
-              .sorted(Comparator.comparing(FollowersDtoUS0003::getUser_name).reversed())
-              .toList();
+      followerDtoList = followerDtoList.stream()
+          .sorted(Comparator.comparing(FollowerDto::getUser_name).reversed())
+          .toList();
     }
 
-    UserDtoUS0003 userDto = new UserDtoUS0003(user.getId(), user.getName(), followersDtoUS0003List);
+    UserDto userDto = new UserDto(user.getId(), user.getName(), followerDtoList);
     return userDto;
   }
 
+  @Override
   public BaseResponseDto unfollowUser(int userId, int userIdToUnfollow) {
     User userFollower = repository.findUserById(userId);
     User userFollowed = repository.findUserById(userIdToUnfollow);
@@ -148,10 +142,11 @@ public class UserService implements IUserService {
     if (unfollowed) {
       return new BaseResponseDto("User " + userIdToUnfollow + " was unfollowed");
     } else {
-      return  new BaseResponseDto("Error unfollowing user, user " + userId + " doesn't follow user " + userIdToUnfollow);
+      return new BaseResponseDto("Error unfollowing user, user " + userId + " doesn't follow user " + userIdToUnfollow);
     }
   }
 
+  @Override
   public FollowersDto getFollowersByUserId(int userId) {
     User user = this.repository.findUserById(userId);
     if (user == null) {
@@ -159,7 +154,8 @@ public class UserService implements IUserService {
     }
     return new FollowersDto(user.getId(), user.getName(), user.getFollowers().size());
   }
-  
+
+  @Override
   public UserFollowedDto getFollowed(Integer id, String order) {
     User user = this.repository.findUserById(id);
 
@@ -172,17 +168,17 @@ public class UserService implements IUserService {
     }
 
     List<FollowedDto> followed = user.getFollowed().stream()
-            .map(u -> new FollowedDto(u, this.repository.findUserById(u).getName()))
-            .toList();
+        .map(u -> new FollowedDto(u, this.repository.findUserById(u).getName()))
+        .toList();
 
     if (order == null || order.equals("name_asc")) {
       followed = followed.stream()
-              .sorted(Comparator.comparing(FollowedDto::getUser_name))
-              .toList();
+          .sorted(Comparator.comparing(FollowedDto::getUser_name))
+          .toList();
     } else if (order.equals("name_desc")) {
       followed = followed.stream()
-              .sorted(Comparator.comparing(FollowedDto::getUser_name).reversed())
-              .toList();
+          .sorted(Comparator.comparing(FollowedDto::getUser_name).reversed())
+          .toList();
     }
 
     UserFollowedDto userFollowedDto = new UserFollowedDto(user.getId(), user.getName(), followed);
@@ -221,46 +217,26 @@ public class UserService implements IUserService {
   }
 
   @Override
-    public LastPostsDto getLastPostsOrdered(int userId, String order) {
-      LastPostsDto lastPostsDto = getLastPostsFromFollowed(userId);
-      List<PostDto> postsDto = lastPostsDto.getPosts();
+  public LastPostsDto getLastPostsOrdered(int userId, String order) {
+    LastPostsDto lastPostsDto = getLastPostsFromFollowed(userId);
+    List<PostDto> postsDto = lastPostsDto.getPosts();
 
-      if ("date_asc".equals(order)) {
-        postsDto.sort(Comparator.comparing(PostDto::getDate));
-      } else if ("date_desc".equals(order)) {
-        postsDto.sort(Comparator.comparing(PostDto::getDate).reversed());
-      }
-
-      return new LastPostsDto(userId, postsDto);
+    if ("date_asc".equals(order)) {
+      postsDto.sort(Comparator.comparing(PostDto::getDate));
+    } else if ("date_desc".equals(order)) {
+      postsDto.sort(Comparator.comparing(PostDto::getDate).reversed());
     }
 
+    return new LastPostsDto(userId, postsDto);
+  }
+
+  @Override
   public LastPostsDto getLastPosts(int userId, String order) {
     if ("date_asc".equals(order) || "date_desc".equals(order)) {
       return getLastPostsOrdered(userId, order);
     } else {
       return getLastPostsFromFollowed(userId);
     }
-  }
-
-  public UserFollowedDto getFollowed(Integer id) {
-    User user = this.repository.findUserById(id);
-
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
-
-    if (user.getFollowed().isEmpty()){
-      throw new EmptyListException("The User " + id + " has no followed users");
-    }
-
-    List<FollowedDto> followed = new ArrayList<>();
-
-    user.getFollowed().stream().forEach((u) -> followed.add(new FollowedDto(u, this.repository.findUserById(u).getName()))
-    );
-
-    UserFollowedDto userFollowedDto = new UserFollowedDto(user.getId(), user.getName(), followed);
-
-    return userFollowedDto;
   }
 
   @Override
@@ -277,11 +253,11 @@ public class UserService implements IUserService {
       throw new BadRequestException("Category not found");
     }
 
-    if (NewPostDto.getHas_promo() == null || NewPostDto.getHas_promo() == false){
+    if (NewPostDto.isHas_promo() == false){
       throw new BadRequestException("Product has no promotion. (Use Add Post instead)");
     }
 
-    Post newPostEntity = new Post(newProductEntity, NewPostDto.getDate(), category, NewPostDto.getPrice(), NewPostDto.getHas_promo(), NewPostDto.getDiscount());
+    Post newPostEntity = new Post(newProductEntity, NewPostDto.getDate(), category, NewPostDto.getPrice(), NewPostDto.isHas_promo(), NewPostDto.getDiscount());
 
     user.addPost(newPostEntity);
 
@@ -299,7 +275,7 @@ public class UserService implements IUserService {
 
     user.getPosts().stream()
             .forEach((post -> {
-              if (post.getHas_promo() != null && post.getHas_promo() == true) {
+              if (post.isHas_promo() == true) {
                 promoPosts.add(post);
               }
             }));
@@ -320,20 +296,20 @@ public class UserService implements IUserService {
 
     user.getPosts().stream()
             .forEach((post -> {
-              if (post.getHas_promo() != null && post.getHas_promo() == true) {
+              if (post.isHas_promo() == true) {
                 final ProductDto productDto = new ProductDto(post.getProduct().getId(), post.getProduct().getName(), post.getProduct().getType(), post.getProduct().getBrand(), post.getProduct().getColor(), post.getProduct().getNotes());
-                final PromoPostResponseDTO promoPostResponseDTO = new PromoPostResponseDTO(user.getId(), post.getId(), post.getDate(), productDto, post.getCategory().getId(), post.getPrice(), post.getHas_promo(), post.getDiscount());
+                final PromoPostResponseDTO promoPostResponseDTO = new PromoPostResponseDTO(user.getId(), post.getId(), post.getDate(), productDto, post.getCategory().getId(), post.getPrice(), post.isHas_promo(), post.getDiscount());
                 promoPosts.add(promoPostResponseDTO);
               }
             }));
 
     List<PromoPostResponseDTO> promoPostOrdered = new ArrayList<>();
 
-    if (order == null || order.equals("name_asc")) {
+    if (order.equals("name_asc")) {
       promoPostOrdered = promoPosts.stream()
               .sorted(Comparator.comparing(PromoPostResponseDTO::getProduct, (p1, p2) -> p2.getProduct_name().compareTo(p1.getProduct_name())))
               .toList();
-    } else if (order.equals("name_desc")) {
+    } else if (order.equals("name_desc") || order == null || order != ("name_desc") ) {
       promoPostOrdered = promoPosts.stream()
               .sorted(Comparator.comparing(PromoPostResponseDTO::getProduct, (p1, p2) -> p2.getProduct_name().compareTo(p1.getProduct_name())).reversed())
               .toList();
@@ -341,5 +317,4 @@ public class UserService implements IUserService {
 
     return new UserPromoPostResponseDTO(user.getId(), user.getName(), promoPostOrdered);
   }
-
 }

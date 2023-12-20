@@ -167,31 +167,6 @@ Obtener la cantidad de productos en promoción de un determinado vendedor
 | `promo_products_count ` | `int`    | Cantidad numérica de productos en promoción de un determinado usuario.|
 
 
-#### US 0012
-
-Obtener un listado de todos los productos en promoción de un determinado vendedor.
-
-```http
-  GET /products/promo-post/list?user_id={userId}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `userId ` | `int`    | Número que identifica a cada usuario|
-| `user_name ` | `String`    | Cadena de caracteres que representa el nombre del usuario|
-| `post_id ` | `int`    | postNúmero identificatorio de cada una de las publicaciones.|
-| `date ` | `LocalDate`    | Fecha de la publicación en formato dd-MM-yyyy.|
-| `product_id ` | `int`    | Número identificatorio de un producto asociado a una publicación.|
-| `product_name ` | `String`    | Cadena de caracteres que representa el nombre de un producto.|
-| `type ` | `String`    | Cadena de caracteres que representa el tipo de un producto.|
-| `brand ` | `String`    | Cadena de caracteres que representa la marca de un producto.|
-| `color ` | `String`    | Cadena de caracteres que representa el color de un producto.|
-| `notes ` | `String`    | Cadena de caracteres para colocar notas u observaciones de un producto.|
-| `category ` | `int`    | Identificador que sirve para conocer la categoría a la que pertenece un producto. Por ejemplo: 100: Sillas, 58: Teclados.|
-| `price ` | `double`    | Precio del producto.|
-| `has_promo ` | `boolean`    | Campo true o false para determinar si un producto está en promoción o no.|
-| `discount ` | `double`    | En caso de que un producto estuviese en promoción, establece el monto de descuento.|
-
 ​
 ## Endpoints y responsables de su programación
 ​
@@ -206,9 +181,6 @@ Obtener un listado de todos los productos en promoción de un determinado vended
 | `POST`   | `US 0007` /users/{userId}/unfollow/{userIdToUnfollow}     | Fátima Noble    |
 | `GET`   | `US 0008` /users/{UserID}/followers/list?order=name_asc     | Ailen Pereira Vilches,  Nicolas Reinaldo  |
 | `GET`   | `US 0009` /products/followed/{userId}/list?order=date_asc     | Brenda Torrico |
-| `POST`   | `US 0010` /products/promo-post    | Lucas Salerno (individual) |
-| `GET`   | `US 0011` /products/promo-post/count?user_id={userId}     | Lucas Salerno (individual) |
-| `GET`   | `US 0012` /products/promo-post/list?user_id={userId}order=date_desc     | Lucas Salerno (individual) |
 
 ## Integrantes
 

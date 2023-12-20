@@ -18,8 +18,8 @@ public class Post {
   private LocalDate date;
   private Category category;
   private double price;
-  private Boolean has_promo;
-  private Double discount;
+  private boolean has_promo;
+  private double discount;
 
   public Post(Product product, LocalDate date, Category category, double price) {
     this.id = ++nextId;
@@ -29,7 +29,7 @@ public class Post {
     this.price = price;
   }
 
-  public Post(Product product, LocalDate date, Category category, double price, Boolean has_promo, Double discount) {
+  public Post(Product product, LocalDate date, Category category, double price, boolean has_promo, double discount) {
     this.id = ++nextId;
     this.product = product;
     this.date = date;
