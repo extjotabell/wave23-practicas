@@ -41,7 +41,14 @@ public class UserMapper {
 
     public static UserDTO mapUser(User user) {
         List<PostResponseDTO> postResponseDTOS = user.getPosts().stream()
-                .map(p -> new PostResponseDTO(user.getId(), p.getId(), p.getDate(), mapProduct(p.getProduct()), p.getCategory(), p.getPrice())).toList();
+                .map(p -> {
+                    if (p instanceof PostPromo) {
+                        PostPromo promo = (PostPromo) p;
+                        return new PostResponseDTO(user.getId(), p.getDate(), mapProduct(p.getProduct()), p.getCategory(), p.getPrice(), p.getId(), promo.isHasPromo(), promo.getDiscount());
+                    } else {
+                        return new PostResponseDTO(user.getId(), p.getId(), p.getDate(), mapProduct(p.getProduct()), p.getCategory(), p.getPrice());
+                    }
+                }).toList();
         List<UserFollowDTO> followedDTOS = user.getFollowed().stream().map(
                 p -> new UserFollowDTO(p.getId(), p.getName())).toList();
         List<UserFollowDTO> followersDTOS = user.getFollowers().stream().map(

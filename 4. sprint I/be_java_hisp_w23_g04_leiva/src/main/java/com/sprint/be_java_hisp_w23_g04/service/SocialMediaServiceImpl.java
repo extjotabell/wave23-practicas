@@ -7,6 +7,7 @@ import com.sprint.be_java_hisp_w23_g04.dto.response.UserDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.UserFollowDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.*;
 import com.sprint.be_java_hisp_w23_g04.entity.Post;
+import com.sprint.be_java_hisp_w23_g04.entity.PostPromo;
 import com.sprint.be_java_hisp_w23_g04.utils.PostMapper;
 import com.sprint.be_java_hisp_w23_g04.utils.UserMapper;
 import com.sprint.be_java_hisp_w23_g04.utils.Verifications;
@@ -159,8 +160,13 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         for (User seller : user.getFollowed()) {
             for (Post post : seller.getPosts()) {
                 if (post.getDate().isAfter(filterDate)) {
-                    PostResponseDTO postDTO = PostMapper.PostRequestDTOMapper(userId, post);
-                    filteredPosts.add(postDTO);
+                    if (post instanceof PostPromo) {
+                        PostResponseDTO postDTO = PostMapper.PostRequestDTOMapper(userId, (PostPromo) post);
+                        filteredPosts.add(postDTO);
+                    } else {
+                        PostResponseDTO postDTO = PostMapper.PostRequestDTOMapper(userId, post);
+                        filteredPosts.add(postDTO);
+                    }
                 }
             }
         }
