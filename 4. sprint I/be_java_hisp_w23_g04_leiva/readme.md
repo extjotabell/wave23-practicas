@@ -114,8 +114,6 @@ Para finalizar, desde Mercado Libre dieron a conocer que están abiertos a cualq
 
 Obtener un listado de todos los vendedores que tienen en promoción un determinado producto.
 
-[BONUS - Especificación de requerimientos técnicos](https://docs.google.com/document/d/1vg-o5HX9eHWAgZRwDWxKcb4PXEcvftIbKPAdsgwdhh4/edit?usp=sharing)
-
 #### Endpoint
 
 - **Método:** GET
