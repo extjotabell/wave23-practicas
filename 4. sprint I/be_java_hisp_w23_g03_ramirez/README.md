@@ -26,6 +26,7 @@ Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de pr
 | US0009        | Ordenamiento por fecha ascendente y descendente                                                                       | Sebastian Ospina García                            |
 | US0010        | Llevar a cabo la publicación de un nuevo producto en promoción                                                        | Diana Isabel Ramírez García                        |
 | US0011        | Obtener la cantidad de productos en promoción de un determinado vendedor                                               | Diana Isabel Ramírez García                        |
+| US0012        | Obtener una lista de promos de todos los vendedores que sigo                                                           | Diana Isabel Ramírez García                        |
 
 ## Documentación Bonus endpoint
 
