@@ -8,9 +8,7 @@ import com.meli.socialmeli.dtos.response.ProductDTO;
 import com.meli.socialmeli.entities.Post;
 import com.meli.socialmeli.entities.User;
 import com.meli.socialmeli.exceptions.custom.NotFoundException;
-import com.meli.socialmeli.repositories.IProductRepository;
 import com.meli.socialmeli.repositories.IUserRepository;
-import com.meli.socialmeli.repositories.impl.ProductRepositoryImpl;
 import com.meli.socialmeli.services.IProductService;
 import com.meli.socialmeli.services.IUserService;
 import com.meli.socialmeli.utilities.Mappers;
@@ -25,41 +23,50 @@ import java.util.stream.Stream;
 
 @Service
 public class ProductServiceImpl implements IProductService {
-    private final IProductRepository productRepository;
     private final IUserRepository userRepository ;
     private final IUserService userService;
 
-    public ProductServiceImpl(ProductRepositoryImpl productRepository, IUserRepository userRepository, UserServiceImpl userService) {
-        this.productRepository = productRepository;
+    public ProductServiceImpl(IUserRepository userRepository, UserServiceImpl userService) {
         this.userRepository = userRepository;
         this.userService = userService;
     }
 
-    private Stream<PostNoPromoDTO> getAllPostFollowsLastTwoWeeks(Integer userId) {
+    private List<PostNoPromoDTO> getAllPostFollowsLastTwoWeeks(Integer userId) {
         List<User> follows = userService.findFollowsByIdProductService(userId);
         if (follows == null || follows.isEmpty()) throw new NotFoundException("The user with id: " + userId + " does not follow anyone");
-        List<Post> posts = productRepository.getPostsFollowersLastTwoWeeks(follows);
-        if (posts == null || posts.isEmpty()) throw new NotFoundException("The sellers of the user with id: " + userId +
-                " do not have any publications in the last two weeks");
-        return posts.stream()
-                .map(p -> new PostNoPromoDTO(
-                        p.getPost_id(),
-                        p.getDate().toString(),
-                        new ProductDTO(
-                                p.getProduct().getProduct_id(),
-                                p.getProduct().getProduct_name(),
-                                p.getProduct().getType(),
-                                p.getProduct().getBrand(),
-                                p.getProduct().getColor(),
-                                p.getProduct().getNotes()
-                        ),
-                        p.getCategory(),
-                        p.getPrice()
-                ));
+
+        List<PostNoPromoDTO> postNoPromoDTOList = new ArrayList<>();
+
+        follows.forEach(f -> {
+            f.getPosts().forEach(post -> {
+                if(!post.isHas_promo()){
+                    postNoPromoDTOList.add(new PostNoPromoDTO(
+                            f.getUser_id(),
+                            post.getPost_id(),
+                            post.getDate().toString(),
+                            new ProductDTO(
+                                    post.getProduct().getProduct_id(),
+                                    post.getProduct().getProduct_name(),
+                                    post.getProduct().getType(),
+                                    post.getProduct().getBrand(),
+                                    post.getProduct().getColor(),
+                                    post.getProduct().getNotes()
+                            ),
+                            post.getCategory(),
+                            post.getPrice()
+                    ));
+                }
+            });
+        });
+        if(postNoPromoDTOList.isEmpty()){
+            throw new NotFoundException("The sellers of the user with id: " + userId +
+                    " do not have any publications in the last two weeks");
+        }
+        return postNoPromoDTOList;
     }
     @Override
     public PostsFromFollowsDTO getAllPostsFollowsLastTwoWeeks(Integer userId, String order) {
-        Stream<PostNoPromoDTO> temp = this.getAllPostFollowsLastTwoWeeks(userId);
+        Stream<PostNoPromoDTO> temp = this.getAllPostFollowsLastTwoWeeks(userId).stream();
 
         Comparator<PostNoPromoDTO> comparator = Comparator.comparing(PostNoPromoDTO::getDate);
 
@@ -78,7 +85,6 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public MessageDTO newPost(PostDTO post){
-        List<Post> posts = new ArrayList<>();
         User user = userRepository.finById(post.getUserId());
         if(user == null){
             throw new NotFoundException("Invalid user");

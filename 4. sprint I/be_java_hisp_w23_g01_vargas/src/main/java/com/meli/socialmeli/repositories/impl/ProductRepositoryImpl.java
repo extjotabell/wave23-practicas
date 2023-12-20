@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public class ProductRepositoryImpl implements IProductRepository {
 
-    private List<User> users = new ArrayList<>();
     @Override
     public List<Post> getPostsFollowersLastTwoWeeks(List<User> follows) {
         return follows.stream()
