@@ -7,6 +7,7 @@ import com.sprint.be_java_hisp_w23_g04.exception.NotFoundException;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class Verifications {
 
@@ -37,7 +38,11 @@ public class Verifications {
         }
     }
     private static boolean userAlreadyFollowsSeller(User user, User seller) {
-        return user.getFollowed().contains(seller);
+        Optional<User> userSeller =  user.getFollowed().stream()
+                .filter(u -> Objects.equals(u.getId(), seller.getId()))
+                .findFirst();
+
+        return userSeller.isPresent();
     }
 
     public static void verifyUserIsFollowed(User user, User unfollowedUser) {

@@ -3,7 +3,7 @@
         "name": "Juan Perez",
         "posts": [
             {
-                "date": "15-12-2023",
+                "date": "12-12-2023",
                 "product": {
                     "type": "Gamer",
                     "brand": "Racer",
@@ -16,6 +16,36 @@
                 "price": 1000.0,
                 "user_id": 1,
                 "post_id": 1
+            },
+            {
+                "date": "15-12-2023",
+                "product": {
+                    "type": "Gamer",
+                    "brand": "Racer",
+                    "color": "Red & Black",
+                    "notes": "Special Edition",
+                    "product_id": 1,
+                    "product_name": "Silla gamer"
+                },
+                "category": 100,
+                "price": 1000.0,
+                "user_id": 1,
+                "post_id": 2
+            },
+            {
+                "date": "18-12-2023",
+                "product": {
+                    "type": "Gamer",
+                    "brand": "Racer",
+                    "color": "Red & Black",
+                    "notes": "Special Edition",
+                    "product_id": 1,
+                    "product_name": "Silla gamer"
+                },
+                "category": 100,
+                "price": 1000.0,
+                "user_id": 1,
+                "post_id": 3
             }
         ],
         "followed": [],
@@ -46,7 +76,7 @@
                 },
                 "category": 58,
                 "price": 900.0,
-                "user_id": 3,
+                "user_id": 2,
                 "post_id": 1
             }
         ],
@@ -63,7 +93,7 @@
         "name": "Pablo Gonzalez",
         "posts": [
             {
-                "date": "19-12-2023",
+                "date": "19-12-2020",
                 "product": {
                     "type": "Gamer",
                     "brand": "Redragon",
@@ -81,7 +111,7 @@
         "followed": [],
         "followers": [
             {
-                "user_id": 3,
+                "user_id": 2,
                 "name": "Maria Gonzalez"
             },
             {
@@ -125,5 +155,51 @@
         ],
         "followers": [],
         "user_id": 6
+    },
+    {
+        "name": "Penelope cruz",
+        "posts": [
+            {
+                "date": "20-12-2020",
+                "product": {
+                    "type": "TV",
+                    "brand": "Sony",
+                    "color": "Silver",
+                    "notes": "TV 65'",
+                    "product_id": 51,
+                    "product_name": "Televisor a color LED Sony"
+                },
+                "category": 58,
+                "price": 800.0,
+                "user_id": 7,
+                "post_id": 1
+            }
+        ],
+        "followed": [],
+        "followers": [],
+        "user_id": 7
+    },
+    {
+        "name": "Pablo Gonzalez",
+        "posts": [
+            {
+                "date": "03-12-2020",
+                "product": {
+                    "type": "Gamer",
+                    "brand": "Redragon",
+                    "color": "Black",
+                    "notes": "Special Edition",
+                    "product_id": 2,
+                    "product_name": "Teclado"
+                },
+                "category": 58,
+                "price": 800.0,
+                "user_id": 8,
+                "post_id": 1
+            }
+        ],
+        "followed": [],
+        "followers": [],
+        "user_id": 8
     }
 ]

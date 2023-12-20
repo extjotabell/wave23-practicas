@@ -1,8 +1,8 @@
 package com.sprint.be_java_hisp_w23_g04.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 import java.time.LocalDate;
 

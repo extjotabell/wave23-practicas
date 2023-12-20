@@ -30,6 +30,6 @@ public class PostMapper {
                 post.getPrice(),
                 false,
                 0.0
-            );
+        );
     }
 }

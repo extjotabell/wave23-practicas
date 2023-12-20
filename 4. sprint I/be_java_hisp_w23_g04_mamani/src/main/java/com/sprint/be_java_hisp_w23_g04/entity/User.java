@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -12,9 +13,9 @@ import java.util.List;
 public class User {
     private Integer id;
     private String name;
-    private List<Post> posts;
-    private List<User> followed;
-    private List<User> followers;
+    private List<Post> posts = new ArrayList<>();
+    private List<User> followed = new ArrayList<>();
+    private List<User> followers = new ArrayList<>();
 
     public User(Integer id, String name) {
         this.id = id;
