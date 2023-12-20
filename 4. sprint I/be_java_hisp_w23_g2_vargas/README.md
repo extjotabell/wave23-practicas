@@ -100,7 +100,7 @@ mvn spring-boot:run
 Path: [PostManCollection](src/main/resources/Sprint%201.postman_collection.json)
 
 ### Technical specifications
-Path: [TechnicalSpecifications](src/main/resources/Esp.ReqTecnicosFuncionalesSprint1.docx)
+Path: [TechnicalSpecifications](src/main/resources/Esp.ReqTecnicosFuncionalesSprint1.docx.pdf)
 
 ### Integers:
 - Claudia Vargas
