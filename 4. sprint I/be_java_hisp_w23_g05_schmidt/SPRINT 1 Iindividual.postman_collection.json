@@ -715,6 +715,65 @@
 			]
 		},
 		{
+			"name": "US0009",
+			"item": [
+				{
+					"name": "GET /products/followed/4/list?order=date_asc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products/followed/4/list?order=date_asc",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"followed",
+								"4",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "date_asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /products/followed/4/list?order=date_asc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products/followed/4/list?order=date_desc",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"followed",
+								"4",
+								"list"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "date_desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "US 0010",
 			"item": [
 				{
@@ -901,7 +960,7 @@
 						{
 							"name": "❌ User not found",
 							"originalRequest": {
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "raw",
@@ -913,14 +972,21 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:8080/products/promo-post",
+									"raw": "localhost:8080/products/promo-post/count?user_id=44",
 									"host": [
 										"localhost"
 									],
 									"port": "8080",
 									"path": [
 										"products",
-										"promo-post"
+										"promo-post",
+										"count"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "44"
+										}
 									]
 								}
 							},
@@ -944,14 +1010,21 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:8080/products/promo-post",
+									"raw": "localhost:8080/products/promo-post/count?user_id=1",
 									"host": [
 										"localhost"
 									],
 									"port": "8080",
 									"path": [
 										"products",
-										"promo-post"
+										"promo-post",
+										"count"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -961,6 +1034,44 @@
 							"body": null
 						}
 					]
+				},
+				{
+					"name": "localhost:8080/products/promo-post/count?user_id=1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 4,\n    \"date\": \"2023-12-17\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 17,\n    \"price\": 1500.50,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products/promo-post/count?user_id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -973,7 +1084,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/products?since=1&to=1600&user_id=4",
+							"raw": "localhost:8080/products?since=0&to=1550&user_id=4",
 							"host": [
 								"localhost"
 							],
@@ -984,11 +1095,11 @@
 							"query": [
 								{
 									"key": "since",
-									"value": "1"
+									"value": "0"
 								},
 								{
 									"key": "to",
-									"value": "1600"
+									"value": "1550"
 								},
 								{
 									"key": "user_id",
@@ -1002,7 +1113,7 @@
 			]
 		},
 		{
-			"name": "TEST",
+			"name": "TEST DB",
 			"request": {
 				"method": "GET",
 				"header": [],
