@@ -1,5 +1,6 @@
 package com.sprint.be_java_hisp_w23_g04.service;
 
+import com.sprint.be_java_hisp_w23_g04.dto.response.SellerDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostPromoDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.FollowedListDTO;
@@ -20,8 +21,10 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.sprint.be_java_hisp_w23_g04.utils.Verifications.validateEmptyResponseList;
 import static com.sprint.be_java_hisp_w23_g04.utils.Verifications.verifyUserExist;
 
 @Service
@@ -197,8 +200,26 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         return new PostPromoCountDTO(userId, user.getName(), promoProductsCount);
     }
 
-    private List<PostResponseDTO> orderAsc(List<PostResponseDTO> list){
-       return list.stream()
+    @Override
+    public SellersDTO getSellersWithPostPromo(String productName) {
+        List<User> sellersWithPromo = socialMediaRepository.findUsersWithPostPromo(productName);
+        validateEmptyResponseList(sellersWithPromo);
+
+        List<SellerDTO> sellerDTOS = sellersWithPromo.stream()
+                .map(seller -> seller.getPosts().stream()
+                        .filter(p -> p.getProduct().getName().toLowerCase().contains(productName.toLowerCase()))
+                        .findFirst()
+                        .map(post -> UserMapper.mapSeller(seller, (PostPromo) post))
+                )
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .toList();
+
+        return new SellersDTO(sellerDTOS);
+    }
+
+    private List<PostResponseDTO> orderAsc(List<PostResponseDTO> list) {
+        return list.stream()
                 .sorted(Comparator.comparing(PostDTO::getDate))
                 .collect(Collectors.toList());
     }

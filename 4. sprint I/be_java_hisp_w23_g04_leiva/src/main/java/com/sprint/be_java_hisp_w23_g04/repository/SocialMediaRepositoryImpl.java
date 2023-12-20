@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.sprint.be_java_hisp_w23_g04.dto.DBUserDTO;
+import com.sprint.be_java_hisp_w23_g04.entity.PostPromo;
 import com.sprint.be_java_hisp_w23_g04.entity.User;
 import com.sprint.be_java_hisp_w23_g04.utils.UserMapper;
 import org.springframework.stereotype.Repository;
@@ -85,5 +86,21 @@ public class SocialMediaRepositoryImpl implements ISocialMediaRepository {
 
         users.set(users.indexOf(findUser(userId)), user);
         users.set(users.indexOf(findUser(unfollowedUserId)), unfollowedUser);
+    }
+
+    @Override
+    public List<User> findUsersWithPostPromo(String productName) {
+        List<User> sellers = this.getSellers();
+
+        return sellers.stream()
+                .filter(user -> !user.getPosts().isEmpty())
+                .filter(user -> user.getPosts().stream()
+                        .anyMatch(post -> post instanceof PostPromo
+                                && post.getProduct().getName().toLowerCase().contains(productName.toLowerCase())))
+                .toList();
+    }
+
+    private List<User> getSellers() {
+        return this.users.stream().filter(u -> !u.getPosts().isEmpty()).toList();
     }
 }

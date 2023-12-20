@@ -14,4 +14,6 @@ public interface ISocialMediaRepository {
     void savePost(User user);
 
     void unfollowUser(int userId, int unfollowedUserId);
+
+    List<User> findUsersWithPostPromo(String productName);
 }

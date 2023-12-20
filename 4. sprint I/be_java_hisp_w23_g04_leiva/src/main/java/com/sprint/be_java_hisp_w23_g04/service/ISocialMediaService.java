@@ -23,4 +23,6 @@ public interface ISocialMediaService {
     FilteredPostsDTO getFilteredPosts(int userId, String order);
 
     PostPromoCountDTO promoPostCount(int userId);
+
+    SellersDTO getSellersWithPostPromo(String productName);
 }
