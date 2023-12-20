@@ -8,7 +8,7 @@ US 0012: Obtener la cantidad de seguidos de un usuario.(Bonus)
 
 ## Bonus: API Reference
 
-#### US 0012 URL
+#### US 0012 - URL
 
 ```http
   GET /users/{user_id}/followed/count
@@ -23,3 +23,6 @@ Filtros/Parámetros
 | Parámetro | Tipo     | Descripcion |
 | :-------- | :------- | :----------------- |
 | `user_id` | `int` | `Número que identifica a cada usuario` |
+
+## Postman Collection
+Dentro del proyecto en la carpeta Resources.
