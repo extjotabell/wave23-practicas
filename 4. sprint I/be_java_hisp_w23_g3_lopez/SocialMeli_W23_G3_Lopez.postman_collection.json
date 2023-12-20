@@ -1,0 +1,1058 @@
+{
+	"info": {
+		"_postman_id": "f047fa30-39d5-412b-9643-462e1d08ba26",
+		"name": "SocialMeli",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612332"
+	},
+	"item": [
+		{
+			"name": "US-0001: Follow a user",
+			"item": [
+				{
+					"name": "(200) OK - User can follow a seller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/2/follow/9",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"2",
+								"follow",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(200) OK - Seller can follow seller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/9/follow/8",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"9",
+								"follow",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404) Seller not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/2/follow/3",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"2",
+								"follow",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404) User not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/20/follow/9",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"20",
+								"follow",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400) Follow yourself",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/1/follow/1",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"follow",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0002: Get followers count",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/7/followers/count",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"7",
+								"followers",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/900/followers/count",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"900",
+								"followers",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0003: Followers List",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/7/followers/list",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"7",
+								"followers",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/999/followers/list",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"999",
+								"followers",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0004: Followed list",
+			"item": [
+				{
+					"name": "(200) OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/1/followed/list",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"followed",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404) Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/99/followed/list",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"99",
+								"followed",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0005: Add a new post",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"09-12-2023\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): User not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 123,\n    \"date\": \"29-04-2021\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400): Product already posted",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"29-04-2021\",\n    \"product\": {\n        \"product_id\": 1,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400): Missing fields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"29-04-2021\",\n    \"product\": {\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400): Incorrect fields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"29-04-2021\",\n    \"product\": {\n        \"product_id\": 35,\n        \"product_name\": \"Silla Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": \"a\",\n    \"price\": 1500.50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0006: Get followed sellers posts",
+			"item": [
+				{
+					"name": "(200) OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/followed/1/list",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"followed",
+								"1",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404) Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/followed/999/list",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"followed",
+								"999",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0007: Unfollow a user",
+			"item": [
+				{
+					"name": "(200) OK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/2/unfollow/9",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"2",
+								"unfollow",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400) Is not part of your followings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/1/unfollow/9",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"unfollow",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404) User not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/2/follow/100",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"2",
+								"follow",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400) Unfollow yourself",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/users/3/follow/3",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"3",
+								"follow",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0008: Alphabetical order",
+			"item": [
+				{
+					"name": "US-0003: Followers list",
+					"item": [
+						{
+							"name": "(200): OK order=name_asc",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{LOCAL}}/users/7/followers/list?order=name_asc",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"users",
+										"7",
+										"followers",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "name_asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "(200): OK order=name_desc",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{LOCAL}}/users/7/followers/list?order=name_desc",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"users",
+										"7",
+										"followers",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "name_desc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "US-0004: Followed list",
+					"item": [
+						{
+							"name": "(200): OK order=name_asc",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{LOCAL}}/users/1/followed/list?order=name_asc",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"users",
+										"1",
+										"followed",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "name_asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "(200): OK order=name_desc",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{LOCAL}}/users/1/followed/list?order=name_desc",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"users",
+										"1",
+										"followed",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "name_desc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "|  |  |\n| --- | --- |\n|  |  |"
+		},
+		{
+			"name": "US-0009: Date order",
+			"item": [
+				{
+					"name": "US-0006: Get followed sellers posts",
+					"item": [
+						{
+							"name": "(200): OK order=date_asc",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{LOCAL}}/products/followed/2/list?order=date_asc",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"products",
+										"followed",
+										"2",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "date_asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "(200): OK order=date_desc",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{LOCAL}}/products/followed/2/list?order=date_desc",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"products",
+										"followed",
+										"2",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "date_desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "(404): Not Found",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{LOCAL}}/products/followed/999/list?order=date_desc",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"products",
+										"followed",
+										"999",
+										"list"
+									],
+									"query": [
+										{
+											"key": "order",
+											"value": "date_desc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "US-0010: Add a new promo post",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"10-12-2023\",\n    \"product\": {\n        \"product_id\": 3,\n        \"product_name\": \"Monitor Curvo\",\n        \"type\": \"Curved\",\n        \"brand\": \"ViewSonic\",\n        \"color\": \"Silver\",\n        \"notes\": \"Ultra-wide display\"\n    },\n    \"category\": 150,\n    \"price\": 799.99,\n    \"has_promo\": true,\n    \"discount\": 0.45\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400): Already Posted",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_id\": 3,\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": 200,\n    \"price\": 120.99,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): User not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 123,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_id\": 2,\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": 200,\n    \"price\": 120.99,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400): Missing fields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": 200,\n    \"price\": 120.99,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400): Incorrect fields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"07-12-2023\",\n    \"product\": {\n        \"product_id\": 5,\n        \"product_name\": \"Teclado Mecánico\",\n        \"type\": \"Mechanical\",\n        \"brand\": \"TechPro\",\n        \"color\": \"RGB\",\n        \"notes\": \"Customizable lighting\"\n    },\n    \"category\": \"a\",\n    \"price\": 120.99,\n    \"has_promo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0011: Count Promo Posts",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post/count?user_id=1",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post/count?user_id=999",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "999"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): Not Found - Only Seller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/promo-post/count?user_id=5",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bonus 1: Get an individual product",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/post/1",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404): Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/products/post/34",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"products",
+								"post",
+								"34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bonus 2: Create an user",
+			"item": [
+				{
+					"name": "(200): OK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"Emmanuel\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/users/1/unfollow/9",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"unfollow",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(400): Username already exists",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"Emmanuel\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL}}/users/",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "LOCAL",
+			"value": "http://localhost:8080"
+		}
+	]
+}
