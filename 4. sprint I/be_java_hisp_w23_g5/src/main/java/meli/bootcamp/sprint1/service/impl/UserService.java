@@ -7,15 +7,15 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import meli.bootcamp.sprint1.dto.response.FollowersDto;
-import meli.bootcamp.sprint1.dto.request.FollowedDto;
-import meli.bootcamp.sprint1.dto.request.UserFollowedDto;
+import meli.bootcamp.sprint1.dto.response.FollowedDto;
+import meli.bootcamp.sprint1.dto.response.UserFollowedDto;
 import meli.bootcamp.sprint1.exception.EmptyListException;
 import meli.bootcamp.sprint1.dto.response.LastPostsDto;
 import meli.bootcamp.sprint1.dto.response.PostDto;
 import meli.bootcamp.sprint1.dto.response.ProductDto;
 
-import meli.bootcamp.sprint1.dto.response.FollowersDtoUS0003;
-import meli.bootcamp.sprint1.dto.response.UserDtoUS0003;
+import meli.bootcamp.sprint1.dto.response.FollowerDto;
+import meli.bootcamp.sprint1.dto.response.UserDto;
 
 import org.springframework.stereotype.Service;
 
@@ -91,7 +91,7 @@ public class UserService implements IUserService {
   }
 
   @Override
-  public UserDtoUS0003 getFollowersById(int id, String order) {
+  public UserDto getFollowersById(int id, String order) {
     User user = repository.findUserById(id);
     if (user == null) {
       throw new BadRequestException("User not found");
@@ -103,25 +103,25 @@ public class UserService implements IUserService {
       throw new EmptyListException("The User " + id + " has no followers users");
     }
 
-    List<FollowersDtoUS0003> followersDtoUS0003List = new ArrayList<>();
+    List<FollowerDto> followerDtoList = new ArrayList<>();
 
     for (Integer idFollower : followers) {
       User findFollower = repository.findUserById(idFollower);
-      FollowersDtoUS0003 followersDtoUS0003 = new FollowersDtoUS0003(findFollower.getId(), findFollower.getName());
-      followersDtoUS0003List.add(followersDtoUS0003);
+      FollowerDto followerDto = new FollowerDto(findFollower.getId(), findFollower.getName());
+      followerDtoList.add(followerDto);
     }
 
     if (order == null || order.equals("name_asc")) {
-      followersDtoUS0003List = followersDtoUS0003List.stream()
-          .sorted(Comparator.comparing(FollowersDtoUS0003::getUser_name))
+      followerDtoList = followerDtoList.stream()
+          .sorted(Comparator.comparing(FollowerDto::getUser_name))
           .toList();
     } else if (order.equals("name_desc")) {
-      followersDtoUS0003List = followersDtoUS0003List.stream()
-          .sorted(Comparator.comparing(FollowersDtoUS0003::getUser_name).reversed())
+      followerDtoList = followerDtoList.stream()
+          .sorted(Comparator.comparing(FollowerDto::getUser_name).reversed())
           .toList();
     }
 
-    UserDtoUS0003 userDto = new UserDtoUS0003(user.getId(), user.getName(), followersDtoUS0003List);
+    UserDto userDto = new UserDto(user.getId(), user.getName(), followerDtoList);
     return userDto;
   }
 
@@ -243,27 +243,5 @@ public class UserService implements IUserService {
     } else {
       return getLastPostsFromFollowed(userId);
     }
-  }
-
-  @Override
-  public UserFollowedDto getFollowed(Integer id) {
-    User user = this.repository.findUserById(id);
-
-    if (user == null) {
-      throw new BadRequestException("User not found");
-    }
-
-    if (user.getFollowed().isEmpty()) {
-      throw new EmptyListException("The User " + id + " has no followed users");
-    }
-
-    List<FollowedDto> followed = new ArrayList<>();
-
-    user.getFollowed().stream()
-        .forEach((u) -> followed.add(new FollowedDto(u, this.repository.findUserById(u).getName())));
-
-    UserFollowedDto userFollowedDto = new UserFollowedDto(user.getId(), user.getName(), followed);
-
-    return userFollowedDto;
   }
 }
