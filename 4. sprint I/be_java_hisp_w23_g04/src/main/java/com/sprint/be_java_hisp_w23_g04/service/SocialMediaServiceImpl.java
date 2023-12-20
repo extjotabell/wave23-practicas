@@ -14,6 +14,7 @@ import com.sprint.be_java_hisp_w23_g04.entity.User;
 import com.sprint.be_java_hisp_w23_g04.repository.ISocialMediaRepository;
 import com.sprint.be_java_hisp_w23_g04.repository.SocialMediaRepositoryImpl;
 
+import javax.xml.validation.Validator;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.ArrayList;
@@ -154,16 +155,12 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         Verifications.verifyUserHasFollowedSellers(user);
 
         LocalDate filterDate = LocalDate.now().minusWeeks(2);
-        List<PostResponseDTO> filteredPosts = new ArrayList<>();
 
-        for (User seller : user.getFollowed()) {
-            for (Post post : seller.getPosts()) {
-                if (post.getDate().isAfter(filterDate)) {
-                    PostResponseDTO postDTO = PostMapper.PostRequestDTOMapper(userId, post);
-                    filteredPosts.add(postDTO);
-                }
-            }
-        }
+        List<PostResponseDTO> filteredPosts = user.getFollowed().stream()
+                                                  .flatMap(seller -> socialMediaRepository.findUser(seller.getId()).getPosts().stream()
+                                                  .filter(post -> post.getDate().isAfter(filterDate))
+                                                  .map(post -> PostMapper.PostRequestDTOMapper(seller.getId(), post)))
+                                                  .collect(Collectors.toList());
 
         Verifications.validateEmptyResponseList(filteredPosts);
 
