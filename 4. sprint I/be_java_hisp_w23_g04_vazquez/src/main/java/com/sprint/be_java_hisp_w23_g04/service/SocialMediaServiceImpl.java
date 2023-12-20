@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.sprint.be_java_hisp_w23_g04.utils.Verifications.verifyUserExist;
+import static com.sprint.be_java_hisp_w23_g04.utils.Verifications.verifyUserFollowsSeller;
 
 @Service
 public class SocialMediaServiceImpl implements ISocialMediaService {
@@ -200,6 +201,26 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
                 .count();
 
         return new PromoCountDTO(user.getId(), user.getName(), Math.toIntExact(postPromoCount));
+    }
+
+    @Override
+    public SimpleMessageDTO modifyDiscountPromoPost(Integer userId, Integer postId, Double newDiscount) {
+        User user = socialMediaRepository.findUser(userId);
+        verifyUserExist(user);
+
+        PostPromo postPromo = (PostPromo) user.getPosts().stream()
+                .filter(p -> {
+                    PostPromo post = (PostPromo) p;
+                    return post.getId().equals(postId) && post.isHasPromo();
+                })
+                .findFirst()
+                .orElse(null);
+
+        Verifications.verifyPostIsValidPromo(postPromo);
+
+        postPromo.setDiscount(newDiscount);
+
+        return new SimpleMessageDTO("La promo ID: " + postId + " del usuario ID: " + userId + " cambió su descuento a " + newDiscount);
     }
 
 }

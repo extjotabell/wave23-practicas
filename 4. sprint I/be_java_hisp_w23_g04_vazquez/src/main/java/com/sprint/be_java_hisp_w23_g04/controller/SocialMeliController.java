@@ -67,4 +67,11 @@ public class SocialMeliController {
     public ResponseEntity<?> getProductsInPromoByUserId(@RequestParam Integer userId) {
         return new ResponseEntity<>(socialMediaService.getProductsInPromoByUserId(userId), HttpStatus.OK);
     }
+
+    @PutMapping("users/{userId}/modify-promo/{promoPostId}")
+    public ResponseEntity<?> modifyDiscountPromoPost(@PathVariable Integer userId,
+                                                     @PathVariable Integer promoPostId,
+                                                     @RequestParam Double newDiscount) {
+        return new ResponseEntity<>(socialMediaService.modifyDiscountPromoPost(userId, promoPostId, newDiscount), HttpStatus.OK);
+    }
 }

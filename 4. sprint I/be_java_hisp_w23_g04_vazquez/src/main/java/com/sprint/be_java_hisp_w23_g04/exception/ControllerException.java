@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ControllerException {
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<?> NotFoundException(NotFoundException e) {
+    public ResponseEntity<?> notFoundException(NotFoundException e) {
         SimpleMessageDTO exceptionDto = new SimpleMessageDTO(e.getMessage());
         return new ResponseEntity<>(exceptionDto, HttpStatus.NOT_FOUND);
     }
@@ -25,4 +25,9 @@ public class ControllerException {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @ExceptionHandler(NotIsPostPromoException.class)
+    public ResponseEntity<?> notIsPostPromo(NotIsPostPromoException e) {
+        SimpleMessageDTO exceptionDto = new SimpleMessageDTO(e.getMessage());
+        return new ResponseEntity<>(exceptionDto, HttpStatus.BAD_REQUEST);
+    }
 }

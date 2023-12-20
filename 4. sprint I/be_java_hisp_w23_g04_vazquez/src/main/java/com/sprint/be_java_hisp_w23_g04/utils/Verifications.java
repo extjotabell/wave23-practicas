@@ -1,9 +1,11 @@
 package com.sprint.be_java_hisp_w23_g04.utils;
 
+import com.sprint.be_java_hisp_w23_g04.entity.PostPromo;
 import com.sprint.be_java_hisp_w23_g04.entity.User;
 import com.sprint.be_java_hisp_w23_g04.exception.BadRequestException;
 import com.sprint.be_java_hisp_w23_g04.exception.NoContentException;
 import com.sprint.be_java_hisp_w23_g04.exception.NotFoundException;
+import com.sprint.be_java_hisp_w23_g04.exception.NotIsPostPromoException;
 
 import java.util.List;
 import java.util.Objects;
@@ -69,6 +71,15 @@ public class Verifications {
     public static void validateEmptyResponseList(List<?> list) {
         if(list.isEmpty()){
             throw new NoContentException();
+        }
+    }
+
+    public static void verifyPostIsValidPromo(PostPromo postPromo) {
+        if (postPromo == null){
+            throw new NotFoundException("No se encontró la promo con el id proporcionado.");
+        }
+        if (!postPromo.isHasPromo()){
+            throw new NotIsPostPromoException("El id de post proporcionado no es de tipo promo");
         }
     }
 }
