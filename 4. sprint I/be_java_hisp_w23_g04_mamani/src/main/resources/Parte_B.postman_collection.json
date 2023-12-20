@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "c2662b14-7de7-416d-92c4-bdd4cc12ac00",
+		"name": "Sprint 1 Parte B Individual",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5527707"
+	},
+	"item": [
+		{
+			"name": "US-0010 Save Promo Post",
+			"item": [
+				{
+					"name": "(200) SavePromoPost - OK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"21-12-2023\",\n    \"product\": {\n        \"product_id\": 18,\n        \"product_name\": \"Samsung fLIP\",\n        \"type\": \"FE\",\n        \"brand\": \"Samsung\",\n        \"color\": \"Negro\",\n        \"notes\": \"Sale\"\n    },\n    \"category\": 100,\n    \"price\": 1000000.0,\n    \"has_promo\":true,\n    \"discount\":10.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/products/promo-post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404) SavePromoPost - NotFound",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 99,\n    \"date\": \"21-12-2023\",\n    \"product\": {\n        \"product_id\": 18,\n        \"product_name\": \"Samsung S23+\",\n        \"type\": \"FE\",\n        \"brand\": \"Samsung\",\n        \"color\": \"Negro\",\n        \"notes\": \"Sale\"\n    },\n    \"category\": 100,\n    \"price\": 1000000.0,\n    \"has_promo\":true,\n    \"discount\":10.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/products/promo-post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"promo-post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0011 Get Promo Post Count",
+			"item": [
+				{
+					"name": "(200) GetPromoPostCount - OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/products/promo-post/count?user_id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404) GetPromoPostCount - NotFound",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/products/promo-post/count?user_id=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"promo-post",
+								"count"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0012 Get Followed Count",
+			"item": [
+				{
+					"name": "(200) GetFollowedCount - OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/4/followed/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"4",
+								"followed",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(404) GetFollowedCount - NotFound",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/99/followed/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"99",
+								"followed",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
