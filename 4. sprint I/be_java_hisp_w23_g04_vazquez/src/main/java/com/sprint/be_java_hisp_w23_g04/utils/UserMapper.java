@@ -42,8 +42,7 @@ public class UserMapper {
     public static UserDTO mapUser(User user) {
         List<PostResponseDTO> postResponseDTOS = user.getPosts().stream()
                 .map(p -> {
-                    if (p instanceof PostPromo) {
-                        PostPromo promo = (PostPromo) p;
+                    if (p instanceof PostPromo promo) {
                         return new PostResponseDTO(user.getId(), p.getId(), p.getDate(), mapProduct(p.getProduct()), p.getCategory(), p.getPrice(), promo.isHasPromo(), promo.getDiscount());
                     } else {
                         return new PostResponseDTO(user.getId(), p.getId(), p.getDate(), mapProduct(p.getProduct()), p.getCategory(), p.getPrice());
@@ -64,10 +63,6 @@ public class UserMapper {
     public static ProductDTO mapProduct(Product product) {
         return new ProductDTO(product.getId(), product.getName(), product.getType(),
                 product.getBrand(), product.getColor(), product.getNotes());
-    }
-
-    public static Post mapPost(PostDTO post, int postId) {
-        return new Post(postId, post.getDate(), mapProduct(post.getProduct()), post.getCategory(), post.getPrice());
     }
 
     public static PostPromo mapPost(PostPromoDTO post, int postId) {

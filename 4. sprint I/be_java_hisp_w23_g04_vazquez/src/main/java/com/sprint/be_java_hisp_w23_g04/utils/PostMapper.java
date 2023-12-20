@@ -8,18 +8,6 @@ import com.sprint.be_java_hisp_w23_g04.entity.PostPromo;
 
 public class PostMapper {
 
-    public static PostResponseDTO PostRequestDTOMapper(int userId, Post post) {
-        ProductDTO productDTO = ProductMapper.productDTOMapper(post.getProduct());
-
-        return new PostResponseDTO(
-                userId,
-                post.getId(),
-                post.getDate(),
-                productDTO,
-                post.getCategory(),
-                post.getPrice());
-    }
-
     public static PostResponseDTO PostRequestDTOMapper(int userId, PostPromo post) {
         ProductDTO productDTO = ProductMapper.productDTOMapper(post.getProduct());
 

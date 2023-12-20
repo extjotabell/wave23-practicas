@@ -126,12 +126,7 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         verifyUserExist(user);
         int postId = socialMediaRepository.getNextPostId(user);
 
-        if (post instanceof PostPromoDTO) {
-            posts.add(UserMapper.mapPost((PostPromoDTO) post, postId));
-        } else {
-            posts.add(UserMapper.mapPost(post, postId));
-        }
-
+        posts.add(UserMapper.mapPost((PostPromoDTO) post, postId));
         posts.addAll(user.getPosts());
         user.setPosts(posts);
 
@@ -166,13 +161,8 @@ public class SocialMediaServiceImpl implements ISocialMediaService {
         for (User seller : user.getFollowed()) {
             for (Post post : seller.getPosts()) {
                 if (post.getDate().isAfter(filterDate)) {
-                    if (post instanceof PostPromo) {
-                        PostResponseDTO postDTO = PostMapper.PostRequestDTOMapper(userId, (PostPromo) post);
-                        filteredPosts.add(postDTO);
-                    } else {
-                        PostResponseDTO postDTO = PostMapper.PostRequestDTOMapper(userId, post);
-                        filteredPosts.add(postDTO);
-                    }
+                    PostResponseDTO postDTO = PostMapper.PostRequestDTOMapper(userId, (PostPromo) post);
+                    filteredPosts.add(postDTO);
                 }
             }
         }
