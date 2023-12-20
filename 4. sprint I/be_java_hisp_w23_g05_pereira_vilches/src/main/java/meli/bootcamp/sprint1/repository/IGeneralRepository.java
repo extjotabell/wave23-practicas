@@ -16,4 +16,6 @@ public interface IGeneralRepository {
   boolean unfollowUser(List<Integer> followedUsers, List<Integer> followers, int userIdToUnfollow, int removeFromFollowers);
 
   Post findPostById(int postId);
+
+  List<Post> getPostsByFilters(Integer category, Double priceSince, Double priceTo, String color);
 }

@@ -74,10 +74,6 @@ public class GeneralRepository implements IGeneralRepository {
   }
 
   @Override
-  public List<User> findAll() {
-    return this.users;
-  }
-
   public boolean unfollowUser(List<Integer> followedUsers, List<Integer> followers, int userIdToUnfollow, int removeFromFollowers) {
     return followedUsers.removeIf(u -> u == userIdToUnfollow) && followers.removeIf(u -> u == removeFromFollowers);
   }

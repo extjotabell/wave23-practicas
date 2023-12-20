@@ -1,6 +1,6 @@
 package meli.bootcamp.sprint1.controller;
 
-import meli.bootcamp.sprint1.dto.response.UserDtoUS0003;
+import meli.bootcamp.sprint1.dto.response.UserDto;
 import org.springframework.http.HttpStatus;
 import meli.bootcamp.sprint1.dto.response.FollowersDto;
 import meli.bootcamp.sprint1.dto.response.LastPostsDto;
@@ -13,19 +13,12 @@ import meli.bootcamp.sprint1.dto.response.BaseResponseDto;
 import meli.bootcamp.sprint1.service.IUserService;
 import meli.bootcamp.sprint1.service.impl.UserService;
 
-import java.util.List;
-
 @RestController
 public class UserController {
   private IUserService userService;
 
   public UserController(UserService userService) {
     this.userService = userService;
-  }
-
-  @GetMapping("test")
-  public ResponseEntity<?> test(){
-    return ResponseEntity.ok(this.userService.getAll());
   }
 
   @PostMapping("products/post")
@@ -59,7 +52,7 @@ public class UserController {
   }
 
   @GetMapping("/users/{id}/followers/list")
-  public ResponseEntity<UserDtoUS0003> getFollowersById(@PathVariable int id, @RequestParam(required = false) String order) {
+  public ResponseEntity<UserDto> getFollowersById(@PathVariable int id, @RequestParam(required = false) String order) {
     return new ResponseEntity<>(userService.getFollowersById(id, order), HttpStatus.OK);
   }
   

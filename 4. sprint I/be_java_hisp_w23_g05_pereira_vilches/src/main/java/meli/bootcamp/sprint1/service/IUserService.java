@@ -1,7 +1,7 @@
 package meli.bootcamp.sprint1.service;
 
 import meli.bootcamp.sprint1.dto.request.NewPostDto;
-import meli.bootcamp.sprint1.dto.request.UserFollowedDto;
+import meli.bootcamp.sprint1.dto.response.UserFollowedDto;
 import meli.bootcamp.sprint1.dto.response.*;
 
 import java.util.List;
@@ -30,4 +30,6 @@ public interface IUserService {
   PromoProductsDto getPostWithPromo(int userId);
 
   BaseResponseDto addPostToFavorites(int userId, int postId);
+
+  List<PostDto> getPostsByFilters(Integer category, Double priceSince, Double priceTo, String color);
 }

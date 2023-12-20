@@ -75,4 +75,12 @@ public class UserController {
                                           @PathVariable int postId){
     return ResponseEntity.ok(this.userService.addPostToFavorites(userId,postId));
   }
+
+  @GetMapping("/posts")
+  public ResponseEntity<?> getPostsByFilters(@RequestParam(required = false) Integer category,
+                                             @RequestParam(required = false) Double priceSince,
+                                             @RequestParam(required = false) Double priceTo,
+                                             @RequestParam(required = false) String color){
+    return ResponseEntity.ok(this.userService.getPostsByFilters(category,priceSince,priceTo,color));
+  }
 }

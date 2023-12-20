@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import meli.bootcamp.sprint1.dto.response.*;
-import meli.bootcamp.sprint1.dto.request.UserFollowedDto;
+import meli.bootcamp.sprint1.dto.response.UserFollowedDto;
 import meli.bootcamp.sprint1.exception.EmptyListException;
 
 import org.springframework.stereotype.Service;
@@ -244,6 +244,15 @@ public class UserService implements IUserService {
     user.getFavorites().add(post);
 
     return new BaseResponseDto("Post added to favorites");
+  }
+
+  @Override
+  public List<PostDto> getPostsByFilters(Integer category, Double priceSince, Double priceTo, String color) {
+    List<Post> postsFiltered = this.repository.getPostsByFilters(category,priceSince,priceTo,color);
+    if(postsFiltered.isEmpty()){
+      throw new BadRequestException("No posts meet the criteria");
+    }
+    return postsFiltered.stream().map(p -> Mapper.mapToPostDto(p)).toList();
   }
 
   private void verifyUserExists(User user) {

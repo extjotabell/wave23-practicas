@@ -85,11 +85,28 @@ public class GeneralRepository implements IGeneralRepository {
 
   @Override
   public Post findPostById(int postId) {
-    List<Post> allPosts = users.stream()
-            .flatMap(user -> user.getPosts().stream())
-            .toList();
+    List<Post> allPosts = getAllPosts();
     return allPosts.stream()
             .filter(post -> post.getId() == postId)
             .findFirst().orElse(null);
+  }
+
+  @Override
+  public List<Post> getPostsByFilters(Integer category, Double priceSince, Double priceTo, String color) {
+    List<Post> allPosts = getAllPosts();
+    return allPosts.stream()
+            .filter(post ->
+                    (category == null || post.getCategory().getId() == category) &&
+                            (priceSince == null || post.getPrice() > priceSince) &&
+                            (priceTo == null || post.getPrice() < priceTo) &&
+                            (color == null || post.getProduct().getColor().equalsIgnoreCase(color)))
+            .toList();
+  }
+
+  private List<Post> getAllPosts() {
+    List<Post> allPosts = users.stream()
+            .flatMap(user -> user.getPosts().stream())
+            .toList();
+    return allPosts;
   }
 }
