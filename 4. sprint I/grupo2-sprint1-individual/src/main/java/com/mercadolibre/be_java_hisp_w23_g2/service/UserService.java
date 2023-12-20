@@ -187,6 +187,23 @@ public class UserService implements IUserService {
         return mapper.mapPostFollowedDTO(user.getId(), allPost);
     }
 
+    @Override
+    public UserMaxFollowersDTO getUserMaxFollowers() {
+        List<User> users = userRepository.getAll();
+        if(users.isEmpty()){
+            throw new NotFoundException("There are not users");
+        }
+        int maxFollows = users.stream()
+                                  .mapToInt(u->u.getFollowers().size())
+                                  .max()
+                                  .orElse(0);
+        List<User> usersFollowers = users.stream().filter(user -> user.getFollowers().size()==maxFollows).toList();
+        if(usersFollowers.size()==1){
+            return mapper.mapUserMaxFollowersDTO(usersFollowers.get(0));
+        }
+        return mapper.mapUserMaxFollowersDTO(usersFollowers);
+    }
+
     /**
      * Handles sorting of posts based on the specified sort type.
      *

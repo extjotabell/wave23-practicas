@@ -1,5 +1,6 @@
 package com.mercadolibre.be_java_hisp_w23_g2.controller;
 
+import com.mercadolibre.be_java_hisp_w23_g2.dto.UserMaxFollowersDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,12 +44,12 @@ public class UserController {
     /**
      * Endpoint for unfollowing a user.
      *
-     * @param userId          The ID of the user who wants to unfollow another user.
+     * @param userId           The ID of the user who wants to unfollow another user.
      * @param userIdToUnfollow The ID of the user to be unfollowed.
      * @return ResponseEntity with the result of the unfollowUser operation.
      */
     @PostMapping("/{userId}/unfollow/{userIdToUnfollow}")
-    public ResponseEntity<?> unfollowUser(@PathVariable int userId, @PathVariable int userIdToUnfollow){
+    public ResponseEntity<?> unfollowUser(@PathVariable int userId, @PathVariable int userIdToUnfollow) {
         return ResponseEntity.ok(userService.unfollowUser(userId, userIdToUnfollow));
     }
 
@@ -77,12 +78,17 @@ public class UserController {
     /**
      * Endpoint for following a user.
      *
-     * @param userId        The ID of the user who wants to follow another user.
+     * @param userId         The ID of the user who wants to follow another user.
      * @param userIdToFollow The ID of the user to be followed.
      * @return ResponseEntity with the result of the followUser operation.
      */
     @PostMapping("/{userId}/follow/{userIdToFollow}")
-    public ResponseEntity<?> followUser(@PathVariable int userId,@PathVariable int userIdToFollow){
-        return new ResponseEntity<>(userService.followUser(userId,userIdToFollow),HttpStatus.OK);
+    public ResponseEntity<?> followUser(@PathVariable int userId, @PathVariable int userIdToFollow) {
+        return new ResponseEntity<>(userService.followUser(userId, userIdToFollow), HttpStatus.OK);
+    }
+
+    @GetMapping("/max-followers")
+    public ResponseEntity<?> getUserMaxFollowers() {
+        return new ResponseEntity<UserMaxFollowersDTO>(userService.getUserMaxFollowers(), HttpStatus.OK);
     }
 }

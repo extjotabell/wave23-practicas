@@ -58,6 +58,7 @@ public class UserRepository implements IUserRepository {
     @Override
     public void addPost(User user, Post post) {
         user.getPosts().add(post);
+        System.out.println("usuario: " +user.getId());
     }
 
     /**
@@ -70,10 +71,9 @@ public class UserRepository implements IUserRepository {
     @Override
     public User followUser(int userId, int userIdToFollow) {
         User user = findUserById(userId);
-        User user1 = findUserById(userIdToFollow);
-
-        user.getFollowed().add(user1);
-        user1.getFollowers().add(user);
+        User userToFollow = findUserById(userIdToFollow);
+        user.getFollowed().add(userToFollow);
+        userToFollow.getFollowers().add(user);
         return user;
     }
 

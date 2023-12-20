@@ -14,6 +14,8 @@ The be_java_hisp_w23_g2 project is a social platform that allows users to follow
 - View posts from followed users
 - Retrieve followers and followed users
 - Count the number of followers for a specific user
+- Share promo posts with followers
+- Count the number of promo posts for a specific user
 
 ## Endpoints
 - [POST US-0001]
@@ -52,6 +54,18 @@ The be_java_hisp_w23_g2 project is a social platform that allows users to follow
   - localhost:8080/products/followed/{userId}/list?order=date_asc
   - Endpoint perform the “List the products from followed in date order” action to a user
   - Responsible: [Hernan De San Vicente]
+- [POST US-0010]
+  - localhost:8080/products/promo-post
+  - Endpoint perform the “Create a Promo Post” action to a user
+  - Responsible: [Felipe Costa]
+- [GET US-0011]
+  - http://localhost:8080/products/promo-post/count?user_id={id}
+  - Endpoint perform the “Count promo post” action to a user
+  - Responsible: [Felipe Costa]
+- [GET US-0012]
+  - localhost:8080/users/max-followers
+  - Endpoint perform the “List the users most followers”
+  - Responsible: [Felipe Costa]
 
 ## Technologies Used
 - Java

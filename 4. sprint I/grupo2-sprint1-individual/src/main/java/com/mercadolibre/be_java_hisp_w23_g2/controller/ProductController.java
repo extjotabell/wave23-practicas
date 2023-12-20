@@ -1,7 +1,9 @@
 package com.mercadolibre.be_java_hisp_w23_g2.controller;
 
 
+import com.mercadolibre.be_java_hisp_w23_g2.dto.PostPromoDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.service.IUserService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.PostDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.service.IProductService;
@@ -36,6 +38,10 @@ public class ProductController {
     public ResponseEntity<?> addPost(@RequestBody PostDTO postDto) {
         return new ResponseEntity<>(productService.addPost(postDto), HttpStatus.OK);
     }
+    @PostMapping("/promo-post")
+    public ResponseEntity<?> addPostPromo(@RequestBody PostPromoDTO postDto) {
+        return new ResponseEntity<>(productService.addPost(postDto), HttpStatus.OK);
+    }
 
     /**
      * Endpoint for retrieving posts by followed users.
@@ -48,4 +54,10 @@ public class ProductController {
     public ResponseEntity<?> getPostsByFollowedUsers(@PathVariable int userId, @RequestParam(required = false) String order) {
         return new ResponseEntity<>(userService.getPostsByFollowedUsers(userId, order), HttpStatus.OK);
     }
+
+    @GetMapping("/promo-post/count")
+    public ResponseEntity<?> getPromoPostCount(@RequestParam("user_id") int userId) {
+        return new ResponseEntity<>(productService.getPromoPostCount(userId), HttpStatus.OK);
+    }
+
 }

@@ -1,8 +1,12 @@
 package com.mercadolibre.be_java_hisp_w23_g2.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.MessageDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.PostDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.PostPromoDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.PromoPostCountDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Post;
+import com.mercadolibre.be_java_hisp_w23_g2.entity.PostPromo;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.User;
 import com.mercadolibre.be_java_hisp_w23_g2.exception.BadRequestException;
 import com.mercadolibre.be_java_hisp_w23_g2.repository.IUserRepository;
@@ -37,21 +41,17 @@ public class ProductService implements IProductService {
     @Override
     public MessageDTO addPost(PostDTO postDTO) {
         // Check that all parameters have been sent
-        if (postDTO.getUserId() == 0 || postDTO.getDate() == null ||
-            postDTO.getProduct().getId() == 0 || postDTO.getProduct().getName() == null ||
-            postDTO.getProduct().getType() == null || postDTO.getProduct().getBrand() == null ||
-            postDTO.getProduct().getColor() == null || postDTO.getProduct().getNotes() == null ||
-            postDTO.getCategory() == null || postDTO.getPrice() == 0.0) {
-            throw new BadRequestException("The publication data entered is not correct.");
+        validator.validatePost(postDTO);
+
+        Post post;
+        if(postDTO instanceof PostPromoDTO){
+            post = mapper.mapPostPromoDTOToPostPromo((PostPromoDTO) postDTO);
+        }else{
+            post = this.mapper.mapPostDTOToPost(postDTO);
         }
-
-        Post post = this.mapper.mapPostDTOToPost(postDTO);
-
         // Check that the user exists
         User user = userRepository.findUserById(post.getUserId());
-
         validator.validateUserExistence(user, post.getUserId(), "Current");
-
         // Check that there is no product with this id
         List<Post> postsUser = user.getPosts();
         Optional<Post> postExist = postsUser.stream()
@@ -64,6 +64,14 @@ public class ProductService implements IProductService {
         userRepository.addPost(user, post);
 
         return new MessageDTO("Publication successfully added.");
+    }
+
+    @Override
+    public PromoPostCountDTO getPromoPostCount(int userId) {
+        User user = userRepository.findUserById(userId);
+        validator.validateUserExistence(user, userId, "Current");
+        return mapper.mapPromoPostCountDTO(user,
+                                           user.getPosts().stream().filter(post -> post instanceof PostPromo).count());
     }
 
 }
