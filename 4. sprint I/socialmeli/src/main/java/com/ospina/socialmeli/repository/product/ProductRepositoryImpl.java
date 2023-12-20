@@ -23,6 +23,12 @@ public class ProductRepositoryImpl implements ProductRepository{
     }
 
     @Override
+    public List<Post> createAll(List<Post> entities) {
+        posts.addAll(entities);
+        return entities;
+    }
+
+    @Override
     public Optional<Post> read(Long postId) {
         return posts.stream().filter(post -> post.getId().equals(postId)).findFirst();
     }

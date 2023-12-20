@@ -6,6 +6,8 @@ import com.ospina.socialmeli.repository.CrudRepository;
 import java.util.List;
 
 public interface ProductRepository extends CrudRepository<Post, Long> {
+    List<Post> createAll(List<Post> entities);
+
     Long getNextId();
     List<Post> readBatchBySellerIds(List<Long> sellerIds);
     List<Post> findAll();

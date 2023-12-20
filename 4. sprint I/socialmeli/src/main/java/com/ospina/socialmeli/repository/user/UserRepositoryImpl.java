@@ -2,7 +2,6 @@ package com.ospina.socialmeli.repository.user;
 
 import com.ospina.socialmeli.entity.Seller;
 import com.ospina.socialmeli.entity.User;
-import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -27,6 +26,12 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public List<User> createAll(List<User> entities) {
+        users.addAll(entities);
+        return entities;
+    }
+
+    @Override
     public void update(User entity) {
 
     }
@@ -43,19 +48,4 @@ public class UserRepositoryImpl implements UserRepository {
                 .findFirst();
     }
 
-    @PostConstruct
-    private void load() {
-        users.addAll(List.of(
-                User.build(1L, "user1", new HashSet<>(Arrays.asList(
-                        Seller.build(User.build(8L,"abcdef")),
-                        Seller.build(User.build(9L,"bcdefg")),
-                        Seller.build(User.build(10L,"cdefgh"))
-                ))),
-                User.build(2L, "user2"),
-                User.build(3L, "user3"),
-                User.build(4L, "user4"),
-                User.build(5L, "user5"),
-                User.build(6L, "user6")
-        ));
-    }
 }
