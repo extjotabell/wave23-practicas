@@ -34,31 +34,38 @@ public class ProductServiceImpl implements IProductService {
         this.userService = userService;
     }
 
-    private Stream<PostNoPromoDTO> getAllPostFollowsLastTwoWeeks(Integer userId) {
+    private List<PostNoPromoDTO> getAllPostFollowsLastTwoWeeks(Integer userId) {
         List<User> follows = userService.findFollowsByIdProductService(userId);
         if (follows == null || follows.isEmpty()) throw new NotFoundException("The user with id: " + userId + " does not follow anyone");
-        List<Post> posts = productRepository.getPostsFollowersLastTwoWeeks(follows);
-        if (posts == null || posts.isEmpty()) throw new NotFoundException("The sellers of the user with id: " + userId +
-                " do not have any publications in the last two weeks");
-        return posts.stream()
-                .map(p -> new PostNoPromoDTO(
-                        p.getPost_id(),
-                        p.getDate().toString(),
-                        new ProductDTO(
-                                p.getProduct().getProduct_id(),
-                                p.getProduct().getProduct_name(),
-                                p.getProduct().getType(),
-                                p.getProduct().getBrand(),
-                                p.getProduct().getColor(),
-                                p.getProduct().getNotes()
-                        ),
-                        p.getCategory(),
-                        p.getPrice()
-                ));
+
+        List<PostNoPromoDTO> postNoPromoDTOList = new ArrayList<>();
+
+        follows.forEach(f -> {
+            f.getPosts().forEach(post -> {
+                if(!post.isHas_promo()){
+                    postNoPromoDTOList.add(new PostNoPromoDTO(
+                            f.getUser_id(),
+                            post.getPost_id(),
+                            post.getDate().toString(),
+                            new ProductDTO(
+                                    post.getProduct().getProduct_id(),
+                                    post.getProduct().getProduct_name(),
+                                    post.getProduct().getType(),
+                                    post.getProduct().getBrand(),
+                                    post.getProduct().getColor(),
+                                    post.getProduct().getNotes()
+                            ),
+                            post.getCategory(),
+                            post.getPrice()
+                    ));
+                }
+            });
+        });
+        return postNoPromoDTOList;
     }
     @Override
     public PostsFromFollowsDTO getAllPostsFollowsLastTwoWeeks(Integer userId, String order) {
-        Stream<PostNoPromoDTO> temp = this.getAllPostFollowsLastTwoWeeks(userId);
+        Stream<PostNoPromoDTO> temp = this.getAllPostFollowsLastTwoWeeks(userId).stream();
 
         Comparator<PostNoPromoDTO> comparator = Comparator.comparing(PostNoPromoDTO::getDate);
 
