@@ -1,0 +1,25 @@
+0000000000000000000000000000000000000000 f8452e87b2f61a58cc92a6c59fac4e03da9cefe8 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703081483 -0600	branch: Created from HEAD
+f8452e87b2f61a58cc92a6c59fac4e03da9cefe8 8e835918cb6c4b45ada81054f864e9023930a360 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703081940 -0600	commit: Small change for README.md
+8e835918cb6c4b45ada81054f864e9023930a360 0f530088b5e2707768d30a1c6febe475aa8b1258 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703082169 -0600	commit: Renamed to README.md
+0f530088b5e2707768d30a1c6febe475aa8b1258 254996d33e0fac046cc08ea27b63bdfc567df567 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703086587 -0600	commit: Add US010 DTO for post with promo
+254996d33e0fac046cc08ea27b63bdfc567df567 407f0d1bfd86b2bc95201f773a0837318e6cc771 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703086702 -0600	pull originReal dev --rebase (finish): refs/heads/dev onto b395482ab9b1d88134fe57a44a4af94dd5be5445
+407f0d1bfd86b2bc95201f773a0837318e6cc771 ca8325849f1cbea673c46d49db9b7d4045a11ca7 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703086792 -0600	pull origin dev --rebase (finish): refs/heads/dev onto 254996d33e0fac046cc08ea27b63bdfc567df567
+ca8325849f1cbea673c46d49db9b7d4045a11ca7 37c5beb394ef0408245978db5df913d894f7277c ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703086963 -0600	commit: Add endpoint product controller US010
+37c5beb394ef0408245978db5df913d894f7277c 26d4bf7a9e5c3bf0e4697b63bbf87a4099baf5dd ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703087092 -0600	commit: Add exception for handling bad JSON (US010)
+26d4bf7a9e5c3bf0e4697b63bbf87a4099baf5dd 9e2af32a07d5eae59548a1ab3b8c8769faf4f6ba ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703087117 -0600	commit: Add mapper for US010
+9e2af32a07d5eae59548a1ab3b8c8769faf4f6ba 29ad133c881aa785dd7a63c29eda655f140a6bbd ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703087142 -0600	commit: Modify interface for US010
+29ad133c881aa785dd7a63c29eda655f140a6bbd ee2e8b80d5e9eee2c460eb62a53d7b8e8cdfab5f ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703087172 -0600	commit: Add implementation to add post with promos US010
+ee2e8b80d5e9eee2c460eb62a53d7b8e8cdfab5f 153f00044533b37e6091e8cec1e315685b6ec1c0 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703088351 -0600	commit: Add test for US010
+153f00044533b37e6091e8cec1e315685b6ec1c0 3c78c00ad31da3a234628c9dcc67528f38b7e866 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703090915 -0600	commit: Add DTO response for US011
+3c78c00ad31da3a234628c9dcc67528f38b7e866 f48df151a1ea56eecf3a6586dea57a029d4c6550 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703090938 -0600	commit: Add endpoint on controller for US011
+f48df151a1ea56eecf3a6586dea57a029d4c6550 29396cc62d93195ae6962ee502f9ab5ef3eb1d92 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703090980 -0600	commit: Signature for service method required in US011
+29396cc62d93195ae6962ee502f9ab5ef3eb1d92 0efeb190757db902af1c49b1e52241dca9249043 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703091008 -0600	commit: Implementation service method for US011
+0efeb190757db902af1c49b1e52241dca9249043 b864cba25234c1ae942c94f96a4aa15820147062 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703091064 -0600	commit: Add test for US011
+b864cba25234c1ae942c94f96a4aa15820147062 ecbe6b6f1c1b5626f3a991c205b61c6bfe11174e ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703093480 -0600	commit: Add DTO for delete user (US012)
+ecbe6b6f1c1b5626f3a991c205b61c6bfe11174e 0cf99ca55a604d82122f799b3a34eeadf369adc0 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703093526 -0600	commit: Add UserController endpoint for delete user (US012)
+0cf99ca55a604d82122f799b3a34eeadf369adc0 ca1723dbb42c0f76013e74af7a3824da3baa8750 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703093579 -0600	commit: Add signature to repository to delete specific user (US012)
+ca1723dbb42c0f76013e74af7a3824da3baa8750 86c7a80a331763269e1b246e3cff4e8b1164fad9 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703093608 -0600	commit: Add implementation to user repository to delete specific user (US012)
+86c7a80a331763269e1b246e3cff4e8b1164fad9 af6b5c0e802317a9f76e1a95d94dd4b4351171b5 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703093651 -0600	commit: Add method signature to delete User on user service (US012)
+af6b5c0e802317a9f76e1a95d94dd4b4351171b5 ef6b336e7a0f69d669132c56997aaa279924ff64 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703093717 -0600	commit: Add method implementation to delete user on user service (US012)
+ef6b336e7a0f69d669132c56997aaa279924ff64 4b1aece534b891dcebec209aa133bd9a7297d804 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703093785 -0600	commit: Add test for deletion of an user (US012)
+4b1aece534b891dcebec209aa133bd9a7297d804 eb08a66243997930d4ca3fe5df71a5b684eaef7d ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703094888 -0600	commit: Add US0010 throught US0012 on README.md

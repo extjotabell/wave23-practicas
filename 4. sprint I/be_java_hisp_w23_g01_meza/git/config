@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:ferMezaMel/be_java_hisp_w23_g01_meza.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[remote "originReal"]
+	url = git@github.com:zulyvargasrz/be_java_hisp_w23_g01.git
+	fetch = +refs/heads/*:refs/remotes/originReal/*
