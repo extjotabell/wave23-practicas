@@ -9,7 +9,7 @@ Mercado Libre sigue creciendo y para el año que viene  tiene como objetivo empe
 
 Para ejecutar la API es necesario descargar los archivos de este repositorio y abrirlos con un IDE, de preferencia **IntelliJ IDEA**. Dentro del IDE basta con ejecutar el archivo **BeJavaHispW23G3Application** ubicado en **src/main/java/be_java_hisp_w23_g3**. La API corre por defecto en el **puerto 8080 de localhost.**
 
-Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de prueba del API están recogidos en esta colección: [SocialMeli W23 G3](https://socialmeli-w23-g3.postman.co/workspace/SocialMeli-W23-G3~6050674e-6fac-4fbb-9cb6-0866bafb900b/collection/31877782-e4b7f017-69b9-42d1-addb-186665b8eac1?action=share&source=collection_link&creator=31612332), que también puede encontrarse dentro de los archivos del repositorio como: **SocialMeli_W23_G3.postman_collection.json** Para el caso de los endpoints US0010, US0011, Bonus 1 y Bonus 2, los casos de prueba se ecuentran en el archivo **SocialMeli_W23_G3_Lopez.postman_collection.json**.
+Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de prueba del API están recogidos en esta colección: **SocialMeli.postman_collection.json**.
 
 ## Endpoints y responsables
 
