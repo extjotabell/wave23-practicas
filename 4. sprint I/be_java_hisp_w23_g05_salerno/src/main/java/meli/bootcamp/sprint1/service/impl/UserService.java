@@ -257,6 +257,10 @@ public class UserService implements IUserService {
       throw new BadRequestException("Product has no promotion. (Use Add Post instead)");
     }
 
+    if(NewPostDto.getDiscount() <= 0.0){
+      throw new BadRequestException("The Discount has an incorrect value.");
+    }
+
     Post newPostEntity = new Post(newProductEntity, NewPostDto.getDate(), category, NewPostDto.getPrice(), NewPostDto.isHas_promo(), NewPostDto.getDiscount());
 
     user.addPost(newPostEntity);
