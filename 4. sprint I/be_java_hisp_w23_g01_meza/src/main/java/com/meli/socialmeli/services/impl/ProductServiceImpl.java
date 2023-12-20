@@ -4,6 +4,10 @@ import com.meli.socialmeli.dtos.request.PostDTO;
 import com.meli.socialmeli.dtos.request.PostPromoDTO;
 import com.meli.socialmeli.dtos.response.*;
 import com.meli.socialmeli.entities.Post;
+import com.meli.socialmeli.dtos.response.MessageDTO;
+import com.meli.socialmeli.dtos.response.PostNoPromoDTO;
+import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
+import com.meli.socialmeli.dtos.response.ProductDTO;
 import com.meli.socialmeli.entities.User;
 import com.meli.socialmeli.exceptions.custom.NotFoundException;
 import com.meli.socialmeli.repositories.IUserRepository;
@@ -13,6 +17,7 @@ import com.meli.socialmeli.utilities.Mappers;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -36,27 +41,25 @@ public class ProductServiceImpl implements IProductService {
 
         List<PostNoPromoDTO> postNoPromoDTOList = new ArrayList<>();
 
-        follows.forEach(f -> {
-            f.getPosts().forEach(post -> {
-                if(!post.isHas_promo()){
-                    postNoPromoDTOList.add(new PostNoPromoDTO(
-                            f.getUser_id(),
-                            post.getPost_id(),
-                            post.getDate().toString(),
-                            new ProductDTO(
-                                    post.getProduct().getProduct_id(),
-                                    post.getProduct().getProduct_name(),
-                                    post.getProduct().getType(),
-                                    post.getProduct().getBrand(),
-                                    post.getProduct().getColor(),
-                                    post.getProduct().getNotes()
-                            ),
-                            post.getCategory(),
-                            post.getPrice()
-                    ));
-                }
-            });
-        });
+        follows.forEach(f -> f.getPosts().stream()
+                .filter(post -> !post.isHas_promo())
+                .filter(post -> post.getDate().isAfter(LocalDate.now().minusWeeks(2)))
+                .map(post -> new PostNoPromoDTO(
+                        f.getUser_id(),
+                        post.getPost_id(),
+                        post.getDate().toString(),
+                        new ProductDTO(
+                                post.getProduct().getProduct_id(),
+                                post.getProduct().getProduct_name(),
+                                post.getProduct().getType(),
+                                post.getProduct().getBrand(),
+                                post.getProduct().getColor(),
+                                post.getProduct().getNotes()
+                        ),
+                        post.getCategory(),
+                        post.getPrice()
+                ))
+                .forEach(postNoPromoDTOList::add));
         if(postNoPromoDTOList.isEmpty()){
             throw new NotFoundException("The sellers of the user with id: " + userId +
                     " do not have any publications in the last two weeks");
