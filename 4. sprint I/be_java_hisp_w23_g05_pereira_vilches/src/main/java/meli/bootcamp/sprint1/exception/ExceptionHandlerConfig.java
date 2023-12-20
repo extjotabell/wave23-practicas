@@ -28,7 +28,7 @@ public class ExceptionHandlerConfig {
     BaseResponseDto response = new BaseResponseDto("Some of the arguments are wrong." + " More info:" + e.getMessage());
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
   }
-  
+
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public ResponseEntity<BaseResponseDto> httpMessageNotReadableException(Exception e){
     BaseResponseDto response = new BaseResponseDto("Some of the arguments are wrong." + " More info:" + e.getMessage());
