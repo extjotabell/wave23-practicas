@@ -7,6 +7,7 @@ import com.meli.socialmeli.dtos.response.PostNoPromoDTO;
 import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
 import com.meli.socialmeli.dtos.response.ProductDTO;
 import com.meli.socialmeli.entities.User;
+import com.meli.socialmeli.exceptions.custom.BadRequestException;
 import com.meli.socialmeli.exceptions.custom.NotFoundException;
 import com.meli.socialmeli.repositories.IUserRepository;
 import com.meli.socialmeli.services.IProductService;
@@ -106,6 +107,14 @@ public class ProductServiceImpl implements IProductService {
         if(user == null){
             throw new NotFoundException("Invalid user");
         }
-        
+        if(!postPromo.isHas_promo()){
+            throw new BadRequestException("The product is not on discount.");
+        }
+        if(postPromo.getDiscount() <= 0 ){
+            throw new BadRequestException("The product is not on discount.");
+        }
+        if(user.getPosts().isEmpty()){
+            user.addPost(Mappers.);
+        }
     }
 }

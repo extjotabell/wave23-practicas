@@ -20,5 +20,6 @@ public class PostDTO {
     protected ProductDTO product;
     protected int category;
     protected double price;
+    protected int post_id;
 }
 

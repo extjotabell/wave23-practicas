@@ -1,7 +1,17 @@
 package com.meli.socialmeli.dtos.request;
 
-public class PostPromoDTO extends PostDTO{
+import com.meli.socialmeli.entities.Product;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    protected boolean has_promo;
-    protected double discount;
+import java.time.LocalDate;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PostPromoDTO extends PostDTO{
+    private boolean has_promo;
+    private double discount;
+
 }
