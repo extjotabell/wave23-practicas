@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.*;
+import java.util.Objects;
 
 @Getter @Setter
 @AllArgsConstructor
@@ -20,4 +21,18 @@ public class SubjectDTO {
     @DecimalMax(value = "10.0", message = "La nota máxima de la materia es de 10 pts.")
     @DecimalMin(value = "0.0", message = "La nota mínima de la materia es de 0 pts.")
     Double score;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SubjectDTO that = (SubjectDTO) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(score, that.score);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, score);
+    }
 }
