@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "d10e4de0-45ab-4424-b8c8-1cd4ef6d2475",
+		"name": "User Story",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612957"
+	},
+	"item": [
+		{
+			"name": "Add right User Story",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"studentName\": \"Juan\",\n\t\"subjects\": \n\t\t[\n\t\t\t{\n\t\t\t\t\"name\": \"Matemáticas\",\n\t\t\t\t\"score\": 10\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"name\": \"Física\",\n\t\t\t\t\"score\": 7\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"name\": \"Química\",\n\t\t\t\t\"score\": 6\n\t\t\t}\n\t\t]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/userstory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"userstory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add wrong User Story",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"studentName\": \"Juan\",\n\t\"subjects\": \n\t\t[\n\t\t\t{\n\t\t\t\t\"name\": \"Matemáticas\",\n\t\t\t\t\"score\": 10\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"name\": \"Física\",\n\t\t\t\t\"score\": 7\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"name\": \"Química\",\n\t\t\t\t\"score\": 6\n\t\t\t}\n\t\t]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/userstory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"userstory"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
