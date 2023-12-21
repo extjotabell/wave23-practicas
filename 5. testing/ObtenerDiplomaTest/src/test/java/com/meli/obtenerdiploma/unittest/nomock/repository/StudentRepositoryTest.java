@@ -1,15 +1,11 @@
-package com.meli.obtenerdiploma.repositoryTest;
+package com.meli.obtenerdiploma.unittest.nomock.repository;
 
-import com.meli.obtenerdiploma.model.StudentDTO;
 import com.meli.obtenerdiploma.repository.IStudentRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
-
-import java.util.Set;
 
 @SpringBootTest
 public class StudentRepositoryTest {

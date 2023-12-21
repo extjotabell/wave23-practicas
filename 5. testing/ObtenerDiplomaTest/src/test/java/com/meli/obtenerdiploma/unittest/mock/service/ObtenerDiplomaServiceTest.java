@@ -1,4 +1,4 @@
-package com.meli.obtenerdiploma.mock.service;
+package com.meli.obtenerdiploma.unittest.mock.service;
 
 import com.meli.obtenerdiploma.model.StudentDTO;
 import com.meli.obtenerdiploma.model.SubjectDTO;
