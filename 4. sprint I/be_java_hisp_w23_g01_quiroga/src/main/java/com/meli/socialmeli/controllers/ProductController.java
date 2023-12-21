@@ -1,6 +1,7 @@
 package com.meli.socialmeli.controllers;
 
 import com.meli.socialmeli.dtos.request.PostDTO;
+import com.meli.socialmeli.dtos.request.PostPromoDTO;
 import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
 import com.meli.socialmeli.services.IProductService;
 import com.meli.socialmeli.services.impl.ProductServiceImpl;
@@ -35,5 +36,10 @@ public class ProductController {
     @PostMapping("/post")
     public ResponseEntity<?> newPost(@RequestBody PostDTO post){
         return new ResponseEntity<>(iProductService.newPost(post), HttpStatus.OK);
+    }
+
+    @PostMapping("promo-post")
+    public  ResponseEntity<?> newPostPromo(@RequestBody PostPromoDTO postPromo){
+        return new ResponseEntity<>(iProductService.newPostPromo(postPromo), HttpStatus.OK);
     }
 }

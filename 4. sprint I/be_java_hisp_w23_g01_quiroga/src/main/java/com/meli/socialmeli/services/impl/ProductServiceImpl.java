@@ -1,6 +1,7 @@
 package com.meli.socialmeli.services.impl;
 
 import com.meli.socialmeli.dtos.request.PostDTO;
+import com.meli.socialmeli.dtos.request.PostPromoDTO;
 import com.meli.socialmeli.dtos.response.MessageDTO;
 import com.meli.socialmeli.dtos.response.PostNoPromoDTO;
 import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @Service
@@ -96,5 +98,14 @@ public class ProductServiceImpl implements IProductService {
             user.addPost(Mappers.mapNewPost(post, user.getPosts().get(numberPosts - 1).getPost_id() + 1000));
         }
         return new MessageDTO("The User "+ user.getUser_id() + " has created new post.");
+    }
+
+    @Override
+    public MessageDTO newPostPromo(PostPromoDTO postPromo){
+        User user = userRepository.finById(postPromo.getUserId());
+        if(user == null){
+            throw new NotFoundException("Invalid user");
+        }
+        
     }
 }
