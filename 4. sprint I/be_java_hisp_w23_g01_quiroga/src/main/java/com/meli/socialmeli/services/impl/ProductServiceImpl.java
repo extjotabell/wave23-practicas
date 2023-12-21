@@ -114,7 +114,7 @@ public class ProductServiceImpl implements IProductService {
             throw new BadRequestException("The product is not on discount.");
         }
         if(user.getPosts().isEmpty()){
-            user.addPost(Mappers.);
+            user.
         }
     }
 }

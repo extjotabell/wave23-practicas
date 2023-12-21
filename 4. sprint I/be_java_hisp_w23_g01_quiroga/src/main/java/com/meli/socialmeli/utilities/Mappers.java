@@ -4,6 +4,7 @@ import com.meli.socialmeli.dtos.request.PostDTO;
 import com.meli.socialmeli.dtos.request.PostPromoDTO;
 import com.meli.socialmeli.dtos.response.ProductDTO;
 import com.meli.socialmeli.entities.Post;
+import com.meli.socialmeli.entities.PostPromo;
 import com.meli.socialmeli.entities.Product;
 
 public class Mappers {
@@ -16,8 +17,8 @@ public class Mappers {
         return new Post(post.getDate(), mapProduct(post.getProduct()), post.getCategory(), post.getPrice(), post_id);
     }
 
-    public static Post mapNewPostPromo(PostPromoDTO postPromoDTO, int post_id){
-        return new PostPromoDTO(post_id, postPromoDTO.getDate(), mapProduct(postPromoDTO.getProduct()),
-                postPromoDTO.getCategory())
+    public static PostPromo mapNewPostPromo(PostPromoDTO postPromoDTO, int post_id){
+        return new PostPromo(post_id, postPromoDTO.getDate(),
+                mapProduct(postPromoDTO.getProduct()), postPromoDTO.getCategory(), postPromoDTO.getPrice(), postPromoDTO.isHas_promo(), postPromoDTO.getDiscount());
     }
 }

@@ -36,4 +36,6 @@ public class User {
 
     public void addPost(Post post){ this.posts.add(post); }
 
+    public  void addPostPromo(PostPromo postPromo) {this.posts.add(postPromo);}
+
 }
