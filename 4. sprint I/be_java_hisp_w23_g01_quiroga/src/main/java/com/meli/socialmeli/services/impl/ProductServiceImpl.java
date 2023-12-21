@@ -114,7 +114,10 @@ public class ProductServiceImpl implements IProductService {
             throw new BadRequestException("The product is not on discount.");
         }
         if(user.getPosts().isEmpty()){
-            user.
+            int numberPosts = user.getPosts().size();
+            user.addPostPromo(Mappers.mapNewPostPromo(postPromo, user.getPosts().get(numberPosts - 1).getPost_id() + 1000));
         }
+
+        return new MessageDTO("The user "+ user.getUser_id() + " has created new post with discount.");
     }
 }
