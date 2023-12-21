@@ -1,15 +1,13 @@
 package com.meli.obtenerdiploma.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.*;
 
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class SubjectDTO {
     @NotBlank(message = "El nombre de la materia no puede estar vacío.")
     @Pattern(regexp="([A-Z])[\\s0-9A-Za-zñóíáéúÁÓÉÍÚ]*$", message = "El nombre de la materia debe comenzar con mayúscula.")
