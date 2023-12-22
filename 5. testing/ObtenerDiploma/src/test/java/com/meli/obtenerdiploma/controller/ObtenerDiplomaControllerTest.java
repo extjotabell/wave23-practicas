@@ -1,4 +1,4 @@
-package com.meli.obtenerdiploma;
+package com.meli.obtenerdiploma.controller;
 
 import com.meli.obtenerdiploma.controller.ObtenerDiplomaController;
 import com.meli.obtenerdiploma.model.StudentDTO;

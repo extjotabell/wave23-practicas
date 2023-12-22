@@ -1,4 +1,4 @@
-package com.meli.obtenerdiploma;
+package com.meli.obtenerdiploma.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.obtenerdiploma.controller.StudentController;
