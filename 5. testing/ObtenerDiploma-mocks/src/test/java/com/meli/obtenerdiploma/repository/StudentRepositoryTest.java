@@ -22,7 +22,7 @@ class StudentRepositoryTest {
     @DisplayName("Encontrar todos los alumnos")
     void testFindAll(){
         //Arrange
-        Set<StudentDTO> result = new HashSet<>();
+        Set<StudentDTO> result;
         //Act
         result = studentRepository.findAll();
         // Assert
