@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.obtenerdiploma.exception.StudentNotFoundException;
 import com.meli.obtenerdiploma.model.StudentDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
@@ -22,6 +24,9 @@ public class StudentDAO implements IStudentDAO {
 
     private Set<StudentDTO> students;
 
+    private static final Logger logger = LoggerFactory.getLogger(StudentDAO.class);
+
+
 
     public StudentDAO() {
         Properties properties =  new Properties();
@@ -31,7 +36,7 @@ public class StudentDAO implements IStudentDAO {
             this.SCOPE = properties.getProperty("api.scope");
             this.loadData();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("An error ocurred while loading properties. ", e);
         }
     }
 
@@ -90,11 +95,9 @@ public class StudentDAO implements IStudentDAO {
             file = ResourceUtils.getFile("./src/" + SCOPE + "/resources/users.json");
             loadedData = objectMapper.readValue(file, new TypeReference<Set<StudentDTO>>(){});
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Failed while initializing DB, check your resources files");
+            logger.error("Failed while initializing DB, check your resources files");
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Failed while initializing DB, check your JSON formatting.");
+            logger.error("Failed while initializing DB, check your JSON formatting.");
         }
 
         this.students = loadedData;
@@ -106,11 +109,9 @@ public class StudentDAO implements IStudentDAO {
             File file = ResourceUtils.getFile("./src/" + SCOPE + "/resources/users.json");
             objectMapper.writeValue(file, this.students);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Failed while writing to DB, check your resources files");
+            logger.error("Failed while writing to DB, check your resources files");
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Failed while writing to DB, check your JSON formatting.");
+            logger.error("Failed while writing to DB, check your JSON formatting.");
         }
     }
 }
