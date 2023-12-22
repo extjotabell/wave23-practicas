@@ -12,10 +12,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class StudentServiceTest {
@@ -28,7 +30,7 @@ public class StudentServiceTest {
 
     @Test
     @DisplayName("Leer un estudiante")
-    void readTest(){
+    void readTest() {
         //Arrange
         List<SubjectDTO> subjects = new ArrayList<>();
         SubjectDTO subject1 = new SubjectDTO("Lengua", 6.0);
@@ -41,5 +43,64 @@ public class StudentServiceTest {
 
         //Assert
         assertEquals(student, studentReturned);
+    }
+
+    @Test
+    @DisplayName("Crear un estudiante")
+    void createTest() {
+        //Arrange
+        StudentDTO studentDTO = new StudentDTO();
+
+        //Act
+        studentService.create(studentDTO);
+
+        //Assert
+        verify(studentDAO, atLeastOnce()).save(studentDTO);
+
+    }
+
+    @Test
+    @DisplayName("Actualizar un estudiante")
+    void updateTest() {
+        //Arrange
+        StudentDTO studentDTO = new StudentDTO();
+
+        //Act
+        studentService.update(studentDTO);
+
+        //Assert
+        verify(studentDAO, atLeastOnce()).save(studentDTO);
+    }
+
+    @Test
+    @DisplayName("Eliminar un estudiante")
+    void deleteTest() {
+        //Arrange
+        Long studentId = 1L;
+
+        //Act
+        studentService.delete(studentId);
+
+        //Assert
+        verify(studentDAO, atLeastOnce()).delete(studentId);
+    }
+
+    @Test
+    @DisplayName("Listar todos los estudiastes")
+    void getAllTest() {
+        //Arrange
+        Set<StudentDTO> students = new HashSet<>();
+        StudentDTO tomi = new StudentDTO();
+        StudentDTO pepe = new StudentDTO();
+        students.add(tomi);
+        students.add(pepe);
+
+        //Act
+        when(studentService.getAll()).thenReturn(students);
+        Set<StudentDTO> studentsReturn = studentService.getAll();
+
+        //Assert
+        verify(studentRepository, atLeastOnce()).findAll();
+        assertEquals(students, studentsReturn);
     }
 }

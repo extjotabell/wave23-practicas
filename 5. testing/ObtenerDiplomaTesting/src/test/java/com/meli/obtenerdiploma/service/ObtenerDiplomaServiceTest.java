@@ -24,6 +24,31 @@ public class ObtenerDiplomaServiceTest {
     @InjectMocks
     ObtenerDiplomaService obtenerDiplomaService;
 
+
+    @Test
+    @DisplayName("Datos de salida identicos a entrada")
+    void analyzeScoresDataTest(){
+        //Arrange
+        List<SubjectDTO> subjects = new ArrayList<>();
+        SubjectDTO subject1 = new SubjectDTO("Lengua", 6.0);
+        SubjectDTO subject2 = new SubjectDTO("Matematica", 8.0);
+        subjects.add(subject1);
+        subjects.add(subject2);
+        StudentDTO student = new StudentDTO(1L, "Juan Perez", "mensaje", 8.0, subjects);
+
+        //Act
+        when(studentDAO.findById(any())).thenReturn(student);
+        StudentDTO studentReturn = obtenerDiplomaService.analyzeScores(1L);
+
+        //Assert
+        assertEquals(1L, student.getId());
+        assertEquals("Juan Perez", student.getStudentName());
+        assertEquals(7.0, student.getAverageScore());
+        assertEquals(subjects, student.getSubjects());
+    }
+
+
+
     @Test
     @DisplayName("Analiza notas")
     void analyzeScoresTest(){
