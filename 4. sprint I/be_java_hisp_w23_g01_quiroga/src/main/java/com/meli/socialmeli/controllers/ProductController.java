@@ -16,10 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
-
-
-
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -34,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping ("/promo-post/count")
-    public ResponseEntity <?> countPostPromo(@RequestBody(required = true) int user_id){
+    public ResponseEntity <?> countPostPromo(@RequestParam("user_id") int user_id){
         return new ResponseEntity<>(iProductService.countPostPromo(user_id), HttpStatus.OK);
     }
 

@@ -2,13 +2,13 @@ package com.meli.socialmeli.dtos.response;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CountPostPromo {
+public class CountPostPromoDTO {
 
     private int user_id;
     private String user_name;

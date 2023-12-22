@@ -2,10 +2,8 @@ package com.meli.socialmeli.services.impl;
 
 import com.meli.socialmeli.dtos.request.PostDTO;
 import com.meli.socialmeli.dtos.request.PostPromoDTO;
-import com.meli.socialmeli.dtos.response.MessageDTO;
-import com.meli.socialmeli.dtos.response.PostNoPromoDTO;
-import com.meli.socialmeli.dtos.response.PostsFromFollowsDTO;
-import com.meli.socialmeli.dtos.response.ProductDTO;
+import com.meli.socialmeli.dtos.response.*;
+import com.meli.socialmeli.entities.Post;
 import com.meli.socialmeli.entities.User;
 import com.meli.socialmeli.exceptions.custom.BadRequestException;
 import com.meli.socialmeli.exceptions.custom.NotFoundException;
@@ -28,6 +26,7 @@ import java.util.stream.Stream;
 public class ProductServiceImpl implements IProductService {
     private final IUserRepository userRepository ;
     private final IUserService userService;
+
 
     public ProductServiceImpl(IUserRepository userRepository, UserServiceImpl userService) {
         this.userRepository = userRepository;
@@ -119,5 +118,15 @@ public class ProductServiceImpl implements IProductService {
         }
 
         return new MessageDTO("The user "+ user.getUser_id() + " has created new post with discount.");
+    }
+
+    @Override
+    public CountPostPromoDTO countPostPromo(int userId) {
+        User user = userRepository.finById(userId);
+        if(user == null){
+            throw new NotFoundException("Invalid user");
+        }
+        long count  = user.getPosts().stream().filter(Post::isHas_promo).count();
+        return new CountPostPromoDTO(userId, user.getUser_name(), (int) count);
     }
 }
