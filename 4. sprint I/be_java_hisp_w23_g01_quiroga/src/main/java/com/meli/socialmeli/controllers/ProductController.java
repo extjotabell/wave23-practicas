@@ -33,6 +33,11 @@ public class ProductController {
         return new ResponseEntity<>(iProductService.getAllPostsFollowsLastTwoWeeks(userId, order), HttpStatus.OK);
     }
 
+    @GetMapping ("/promo-post/count")
+    public ResponseEntity <?> countPostPromo(@RequestBody(required = true) int user_id){
+        return new ResponseEntity<>(iProductService.countPostPromo(user_id), HttpStatus.OK);
+    }
+
     @PostMapping("/post")
     public ResponseEntity<?> newPost(@RequestBody PostDTO post){
         return new ResponseEntity<>(iProductService.newPost(post), HttpStatus.OK);
