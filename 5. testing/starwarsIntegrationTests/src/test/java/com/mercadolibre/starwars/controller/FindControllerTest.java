@@ -26,6 +26,7 @@ public class FindControllerTest {
         String response = this.mockMvc.perform(get("/R2-D2")
                         .contentType(MediaType.APPLICATION_JSON))
                         .andDo(print())
+                        .andExpect(status().isOk())
                         .andReturn().getResponse().getContentAsString();
     }
 
@@ -35,6 +36,7 @@ public class FindControllerTest {
         this.mockMvc.perform(get("/")
                         .contentType(MediaType.APPLICATION_JSON))
                         .andDo(print())
-                        .andExpect(status().isNotFound());
+                        .andExpect(status().isNotFound())
+                        .andReturn().getResponse().getContentAsString();
     }
 }
