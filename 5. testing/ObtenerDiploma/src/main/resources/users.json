@@ -1,0 +1,1 @@
+[{"id":2,"studentName":"Updated Student","message":null,"averageScore":null,"subjects":[{"name":"Matemática","score":10.0},{"name":"Física","score":8.0},{"name":"Química","score":4.0}]},{"id":4,"studentName":null,"message":null,"averageScore":null,"subjects":null},{"id":1,"studentName":"New Student","message":null,"averageScore":null,"subjects":null}]
