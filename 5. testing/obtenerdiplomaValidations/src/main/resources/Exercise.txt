@@ -1,0 +1,29 @@
+Validaciones
+// Práctica Individual
+
+
+Objetivos
+
+Tomando como base el proyecto “ObtenerDiploma”, el cual se adjunta completamente implementado, se deberán realizar las
+validaciones para los datos de entrada (request) con el fin de controlar los diferentes escenarios posibles propuestos
+en cada ejercicio.
+
+User Story
+Historia de usuario narrada desde el punto de vista del personal administrativo del instituto educativo. El servicio
+(end-point) es expuesto desde el instituto educativo para ser consumido por cualquier persona autorizada de la misma
+que lo solicite.
+US-0001: Calcular el promedio de todas las notas obtenidas por un alumno teniendo en cuenta las materias cursadas.
+Elaborar un mensaje personalizado dependiendo del promedio.
+
+Consigna
+Se desea realizar las validaciones correspondientes en la Historia de Usuario presentada. Para ello tener en cuenta
+StudentDTO y SubjectDTO de la resolución adjunta sin validaciones y la siguiente tabla de validaciones y sus
+correspondientes comportamientos esperados:
+
+-> img.png
+
+Representación JSON
+Se define el payload necesario para proceder con la carga, como así también la respuesta (response) en el formato JSON.
+
+-> payload.png
+-> response.png
