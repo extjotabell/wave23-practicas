@@ -81,6 +81,24 @@ class StudentControllerIntegrationTests {
                 .andExpect(jsonPath("$.name").value("MethodArgumentNotValidException"))
                 .andExpect(status().isBadRequest());
     }
+    @Test
+    @DisplayName("POST ENDPOINT: Register invalid student with invalid json format.")
+    void registerStudentInvalidFormatShouldReturnExceptions() throws Exception {
+        //Arrange
+        String payloadJSON ="";
+        String expectedMessage= "Required request body is missing: public org.springframework.http.ResponseEntity<?> " +
+                                "com.meli.obtenerdiploma.controller.StudentController.registerStudent" +
+                                "(com.meli.obtenerdiploma.model.StudentDTO)";
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.post("/student/registerStudent")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(payloadJSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(jsonPath("$.name").value("HttpMessageNotReadableException"))
+                .andExpect(jsonPath("$.description").value(expectedMessage))
+                .andExpect(status().isBadRequest());
+    }
 
     @Test
     @DisplayName("GET ENDPOINT: Get student by id - valid id.")
