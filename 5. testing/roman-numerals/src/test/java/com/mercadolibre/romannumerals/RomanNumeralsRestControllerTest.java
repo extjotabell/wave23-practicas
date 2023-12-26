@@ -2,7 +2,6 @@ package com.mercadolibre.romannumerals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -93,5 +92,5 @@ public class RomanNumeralsRestControllerTest {
         // Assert
         assertEquals(returnValue, expectedReturn);
     }
-    
+
 }
