@@ -1,4 +1,4 @@
-package com.meli.obtenerdiploma.controller;
+package com.meli.obtenerdiploma.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -27,9 +27,6 @@ class ObtenerDiplomaIntegrationTests {
     MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
     private StudentDAO studentDAO;
 
     @BeforeEach
@@ -52,11 +49,11 @@ class ObtenerDiplomaIntegrationTests {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.studentName").value("Marco"))
-                .andExpect(jsonPath("$.averageScore").value(9.0))
+                .andExpect(jsonPath("$.averageScore").value(6.0))
                 .andExpect(jsonPath("$.subjects.length()").value(3))
                 .andExpect(jsonPath("$.subjects[?(@.name == \""+"Matemática"+"\"  && @.score == "+8.0+")]").exists())
-                .andExpect(jsonPath("$.subjects[?(@.name == \""+"Lengua"+"\"  && @.score == "+9.0+")]").exists())
-                .andExpect(jsonPath("$.subjects[?(@.name == \""+"Física"   +"\"  && @.score == "+10.0+")]").exists());
+                .andExpect(jsonPath("$.subjects[?(@.name == \""+"Lengua"+"\"  && @.score == "+6.0+")]").exists())
+                .andExpect(jsonPath("$.subjects[?(@.name == \""+"Física"   +"\"  && @.score == "+4.0+")]").exists());
     }
 
     @Test
