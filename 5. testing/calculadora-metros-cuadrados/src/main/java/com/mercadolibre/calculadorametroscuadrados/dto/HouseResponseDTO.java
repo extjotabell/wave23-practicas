@@ -14,7 +14,7 @@ public class HouseResponseDTO extends HouseDTO {
     this.setRooms(house.getRooms());
   }
 
-  public Integer getSquareFeet() {
+    public Integer getSquareFeet() {
     return squareFeet;
   }
 

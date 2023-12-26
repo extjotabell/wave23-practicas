@@ -11,6 +11,12 @@ public class HouseDTO {
 
   }
 
+  public HouseDTO(String name, String address, List<RoomDTO> rooms) {
+    this.name = name;
+    this.address = address;
+    this.rooms = rooms;
+  }
+
   public String getName() {
     return name;
   }
