@@ -32,7 +32,7 @@ public class FindServiceTest {
     public void findTest() throws JsonProcessingException {
         //ARRANGE
         List<CharacterDTO> characterDTOList = new ArrayList<>();
-        characterDTOList.add(new CharacterDTO("Luke Skywalker","blond","fair","blue",
+        characterDTOList.add(new CharacterDTO("blond","fair","blue",
                 "19BBY","male","Tatooine","Human",172,77));
         String param = "Luke";
 

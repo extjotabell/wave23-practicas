@@ -15,7 +15,20 @@ public class CharacterDTO {
   public CharacterDTO() {
   }
 
-  public CharacterDTO(String lukeSkywalker, String blond, String fair, String blue, String s, String male, String tatooine, String human, int i, int i1) {
+  public CharacterDTO(String name, String hair_color, String skin_color, String eye_color, String birth_year, String gender, String homeworld, String species,int height, int mass) {
+    this.name = name;
+    this.hair_color = hair_color;
+    this.skin_color = skin_color;
+    this.eye_color = eye_color;
+    this.birth_year = birth_year;
+    this.gender = gender;
+    this.homeworld = homeworld;
+    this.species = species;
+    this.height = height;
+    this.mass = mass;
+  }
+
+  public CharacterDTO(String blond, String fair, String blue, String s, String male, String tatooine, String human, int i, int i1) {
   }
 
   public String getName() {
