@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,7 +33,7 @@ public class CalculateRestControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void calculate() throws Exception{
+    void calculateOk() throws Exception{
         CreateHouseResponseDTO createHouseResponseDTO = new CreateHouseResponseDTO();
 
         HouseDTO dtoEntrada = new HouseDTO("Mi casa","Calle 123", List.of(
@@ -42,6 +43,29 @@ public class CalculateRestControllerTest {
         ));
 
         HouseResponseDTO expected = createHouseResponseDTO.createExpectedResponse();
+
+        ObjectWriter objecTWriter = new ObjectMapper()
+                .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
+        String payload = objecTWriter.writeValueAsString(dtoEntrada);
+        String responseExpected = objecTWriter.writeValueAsString(expected);
+
+        MvcResult mvcResult = mockMvc.perform(post("/calculate")
+                        .contentType("application/json")
+                        .content(payload))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(responseExpected,mvcResult.getResponse().getContentAsString());
+    }
+    @Test
+    void calculateNoRooms() throws Exception{
+        CreateHouseResponseDTO createHouseResponseDTO = new CreateHouseResponseDTO();
+
+        HouseDTO dtoEntrada = new HouseDTO("Mi casa","Calle 123", Collections.emptyList());
+
+        HouseResponseDTO expected = createHouseResponseDTO.createExpectedNoRoomsResponse();
 
         ObjectWriter objecTWriter = new ObjectMapper()
                 .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
