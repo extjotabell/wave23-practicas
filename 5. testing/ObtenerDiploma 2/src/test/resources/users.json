@@ -4,15 +4,15 @@
     "studentName": "Juan",
     "subjects": [
       {
-        "name": "Matematica",
+        "name": "Matemática",
         "score": 9
       },
       {
-        "name": "Fisica",
+        "name": "Física",
         "score": 7
       },
       {
-        "name": "Quimica",
+        "name": "Química",
         "score": 6
       }
     ]
@@ -22,15 +22,15 @@
     "studentName": "Pedro",
     "subjects": [
       {
-        "name": "Matematica",
+        "name": "Matemática",
         "score": 10
       },
       {
-        "name": "Fisica",
+        "name": "Física",
         "score": 8
       },
       {
-        "name": "Quimica",
+        "name": "Química",
         "score": 4
       }
     ]
