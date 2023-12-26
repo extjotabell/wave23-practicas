@@ -71,12 +71,7 @@ public class StudentControllerTest {
         studentDTO.setId(1L);
         studentDTO.setStudentName("Juan");
         studentDTO.setSubjects(List.of(new SubjectDTO("Matematicas",8.5)));
-        StudentDTO studentDTO2 = new StudentDTO();
-        studentDTO.setId(2L);
-        studentDTO.setStudentName("Luis");
-        studentDTO.setSubjects(List.of(new SubjectDTO("Matematicas",7.0)));
-
-        Set<StudentDTO> studentDTOList = Set.of(studentDTO,studentDTO2);
+        Set<StudentDTO> studentDTOList = Set.of(studentDTO);
         when(service.getAll()).thenReturn(studentDTOList);
         Set<StudentDTO> result = controller.listStudents();
         assertEquals(studentDTOList.size(), result.size());

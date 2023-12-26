@@ -6,6 +6,14 @@
       {
         "name": "Matemática",
         "score": 9
+      },
+      {
+        "name": "Física",
+        "score": 7
+      },
+      {
+        "name": "Química",
+        "score": 6
       }
     ]
   },
@@ -16,6 +24,14 @@
       {
         "name": "Matemática",
         "score": 10
+      },
+      {
+        "name": "Física",
+        "score": 8
+      },
+      {
+        "name": "Química",
+        "score": 4
       }
     ]
   }
