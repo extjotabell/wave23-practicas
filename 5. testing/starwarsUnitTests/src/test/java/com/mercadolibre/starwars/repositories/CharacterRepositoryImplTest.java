@@ -53,6 +53,7 @@ public class CharacterRepositoryImplTest {
         assertEquals(expectedList.get(0).getName(), actualList.get(0).getName());
     }
 
+
     @Test
     @DisplayName("Test to verify the matchWith method")
     void testMatchWith() throws Exception {
