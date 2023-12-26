@@ -1,4 +1,4 @@
-package com.ospina.blogYoutuber.modelo.comando;
+package com.ospina.blogyoutuber.modelo.comando;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

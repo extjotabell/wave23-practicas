@@ -1,4 +1,4 @@
-package com.ospina.blogYoutuber.modelo.entidad;
+package com.ospina.blogyoutuber.modelo.entidad;
 
 import java.time.LocalDate;
 

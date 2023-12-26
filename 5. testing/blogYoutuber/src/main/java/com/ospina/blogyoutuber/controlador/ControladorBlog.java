@@ -1,7 +1,7 @@
-package com.ospina.blogYoutuber.controlador;
+package com.ospina.blogyoutuber.controlador;
 
-import com.ospina.blogYoutuber.modelo.comando.ComandoBlog;
-import com.ospina.blogYoutuber.servicio.ServicioBlog;
+import com.ospina.blogyoutuber.modelo.comando.ComandoBlog;
+import com.ospina.blogyoutuber.servicio.ServicioBlog;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,10 +1,10 @@
-package com.ospina.blogYoutuber.servicio;
+package com.ospina.blogyoutuber.servicio;
 
-import com.ospina.blogYoutuber.excepcion.EntradaBlogExistenteExcepcion;
-import com.ospina.blogYoutuber.excepcion.EntradaBlogNoEncontradaExcepcion;
-import com.ospina.blogYoutuber.modelo.comando.ComandoBlog;
-import com.ospina.blogYoutuber.modelo.entidad.EntradaBlog;
-import com.ospina.blogYoutuber.repositorio.RepositorioBlog;
+import com.ospina.blogyoutuber.excepcion.EntradaBlogExistenteExcepcion;
+import com.ospina.blogyoutuber.excepcion.EntradaBlogNoEncontradaExcepcion;
+import com.ospina.blogyoutuber.modelo.comando.ComandoBlog;
+import com.ospina.blogyoutuber.modelo.entidad.EntradaBlog;
+import com.ospina.blogyoutuber.repositorio.RepositorioBlog;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

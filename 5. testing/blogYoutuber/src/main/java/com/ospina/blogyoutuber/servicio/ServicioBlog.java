@@ -1,7 +1,7 @@
-package com.ospina.blogYoutuber.servicio;
+package com.ospina.blogyoutuber.servicio;
 
-import com.ospina.blogYoutuber.modelo.comando.ComandoBlog;
-import com.ospina.blogYoutuber.modelo.entidad.EntradaBlog;
+import com.ospina.blogyoutuber.modelo.comando.ComandoBlog;
+import com.ospina.blogyoutuber.modelo.entidad.EntradaBlog;
 
 import java.util.List;
 

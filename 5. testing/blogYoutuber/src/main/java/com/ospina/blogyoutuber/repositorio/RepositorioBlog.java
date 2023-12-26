@@ -1,6 +1,6 @@
-package com.ospina.blogYoutuber.repositorio;
+package com.ospina.blogyoutuber.repositorio;
 
-import com.ospina.blogYoutuber.modelo.entidad.EntradaBlog;
+import com.ospina.blogyoutuber.modelo.entidad.EntradaBlog;
 
 import java.util.List;
 
