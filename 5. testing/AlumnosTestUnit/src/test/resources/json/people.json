@@ -1,0 +1,15 @@
+[
+  {
+    "dni": "4040",
+    "name": "Jean",
+    "birthDate": "1998-02-05",
+    "age": "25",
+    "materiasList": [
+      {
+        "id": "1",
+        "name": "Matematicas",
+        "promedio": 9
+      }
+    ]
+  }
+]
