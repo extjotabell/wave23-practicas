@@ -1,10 +1,12 @@
-package com.meli.obtenerdiploma.controller;
+package com.meli.obtenerdiploma.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.meli.obtenerdiploma.model.StudentDTO;
+import com.meli.obtenerdiploma.model.SubjectDTO;
 import com.meli.obtenerdiploma.repository.StudentDAO;
+import com.meli.obtenerdiploma.repository.StudentRepository;
 import com.meli.obtenerdiploma.util.TestUtilsGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,6 +19,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -32,6 +36,9 @@ class StudentControllerIntegrationTests {
 
     @Autowired
     private StudentDAO studentDAO;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @BeforeEach
     public void beforEach() {
@@ -73,17 +80,10 @@ class StudentControllerIntegrationTests {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(jsonPath("$.name").value("MethodArgumentNotValidException"))
                 .andExpect(status().isBadRequest());
-
-
     }
 
-    // @GetMapping("/getStudent/{id}")
-    //    public StudentDTO getStudent(@PathVariable Long id) {
-    //        return this.studentService.read(id);
-    //    }
-
     @Test
-    @DisplayName("POST ENDPOINT: Register invalid student.")
+    @DisplayName("GET ENDPOINT: Get student by id - valid id.")
     void getStudentByExistingIdShouldReturnStudentDTO() throws Exception {
         //Arrange
         studentDAO.save(studentDTO);
@@ -95,10 +95,76 @@ class StudentControllerIntegrationTests {
                 .andExpect(jsonPath("$.studentName").value("Marco"))
                 .andExpect(jsonPath("$.subjects.length()").value(3))
                 .andExpect(jsonPath("$.subjects[?(@.name == \""+"Matemática"+"\"  && @.score == "+8.0+")]").exists())
-                .andExpect(jsonPath("$.subjects[?(@.name == \""+"Lengua"+"\"  && @.score == "+9.0+")]").exists())
-                .andExpect(jsonPath("$.subjects[?(@.name == \""+"Física"   +"\"  && @.score == "+10.0+")]").exists());
-
+                .andExpect(jsonPath("$.subjects[?(@.name == \""+"Lengua"+"\"  && @.score == "+6.0+")]").exists())
+                .andExpect(jsonPath("$.subjects[?(@.name == \""+"Física"   +"\"  && @.score == "+4.0+")]").exists());
+        studentDAO.delete(1L);
+    }
+    @Test
+    @DisplayName("GET ENDPOINT: Get student by id - invalid id.")
+    void getStudentByInvalidIdShouldReturnException() throws Exception {
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.get("/student/getStudent/{id}", 1890))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.name").value("StudentNotFoundException"))
+                .andExpect(status().isNotFound());
     }
 
+    @Test
+    @DisplayName("POST ENDPOINT: Modify valid student.")
+    void modifyStudentValidDataShouldReturnOk() throws Exception {
+        //Arrange
+        studentDAO.save(studentDTO);
+
+        StudentDTO modifyStudentDTO = new StudentDTO();
+        modifyStudentDTO.setId(studentDTO.getId());
+        modifyStudentDTO.setStudentName(studentDTO.getStudentName());
+        modifyStudentDTO.setSubjects(studentDTO.getSubjects());
+        modifyStudentDTO.getSubjects().add(new SubjectDTO("POOB", 7.0));
+
+        String payloadJSON = writer.writeValueAsString(modifyStudentDTO);
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.post("/student/modifyStudent")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(payloadJSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk());
+
+        studentDAO.delete(1L);
+    }
+
+    @Test
+    @DisplayName("DELETE ENDPOINT: Delete student by id - valid id.")
+    void deleteStudentByExistingIdShouldReturnStatusOk() throws Exception {
+        //Arrange
+        studentDAO.save(studentDTO);
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.get("/student/removeStudent/{id}", 1))
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("GET ENDPOINT: List of students.")
+    void listStudentsReturnListAndStatusOk() throws Exception {
+        //Arrange
+        studentDAO.save(studentDTO);
+
+        //Act - Assert
+        this.mockMvc.perform(
+                      MockMvcRequestBuilders.get("/student/listStudents"))
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(jsonPath("$", hasSize(greaterThan(0))))
+                .andExpect(content().contentType("application/json"))
+                .andExpect(status().isOk());
+
+        studentDAO.delete(1L);
+    }
 
 }
