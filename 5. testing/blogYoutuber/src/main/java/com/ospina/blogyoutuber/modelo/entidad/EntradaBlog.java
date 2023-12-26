@@ -1,5 +1,7 @@
 package com.ospina.blogyoutuber.modelo.entidad;
 
+import com.ospina.blogyoutuber.util.ValidadorArgumento;
+
 import java.time.LocalDate;
 
 public class EntradaBlog {
@@ -13,6 +15,13 @@ public class EntradaBlog {
         this.autor = autor;
         this.fechaPublicacion = fechaPublicacion;
         id++;
+    }
+
+    public static EntradaBlog reconstruir(String titulo, String autor, LocalDate fechaPublicacion){
+        ValidadorArgumento.validarObligatorio(titulo, "El título es requerido.");
+        ValidadorArgumento.validarObligatorio(autor, "El autor es requerido.");
+        ValidadorArgumento.validarObligatorio(fechaPublicacion, "La fecha de publicación es requerida.");
+        return new EntradaBlog(titulo, autor, fechaPublicacion);
     }
 
     public int getId() {

@@ -19,7 +19,7 @@ public class ServicioBlogImpl implements ServicioBlog{
 
     @Override
     public int crearEntradaBlog(ComandoBlog comandoBlog) {
-        EntradaBlog entradaBlog = new EntradaBlog(comandoBlog.getTitulo(), comandoBlog.getAutor(), comandoBlog.getFechaPublicacion());
+        EntradaBlog entradaBlog = EntradaBlog.reconstruir(comandoBlog.getTitulo(), comandoBlog.getAutor(), comandoBlog.getFechaPublicacion());
         if (repositorioBlog.existeEntradaBlogPorId(entradaBlog.getId())) {
             throw new EntradaBlogExistenteExcepcion("Ya existe una entrada de blog con el id: " + entradaBlog.getId());
         }

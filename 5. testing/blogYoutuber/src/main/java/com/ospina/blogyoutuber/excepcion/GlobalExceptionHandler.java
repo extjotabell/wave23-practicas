@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(ValidacionExcepcion.class)
+    public ResponseEntity<?> validationException(ValidacionExcepcion e){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+
     @ExceptionHandler(EntradaBlogNoEncontradaExcepcion.class)
     public ResponseEntity<?> entradaBlogNoEncontrada(EntradaBlogNoEncontradaExcepcion e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

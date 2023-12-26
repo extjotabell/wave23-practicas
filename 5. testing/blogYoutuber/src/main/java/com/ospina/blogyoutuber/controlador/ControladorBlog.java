@@ -16,12 +16,10 @@ public class ControladorBlog {
         this.servicioBlog = servicioBlog;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ResponseEntity<String> crearBlog(@RequestBody ComandoBlog comandoBlog) {
         int id = servicioBlog.crearEntradaBlog(comandoBlog);
-        return ResponseEntity.ok(SUCCESS_MESSAGE + id);
-    }
+        return ResponseEntity.status(HttpStatus.CREATED).body(SUCCESS_MESSAGE + id);    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> obtenerBlogPorId(@PathVariable int id) {
