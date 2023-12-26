@@ -17,7 +17,7 @@ import java.util.Arrays;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -49,10 +49,12 @@ class CalculateRestControllerTest {
         String houseDTOJson = objectMapper.writeValueAsString(houseDTO);
 
         this.mockMvc.perform(post("/calculate")
-                        .content(houseDTOJson)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk());
+                    .content(houseDTOJson)
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andDo(print())
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.name").value("House1"))
+                    .andReturn();
     }
 
     @Test
@@ -77,10 +79,12 @@ class CalculateRestControllerTest {
         String houseDTOJson = objectMapper.writeValueAsString(houseDTO);
 
         this.mockMvc.perform(post("/calculates")
-                        .content(houseDTOJson)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isNotFound());
+                    .content(houseDTOJson)
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andDo(print())
+                    .andExpect(status().isNotFound())
+                    .andExpect(content().string(""))
+                    .andReturn();
     }
 
 
