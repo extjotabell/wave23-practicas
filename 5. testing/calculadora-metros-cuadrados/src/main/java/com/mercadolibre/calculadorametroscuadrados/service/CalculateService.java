@@ -1,9 +1,12 @@
 package com.mercadolibre.calculadorametroscuadrados.service;
 
+import org.springframework.stereotype.Service;
+
 import com.mercadolibre.calculadorametroscuadrados.dto.HouseDTO;
 import com.mercadolibre.calculadorametroscuadrados.dto.HouseResponseDTO;
 import com.mercadolibre.calculadorametroscuadrados.dto.RoomDTO;
 
+@Service
 public class CalculateService {
   public HouseResponseDTO calculate(HouseDTO house) {
     HouseResponseDTO response = new HouseResponseDTO(house);
