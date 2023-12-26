@@ -7,6 +7,7 @@ import com.mercadolibre.calculadorametroscuadrados.dto.RoomDTO;
 import com.mercadolibre.calculadorametroscuadrados.service.CalculateService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculateServiceTest {
 
+    @Autowired
+    CalculateService service;
     @Test
     void calculateOk(){
         //Arr
@@ -23,7 +26,6 @@ public class CalculateServiceTest {
                 new RoomDTO("Dormitorio",4,6),
                 new RoomDTO("Lavanderia",6,8)
         ));
-        CalculateService service = new CalculateService();
 
         //Act
         HouseResponseDTO result = service.calculate(expected);
@@ -37,7 +39,6 @@ public class CalculateServiceTest {
     void calculateNoRooms() {
         // Arrange
         HouseDTO expected = new HouseDTO("Casa vacia", "Calle 123", Collections.emptyList());
-        CalculateService service = new CalculateService();
 
         // Act
         HouseResponseDTO result = service.calculate(expected);
