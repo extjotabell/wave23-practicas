@@ -38,12 +38,12 @@ public class IntegrationTest {
     void calculateOKTest() throws Exception {
         // Create a response DTO
         RoomDTO roomDTO1 = new RoomDTO();
-        roomDTO1.setName("Habitacion 1");
+        roomDTO1.setName("Room 1");
         roomDTO1.setLength(4);
         roomDTO1.setWidth(4);
 
         RoomDTO roomDTO2 = new RoomDTO();
-        roomDTO2.setName("Habitacion 2");
+        roomDTO2.setName("Room 2");
         roomDTO2.setLength(2);
         roomDTO2.setWidth(2);
 
@@ -70,7 +70,48 @@ public class IntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.squareFeet").value(20))  // Check squareFeet field
                 .andExpect(jsonPath("$.price").value(16000))      // Check price field
-                .andExpect(jsonPath("$.biggest.name").value("Habitacion 1"))  // Check biggest room name field
+                .andExpect(jsonPath("$.biggest.name").value("Room 1"))  // Check biggest room name field
+                .andReturn();
+
+        // Assert that the response content matches the expected JSON
+        assertEquals(responsePayloadJson, mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("Test method for calculate rest with 0, biggest the first room")
+    void calculateOKZeroTest() throws Exception {
+        // Create a response DTO
+        RoomDTO roomDTO1 = new RoomDTO();
+        roomDTO1.setName("Room 1");
+        roomDTO1.setLength(0);
+        roomDTO1.setWidth(0);
+
+        RoomDTO roomDTO2 = new RoomDTO();
+        roomDTO2.setName("Room 2");
+        roomDTO2.setLength(0);
+        roomDTO2.setWidth(0);
+
+        HouseDTO houseDTO = new HouseDTO();
+        houseDTO.setName("House 1");
+        houseDTO.setAddress("abc 123");
+        houseDTO.setRooms(List.of(roomDTO2, roomDTO1));
+
+        HouseResponseDTO responseDTO = new HouseResponseDTO(houseDTO);
+        responseDTO.setSquareFeet(0);
+        responseDTO.setPrice(0);
+        responseDTO.setBiggest(roomDTO2);
+
+        // Convert response DTO to JSON
+        String requestPayloadJson = this.objectWriter.writeValueAsString(houseDTO);
+        String responsePayloadJson = this.objectWriter.writeValueAsString(responseDTO);
+
+        // Perform a POST request to calculate and expect an OK response
+        MvcResult mvcResult = this.mockMvc.perform(post("/calculate")
+                        .contentType("application/json")
+                        .content(requestPayloadJson))
+                .andDo(print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(status().isOk())
                 .andReturn();
 
         // Assert that the response content matches the expected JSON
