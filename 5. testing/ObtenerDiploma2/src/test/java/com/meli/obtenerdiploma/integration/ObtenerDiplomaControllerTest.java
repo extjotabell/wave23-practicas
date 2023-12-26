@@ -26,7 +26,7 @@ public class ObtenerDiplomaControllerTest {
     @Autowired
     StudentDAO studentDAO;
     @BeforeEach
-    public void beforEach() {
+    public void beforeEach() {
 
         SubjectDTO canto = new SubjectDTO("Canto", 10.0);
         SubjectDTO musica = new SubjectDTO("Musica", 8.0);
