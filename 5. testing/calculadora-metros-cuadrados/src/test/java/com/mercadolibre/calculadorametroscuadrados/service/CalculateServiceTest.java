@@ -3,9 +3,11 @@ package com.mercadolibre.calculadorametroscuadrados.service;
 import com.mercadolibre.calculadorametroscuadrados.dto.HouseDTO;
 import com.mercadolibre.calculadorametroscuadrados.dto.RoomDTO;
 import com.mercadolibre.calculadorametroscuadrados.utils.Builder;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,18 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 class CalculateServiceTest {
-    CalculateService service = new CalculateService();
-    private HouseDTO houseDTO;
-
-    @BeforeEach
-    void initialize() {
-        houseDTO = Builder.buildHouseDTO();
-    }
+    @Autowired
+    CalculateService service;
 
     @Test
     @DisplayName("Test calculate and check correct price successfully")
     void calculateCheckPrice() {
-        HouseDTO param = houseDTO;
+        HouseDTO param = Builder.buildHouseDTO();
         Integer expectedResult = 160000;
 
         Integer result = service.calculate(param).getPrice();
@@ -34,13 +31,11 @@ class CalculateServiceTest {
     @Test
     @DisplayName("Test calculate and check correct biggest room successfully")
     void calculateCheckBiggestRoom() {
-        HouseDTO param = houseDTO;
-        RoomDTO expectedResult = new RoomDTO();
-        expectedResult.setName("Living Room");
-        expectedResult.setWidth(10);
-        expectedResult.setLength(12);
+        HouseDTO param = Builder.buildHouseDTO();
+        RoomDTO expectedResult = Builder.buildRoomDTO();
 
         RoomDTO result = service.calculate(param).getBiggest();
+
         assertEquals(expectedResult.getName(), result.getName());
         assertEquals(expectedResult.getLength(), result.getLength());
         assertEquals(expectedResult.getWidth(), result.getWidth());
@@ -49,7 +44,7 @@ class CalculateServiceTest {
     @Test
     @DisplayName("Test calculate and check correct price successfully")
     void calculateCheckSquareFeet() {
-        HouseDTO param = houseDTO;
+        HouseDTO param = Builder.buildHouseDTO();
         Integer expectedResult = 200;
 
         Integer result = service.calculate(param).getSquareFeet();

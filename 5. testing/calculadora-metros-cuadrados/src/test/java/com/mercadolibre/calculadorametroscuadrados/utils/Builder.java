@@ -27,6 +27,15 @@ public class Builder {
         return response;
     }
 
+    public static RoomDTO buildRoomDTO() {
+        RoomDTO room = new RoomDTO();
+        room.setName("Living Room");
+        room.setWidth(10);
+        room.setLength(12);
+
+        return room;
+    }
+
     public static List<RoomDTO> buildRoomsDTO() {
         List<RoomDTO> rooms = new ArrayList<>();
         RoomDTO room1 = new RoomDTO();
