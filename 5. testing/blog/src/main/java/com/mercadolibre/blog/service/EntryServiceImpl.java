@@ -26,7 +26,7 @@ public class EntryServiceImpl implements IEntryService {
         if (this.repository.getBlogById(entry.getId()) != null) {
             throw new EntryBlogAlreadyExistsException("El blog con ese id ya existe");
         }
-        this.repository.createBlog(new EntryBlog(entry.getId(), entry.getName(), entry.getTitle(), entry.getDate()));
+        this.repository.createBlog(new EntryBlog(entry.getId(), entry.getTitle(), entry.getName(), entry.getDate()));
         return entry;
     }
 
