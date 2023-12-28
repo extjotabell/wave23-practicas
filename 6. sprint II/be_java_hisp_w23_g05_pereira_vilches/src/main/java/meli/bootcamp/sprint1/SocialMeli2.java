@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Sprint1Application {
+public class SocialMeli2 {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Sprint1Application.class, args);
+		SpringApplication.run(SocialMeli2.class, args);
 	}
 
 }

@@ -1,5 +1,7 @@
 package meli.bootcamp.sprint1.utils;
 
+import meli.bootcamp.sprint1.dto.request.NewPostDto;
+import meli.bootcamp.sprint1.dto.request.NewProductDto;
 import meli.bootcamp.sprint1.dto.response.*;
 import meli.bootcamp.sprint1.entity.Category;
 import meli.bootcamp.sprint1.entity.Post;
@@ -112,4 +114,35 @@ public class Factory {
                 ,new User(3,"Fatima Noble",true, Collections.emptyList(),Collections.emptyList(),Collections.emptyList())
                 ,new User(4,"Geronimo Schmidt",true, Collections.emptyList(),Collections.emptyList(),List.of(1,2,3)));
     }
+
+    public static NewPostDto generateNewPostDto(){
+        return new NewPostDto(
+                 1,
+                LocalDate.of(2023,12,20),
+                        new NewProductDto( 1,
+                                "Tele",
+                                "Gamer",
+                                "Razer",
+                                "Red Black",
+                                "Special Edition")
+                ,1,
+                100.00);
+    }
+
+    public static NewPostDto generateNewPostDtoCase1() {
+        NewPostDto newPostDto = generateNewPostDto();
+        newPostDto.setCategory(100);
+        return newPostDto;
+    }
+
+    public static NewPostDto generateNewPostDtoCase2() {
+        NewPostDto newPostDto = generateNewPostDto();
+        newPostDto.setUser_id(100);
+        return newPostDto;
+    }
+
+    public static BaseResponseDto generateBaseResponseDto(String message){
+        return new BaseResponseDto(message);
+    }
+
 }

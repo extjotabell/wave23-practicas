@@ -3,10 +3,11 @@ package meli.bootcamp.sprint1.dto.request;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
+import lombok.Setter;
 
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class NewProductDto {
   @NotNull(message = "El id no puede estar vacio.")
