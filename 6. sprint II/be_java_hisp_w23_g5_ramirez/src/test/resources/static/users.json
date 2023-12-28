@@ -10,24 +10,24 @@
   {
     "name": "Brenda Torrico",
     "isSeller": false,
-    "followers": [],
-    "followed": [],
+    "followers": [1],
+    "followed": [1],
     "posts": [],
     "id": "2"
   },
   {
     "name": "Fatima Noble",
     "isSeller": false,
-    "followers": [],
-    "followed": [],
+    "followers": [1],
+    "followed": [1],
     "posts": [],
     "id": "3"
   },
   {
     "name": "Geronimo Schmidt",
     "isSeller": true,
-    "followers": [1,2,3],
-    "followed": [],
+    "followers": [1],
+    "followed": [1],
     "posts": [],
     "id": "4"
   },
@@ -42,7 +42,7 @@
   {
     "name": "Martin Marquez",
     "isSeller": false,
-    "followers": [],
+    "followers": [5],
     "followed": [],
     "posts": [],
     "id": "6"
@@ -50,7 +50,7 @@
   {
     "name": "Tiago Ramirez",
     "isSeller": false,
-    "followers": [],
+    "followers": [5],
     "followed": [],
     "posts": [],
     "id": "7"
@@ -58,7 +58,7 @@
   {
     "name": "Nicolas Reinaldo",
     "isSeller": false,
-    "followers": [],
+    "followers": [5],
     "followed": [],
     "posts": [],
     "id": "8"
