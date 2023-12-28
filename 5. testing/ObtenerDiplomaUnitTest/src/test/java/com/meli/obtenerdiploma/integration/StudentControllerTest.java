@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -31,10 +32,52 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
 public class StudentControllerTest {
     @Autowired
     MockMvc mockMvc;
     ObjectWriter writer;
+
+    @Test
+    public void getStudentTest() throws Exception {
+        StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setId(1L);
+        studentDTO.setStudentName("Juan");
+        studentDTO.setSubjects(List.of(new SubjectDTO("Matemática",9.0)));
+        writer = new ObjectMapper()
+                .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
+        String payloadJson = writer.writeValueAsString(studentDTO);
+        MvcResult mvcResult = this.mockMvc.perform(get("/student/getStudent/{id}", 1))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+        assertEquals(mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8), payloadJson);
+    }
+    @Test
+    public void listStudentsTest() throws Exception {
+        StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setId(1L);
+        studentDTO.setStudentName("Juan");
+        studentDTO.setSubjects(List.of(new SubjectDTO("Matemática",9.0)));
+        StudentDTO studentDTO2 = new StudentDTO();
+        studentDTO2.setId(2L);
+        studentDTO2.setStudentName("Pedro");
+        studentDTO2.setSubjects(List.of(new SubjectDTO("Matemática",10.0)));
+
+        List<StudentDTO> studentDTOList = List.of(studentDTO, studentDTO2);
+        writer = new ObjectMapper()
+                .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
+        String payloadJson = writer.writeValueAsString(studentDTOList);
+
+        MvcResult mvcResult = this.mockMvc.perform(get("/student/listStudents"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+        assertEquals(mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8), payloadJson);
+    }
+
 
     @Test
     public void registerStudentTest() throws Exception {
@@ -72,22 +115,6 @@ public class StudentControllerTest {
                 .andReturn();
     }
 
-    @Test
-    public void getStudentTest() throws Exception {
-        StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setId(1L);
-        studentDTO.setStudentName("Juan");
-        studentDTO.setSubjects(List.of(new SubjectDTO("Matemática",9.0)));
-        writer = new ObjectMapper()
-                .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
-        String payloadJson = writer.writeValueAsString(studentDTO);
-        MvcResult mvcResult = this.mockMvc.perform(get("/student/getStudent/{id}", 2))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"))
-                .andReturn();
-        assertEquals(mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8), payloadJson);
-       }
 
     @Test
     public void getStudentExceptionTest() throws Exception {
@@ -145,30 +172,5 @@ public class StudentControllerTest {
                 .andReturn();
 
     }
-
-    @Test
-    public void listStudentsTest() throws Exception {
-        StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setId(1L);
-        studentDTO.setStudentName("Juan");
-        studentDTO.setSubjects(List.of(new SubjectDTO("Matemática",9.0)));
-        StudentDTO studentDTO2 = new StudentDTO();
-        studentDTO2.setId(2L);
-        studentDTO2.setStudentName("Pedro");
-        studentDTO2.setSubjects(List.of(new SubjectDTO("Matemática",10.0)));
-
-        List<StudentDTO> studentDTOList = List.of(studentDTO, studentDTO2);
-         writer = new ObjectMapper()
-                .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
-        String payloadJson = writer.writeValueAsString(studentDTOList);
-
-        MvcResult mvcResult = this.mockMvc.perform(get("/student/listStudents"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"))
-                .andReturn();
-        assertEquals(mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8), payloadJson);
-    }
-
 
 }
