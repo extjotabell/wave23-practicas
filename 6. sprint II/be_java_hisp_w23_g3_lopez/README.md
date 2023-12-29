@@ -40,6 +40,11 @@ Para hacer pruebas se recomienda usar Postman. Todos los endpoints y casos de pr
 | Bonus               | Se sugiere que sería ideal lograr contar con la implementación de otros tests de integración extra para intentar lograr un coverage mayor o igual al 75%.                                    | Como la implementación grupal se realizó de manera muy eficáz, se realizaron test unitarios para todos los componentes de la aplicación de manera grupal y se llevaron a cabo varias refactorizaciones | Emmanuel López Rodríguez, Sebastian Ospina García y Miguel Ochoa Mejía |
 | Test de Integración | Siguiendo con el principio de que MeLi posee unos estándares de calidad muy altos, un especialista sugirió la posibilidad de contar con la implementación de al menos un test de integración | Implementación de al menos un test de integración para lograr una cobertura de código mayor que la lograda con los tests unitarios                                                                     | Emmanuel López Rodríguez                                               |
 
+**Coverage final:**
+
+| Class       | Method        | Line          |
+|-------------|---------------|---------------|
+| 94% (35/37) | 94% (166/176) | 96% (420/434) |
 
 
 ## Integrantes
