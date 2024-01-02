@@ -127,4 +127,26 @@ class UserControllerIntegrationTest {
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
 
     }
+
+    @Test
+    @Order(5)
+    @DisplayName("Follow a user given their id and the id of the user to follow. Exception: Already follow.")
+    void followUserIntegrationException2Test() throws Exception{
+        MessageDTO payloadResponseDTO = new MessageDTO();
+        payloadResponseDTO.setMessage("The user 1 already follow 4");
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", 1, 4)
+                        .contentType("application/json"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+
+    }
+
 }
