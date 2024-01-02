@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>meli.bootcamp</groupId>
-	<artifactId>sprint1</artifactId>
+	<artifactId>SocialMeli2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sprint1</name>
 	<description>Sprint 1 project</description>

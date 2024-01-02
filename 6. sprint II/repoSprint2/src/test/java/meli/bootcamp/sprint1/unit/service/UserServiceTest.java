@@ -73,7 +73,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0008/ Verify user exists")
+    @DisplayName("T-0002/ Verify user exists")
     void T_0002(){
         //Arrange
         User userFollower = generateUser();
@@ -92,7 +92,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0008/ Verify user not exists")
+    @DisplayName("T-0002/ Verify user not exists")
     void T_0002NotOk(){
         //Arrange
         User userFollower = generateUser();
@@ -174,8 +174,8 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0003/ Validate sort by name desc test")
-     void validateDesc(){
+    @DisplayName("T-0004/ Validate sort by name desc test")
+    void validateDesc(){
         int userId = 4;
         String order = "name_desc";
 
@@ -191,8 +191,8 @@ import static org.mockito.Mockito.when;
         assertEquals(actual.getFollowers(),userExpected.getFollowers());
     }
     @Test
-    @DisplayName("T-0003/ Validate sort by name asc test")
-     void validateAsc(){
+    @DisplayName("T-0004/ Validate sort by name asc test")
+    void validateAsc(){
         int userId = 4;
         String order = "name_asc";
 
@@ -209,7 +209,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0003/ Validate sort by name test, throws exception")
+    @DisplayName("T-0004/ Validate sort by name test, throws exception")
     void emptyListTest (){
         int userId = 4;
         String orderAsc = "name_asc";
@@ -227,8 +227,8 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0008/ Verify parameter order")
-    void T_0008Ok(){
+    @DisplayName("T-0005/ Verify parameter order")
+    void T_0005Ok(){
         //Arrange
         int userId = 2;
         User user = generateUser();
@@ -247,8 +247,8 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0008/ Verify parameter order: null")
-    void T_0008Null(){
+    @DisplayName("T-0005/ Verify parameter order: null")
+    void T_0005Null(){
         //Arrange
         int userId = 2;
         User user = generateUser();
@@ -265,8 +265,8 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0008/ Verify parameter order, throws exception")
-    void T_0008NotOk(){
+    @DisplayName("T-0005/ Verify parameter order, throws exception")
+    void T_0005NotOk(){
         //Arrange
         int userId = 1;
         String order = "";
@@ -302,6 +302,7 @@ import static org.mockito.Mockito.when;
     void T_0006OrderByDateAsc(){
 
         //Arrange
+        LocalDate today = LocalDate.now();
         String order = "date_asc";
         User seller = generateSeller();
         User user = generateUser();
@@ -315,7 +316,7 @@ import static org.mockito.Mockito.when;
         LastPostsDto lastPostsDto = service.getLastPosts(user.getId(),order);
 
         //Assert
-        assertEquals(LocalDate.of(2023,12,18),lastPostsDto.getPosts().get(0).getDate());
+        assertEquals(today.minusDays(11),lastPostsDto.getPosts().get(0).getDate());
         assertEquals(expected.getPosts().size(),lastPostsDto.getPosts().size());
     }
 
