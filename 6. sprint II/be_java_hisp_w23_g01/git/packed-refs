@@ -1,0 +1,9 @@
+# pack-refs with: peeled fully-peeled sorted 
+68821d37d20c87529962ec2b469a4b4009da2f20 refs/remotes/origin/dev
+146e8a00f4edd154d314228fec7095da4a744385 refs/remotes/origin/diaz_alfredo
+470056f3fd9ff00529ed93a82265eb9e5497eb58 refs/remotes/origin/limpio_andres
+519dfa9303118d08691f84f44b8bda21bd938603 refs/remotes/origin/main
+eeb02ace2e72a97600fead825faa994984156c0a refs/remotes/origin/meza_fernando
+a046702192f02f1da2db01b8be9e8d8a083292fd refs/remotes/origin/quiroga_danilo
+ff623256d5f0379295318f74c7c82666d5bbc4d6 refs/remotes/origin/validations
+b9d8ab7197f1e1a0ff2f9bb260494b3d984cc695 refs/remotes/origin/vargas_zuly

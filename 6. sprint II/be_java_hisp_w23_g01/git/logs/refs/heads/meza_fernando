@@ -1,0 +1,28 @@
+0000000000000000000000000000000000000000 68821d37d20c87529962ec2b469a4b4009da2f20 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703704832 -0600	branch: Created from HEAD
+68821d37d20c87529962ec2b469a4b4009da2f20 ebcc5b3b9404787062860e3ed49848f76bbd408b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703708337 -0600	commit: Eliminate default value to differenciate between US006 & US009
+ebcc5b3b9404787062860e3ed49848f76bbd408b cb66b1b84e7242028213248b6cab09b8ef6c1d00 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703708449 -0600	commit: Throw an exception in case order is not valid US009
+cb66b1b84e7242028213248b6cab09b8ef6c1d00 22dbfb711b99b4b93f46e6cd56861d16bdbc9ddb ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703708478 -0600	commit (amend): Throw an exception in case order is not valid US009
+22dbfb711b99b4b93f46e6cd56861d16bdbc9ddb a4b5b8b3025c7690e7a15bd802502695d90ccd74 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703708908 -0600	commit: Translate exception messages to spanish US006 & US009
+a4b5b8b3025c7690e7a15bd802502695d90ccd74 02552121840cb48e232a2ffb48162ea35d02a661 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703712532 -0600	merge dev: Merge made by the 'ort' strategy.
+02552121840cb48e232a2ffb48162ea35d02a661 b2f9d61ace1bc2a2c92b8addef944f22d695618a ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715142 -0600	merge dev: Merge made by the 'ort' strategy.
+b2f9d61ace1bc2a2c92b8addef944f22d695618a 27511aced96e1969ca708d1a7acb2951c21ad29b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715816 -0600	merge dev: Merge made by the 'ort' strategy.
+27511aced96e1969ca708d1a7acb2951c21ad29b e4e514d066ee9dd08ffd2b758b652d8dca694a6a ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703717639 -0600	merge dev: Merge made by the 'ort' strategy.
+e4e514d066ee9dd08ffd2b758b652d8dca694a6a 933aa5cde0ef163d1f61f79d7867527d15722a28 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703717748 -0600	commit: Add tests for T-0005 for bad path and semi working test for good path
+933aa5cde0ef163d1f61f79d7867527d15722a28 ea293c5a5881895ecdb804a22ab13d48815d2255 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703775828 -0600	commit: Add correction for T-0005 good path
+ea293c5a5881895ecdb804a22ab13d48815d2255 e8f9665f6f051c8ba900e2a5c734bae6b8f5886f ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703775915 -0600	commit: Add utility for T-0005 good path
+e8f9665f6f051c8ba900e2a5c734bae6b8f5886f 37c9c88eeb495027e60b80ef05904595d395a3fa ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703776229 -0600	commit: Fix Typo
+37c9c88eeb495027e60b80ef05904595d395a3fa 0e2006e5113e708aa2a157295c3ca08fd7f7f4a1 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783436 -0600	commit: Add dependency to mock static methods for T-0006
+0e2006e5113e708aa2a157295c3ca08fd7f7f4a1 473f9c64ea22ab3d6eeadd29bdae1f0ba892c67e ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783520 -0600	commit: Add equals for T-0006 with lombock
+473f9c64ea22ab3d6eeadd29bdae1f0ba892c67e 14d64d8064ceeab073dcc49466b9b612bddd4b7b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783566 -0600	commit: Add map methods (refactor)
+14d64d8064ceeab073dcc49466b9b612bddd4b7b fee5a58eead0bf8353e0bff7bfe33e3fde2d59b5 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783613 -0600	commit: Use an util method for US006 & US009 (refactor)
+fee5a58eead0bf8353e0bff7bfe33e3fde2d59b5 21eb947675ab7441c113840d1d03db5492077894 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783697 -0600	commit: Add util methods for T-0006
+21eb947675ab7441c113840d1d03db5492077894 fba6f9d8a515223e8e4766c3c50f01c87258070d ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783793 -0600	commit: Add T-0006 tests for ascending and descending sort
+fba6f9d8a515223e8e4766c3c50f01c87258070d cdd3da015c59d9b3cea2c5ddfb9c8b9c0f17dcd6 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703784203 -0600	commit (merge): Merge branch 'dev' into meza_fernando
+cdd3da015c59d9b3cea2c5ddfb9c8b9c0f17dcd6 fc9a0b3525ffb475ece1542494844602997a8f1b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703786059 -0600	commit: Check for null and make method testeable in case of null order parameter (refactor)
+fc9a0b3525ffb475ece1542494844602997a8f1b 9a9211296e83abd256acbe001712eb4d6bbd564b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703786165 -0600	commit: Rename util method for T-0008
+9a9211296e83abd256acbe001712eb4d6bbd564b a7668ee9309d7a51336b9834649927a686fe3f8d ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703786192 -0600	commit: Add method for T-0008
+a7668ee9309d7a51336b9834649927a686fe3f8d 1eb300d15a6d01f1b53849a00fe243a78427d6fb ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703795241 -0600	commit: Add sprint 2 description to readme.md
+1eb300d15a6d01f1b53849a00fe243a78427d6fb 0a75094f18dfe3da18155534f08d70e8a4da9d27 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800505 -0600	merge dev: Fast-forward
+0a75094f18dfe3da18155534f08d70e8a4da9d27 a7f6857f57b6835594e54234de6bb0780bf5feab ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800940 -0600	commit: Add extra method to cover two branchs of good path in T-0005
+a7f6857f57b6835594e54234de6bb0780bf5feab 541a737a0fad83ab2854f396c6d8831a085199db ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703801060 -0600	commit: Add bad param value to Bad Request message (US009)
+541a737a0fad83ab2854f396c6d8831a085199db 938ae011bc5aff16274cf113d494f7e5c87b3598 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214548 -0600	merge main: Fast-forward

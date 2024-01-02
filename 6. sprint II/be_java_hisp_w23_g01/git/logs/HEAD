@@ -1,0 +1,66 @@
+0000000000000000000000000000000000000000 519dfa9303118d08691f84f44b8bda21bd938603 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703704738 -0600	clone: from github.com:zulyvargasrz/be_java_hisp_w23_g01.git
+519dfa9303118d08691f84f44b8bda21bd938603 519dfa9303118d08691f84f44b8bda21bd938603 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703704779 -0600	checkout: moving from main to dev
+519dfa9303118d08691f84f44b8bda21bd938603 68821d37d20c87529962ec2b469a4b4009da2f20 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703704788 -0600	pull origin dev: Fast-forward
+68821d37d20c87529962ec2b469a4b4009da2f20 68821d37d20c87529962ec2b469a4b4009da2f20 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703704832 -0600	checkout: moving from dev to meza_fernando
+68821d37d20c87529962ec2b469a4b4009da2f20 ebcc5b3b9404787062860e3ed49848f76bbd408b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703708337 -0600	commit: Eliminate default value to differenciate between US006 & US009
+ebcc5b3b9404787062860e3ed49848f76bbd408b cb66b1b84e7242028213248b6cab09b8ef6c1d00 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703708449 -0600	commit: Throw an exception in case order is not valid US009
+cb66b1b84e7242028213248b6cab09b8ef6c1d00 22dbfb711b99b4b93f46e6cd56861d16bdbc9ddb ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703708478 -0600	commit (amend): Throw an exception in case order is not valid US009
+22dbfb711b99b4b93f46e6cd56861d16bdbc9ddb a4b5b8b3025c7690e7a15bd802502695d90ccd74 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703708908 -0600	commit: Translate exception messages to spanish US006 & US009
+a4b5b8b3025c7690e7a15bd802502695d90ccd74 68821d37d20c87529962ec2b469a4b4009da2f20 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703712512 -0600	checkout: moving from meza_fernando to dev
+68821d37d20c87529962ec2b469a4b4009da2f20 01351dbe3de6d0bba078f68bec1623004fa75147 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703712516 -0600	pull origin dev: Fast-forward
+01351dbe3de6d0bba078f68bec1623004fa75147 a4b5b8b3025c7690e7a15bd802502695d90ccd74 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703712527 -0600	checkout: moving from dev to meza_fernando
+a4b5b8b3025c7690e7a15bd802502695d90ccd74 02552121840cb48e232a2ffb48162ea35d02a661 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703712532 -0600	merge dev: Merge made by the 'ort' strategy.
+02552121840cb48e232a2ffb48162ea35d02a661 01351dbe3de6d0bba078f68bec1623004fa75147 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703714767 -0600	checkout: moving from meza_fernando to dev
+01351dbe3de6d0bba078f68bec1623004fa75147 02552121840cb48e232a2ffb48162ea35d02a661 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703714783 -0600	checkout: moving from dev to meza_fernando
+02552121840cb48e232a2ffb48162ea35d02a661 01351dbe3de6d0bba078f68bec1623004fa75147 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703714832 -0600	checkout: moving from meza_fernando to dev
+01351dbe3de6d0bba078f68bec1623004fa75147 01351dbe3de6d0bba078f68bec1623004fa75147 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715006 -0600	reset: moving to HEAD
+01351dbe3de6d0bba078f68bec1623004fa75147 6d3f4d56a0a3b42c60bb373a9201be8278a2d9df ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715102 -0600	pull origin dev: Fast-forward
+6d3f4d56a0a3b42c60bb373a9201be8278a2d9df 02552121840cb48e232a2ffb48162ea35d02a661 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715116 -0600	checkout: moving from dev to meza_fernando
+02552121840cb48e232a2ffb48162ea35d02a661 b2f9d61ace1bc2a2c92b8addef944f22d695618a ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715142 -0600	merge dev: Merge made by the 'ort' strategy.
+b2f9d61ace1bc2a2c92b8addef944f22d695618a 6d3f4d56a0a3b42c60bb373a9201be8278a2d9df ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715734 -0600	checkout: moving from meza_fernando to dev
+6d3f4d56a0a3b42c60bb373a9201be8278a2d9df 7ea6a72aeb29a858702aa818756dd5e4f55387d8 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715804 -0600	pull origin dev: Fast-forward
+7ea6a72aeb29a858702aa818756dd5e4f55387d8 b2f9d61ace1bc2a2c92b8addef944f22d695618a ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715813 -0600	checkout: moving from dev to meza_fernando
+b2f9d61ace1bc2a2c92b8addef944f22d695618a 27511aced96e1969ca708d1a7acb2951c21ad29b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703715816 -0600	merge dev: Merge made by the 'ort' strategy.
+27511aced96e1969ca708d1a7acb2951c21ad29b 7ea6a72aeb29a858702aa818756dd5e4f55387d8 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703717614 -0600	checkout: moving from meza_fernando to dev
+7ea6a72aeb29a858702aa818756dd5e4f55387d8 4e0721b413113a96045557edb5dc03f990feae01 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703717627 -0600	pull origin dev: Fast-forward
+4e0721b413113a96045557edb5dc03f990feae01 27511aced96e1969ca708d1a7acb2951c21ad29b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703717636 -0600	checkout: moving from dev to meza_fernando
+27511aced96e1969ca708d1a7acb2951c21ad29b e4e514d066ee9dd08ffd2b758b652d8dca694a6a ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703717639 -0600	merge dev: Merge made by the 'ort' strategy.
+e4e514d066ee9dd08ffd2b758b652d8dca694a6a 933aa5cde0ef163d1f61f79d7867527d15722a28 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703717748 -0600	commit: Add tests for T-0005 for bad path and semi working test for good path
+933aa5cde0ef163d1f61f79d7867527d15722a28 ea293c5a5881895ecdb804a22ab13d48815d2255 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703775828 -0600	commit: Add correction for T-0005 good path
+ea293c5a5881895ecdb804a22ab13d48815d2255 e8f9665f6f051c8ba900e2a5c734bae6b8f5886f ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703775915 -0600	commit: Add utility for T-0005 good path
+e8f9665f6f051c8ba900e2a5c734bae6b8f5886f 37c9c88eeb495027e60b80ef05904595d395a3fa ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703776229 -0600	commit: Fix Typo
+37c9c88eeb495027e60b80ef05904595d395a3fa 0e2006e5113e708aa2a157295c3ca08fd7f7f4a1 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783436 -0600	commit: Add dependency to mock static methods for T-0006
+0e2006e5113e708aa2a157295c3ca08fd7f7f4a1 473f9c64ea22ab3d6eeadd29bdae1f0ba892c67e ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783520 -0600	commit: Add equals for T-0006 with lombock
+473f9c64ea22ab3d6eeadd29bdae1f0ba892c67e 14d64d8064ceeab073dcc49466b9b612bddd4b7b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783566 -0600	commit: Add map methods (refactor)
+14d64d8064ceeab073dcc49466b9b612bddd4b7b fee5a58eead0bf8353e0bff7bfe33e3fde2d59b5 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783613 -0600	commit: Use an util method for US006 & US009 (refactor)
+fee5a58eead0bf8353e0bff7bfe33e3fde2d59b5 21eb947675ab7441c113840d1d03db5492077894 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783697 -0600	commit: Add util methods for T-0006
+21eb947675ab7441c113840d1d03db5492077894 fba6f9d8a515223e8e4766c3c50f01c87258070d ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783793 -0600	commit: Add T-0006 tests for ascending and descending sort
+fba6f9d8a515223e8e4766c3c50f01c87258070d 4e0721b413113a96045557edb5dc03f990feae01 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783882 -0600	checkout: moving from meza_fernando to dev
+4e0721b413113a96045557edb5dc03f990feae01 7f8297c01a60c84505581e138ef4ce4c7b1ba837 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783889 -0600	pull origin dev: Fast-forward
+7f8297c01a60c84505581e138ef4ce4c7b1ba837 fba6f9d8a515223e8e4766c3c50f01c87258070d ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703783904 -0600	checkout: moving from dev to meza_fernando
+fba6f9d8a515223e8e4766c3c50f01c87258070d cdd3da015c59d9b3cea2c5ddfb9c8b9c0f17dcd6 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703784203 -0600	commit (merge): Merge branch 'dev' into meza_fernando
+cdd3da015c59d9b3cea2c5ddfb9c8b9c0f17dcd6 fc9a0b3525ffb475ece1542494844602997a8f1b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703786059 -0600	commit: Check for null and make method testeable in case of null order parameter (refactor)
+fc9a0b3525ffb475ece1542494844602997a8f1b 9a9211296e83abd256acbe001712eb4d6bbd564b ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703786165 -0600	commit: Rename util method for T-0008
+9a9211296e83abd256acbe001712eb4d6bbd564b a7668ee9309d7a51336b9834649927a686fe3f8d ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703786192 -0600	commit: Add method for T-0008
+a7668ee9309d7a51336b9834649927a686fe3f8d 1eb300d15a6d01f1b53849a00fe243a78427d6fb ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703795241 -0600	commit: Add sprint 2 description to readme.md
+1eb300d15a6d01f1b53849a00fe243a78427d6fb 1eb300d15a6d01f1b53849a00fe243a78427d6fb ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800470 -0600	reset: moving to HEAD
+1eb300d15a6d01f1b53849a00fe243a78427d6fb 7f8297c01a60c84505581e138ef4ce4c7b1ba837 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800474 -0600	checkout: moving from meza_fernando to dev
+7f8297c01a60c84505581e138ef4ce4c7b1ba837 0a75094f18dfe3da18155534f08d70e8a4da9d27 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800485 -0600	pull origin dev: Fast-forward
+0a75094f18dfe3da18155534f08d70e8a4da9d27 1eb300d15a6d01f1b53849a00fe243a78427d6fb ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800498 -0600	checkout: moving from dev to meza_fernando
+1eb300d15a6d01f1b53849a00fe243a78427d6fb 0a75094f18dfe3da18155534f08d70e8a4da9d27 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800505 -0600	merge dev: Fast-forward
+0a75094f18dfe3da18155534f08d70e8a4da9d27 a7f6857f57b6835594e54234de6bb0780bf5feab ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800940 -0600	commit: Add extra method to cover two branchs of good path in T-0005
+a7f6857f57b6835594e54234de6bb0780bf5feab 541a737a0fad83ab2854f396c6d8831a085199db ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703801060 -0600	commit: Add bad param value to Bad Request message (US009)
+541a737a0fad83ab2854f396c6d8831a085199db 519dfa9303118d08691f84f44b8bda21bd938603 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704206328 -0600	checkout: moving from meza_fernando to main
+519dfa9303118d08691f84f44b8bda21bd938603 0a75094f18dfe3da18155534f08d70e8a4da9d27 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704207794 -0600	checkout: moving from main to dev
+0a75094f18dfe3da18155534f08d70e8a4da9d27 519dfa9303118d08691f84f44b8bda21bd938603 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704212751 -0600	checkout: moving from dev to main
+519dfa9303118d08691f84f44b8bda21bd938603 d795a93ed13bfcb8eaa5ceb825bba50d0211f30f ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704212756 -0600	pull origin main: Fast-forward
+d795a93ed13bfcb8eaa5ceb825bba50d0211f30f 9881f5a113420dca0ed9e11d0c6207d55c065860 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704213678 -0600	commit: Remove unused import
+9881f5a113420dca0ed9e11d0c6207d55c065860 ec25e103b7a9a4f45e9ff076f787b41f57962ceb ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704213740 -0600	commit: Remove unused import
+ec25e103b7a9a4f45e9ff076f787b41f57962ceb c53d6567642ca3f99344785c5713ae200f39c617 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704213953 -0600	commit: Remove unused import
+c53d6567642ca3f99344785c5713ae200f39c617 4dfc8e602957c088e8e5e66eda674ac3d495859d ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214028 -0600	commit: Remove unused imports
+4dfc8e602957c088e8e5e66eda674ac3d495859d b17b131aef1e6b0e0bb2bd738e0c9127fe7861ae ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214149 -0600	commit: Rename Postman collection
+b17b131aef1e6b0e0bb2bd738e0c9127fe7861ae 938ae011bc5aff16274cf113d494f7e5c87b3598 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214239 -0600	commit: Remove unused import
+938ae011bc5aff16274cf113d494f7e5c87b3598 541a737a0fad83ab2854f396c6d8831a085199db ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214532 -0600	checkout: moving from main to meza_fernando
+541a737a0fad83ab2854f396c6d8831a085199db 938ae011bc5aff16274cf113d494f7e5c87b3598 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214548 -0600	merge main: Fast-forward
+938ae011bc5aff16274cf113d494f7e5c87b3598 938ae011bc5aff16274cf113d494f7e5c87b3598 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214570 -0600	checkout: moving from meza_fernando to main
+938ae011bc5aff16274cf113d494f7e5c87b3598 938ae011bc5aff16274cf113d494f7e5c87b3598 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214599 -0600	checkout: moving from main to meza_fernando
