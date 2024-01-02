@@ -38,4 +38,34 @@ public class ProductControllerIntegrationTests {
                 .andExpect(jsonPath("$.posts.[3].post_id").value(4));
     }
 
+    @Test
+    void followedPostsList_ReturnsCorrectResponseWithDescOrder() throws Exception {
+        Long userId = 1L;
+        String order ="DATE_DESC";
+
+        mockMvc.perform(get("/products/followed/{userId}/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.posts.[0].post_id").value(4))
+                .andExpect(jsonPath("$.posts.[1].post_id").value(3))
+                .andExpect(jsonPath("$.posts.[2].post_id").value(2))
+                .andExpect(jsonPath("$.posts.[3].post_id").value(1));
+    }
+
+    @Test
+    void followedPostsList_ReturnsCorrectResponseWithInvalidOrder() throws Exception {
+        Long userId = 1L;
+        String order ="ALPHABETICAL";
+
+        mockMvc.perform(get("/products/followed/{userId}/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("Validation errors have occurred"))
+                .andExpect(jsonPath("$.errors").value("Order field can only be DATE_ASC or DATE_DESC"));
+    }
+
 }
