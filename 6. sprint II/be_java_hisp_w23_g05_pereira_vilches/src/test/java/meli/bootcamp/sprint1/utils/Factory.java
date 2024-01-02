@@ -1,5 +1,7 @@
 package meli.bootcamp.sprint1.utils;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import meli.bootcamp.sprint1.dto.request.NewPostDto;
 import meli.bootcamp.sprint1.dto.request.NewProductDto;
 import meli.bootcamp.sprint1.dto.response.*;
@@ -7,7 +9,12 @@ import meli.bootcamp.sprint1.entity.Category;
 import meli.bootcamp.sprint1.entity.Post;
 import meli.bootcamp.sprint1.entity.Product;
 import meli.bootcamp.sprint1.entity.User;
+import meli.bootcamp.sprint1.exception.CustomException;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +25,7 @@ import static meli.bootcamp.sprint1.utils.Sorter.*;
 public class Factory {
 
     public static LastPostsDto generateLastPostDto(){
+        LocalDate today = LocalDate.now();
         return new LastPostsDto(2,List.of(
                 new PostDto(  1,  1,  LocalDate.now(),
                     new ProductDto( 1,
@@ -26,14 +34,14 @@ public class Factory {
                             "Razer",
                             "Red Black",
                             "Special Edition"),1,100.00),
-                new PostDto(  1,  2,  LocalDate.of(2023,12,20),
+                new PostDto(  1,  2,  today.minusDays(2),
                     new ProductDto( 1,
                             "Tele",
                             "Gamer",
                             "Razer",
                             "Red Black",
                             "Special Edition"),1,100.00),
-                        new PostDto(  1,  3,  LocalDate.of(2023,12,18),
+                        new PostDto(  1,  3,  today.minusDays(11),
                                 new ProductDto( 1,
                                         "Tele",
                                         "Gamer",
@@ -43,6 +51,7 @@ public class Factory {
 
     }
     public static LastPostsDto generateLastPostDtoOrdered(String order){
+        LocalDate today = LocalDate.now();
 
         List<PostDto> postDtoList = List.of(new PostDto(  1,  1,  LocalDate.now(),
                         new ProductDto( 1,
@@ -51,14 +60,14 @@ public class Factory {
                                 "Razer",
                                 "Red Black",
                                 "Special Edition"),1,100.00),
-                new PostDto(  1,  2,  LocalDate.of(2023,12,20),
+                new PostDto(  1,  2,  today.minusDays(2),
                         new ProductDto( 1,
                                 "Tele",
                                 "Gamer",
                                 "Razer",
                                 "Red Black",
                                 "Special Edition"),1,100.00),
-                new PostDto(  1,  3,  LocalDate.of(2023,12,18),
+                new PostDto(  1,  3,  today.minusDays(11),
                         new ProductDto( 1,
                                 "Tele",
                                 "Gamer",
@@ -71,13 +80,14 @@ public class Factory {
     }
 
     public static List<Post> generatePost(){
+        LocalDate today = LocalDate.now();
         Product product = new Product(1,"Tele","Gamer","Razer","Special Edition","Red Black");
         return List.of(
                 new Post(product, LocalDate.now(),new Category(1,"Electronic"),100.00),
-                new Post(product, LocalDate.of(2023,12,20),new Category(1,"Electronic"),100.00),
-                new Post(product, LocalDate.of(2023,12,18),new Category(1,"Electronic"),100.00),
-                new Post(product, LocalDate.of(2022,12,18),new Category(1,"Electronic"),100.00),
-                new Post(product, LocalDate.of(2021,12,18),new Category(1,"Electronic"),100.00)
+                new Post(product, today.minusDays(2),new Category(1,"Electronic"),100.00),
+                new Post(product, today.minusDays(11),new Category(1,"Electronic"),100.00),
+                new Post(product, today.minusYears(1) ,new Category(1,"Electronic"),100.00),
+                new Post(product, today.minusYears(2),new Category(1,"Electronic"),100.00)
                 );
     }
     public static User generateSeller() {
@@ -141,8 +151,45 @@ public class Factory {
         return newPostDto;
     }
 
+    public static NewPostDto generateNewPostDtoWErrors(){
+        return new NewPostDto();
+    }
+
+    public static NewPostDto generateNewPostDtoWErrors2(){
+        return new NewPostDto(
+                1,
+                LocalDate.of(2023,12,20),
+                new NewProductDto( 1,
+                        "Tele",
+                        "Gamer",
+                        "Razer&",
+                        "Red Black",
+                        "Special Edition")
+                ,1,
+                150000000.00);
+    }
+
     public static BaseResponseDto generateBaseResponseDto(String message){
         return new BaseResponseDto(message);
+    }
+
+    private List<User> loadTestUsers() {
+        File file = null;
+        try {
+            file = ResourceUtils.getFile("classpath:static/usersTest.json");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ObjectMapper objectMapper = new ObjectMapper();
+        TypeReference<List<User>> typeRef = new TypeReference<>() {
+        };
+        List<User> users = null;
+        try {
+            users = objectMapper.readValue(file, typeRef);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
 }
