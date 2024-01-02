@@ -15,3 +15,9 @@ p
 @src/main/java/com/meli/socialmeli/dtos/response/UserInfoDTO.java,4/7/47977e20c5a86d8bb3cc3c9458d5ccb6d612f05f
 l
 <src/main/java/com/meli/socialmeli/SocialmeliApplication.java,a/a/aa81bbd3ba9d0d0fe70c48307bdbb632377fb4c4
+t
+Dsrc/main/java/com/meli/socialmeli/dtos/response/UserFollowedDTO.java,0/a/0a15d33a7f0c6a1ba9726989c8800e53c242a5c8
+t
+Dsrc/main/java/com/meli/socialmeli/controllers/ProductController.java,3/f/3f3e9440cf8410781c0cdb1ddffe070f0d6a4bed
+l
+<src/main/java/com/meli/socialmeli/services/IUserService.java,e/e/eec880311e564814cd6cb77929226aa905e3069a
