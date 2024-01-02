@@ -67,13 +67,37 @@ public class UserControllerIntegrationTests {
     @Test
     void unfollowSeller_shouldWorkWhenSellerExistsOnFollowings() throws Exception {
         Long userId = 1L;
-        Long sellerToUnFollowId = 6L;
-        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerToUnFollowId))
+        Long sellerIdToUnFollow = 6L;
+        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.message").value("You have just unfollowed a seller"));
     }
+
+    @Test
+    void unfollowSeller_shouldThrowNotAFollowerException() throws Exception {
+        Long userId = 1L;
+        Long sellerIdToUnFollow = 9L;
+        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("Seller with id " + sellerIdToUnFollow + " is not part of your followings"));
+    }
+
+    @Test
+    void unfollowSeller_shouldThrowUnFollowingMyselfException() throws Exception {
+        Long userId = 1L;
+        Long sellerIdToUnFollow = 1L;
+        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("You can't unfollow yourself"));
+    }
+
+
 
 
 
