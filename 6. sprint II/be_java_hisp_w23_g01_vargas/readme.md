@@ -181,8 +181,18 @@ URL base: http://localhost:8080
 | T-0008                                                     | Verificar que la consulta de publicaciones realizadas en las últimas dos semanas de un determinado vendedor sean efectivamente de las últimas dos semanas. `(US-0006)`   | Devuelve únicamente los datos de las publicaciones que tengan fecha de publicación dentro de las últimas dos semanas a partir del día de la fecha. | Fernando Meza |
 | T-0009                                                     | Verificar la correcta creación de un nuevo Post `(US-0005)`                                                                                                              | Indica el id del usuario y la confirmación de la creación.                                                                                         | Danilo Quiroga |
 
+- Test de integración:
+
+Se realizaron test de integración para verificar el correcto funcionamiento del sistema mediante el llamado a los endpoints.
+
+Para cada test de integración se validaron los caminos exitosos, no exitosos con usuarios no existentes o con acciones no permitidas. Se valida que 
+se reciba el mensaje de confirmación o explicación del error según corresponda.
 
 
+
+- Coverage obtenido:
+
+![coverage.png](img%2Fcoverage.png)
 
 ## Integrantes:
 - Andres Alejandro Limpio
