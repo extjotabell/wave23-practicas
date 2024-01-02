@@ -3,6 +3,8 @@ package com.meli.socialmeli.integration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.socialmeli.dtos.response.FollowersCountDTO;
 import com.meli.socialmeli.dtos.response.MessageDTO;
+import com.meli.socialmeli.dtos.response.UserFollowersDTO;
+import com.meli.socialmeli.dtos.response.UserInfoDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.List;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -230,6 +234,157 @@ class UserControllerIntegrationTests {
                 .andExpect(contentExpected)
                 .andDo(MockMvcResultHandlers.print());
     }
-    
+
+    /*
+        US-0003: Obtener un listado de todos los usuarios que siguen a un determinado vendedor (¿Quién me sigue?)
+        US-0008: Ordenamiento alfabético ascendente y descendente.
+     */
+    @Test
+    @DisplayName("Get followers by id: Ok orden asc")
+    void getFollowersByIdOkAsc() throws Exception{
+        //Arrange
+
+        //Pre-requests to add followers
+        int userIdFollowed = 100;
+        int userIdToFollow = 1100;
+        MockHttpServletRequestBuilder addFollowerRequest = MockMvcRequestBuilders.post(
+                "/users/{userId}/follow/{userIdToFollowe}",
+                userIdFollowed,
+                userIdToFollow
+        );
+        mockMvc.perform(addFollowerRequest);
+
+        userIdFollowed = 2100;
+        addFollowerRequest = MockMvcRequestBuilders.post(
+                "/users/{userId}/follow/{userIdToFollowe}",
+                userIdFollowed,
+                userIdToFollow
+        );
+        mockMvc.perform(addFollowerRequest);
+
+
+        //Preparing request
+        int userId = 1100;
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get(
+                "/users/{userId}/followers/list",
+                userId
+        )
+                .param("order", "name_asc");
+
+        List<UserInfoDTO> userInfoDTOList = List.of(
+                new UserInfoDTO(2100, "Moreno"),
+                new UserInfoDTO(100, "Roach")
+        );
+        UserFollowersDTO expectedContent = new UserFollowersDTO(1100, "Dudley", userInfoDTOList);
+
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isOk();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedContent));
+        //Act % Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd)
+                .andExpect(contentExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    @DisplayName("Get followers by id: Ok orden desc")
+    void getFollowersByIdOkDes() throws Exception{
+        //Arrange
+
+        //Pre-requests to add followers
+        int userIdFollowed = 100;
+        int userIdToFollow = 1100;
+        MockHttpServletRequestBuilder addFollowerRequest = MockMvcRequestBuilders.post(
+                "/users/{userId}/follow/{userIdToFollowe}",
+                userIdFollowed,
+                userIdToFollow
+        );
+        mockMvc.perform(addFollowerRequest);
+
+        userIdFollowed = 2100;
+        addFollowerRequest = MockMvcRequestBuilders.post(
+                "/users/{userId}/follow/{userIdToFollowe}",
+                userIdFollowed,
+                userIdToFollow
+        );
+        mockMvc.perform(addFollowerRequest);
+
+
+        //Preparing request
+        int userId = 1100;
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get(
+                        "/users/{userId}/followers/list",
+                        userId
+                )
+                .param("order", "name_desc");
+
+        List<UserInfoDTO> userInfoDTOList = List.of(
+                new UserInfoDTO(100, "Roach"),
+                new UserInfoDTO(2100, "Moreno")
+        );
+        UserFollowersDTO expectedContent = new UserFollowersDTO(1100, "Dudley", userInfoDTOList);
+
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isOk();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedContent));
+        //Act % Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd)
+                .andExpect(contentExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    @DisplayName("Get followers by id: Sin especificación de ordenamiento")
+    void getFollowersByIdNotOrder() throws Exception{
+        //Arrange
+        //Preparing request
+        int userId = 1100;
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get(
+                        "/users/{userId}/followers/list",
+                        userId
+                );
+
+        MessageDTO expectedContent = new MessageDTO("Debe indicar un parámetro de orden válido: 'name_asc' o 'name_desc'");
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isBadRequest();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedContent));
+        //Act & Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd)
+                .andExpect(contentExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    @DisplayName("Get followers by id: Usuario inválido")
+    void getFollowersByIdNotFound() throws Exception{
+        //Arrange
+        //Preparing request
+        int userId = 9999;
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get(
+                "/users/{userId}/followers/list",
+                userId
+        );
+
+        MessageDTO expectedContent = new MessageDTO("No existe usuario con el id: " + userId);
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedContent));
+        //Act & Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd)
+                .andExpect(contentExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
 
 }

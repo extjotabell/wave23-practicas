@@ -9,3 +9,9 @@ x
 Hsrc/test/java/com/meli/socialmeli/unit/services/UserServiceImplTest.java,9/9/99d53c23afc4e37db19bdd5cf346c30918392e2c
 {
 Ksrc/test/java/com/meli/socialmeli/unit/services/ProductServiceImplTest.java,4/d/4d2fada31e805b867c866cd1e5805f68dd8af800
+u
+Esrc/main/java/com/meli/socialmeli/dtos/response/UserFollowersDTO.java,8/a/8af57a0086b0fe87fd6ed5eb19e27828cc48ba8f
+p
+@src/main/java/com/meli/socialmeli/dtos/response/UserInfoDTO.java,4/7/47977e20c5a86d8bb3cc3c9458d5ccb6d612f05f
+l
+<src/main/java/com/meli/socialmeli/SocialmeliApplication.java,a/a/aa81bbd3ba9d0d0fe70c48307bdbb632377fb4c4
