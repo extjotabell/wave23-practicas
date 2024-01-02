@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserControllerIntegrationTest {
+class UserControllerIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -60,6 +60,44 @@ public class UserControllerIntegrationTest {
         //Act - Assert
         this.mockMvc.perform(
                         MockMvcRequestBuilders.post("/users/100/follow/2100")
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Invalid Follower Return error explanation")
+    void followSellerInvalidIDFollowerShouldReturnExplanation() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'message': 'Usuario seguidor no encontrado'}";
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/100/follow/2100")
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.post("/users/1034340/follow/2100")
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Invalid Seller Return error explanation")
+    void followSellerInvalidIDFollowedShouldReturnExplanation() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'message': 'Usuario a seguir no encontrado'}";
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/100/follow/2100")
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.post("/users/100/follow/22100")
                                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(content().contentType("application/json"))
