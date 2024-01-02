@@ -103,5 +103,14 @@ class ControllerTest {
         BaseResponseDto response = new BaseResponseDto("Error unfollowing user, user " + userId + " doesn't follow user " + userIdToUnfollow);
         String jsonResponse = objectWriter.writeValueAsString(response);
 
+        // Request
+        MockHttpServletRequestBuilder request = post("/users/{userId}/unfollow/{userIdToUnfollow}", userId, userIdToUnfollow)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().json(String.valueOf(jsonResponse)))
+                .andDo(print());
     }
 }
