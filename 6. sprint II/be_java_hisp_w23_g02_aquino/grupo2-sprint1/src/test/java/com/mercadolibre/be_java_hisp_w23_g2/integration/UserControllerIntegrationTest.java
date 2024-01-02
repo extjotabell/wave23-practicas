@@ -58,4 +58,23 @@ class UserControllerIntegrationTest {
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
     }
 
+    @Test
+    @Order(2)
+    @DisplayName("Returns the number of followers of a user given their ID. Exception: Current user not exists.")
+    void getFollowersCountSellerExceptionIntegrationTest() throws Exception {
+        MessageDTO payloadResponseDTO = new MessageDTO();
+        payloadResponseDTO.setMessage("Current user with id = 100 not exists.");
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/count", 100))
+                .andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+    }
+    
 }
