@@ -14,10 +14,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static meli.bootcamp.sprint1.utils.Factory.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,9 +29,6 @@ public class IntegrationTestUserController {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     private FollowersDto followers;
     private BaseResponseDto responseDto;
@@ -48,7 +46,7 @@ public class IntegrationTestUserController {
     void testGetFollowers_Ok() throws Exception{
         followers = new FollowersDto(user.getUser_id(), user.getUser_name(), user.getFollowers().size());
 
-        request = MockMvcRequestBuilders.get("/users/{userId}/followers/count", 4);
+        request = get("/users/{userId}/followers/count", 4);
 
         result = mockMvc.perform(request)
                 .andDo(print())
@@ -64,7 +62,7 @@ public class IntegrationTestUserController {
     void testGetFollowers_ThrowsBadRequestException() throws Exception{
         responseDto = new BaseResponseDto("User not found");
 
-        request = MockMvcRequestBuilders.get("/users/{userId}/followers/count", 999);
+        request = get("/users/{userId}/followers/count", 999);
 
         result = mockMvc.perform(request)
                 .andDo(print())
@@ -86,7 +84,7 @@ public class IntegrationTestUserController {
                 .forEach(postDto -> service.addPost(objectMapper.convertValue(postDto, NewPostDto.class)));
         */
 
-        request = MockMvcRequestBuilders.get("/products/followed/{userId}/list", 2)
+        request = get("/products/followed/{userId}/list", 2)
                 .param("order", order);
 
         result = mockMvc.perform(request)
@@ -104,7 +102,7 @@ public class IntegrationTestUserController {
         String order = "wrong_param";
         responseDto = new BaseResponseDto("Parameter '" + order + "' is not valid");
 
-        request = MockMvcRequestBuilders.get("/products/followed/{userId}/list", 2)
+        request = get("/products/followed/{userId}/list", 2)
                 .param("order", order);
 
         result = mockMvc.perform(request)
@@ -122,7 +120,7 @@ public class IntegrationTestUserController {
         responseDto = new BaseResponseDto("Post added");
         NewPostDto newPostDto = generateNewPost(1, 1);
 
-        request = MockMvcRequestBuilders.post("/products/post")
+        request = post("/products/post")
                 .content(objectWriter.writeValueAsString(newPostDto))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -141,7 +139,7 @@ public class IntegrationTestUserController {
         responseDto = new BaseResponseDto("User not found");
         NewPostDto newPostDto = generateNewPost(999,1);
 
-        request = MockMvcRequestBuilders.post("/products/post")
+        request = post("/products/post")
                 .content(objectWriter.writeValueAsString(newPostDto))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -155,18 +153,86 @@ public class IntegrationTestUserController {
     }
 
     @Test
-    @DisplayName("Endpoint - AddPost -> Exception: User Not Found")
+    @DisplayName("Endpoint - AddPost -> Exception: Category Not Found")
     void testAddPost_ThrowsBadRequestException_CategoryNotFound() throws Exception{
         responseDto = new BaseResponseDto("Category not found");
         NewPostDto newPostDto = generateNewPost(1,999);
 
-        request = MockMvcRequestBuilders.post("/products/post")
+        request = post("/products/post")
                 .content(objectWriter.writeValueAsString(newPostDto))
                 .contentType(MediaType.APPLICATION_JSON);
 
         result = mockMvc.perform(request)
                 .andDo(print())
                 .andExpect(status().isBadRequest())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - Follow User - OK")
+    void testFollowUser_OK() throws Exception{
+        responseDto = new BaseResponseDto("User followed");
+
+        request = post("/users/{userId}/follow/{userIdToFollow}", 2, 1)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - Follow User - Exception: User is not a Seller")
+    void testFollowUser_ThrowsBadRequestException_UserIsNotASeller() throws Exception{
+        responseDto = new BaseResponseDto("User 2 is not a seller");
+
+        request = post("/users/{userId}/follow/{userIdToFollow}", 1, 2)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - Follow User - Exception: Same User")
+    void testFollowUser_ThrowsBadRequestException_UserIsTheSame() throws Exception{
+        responseDto = new BaseResponseDto("You can't follow yourself!");
+
+        request = post("/users/{userId}/follow/{userIdToFollow}", 1, 1)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - Follow User - User Already Followed")
+    void testFollowUser_UserAlreadyFollowed() throws Exception{
+        responseDto = new BaseResponseDto("The user is already followed");
+
+        request = post("/users/{userId}/follow/{userIdToFollow}", 1, 4)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
