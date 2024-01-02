@@ -48,4 +48,23 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Seller Already Followed Return error explanation")
+    void followSellerAlreadyFollowedShouldReturnExplanation() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'message': 'El usuario ya sigue al usuario deseado'}";
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/100/follow/2100")
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.post("/users/100/follow/2100")
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isBadRequest());
+    }
+
 }
