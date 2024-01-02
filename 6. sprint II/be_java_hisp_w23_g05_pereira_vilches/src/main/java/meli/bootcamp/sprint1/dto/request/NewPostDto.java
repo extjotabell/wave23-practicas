@@ -32,7 +32,7 @@ public class NewPostDto {
   private int category;
 
 
-  @NotNull(message = "El campo no puede estar vacio.")
+  @NotNull(message = "El campo price no puede estar vacio.")
   @DecimalMax(message = "El precio maximo por producto es de 10.000.000",value = "10000000.0")
   private double price;
 }
