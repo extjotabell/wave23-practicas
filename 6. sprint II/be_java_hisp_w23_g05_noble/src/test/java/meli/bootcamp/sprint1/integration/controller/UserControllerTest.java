@@ -75,4 +75,33 @@ class ControllerTest {
 
         assertEquals(responseJson, result.getResponse().getContentAsString());
     }
+
+    @Test
+    @DisplayName("US-0007 Unfollow user integration test OK")
+    void unfollowUserTestOk() throws Exception {
+        int userId = 1;
+        int userIdToUnfollow = 4;
+        BaseResponseDto response = new BaseResponseDto("User " + userIdToUnfollow + " was unfollowed");
+        String jsonResponse = objectWriter.writeValueAsString(response);
+
+        // Request
+        MockHttpServletRequestBuilder request = post("/users/{userId}/unfollow/{userIdToUnfollow}", userId, userIdToUnfollow)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().json(String.valueOf(jsonResponse)))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("US-0007 Unfollow user integration test seller not followed")
+    void unfollowUserTestUserNotFollowed() throws Exception {
+        int userId = 2;
+        int userIdToUnfollow = 1;
+        BaseResponseDto response = new BaseResponseDto("Error unfollowing user, user " + userId + " doesn't follow user " + userIdToUnfollow);
+        String jsonResponse = objectWriter.writeValueAsString(response);
+
+    }
 }
