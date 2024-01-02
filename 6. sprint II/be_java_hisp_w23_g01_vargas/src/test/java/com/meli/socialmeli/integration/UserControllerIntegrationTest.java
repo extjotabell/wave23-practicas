@@ -291,4 +291,19 @@ class UserControllerIntegrationTest {
                 .andExpect(content().json(responseJSONExpected))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("POST: /{userId}/unfollow/{userIdToUnfollow} - Invalid ID Return error explanation")
+    void getUnfollowInvalidFollowerShouldReturnExplanation() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'message':'Usuario no encontrado'}";
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.post("/users/10999990/unfollow/100")
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isNotFound());
+    }
 }
