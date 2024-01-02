@@ -271,5 +271,24 @@ class UserControllerIntegrationTest {
                 .andExpect(content().json(responseJSONExpected))
                 .andExpect(status().isNotFound());
     }
-    
+
+    @Test
+    @DisplayName("POST: /{userId}/unfollow/{userIdToUnfollow} - Return confirmation")
+    void getUnfollowShouldReturnConfirmation() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'userId':2100,'userIdToUnfollow':100}";
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/2100/follow/100")
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.post("/users/2100/unfollow/100")
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isOk());
+    }
 }
