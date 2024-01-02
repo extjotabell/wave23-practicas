@@ -184,9 +184,9 @@ URL base: http://localhost:8080
 **Desarrollo Individual:** 
 
 
-| Requerimientos      | Situaciones de entrada                                                   | Comportamiento Esperado                                                                                                                    | Responsale    |
-|:--------------------|:-------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| Test de integración | Se elaboran test de integración ra lograr una mayor cobertura de código. | **Se cumple**: Espera un HTTP Response de status 2xx (camino bueno). **No se cumple**: Espera un HTTP Response de status 4xx (camino malo) | Andres Limpio |
+| Requerimientos      | Situaciones de entrada                                                     | Comportamiento Esperado                                                                                                                    | Responsale    |
+|:--------------------|:---------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| Test de integración | Se elaboran test de integración para lograr una mayor cobertura de código. | **Se cumple**: Espera un HTTP Response de status 2xx (camino bueno). **No se cumple**: Espera un HTTP Response de status 4xx (camino malo) | Andres Limpio |
 
 **Bonus:**
 De acuerdo a la sugerencia del especialista de calidad (de realizar mas de un test de integración), se obtuvo el siguiente coverage:
