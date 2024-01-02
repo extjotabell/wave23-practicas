@@ -53,4 +53,26 @@ class ControllerTest {
                 .andExpect(content().json(String.valueOf(jsonResponse)))
                 .andDo(print());
     }
+
+    @Test
+    @DisplayName("US-0005 New post integration test OK")
+    void newPostTestOk() throws Exception {
+        NewProductDto product = new NewProductDto(1, "Silla", "Exterior", "Mor", "Azul", "Es muy comoda");
+        NewPostDto payload = new NewPostDto(1, LocalDate.of(2024, 1, 1), product, 1, 500);
+        BaseResponseDto response = new BaseResponseDto("Post added");
+
+        String payloadJson = objectWriter.writeValueAsString(payload);
+        String responseJson = objectWriter.writeValueAsString(response);
+
+        // Request
+        MvcResult result = this.mockMvc.perform(post("/products/post")
+                        .contentType("application/json")
+                        .content(payloadJson))
+                .andDo(print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        assertEquals(responseJson, result.getResponse().getContentAsString());
+    }
 }
