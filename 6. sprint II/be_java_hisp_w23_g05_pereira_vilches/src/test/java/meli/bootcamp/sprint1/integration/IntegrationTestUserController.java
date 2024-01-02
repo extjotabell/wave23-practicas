@@ -88,6 +88,7 @@ class IntegrationTestUserController {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.followed", hasSize(3)))
                 .andReturn();
+        //hasSize(3) indicates that the number of followed of the user with id 1 is 3
     }
 
     @Test
@@ -99,6 +100,64 @@ class IntegrationTestUserController {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.followers", hasSize(3)))
                 .andReturn();
+        //hasSize(3) indicates that the number of followers of the user with id 1 is 3
+    }
+
+    @Test
+    @DisplayName("Test: Endpoint GET /users/{userId}/followers/count")
+    void getFollowersCountTest() throws Exception {
+
+        this.mockMvc.perform(get("/users/{userId}/followers/count", 1))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.followers_count").value(3))
+                .andReturn();
+        //("$.followers_count").value(3) indicates that the number of followers of the user with id 1 is 3
+    }
+
+    @Test
+    @DisplayName("Test: Endpoint POST /users/{userId}/follow/{userIdToFollow}")
+    void followUserTest() throws Exception {
+
+        int userId = 7;
+        int userIdToFollow = 1;
+
+        String responseJson = writer().writeValueAsString(generateBaseResponseDto("User followed"));
+
+        this.mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId, userIdToFollow))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json(responseJson))
+                .andReturn();
+    }
+
+    @Test
+    @DisplayName("Test: Endpoint POST /users/{userId}/unfollow/{userIdToUnfollow}")
+    void unfollowUserTest() throws Exception {
+
+        int userId = 1;
+        int userIdToUnfollow = 4;
+
+        String responseJson = writer().writeValueAsString(generateBaseResponseDto("User " + userIdToUnfollow + " was unfollowed"));
+
+        this.mockMvc.perform(post("/users/{userId}/unfollow/{userIdToUnfollow}", userId, userIdToUnfollow))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json(responseJson))
+                .andReturn();
+    }
+    @Test
+    @DisplayName("Test: Endpoint GET /products/followed/{userId}/list")
+    void getPostsFromFollowedTest() throws Exception {
+
+        int userId = 4;
+
+        this.mockMvc.perform(get("/products/followed/{userId}/list", userId))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.posts", hasSize(0)))
+                .andReturn();
+        //hasSize(0) indicates that there are no posts from sellers following in the last two weeks
     }
 
     private ObjectWriter writer(){

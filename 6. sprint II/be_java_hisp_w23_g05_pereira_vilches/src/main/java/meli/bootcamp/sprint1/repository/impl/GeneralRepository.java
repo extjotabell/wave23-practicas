@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
@@ -37,7 +38,9 @@ public class GeneralRepository implements IGeneralRepository {
     };
     List<Category> categories = null;
     try {
-      categories = objectMapper.readValue(file, typeRef);
+      categories = objectMapper
+              .registerModule(new JavaTimeModule())
+              .readValue(file, typeRef);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -56,7 +59,9 @@ public class GeneralRepository implements IGeneralRepository {
     };
     List<User> users = null;
     try {
-      users = objectMapper.readValue(file, typeRef);
+      users = objectMapper
+              .registerModule(new JavaTimeModule())
+              .readValue(file, typeRef);
     } catch (IOException e) {
       e.printStackTrace();
     }
