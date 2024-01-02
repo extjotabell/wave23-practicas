@@ -21,12 +21,25 @@ public class UserControllerIntegrationTests {
     private ObjectMapper objectMapper;
 
     @Test
-    void followSeller_shouldReturnMessageResponseDTOForValidUserIds() throws Exception {
-        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", 2,9))
+    void followSeller_shouldWorkWhenSellerExists() throws Exception {
+        Long userId = 2L;
+        Long sellerToFollowId = 9L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$.message").value("Following a new Seller!"))
-                .andReturn();
+                .andExpect(jsonPath("$.message").value("Following a new Seller!"));
     }
+
+    @Test
+    void followSeller_shouldThrowNotFoundException() throws Exception {
+        Long userId = 99L;
+        Long sellerToFollowId = 9L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+                .andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentType("application/json"));
+    }
+
+
 }
