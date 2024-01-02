@@ -76,5 +76,34 @@ class UserControllerIntegrationTest {
 
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
     }
-    
+
+    @Test
+    @Order(3)
+    @DisplayName("Follow a user given their id and the id of the user to follow.")
+    void followUserIntegrationTest() throws Exception{
+        List<UserBasicDTO> followedExpectedDTO = List.of(
+                new UserBasicDTO(4, "Eve Wilson"),
+                new UserBasicDTO(5, "Charlie Brown"),
+                new UserBasicDTO(2, "Alice Smith")
+        );
+
+        UserFollowedDTO payloadResponseDTO = new UserFollowedDTO();
+        payloadResponseDTO.setId(1);
+        payloadResponseDTO.setUserName("John Doe");
+        payloadResponseDTO.setFollowed(followedExpectedDTO);
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", 1, 2)
+                        .contentType("application/json"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.user_id").value(payloadResponseDTO.getId()))
+                .andExpect(jsonPath("$.user_name").value(payloadResponseDTO.getUserName()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+
+    }
 }
