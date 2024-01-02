@@ -78,4 +78,22 @@ class UserControllerIntegrationTest {
                 .andExpect(content().json(responseJson));
     }
 
+    @Test
+    @DisplayName("Test that verifying the count of followers for a specific user")
+    void getFollowersCountIntegrationTest() throws Exception {
+        UserFollowersCountDTO expected = new UserFollowersCountDTO(1, "John Doe", 2);
+
+        ObjectMapper writer = new ObjectMapper();
+        writer.registerModule(new JavaTimeModule());
+        writer.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false).writer();
+
+        String expectedJson = writer.writeValueAsString(expected);
+
+        this.mockMvc.perform(get("/users/{userId}/followers/count", 1))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(expectedJson));
+    }
+
 }

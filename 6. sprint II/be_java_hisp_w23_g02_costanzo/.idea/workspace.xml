@@ -135,7 +135,7 @@
     <servers />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g02_costanzo$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704226418933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g02_costanzo$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704226811458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$All_in_grupo2_sprint1.ic" NAME="All in grupo2-sprint1 Coverage Results" MODIFIED="1703772493116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$integration_in_grupo2_sprint1.ic" NAME="integration in grupo2-sprint1 Coverage Results" MODIFIED="1703792026908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704221731845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
