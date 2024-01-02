@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.sprint.be_java_hisp_w23_g04.dto.response.BuyerDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.SellerDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.SimpleMessageDTO;
+import com.sprint.be_java_hisp_w23_g04.utils.UtilsIntegrationTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -236,6 +241,129 @@ public class UserMeliControllerIntegrationTest {
 
         mockMvc.perform(request)
                 .andExpect(statusExpected) // Verify status code 400
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+
+    /** Testing URL: GET /users/{userId}/followers/list **/
+
+    @Test
+    @DisplayName("List followers: Given an SellerID Should return the list with the names of followers")
+    public void getFollowersByUserIdTest() throws Exception {
+        //Arrange
+        BuyerDTO expectedResponse = UtilsIntegrationTests.getBuyerDTOTest();
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/list",1);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isOk();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedResponse));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 200
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    @Test
+    @DisplayName("List followers - Invalid order param: Should inform error message")
+    public void getFollowersByUserIdTestInvalidOrderParam() throws Exception {
+        //Arrange
+        SimpleMessageDTO expectedMessage = new SimpleMessageDTO("El criterio de ordenamiento no existe.");
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/list?order=test",1);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isBadRequest();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedMessage));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 400
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    @Test
+    @DisplayName("List followers - Invalid userId: Should inform error message")
+    public void getFollowersByUserIdTestInvalidUserId() throws Exception {
+        //Arrange
+        SimpleMessageDTO expectedMessage = new SimpleMessageDTO("No se encontró usuario con el id 99.");
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/list",99);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedMessage));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 404
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    @Test
+    @DisplayName("List followers - Empty body: Seller without followers. Expects No content status")
+    public void getFollowersByUserIdTestEmptyBody() throws Exception {
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/list",4);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isNoContent();;
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 204
+                .andExpect(jsonPath("$").doesNotExist()) // Verify body empty
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    @Test
+    @DisplayName("List followers - Sort result by name ASC: Given an SellerID Should return the list with the names of followers sorted by name ASC")
+    public void getFollowersByUserIdTestOrderTypeAsc() throws Exception {
+        //Arrange
+        BuyerDTO expectedResponse = UtilsIntegrationTests.getBuyerDTOTest("name_asc");
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/list",1);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isOk();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedResponse));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 200
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    @Test
+    @DisplayName("List followers - Sort result by name DSC: Given an SellerID Should return the list with the names of followers sorted by name DSC")
+    public void getFollowersByUserIdTestOrderTypeDesc() throws Exception {
+        //Arrange
+        BuyerDTO expectedResponse = UtilsIntegrationTests.getBuyerDTOTest("name_dsc");
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/list",1);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isOk();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedResponse));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 200
                 .andExpect(contentType) // Verify is content type is Application Json
                 .andExpect(contentExpected) // Verify is the response has correct message
                 .andDo(MockMvcResultHandlers.print()); // Show the request
