@@ -149,4 +149,25 @@ class UserControllerIntegrationTest {
 
     }
 
+    @Test
+    @Order(6)
+    @DisplayName("Unfollow a user given their id and the id of the user to unfollow.")
+    void unfollowUserIntegrationTest() throws Exception{
+        MessageDTO payloadResponseDTO = new MessageDTO();
+        payloadResponseDTO.setMessage("Has stopped following Charlie Brown");
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = mockMvc.perform(post("/users/{userId}/unfollow/{userIdToUnfollow}", 1, 5)
+                        .contentType("application/json"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+
+    }
+
 }
