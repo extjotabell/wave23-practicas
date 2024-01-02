@@ -106,4 +106,25 @@ class UserControllerIntegrationTest {
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
 
     }
+
+    @Test
+    @Order(4)
+    @DisplayName("Follow a user given their id and the id of the user to follow. Exception: Follow himself.")
+    void followUserIntegrationExceptionTest() throws Exception{
+        MessageDTO payloadResponseDTO = new MessageDTO();
+        payloadResponseDTO.setMessage("A user cannot follow/unfollow himself");
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", 1, 1)
+                        .contentType("application/json"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+
+    }
 }
