@@ -9,12 +9,14 @@ import meli.bootcamp.sprint1.entity.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+
+import static meli.bootcamp.sprint1.utils.Sorter.*;
 
 public class Factory {
 
   public static LastPostsDto generateLastPostDto() {
+    LocalDate today = LocalDate.now();
     return new LastPostsDto(2, List.of(
         new PostDto(1, 1, LocalDate.now(),
             new ProductDto(1,
@@ -24,7 +26,7 @@ public class Factory {
                 "Red Black",
                 "Special Edition"),
             1, 100.00),
-        new PostDto(1, 2, LocalDate.of(2023, 12, 20),
+        new PostDto(1, 2, today.minusDays(2),
             new ProductDto(1,
                 "Tele",
                 "Gamer",
@@ -32,7 +34,7 @@ public class Factory {
                 "Red Black",
                 "Special Edition"),
             1, 100.00),
-        new PostDto(1, 3, LocalDate.of(2023, 12, 18),
+        new PostDto(1, 3, today.minusDays(11),
             new ProductDto(1,
                 "Tele",
                 "Gamer",
@@ -44,6 +46,7 @@ public class Factory {
   }
 
   public static LastPostsDto generateLastPostDtoOrdered(String order) {
+    LocalDate today = LocalDate.now();
 
     List<PostDto> postDtoList = List.of(new PostDto(1, 1, LocalDate.now(),
         new ProductDto(1,
@@ -53,7 +56,7 @@ public class Factory {
             "Red Black",
             "Special Edition"),
         1, 100.00),
-        new PostDto(1, 2, LocalDate.of(2023, 12, 20),
+        new PostDto(1, 2, today.minusDays(2),
             new ProductDto(1,
                 "Tele",
                 "Gamer",
@@ -61,7 +64,7 @@ public class Factory {
                 "Red Black",
                 "Special Edition"),
             1, 100.00),
-        new PostDto(1, 3, LocalDate.of(2023, 12, 18),
+        new PostDto(1, 3, today.minusDays(11),
             new ProductDto(1,
                 "Tele",
                 "Gamer",
@@ -75,13 +78,14 @@ public class Factory {
   }
 
   public static List<Post> generatePost() {
+    LocalDate today = LocalDate.now();
     Product product = new Product(1, "Tele", "Gamer", "Razer", "Special Edition", "Red Black");
     return List.of(
         new Post(product, LocalDate.now(), new Category(1, "Electronic"), 100.00),
-        new Post(product, LocalDate.of(2023, 12, 20), new Category(1, "Electronic"), 100.00),
-        new Post(product, LocalDate.of(2023, 12, 18), new Category(1, "Electronic"), 100.00),
-        new Post(product, LocalDate.of(2022, 12, 18), new Category(1, "Electronic"), 100.00),
-        new Post(product, LocalDate.of(2021, 12, 18), new Category(1, "Electronic"), 100.00));
+        new Post(product, today.minusDays(2), new Category(1, "Electronic"), 100.00),
+        new Post(product, today.minusDays(11), new Category(1, "Electronic"), 100.00),
+        new Post(product, today.minusYears(1), new Category(1, "Electronic"), 100.00),
+        new Post(product, today.minusYears(2), new Category(1, "Electronic"), 100.00));
   }
 
   public static User generateSeller() {
@@ -106,7 +110,7 @@ public class Factory {
   }
 
   public static UserWFollowerListDto generateUserDtoList(String order) {
-    List<UserDto> userDtoList = new ArrayList<UserDto>();
+    List<UserDto> userDtoList = new ArrayList<>();
     userDtoList.add(new UserDto(3, "Fatima Noble"));
     userDtoList.add(new UserDto(2, "Brenda Torrico"));
     userDtoList.add(new UserDto(1, "Ailen Pereira"));
@@ -120,47 +124,5 @@ public class Factory {
         new User(2, "Brenda Torrico", true, Collections.emptyList(), Collections.emptyList(), Collections.emptyList()),
         new User(3, "Fatima Noble", true, Collections.emptyList(), Collections.emptyList(), Collections.emptyList()),
         new User(4, "Geronimo Schmidt", true, Collections.emptyList(), Collections.emptyList(), List.of(1, 2, 3)));
-  }
-
-  private static List<UserDto> orderUserDtoList(List<UserDto> userDtoList, String order) {
-    if (order == "name_asc") {
-      return userDtoList.stream()
-          .sorted(Comparator.comparing(UserDto::getUser_name))
-          .toList();
-    } else if (order == "name_desc") {
-      return userDtoList.stream()
-          .sorted(Comparator.comparing(UserDto::getUser_name).reversed())
-          .toList();
-    } else {
-      return userDtoList;
-    }
-  }
-
-  private static List<Post> orderPostList(List<Post> postList, String order) {
-    if (order == "date_asc") {
-      return postList.stream()
-          .sorted(Comparator.comparing(Post::getDate))
-          .toList();
-    } else if (order == "name_desc") {
-      return postList.stream()
-          .sorted(Comparator.comparing(Post::getDate).reversed())
-          .toList();
-    } else {
-      return postList;
-    }
-  }
-
-  private static List<PostDto> orderPostDtoList(List<PostDto> postList, String order) {
-    if (order == "date_asc") {
-      return postList.stream()
-          .sorted(Comparator.comparing(PostDto::getDate))
-          .toList();
-    } else if (order == "name_desc") {
-      return postList.stream()
-          .sorted(Comparator.comparing(PostDto::getDate).reversed())
-          .toList();
-    } else {
-      return postList;
-    }
   }
 }
