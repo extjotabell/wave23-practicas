@@ -40,7 +40,7 @@ public class ProductControllerIntegrationTest {
         ProductDTO productDTO = new ProductDTO(111, "Camisa", "Camisa polo", "Polo", "blue", "algodon puro");
         PostDTO postDTO = new PostDTO(100, LocalDate.now(), productDTO, 1, 100000.0);
 
-        String responseJSONExpected = "{'message': 'The User 100 has created new post.'}";
+        String responseJSONExpected = "{'message': 'El usuario 100 ha creado una nueva publicación.'}";
         //Act - Assert
         mockMvc.perform(post("/products/post")
                         .contentType("application/json")
