@@ -37,7 +37,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mcostanzo/IdeaProjects/Ejercicios Testing/Sprint II/be_java_hisp_w23_g02&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mcostanzo/IdeaProjects/Ejercicios Testing/Sprint II/be_java_hisp_w23_g02_costanzo&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -135,9 +135,9 @@
     <servers />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g02_costanzo$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704226418933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$All_in_grupo2_sprint1.ic" NAME="All in grupo2-sprint1 Coverage Results" MODIFIED="1703772493116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$integration_in_grupo2_sprint1.ic" NAME="integration in grupo2-sprint1 Coverage Results" MODIFIED="1703792026908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704221731845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g02$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704226118259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
