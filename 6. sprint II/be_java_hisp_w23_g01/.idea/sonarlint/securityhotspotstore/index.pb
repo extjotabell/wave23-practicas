@@ -43,3 +43,8 @@ d
 4src/main/java/com/meli/socialmeli/entities/User.java,1/3/13110924d99ed7639caa9077369ffeffa3893735
 {
 Ksrc/main/java/com/meli/socialmeli/repositories/impl/UserRepositoryImpl.java,1/8/1823ba45d70544d7fb4a2b0fa887c9bef7acb38b
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+~
+Nsrc/main/java/com/meli/socialmeli/repositories/impl/ProductRepositoryImpl.java,c/e/ce2a8d22a9064e017bff1ecc8da43f05df114511

@@ -173,7 +173,7 @@ class ProductServiceImplTest {
         User user = getNewPostAdd();
         ProductDTO newProduct = new ProductDTO(1, "Silla", "Mueble", "MSI", "Rojo", "Nuevo" );
         PostDTO post = new PostDTO(userId, fecha, newProduct, 1, 2000.0);
-        MessageDTO devolucion = new MessageDTO("The User " + userId +  " has created new post.");
+        MessageDTO devolucion = new MessageDTO("El usuario "+ user.getUser_id() + " ha creado una nueva publicación.");
 
         //Act
         when(userRepository.finById(userId)).thenReturn(user);

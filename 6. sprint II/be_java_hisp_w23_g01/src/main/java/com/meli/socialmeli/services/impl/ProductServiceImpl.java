@@ -83,7 +83,7 @@ public class ProductServiceImpl implements IProductService {
     public MessageDTO newPost(PostDTO post){
         User user = userRepository.finById(post.getUserId());
         if(user == null){
-            throw new NotFoundException("Invalid user");
+            throw new NotFoundException("Usuario inválido");
         }
 
         if (user.getPosts().isEmpty()){
@@ -93,6 +93,6 @@ public class ProductServiceImpl implements IProductService {
             int numberPosts = user.getPosts().size();
             user.addPost(Mappers.mapNewPost(post, user.getPosts().get(numberPosts - 1).getPost_id() + 1000));
         }
-        return new MessageDTO("The User "+ user.getUser_id() + " has created new post.");
+        return new MessageDTO("El usuario "+ user.getUser_id() + " ha creado una nueva publicación.");
     }
 }
