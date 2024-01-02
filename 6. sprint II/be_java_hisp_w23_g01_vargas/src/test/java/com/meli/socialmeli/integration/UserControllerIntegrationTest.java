@@ -104,5 +104,28 @@ class UserControllerIntegrationTest {
                 .andExpect(content().json(responseJSONExpected))
                 .andExpect(status().isBadRequest());
     }
+    
+    @Test
+    @DisplayName("GET: /users/{userId}/followers/list?order=name_asc - Return a list of followers - Order by name asc")
+    void getFollowersByIdShouldReturnListAsc() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'user_id': 100, 'user_name': 'Roach', " +
+                "'followers': [{'user_id': 2100, 'user_name': 'Moreno'}, {'user_id': 3100, 'user_name': 'Peters'}]}";
 
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/2100/follow/100")
+                        .contentType(MediaType.APPLICATION_JSON));
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/3100/follow/100")
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.get("/users/100/followers/list?order=name_asc")
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isOk());
+    }
 }
