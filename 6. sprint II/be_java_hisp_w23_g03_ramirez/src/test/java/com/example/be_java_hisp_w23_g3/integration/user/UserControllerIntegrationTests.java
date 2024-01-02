@@ -65,6 +65,18 @@ public class UserControllerIntegrationTests {
                 .andExpect(jsonPath("$.errors").value("The follower user_id must be greater than zero"));
 
     }
+    @Test
+    void followSeller_shouldThrowExceptionForInvalidUserIdToFollow() throws Exception {
+        Long userId = 2L;
+        Long sellerToFollowId = -9L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("Validation errors have occurred"))
+                .andExpect(jsonPath("$.errors").value("The user_id to follow must be greater than zero"));
+
+    }
 
     @Test
     void followSeller_shouldThrowAlreadyAFollowerException() throws Exception {
