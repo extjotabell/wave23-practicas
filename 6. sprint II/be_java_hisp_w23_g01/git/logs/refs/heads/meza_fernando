@@ -26,3 +26,5 @@ a7668ee9309d7a51336b9834649927a686fe3f8d 1eb300d15a6d01f1b53849a00fe243a78427d6f
 0a75094f18dfe3da18155534f08d70e8a4da9d27 a7f6857f57b6835594e54234de6bb0780bf5feab ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703800940 -0600	commit: Add extra method to cover two branchs of good path in T-0005
 a7f6857f57b6835594e54234de6bb0780bf5feab 541a737a0fad83ab2854f396c6d8831a085199db ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1703801060 -0600	commit: Add bad param value to Bad Request message (US009)
 541a737a0fad83ab2854f396c6d8831a085199db 938ae011bc5aff16274cf113d494f7e5c87b3598 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704214548 -0600	merge main: Fast-forward
+938ae011bc5aff16274cf113d494f7e5c87b3598 d5b22fa833850d7f1075ce0014f4c70d41533b86 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704230841 -0600	pull origin main: Fast-forward
+d5b22fa833850d7f1075ce0014f4c70d41533b86 bd425327b88f5243af522e9c4abda06c7983dea7 ferMezaMel <fernando.mezaortega@mercadolibre.com.mx> 1704230931 -0600	commit: Refactor Unit Test 0009

@@ -1,8 +1,6 @@
 
 9
 	readme.md,2/7/275d783e298228506068436512433d343feb52aa
-x
-Hsrc/test/java/com/meli/socialmeli/controllers/ProductControllerTest.java,b/f/bf24a0c3bd170b2bdcdf6fb70357d11629e951f8
 u
 Esrc/test/java/com/meli/socialmeli/controllers/UserControllerTest.java,c/b/cb4763ea01417148e4a79feeba06547053a5502b
 s
@@ -48,3 +46,19 @@ Ksrc/main/java/com/meli/socialmeli/repositories/impl/UserRepositoryImpl.java,1/
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 ~
 Nsrc/main/java/com/meli/socialmeli/repositories/impl/ProductRepositoryImpl.java,c/e/ce2a8d22a9064e017bff1ecc8da43f05df114511
+d
+4src/main/java/com/meli/socialmeli/entities/Post.java,8/0/80ccf0c9090dbe8e60dcb7a8a633c24fc7e7dbe7
+g
+7src/main/java/com/meli/socialmeli/entities/Product.java,1/c/1c71a61392f8eb2e188a62475e3bf3a863009911
+|
+Lsrc/main/java/com/meli/socialmeli/exceptions/custom/BadRequestException.java,f/9/f9bc234b2bf658d26a228c3b17236495f8d8b7bf
+q
+Asrc/main/java/com/meli/socialmeli/exceptions/ExceptionConfig.java,f/9/f9af5c4905fce1d99c6b82cf36227ce8343f126b
+|
+Lsrc/main/java/com/meli/socialmeli/utilities/CustomLocalDateDeserializer.java,f/1/f12ef20f3e283143ff8989c76ceb5507b279cbe9
+z
+Jsrc/main/java/com/meli/socialmeli/utilities/CustomLocalDateValidation.java,1/5/1552a53eded8e5f7a9e99021294220bd7cb886a9
+y
+Isrc/main/java/com/meli/socialmeli/utilities/CustomLocalDateValidator.java,a/d/ad55ee9fad4fb56505b0f467416c385ea18f2d2c
+h
+8src/main/java/com/meli/socialmeli/utilities/Mappers.java,2/5/25d24df42e5f19705874cc39c158e744a482f916
