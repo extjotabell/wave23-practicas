@@ -122,5 +122,18 @@ public class UserControllerIntegrationTests {
                 .andExpect(jsonPath("$.message").value("You can't unfollow yourself"));
     }
 
+    @Test
+    void unFollowSeller_shouldThrowExceptionForInvalidUserId() throws Exception {
+        Long userId = -1L;
+        Long sellerIdToUnFollow = 6L;
+        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("Validation errors have occurred"))
+                .andExpect(jsonPath("$.errors").value("The follower user_id must be greater than zero"));
+
+    }
+
 
 }
