@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
@@ -68,12 +69,46 @@ import static org.mockito.Mockito.when;
 
         //Act
         //Assert
-        assertThrows(BadRequestException.class, () -> service.followUser(userId, 20));
-
+        BadRequestException exception = assertThrows(BadRequestException.class, () -> service.followUser(userId, 20));
+        assertEquals("User not found", exception.getMessage());
     }
 
     @Test
-    @DisplayName("T-0002/ Verify user exists")
+    @DisplayName("T-0001/ Verify if user to follow is a seller")
+    void T_0001ExceptionTestCase2(){
+        //Arrange
+        User user = generateUser2();
+        int userId = user.getId();
+        int userIdToFollow = user.getFollowed().get(0);
+        User userMock = Mockito.mock(User.class);
+
+        when(repository.findUserById(userId)).thenReturn(user);
+        when(repository.findUserById(userIdToFollow)).thenReturn(userMock);
+
+        //Act
+        //Assert
+        BadRequestException exception = assertThrows(BadRequestException.class, () -> service.followUser(userId, userIdToFollow));
+        assertEquals("User " + userMock.getId() + " is not a seller", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("T-0001/ Verify if user to follow is same as user")
+    void T_0001ExceptionTestCase3(){
+        //Arrange
+        User user = generateSeller();
+        int userId = user.getId();
+
+        when(repository.findUserById(userId)).thenReturn(user);
+        when(repository.findUserById(userId)).thenReturn(user);
+
+        //Act
+        //Assert
+        BadRequestException exception = assertThrows(BadRequestException.class, () -> service.followUser(userId, userId));
+        assertEquals("You can't follow yourself!", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("T-0002/ Verify user to unfollow exists")
     void T_0002(){
         //Arrange
         User userFollower = generateUser();
@@ -92,7 +127,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0002/ Verify user not exists")
+    @DisplayName("T-0002/ Verify user to unfollow not exists")
     void T_0002NotOk(){
         //Arrange
         User userFollower = generateUser();
@@ -107,6 +142,26 @@ import static org.mockito.Mockito.when;
         //Act
         //Assert
         assertThrows(BadRequestException.class, ()-> service.unfollowUser(userFollowerId, userFollowedId));
+    }
+
+    @Test
+    @DisplayName("T-0002/ Verify empty lists from users")
+    void T_0002NotOkCase1(){
+        //Arrange
+        User userFollower = generateSellerNoFollowers();
+        userFollower.setId(25);
+        User userFollowed = generateSellerNoFollowers();
+        int userFollowerId = userFollower.getId();
+        int userFollowedId = userFollowed.getId();;
+
+
+        when(repository.findUserById(userFollower.getId())).thenReturn(userFollower);
+        when(repository.findUserById(userFollowed.getId())).thenReturn(userFollowed);
+
+        //Act
+        //Assert
+        BadRequestException exception = assertThrows(BadRequestException.class, ()-> service.unfollowUser(userFollowerId, userFollowedId));
+        assertEquals("Followed list and following lists are empty", exception.getMessage());
     }
 
     @Test

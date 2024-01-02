@@ -28,7 +28,7 @@ class IntegrationTestUserController {
     MockMvc mockMvc;
 
     @Test
-    @DisplayName("Test: Endpoint /products/post")
+    @DisplayName("Test: Endpoint POST /products/post")
     void newPostTest() throws Exception {
 
         String requestJson = writer().writeValueAsString(generateNewPostDto());
@@ -44,7 +44,7 @@ class IntegrationTestUserController {
     }
 
     @Test
-    @DisplayName("Test: Endpoint /products/post, throws exception Category not found")
+    @DisplayName("Test: Endpoint POST /products/post, throws exception Category not found")
     void newPostTestNotOkCategory() throws Exception {
 
         String requestJson = writer().writeValueAsString(generateNewPostDtoCase1());
@@ -62,7 +62,7 @@ class IntegrationTestUserController {
     }
 
     @Test
-    @DisplayName("Test: Endpoint /products/post, throws exception User not found")
+    @DisplayName("Test: Endpoint POST /products/post, throws exception User not found")
     void newPostTestNotOkUser() throws Exception {
 
         String requestJson = writer().writeValueAsString(generateNewPostDtoCase2());
@@ -80,7 +80,7 @@ class IntegrationTestUserController {
     }
 
     @Test
-    @DisplayName("Test: Endpoint /users/{id}/followed/list")
+    @DisplayName("Test: Endpoint GET /users/{id}/followed/list")
     void getFollowedTest() throws Exception {
 
         this.mockMvc.perform(get("/users/{id}/followed/list", 1))
@@ -91,7 +91,7 @@ class IntegrationTestUserController {
     }
 
     @Test
-    @DisplayName("Test: Endpoint /users/{id}/followers/list")
+    @DisplayName("Test: Endpoint GET /users/{id}/followers/list")
     void getFollowersTest() throws Exception {
 
         this.mockMvc.perform(get("/users/{id}/followers/list", 1))
