@@ -21,3 +21,5 @@ t
 Dsrc/main/java/com/meli/socialmeli/controllers/ProductController.java,3/f/3f3e9440cf8410781c0cdb1ddffe070f0d6a4bed
 l
 <src/main/java/com/meli/socialmeli/services/IUserService.java,e/e/eec880311e564814cd6cb77929226aa905e3069a
+z
+Jsrc/test/java/com/meli/socialmeli/unit/controllers/UserControllerTest.java,3/8/387f6434ec520dc8b58a07ac0eae432cd72378de

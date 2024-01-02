@@ -540,4 +540,125 @@ class UserControllerIntegrationTests {
                 .andDo(MockMvcResultHandlers.print());
     }
 
+    /*
+        US-0007: Poder realizar la acción de “Unfollow” (dejar de seguir) a un determinado vendedor.
+    */
+    @Test
+    @DisplayName("Unfollow user: Ok")
+    void unfollowUserOk() throws Exception{
+        //Arrange
+
+        //Preparing request
+        int userId = 100;
+        int userIdToFollow = 1100;
+        MockHttpServletRequestBuilder followRequest = MockMvcRequestBuilders.post(
+                "/users/{userId}/follow/{userIdToFollowe}",
+                userId,
+                userIdToFollow
+        );
+        mockMvc.perform(followRequest);
+
+
+        UserUnfollowDTO expectedContent = new UserUnfollowDTO();
+        expectedContent.setUserId(100);
+        expectedContent.setUserIdToUnfollow(1100);
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post(
+                "/users/{userId}/unfollow/{userIdToFollowe}",
+                userId,
+                userIdToFollow
+        );
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isOk();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedContent));
+        //Act & Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd)
+                .andExpect(contentExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    @DisplayName("Unfollow user: Usuario seguidor inexistente")
+    void unfollowUserNonexistentFollower() throws Exception{
+        //Arrange
+        //Preparing request
+        int userId = 9999;
+        int userIdToUnfollow = 1100;
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post(
+                "/users/{userId}/unfollow/{userIdToFollowe}",
+                userId,
+                userIdToUnfollow
+        );
+
+        MessageDTO expectedContent = new MessageDTO("Usuario no encontrado");
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedContent));
+        //Act & Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd)
+                .andExpect(contentExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    @DisplayName("Unfollow user: Usuario seguido inexistente")
+    void unfollowUserNonexistentFollowed() throws Exception{
+        //Arrange
+        //Preparing request
+        int userId = 100;
+        int userIdToUnfollow = 9999;
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post(
+                "/users/{userId}/unfollow/{userIdToFollowe}",
+                userId,
+                userIdToUnfollow
+        );
+
+        MessageDTO expectedContent = new MessageDTO("Usuario no encontrado");
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedContent));
+        //Act & Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd)
+                .andExpect(contentExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    @DisplayName("Unfollow user: Usuario seguidor no sigue al otro usuario")
+    void unfollowUserNotFollowerUser() throws Exception{
+        //Arrange
+        //Preparing request
+        int userId = 100;
+        int userIdToUnfollow = 5100;
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post(
+                "/users/{userId}/unfollow/{userIdToFollowe}",
+                userId,
+                userIdToUnfollow
+        );
+
+        MessageDTO expectedContent = new MessageDTO("Usuario seguido no encontrado");
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedContent));
+        //Act & Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd)
+                .andExpect(contentExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
+
 }
