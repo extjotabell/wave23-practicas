@@ -23,8 +23,8 @@ public class UserControllerIntegrationTests {
     @Test
     void followSeller_shouldWorkWhenSellerExists() throws Exception {
         Long userId = 2L;
-        Long sellerToFollowId = 9L;
-        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+        Long sellerIdToFollow = 9L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
@@ -34,8 +34,8 @@ public class UserControllerIntegrationTests {
     @Test
     void followSeller_shouldThrowNotFoundException() throws Exception {
         Long userId = 99L;
-        Long sellerToFollowId = 9L;
-        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+        Long sellerIdToFollow = 9L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentType("application/json"))
@@ -45,8 +45,8 @@ public class UserControllerIntegrationTests {
     @Test
     void followSeller_shouldThrowFollowingMyselfException() throws Exception {
         Long userId = 2L;
-        Long sellerToFollowId = 2L;
-        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+        Long sellerIdToFollow = 2L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType("application/json"))
@@ -56,8 +56,8 @@ public class UserControllerIntegrationTests {
     @Test
     void followSeller_shouldThrowExceptionForInvalidUserId() throws Exception {
         Long userId = -2L;
-        Long sellerToFollowId = 9L;
-        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+        Long sellerIdToFollow = 9L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType("application/json"))
@@ -68,8 +68,8 @@ public class UserControllerIntegrationTests {
     @Test
     void followSeller_shouldThrowExceptionForInvalidUserIdToFollow() throws Exception {
         Long userId = 2L;
-        Long sellerToFollowId = -9L;
-        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+        Long sellerIdToFollow = -9L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType("application/json"))
@@ -81,8 +81,8 @@ public class UserControllerIntegrationTests {
     @Test
     void followSeller_shouldThrowAlreadyAFollowerException() throws Exception {
         Long userId = 1L;
-        Long sellerToFollowId = 6L;
-        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+        Long sellerIdToFollow = 6L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType("application/json"))
