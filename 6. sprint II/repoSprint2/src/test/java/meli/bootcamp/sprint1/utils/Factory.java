@@ -1,5 +1,7 @@
 package meli.bootcamp.sprint1.utils;
 
+import meli.bootcamp.sprint1.dto.request.NewPostDto;
+import meli.bootcamp.sprint1.dto.request.NewProductDto;
 import meli.bootcamp.sprint1.dto.response.*;
 import meli.bootcamp.sprint1.entity.Category;
 import meli.bootcamp.sprint1.entity.Post;
@@ -41,6 +43,7 @@ public class Factory {
                                 "Special Edition"),1,100.00)));
 
     }
+
     public static LastPostsDto generateLastPostDtoOrdered(String order){
         LocalDate today = LocalDate.now();
 
@@ -114,5 +117,10 @@ public class Factory {
                 ,new User(2,"Brenda Torrico",true, Collections.emptyList(),Collections.emptyList(),Collections.emptyList())
                 ,new User(3,"Fatima Noble",true, Collections.emptyList(),Collections.emptyList(),Collections.emptyList())
                 ,new User(4,"Geronimo Schmidt",true, Collections.emptyList(),Collections.emptyList(),List.of(1,2,3)));
+    }
+
+    public static NewPostDto generateNewPost(int userId, int categoryId){
+        NewProductDto product = new NewProductDto(1,"Tele","Gamer","Razer","Special Edition","Red Black");
+        return new NewPostDto(userId, LocalDate.now(), product, categoryId,100.00);
     }
 }

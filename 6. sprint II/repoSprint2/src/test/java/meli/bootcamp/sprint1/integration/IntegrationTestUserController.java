@@ -3,6 +3,7 @@ package meli.bootcamp.sprint1.integration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import meli.bootcamp.sprint1.dto.request.NewPostDto;
 import meli.bootcamp.sprint1.dto.response.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,23 +29,28 @@ public class IntegrationTestUserController {
     @Autowired
     private MockMvc mockMvc;
 
-    private ObjectWriter objectWriter = new ObjectMapper()
-            .registerModule(new JavaTimeModule())
-            .writer();
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private FollowersDto followers;
     private BaseResponseDto responseDto;
     private UserWFollowerListDto user = generateUserDtoList("name_asc");
     private LastPostsDto lastPostsDto;
+    private MockHttpServletRequestBuilder request;
+    private MvcResult result;
+
+    private ObjectWriter objectWriter = new ObjectMapper()
+            .registerModule(new JavaTimeModule())
+            .writer();
 
     @Test
     @DisplayName("Endpoint - GetFollowers -> OK")
     void testGetFollowers_Ok() throws Exception{
         followers = new FollowersDto(user.getUser_id(), user.getUser_name(), user.getFollowers().size());
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/count", 4);
+        request = MockMvcRequestBuilders.get("/users/{userId}/followers/count", 4);
 
-        MvcResult result = mockMvc.perform(request)
+        result = mockMvc.perform(request)
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -58,9 +64,9 @@ public class IntegrationTestUserController {
     void testGetFollowers_ThrowsBadRequestException() throws Exception{
         responseDto = new BaseResponseDto("User not found");
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/count", 999);
+        request = MockMvcRequestBuilders.get("/users/{userId}/followers/count", 999);
 
-        MvcResult result = mockMvc.perform(request)
+        result = mockMvc.perform(request)
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -80,10 +86,10 @@ public class IntegrationTestUserController {
                 .forEach(postDto -> service.addPost(objectMapper.convertValue(postDto, NewPostDto.class)));
         */
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/products/followed/{userId}/list", 2)
+        request = MockMvcRequestBuilders.get("/products/followed/{userId}/list", 2)
                 .param("order", order);
 
-        MvcResult result = mockMvc.perform(request)
+        result = mockMvc.perform(request)
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -98,10 +104,67 @@ public class IntegrationTestUserController {
         String order = "wrong_param";
         responseDto = new BaseResponseDto("Parameter '" + order + "' is not valid");
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/products/followed/{userId}/list", 2)
+        request = MockMvcRequestBuilders.get("/products/followed/{userId}/list", 2)
                 .param("order", order);
 
-        MvcResult result = mockMvc.perform(request)
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - AddPost -> OK")
+    void testAddPost_OK() throws Exception{
+        responseDto = new BaseResponseDto("Post added");
+        NewPostDto newPostDto = generateNewPost(1, 1);
+
+        request = MockMvcRequestBuilders.post("/products/post")
+                .content(objectWriter.writeValueAsString(newPostDto))
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - AddPost -> Exception: User Not Found")
+    void testAddPost_ThrowsBadRequestException_UserNotFound() throws Exception{
+        responseDto = new BaseResponseDto("User not found");
+        NewPostDto newPostDto = generateNewPost(999,1);
+
+        request = MockMvcRequestBuilders.post("/products/post")
+                .content(objectWriter.writeValueAsString(newPostDto))
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - AddPost -> Exception: User Not Found")
+    void testAddPost_ThrowsBadRequestException_CategoryNotFound() throws Exception{
+        responseDto = new BaseResponseDto("Category not found");
+        NewPostDto newPostDto = generateNewPost(1,999);
+
+        request = MockMvcRequestBuilders.post("/products/post")
+                .content(objectWriter.writeValueAsString(newPostDto))
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
