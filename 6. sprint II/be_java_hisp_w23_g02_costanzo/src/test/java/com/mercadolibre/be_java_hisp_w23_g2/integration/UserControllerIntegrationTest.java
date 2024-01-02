@@ -51,4 +51,31 @@ class UserControllerIntegrationTest {
                 .andExpect(content().json(responseJson));
     }
 
+    @Test
+    @DisplayName("Test that verifies the launching of the exception for creating a post that already exists")
+    void addPostIntegrationExistPostException2Test() throws Exception {
+        PostDTO postIn = new PostDTO(2, LocalDate.now().minusWeeks(1), new ProductBasicDTO(1, "MacBook Pro", "Electronics", "Apple", "Silver", "Powerful laptop for professionals"), 1, 500.0);
+        MessageDTO postOut = new MessageDTO("The product id already exists.");
+
+        ObjectMapper writer = new ObjectMapper();
+        writer.registerModule(new JavaTimeModule());
+        writer.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false).writer();
+
+        String requestJson = writer.writeValueAsString(postIn);
+        String responseJson = writer.writeValueAsString(postOut);
+
+        // Add post
+        this.mockMvc.perform(post("/products/post")
+                .contentType("application/json")
+                .content(requestJson));
+
+        this.mockMvc.perform(post("/products/post")
+                        .contentType("application/json")
+                        .content(requestJson))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJson));
+    }
+
 }
