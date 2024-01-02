@@ -64,6 +64,17 @@ public class UserControllerIntegrationTests {
                 .andExpect(jsonPath("$.message").value("This seller is already part of your followings"));
     }
 
+    @Test
+    void unfollowSeller_shouldWorkWhenSellerExistsOnFollowings() throws Exception {
+        Long userId = 1L;
+        Long sellerToUnFollowId = 6L;
+        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerToUnFollowId))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("You have just unfollowed a seller"));
+    }
+
 
 
 
