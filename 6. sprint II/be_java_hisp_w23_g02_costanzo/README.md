@@ -87,6 +87,15 @@ posts, and interact within the community.
 - [Validations]
     - Add validations in dtos classes to perform the code.
     - Responsible: [Hernan De San Vicente]
+- [Integration-Test-1]
+    - Test method to verify the addition of a new post.
+    - Responsible: [Marcos Costanzo]
+- [Integration-Test-2]
+    - Test method to verify the launching of the exception for creating a post that already exists.
+    - Responsible: [Marcos Costanzo]
+- [Integration-Test-3]
+    - Test method to verify the count of followers for a specific user.
+    - Responsible: [Marcos Costanzo]
 
 ## Technologies Used
 
