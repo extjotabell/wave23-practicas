@@ -32,4 +32,20 @@ public class UserControllerIntegrationTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Ok Return confirmation")
+    void followSellerShouldReturnConfirmation() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'message': 'Usuario seguido agregado'}";
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.post("/users/4100/follow/2100")
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isOk());
+    }
+
 }
