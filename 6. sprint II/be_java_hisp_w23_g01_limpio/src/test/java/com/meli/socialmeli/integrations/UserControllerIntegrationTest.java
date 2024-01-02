@@ -132,5 +132,4 @@ class UserControllerIntegrationTest {
                     .andExpect(status().isNotFound())
                     .andReturn().getResponse().getContentAsString();
     }
-
 }
