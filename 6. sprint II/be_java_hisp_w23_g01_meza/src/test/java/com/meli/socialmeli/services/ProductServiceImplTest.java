@@ -167,19 +167,20 @@ class ProductServiceImplTest {
     void newPostTest (){
 
         //Arrange
-        String fechaString = "2022-01-22"; // Formato: "yyyy-MM-dd"
-        LocalDate fecha = LocalDate.parse(fechaString);
+        String dateString = "2022-01-22"; // Formato: "yyyy-MM-dd"
+        LocalDate date = LocalDate.parse(dateString);
         Integer userId = 3;
         User user = getNewPostAdd();
         ProductDTO newProduct = new ProductDTO(1, "Silla", "Mueble", "MSI", "Rojo", "Nuevo" );
-        PostDTO post = new PostDTO(userId, fecha, newProduct, 1, 2000.0);
-        MessageDTO devolucion = new MessageDTO("The User " + userId +  " has created new post.");
+        PostDTO post = new PostDTO(userId, date, newProduct, 1, 2000.0);
+        MessageDTO expected = new MessageDTO("El usuario "+ user.getUser_id() + " ha creado una nueva publicación.");
 
         //Act
         when(userRepository.finById(userId)).thenReturn(user);
-        var obtenido = productService.newPost(post);
+        MessageDTO actual = productService.newPost(post);
 
         //Assert
-        Assertions.assertEquals(devolucion, obtenido);
+        Assertions.assertEquals(expected, actual);
+
     }
 }

@@ -53,7 +53,7 @@ public class UserRepositoryImpl implements IUserRepository {
             users = objectMapper.readValue(file,new TypeReference<List<User>>(){});
 
         } catch (IOException e) {
-            throw new DataSourceException("There is an internal problem with the connection to the data source.");
+            throw new DataSourceException("Ocurrió un problema interno con la conexión hacia la base de datos.");
         }
     }
 }
