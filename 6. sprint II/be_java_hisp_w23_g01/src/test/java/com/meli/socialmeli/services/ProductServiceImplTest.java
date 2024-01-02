@@ -177,11 +177,7 @@ class ProductServiceImplTest {
 
         //Act
         when(userRepository.finById(userId)).thenReturn(user);
-<<<<<<< Updated upstream
         MessageDTO actual = productService.newPost(post);
-=======
-        var actual = productService.newPost(post);
->>>>>>> Stashed changes
 
         //Assert
         Assertions.assertEquals(expected, actual);
