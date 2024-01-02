@@ -38,7 +38,19 @@ public class UserControllerIntegrationTests {
         mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
                 .andDo(print())
                 .andExpect(status().isNotFound())
-                .andExpect(content().contentType("application/json"));
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("User with id "+userId+" not found"));
+    }
+
+    @Test
+    void followSeller_shouldThrowFollowingMyselfException() throws Exception {
+        Long userId = 2L;
+        Long sellerToFollowId = 2L;
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerToFollowId))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("You can't follow yourself"));
     }
 
 
