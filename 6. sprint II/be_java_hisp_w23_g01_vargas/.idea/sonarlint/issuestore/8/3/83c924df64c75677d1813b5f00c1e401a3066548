@@ -1,0 +1,16 @@
+
+N
+java:S1602^",Remove useless curly braces around statement(ÀÅé©úÿÿÿÿ8„Œ»ÙÌ1
+N
+java:S1602n",Remove useless curly braces around statement(ÀÅé©úÿÿÿÿ8‡Œ»ÙÌ1
+O
+java:S1602€",Remove useless curly braces around statement(ÀÅé©úÿÿÿÿ8ŠŒ»ÙÌ1
+O
+java:S1602",Remove useless curly braces around statement(ÀÅé©úÿÿÿÿ8ŒŒ»ÙÌ1
+O
+java:S1602 ",Remove useless curly braces around statement(ÀÅé©úÿÿÿÿ8Œ»ÙÌ1
+p	java:S100¨"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬Á¼øÿÿÿÿ8Œ»ÙÌ1
+p	java:S100½"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıó¹îøÿÿÿÿ8Œ»ÙÌ1
+p	java:S100Ì"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔòÍŞúÿÿÿÿ8‘Œ»ÙÌ1
+O
+java:S1602Û",Remove useless curly braces around statement(¶¿Û›ÿÿÿÿÿ8ŸŒ»ÙÌ1
