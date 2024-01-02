@@ -170,4 +170,25 @@ class UserControllerIntegrationTest {
 
     }
 
+    @Test
+    @Order(7)
+    @DisplayName("Unfollow a user given their id and the id of the user to unfollow. Exception: User not follower.")
+    void unfollowUserIntegrationExceptionTest() throws Exception{
+        MessageDTO payloadResponseDTO = new MessageDTO();
+        payloadResponseDTO.setMessage("The current user does not follow the user to unfollow.");
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = mockMvc.perform(post("/users/{userId}/unfollow/{userIdToUnfollow}", 1, 6)
+                        .contentType("application/json"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+
+    }
+
 }
