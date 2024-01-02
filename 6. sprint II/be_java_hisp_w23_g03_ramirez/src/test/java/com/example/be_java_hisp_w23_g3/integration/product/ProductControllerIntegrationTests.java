@@ -1,14 +1,29 @@
 package com.example.be_java_hisp_w23_g3.integration.product;
 
+import com.example.be_java_hisp_w23_g3.dto.request.PostRequestDTO;
+import com.example.be_java_hisp_w23_g3.dto.request.ProductDTO;
+import com.example.be_java_hisp_w23_g3.entity.product.Product;
+import com.example.be_java_hisp_w23_g3.util.PostRequestDTOTestDataBuilder;
+import com.example.be_java_hisp_w23_g3.util.PostResponseDTOTestDataBuilder;
+import com.example.be_java_hisp_w23_g3.util.ProductDTOTestDataBuilder;
+import com.example.be_java_hisp_w23_g3.util.ProductTestDataBuilder;
+import com.example.be_java_hisp_w23_g3.util.mapper.PostMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
+import java.nio.charset.StandardCharsets;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -20,7 +35,23 @@ public class ProductControllerIntegrationTests {
     MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private ObjectMapper writer;
+
+    @Test
+    void postProduct_shouldReturnCorrectResponse() throws Exception {
+        Long userId = 1L;
+        Long productId = 99L;
+        ProductDTO product = new ProductDTOTestDataBuilder().productDTOByDefault().withProductId(productId).build();
+        PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder().postRequestDTOByDefault().withProduct(product).build();
+        String payloadJson = writer.writeValueAsString(postRequestDTO);
+        MvcResult mvcResult = mockMvc.perform(post("/products/post")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(payloadJson))
+                .andDo(print())
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.product.product_id").value(99))
+                .andReturn();
+    }
 
     @Test
     void followedPostsList_ReturnsCorrectResponseWithAscOrder() throws Exception {
@@ -28,7 +59,7 @@ public class ProductControllerIntegrationTests {
         String order ="DATE_ASC";
 
         mockMvc.perform(get("/products/followed/{userId}/list", userId)
-                .param("order", order))
+                        .param("order", order))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
