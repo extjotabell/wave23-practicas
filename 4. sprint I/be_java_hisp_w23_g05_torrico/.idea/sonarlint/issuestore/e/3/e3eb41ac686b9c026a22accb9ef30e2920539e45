@@ -1,0 +1,15 @@
+
+p
+java:S2293®"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÓÁ¡Â
+j
+java:S1192E"ODefine a constant instead of duplicating this literal "User not found" 5 times.(†Éóşÿÿÿÿ
+u
+java:S1488`"_Immediately return this expression instead of assigning it to the temporary variable "userDto".(Ÿ¬ñ§
+~
+java:S1488¡"gImmediately return this expression instead of assigning it to the temporary variable "userFollowedDto".(×§„
+
+java:S1488”"eImmediately return this expression instead of assigning it to the temporary variable "promoPostsDto".(ş›ÌÈúÿÿÿÿ
+f
+java:S1612­"JReplace this lambda with method reference 'this.repository::findUserById'.(ÙÛÎùÿÿÿÿ
+i
+java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
