@@ -14,19 +14,21 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static meli.bootcamp.sprint1.utils.Factory.*;
+import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class IntegrationTestUserController {
+class IntegrationTestUserController {
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
-    @DisplayName("Test: Endpoint products/post")
+    @DisplayName("Test: Endpoint /products/post")
     void newPostTest() throws Exception {
 
         String requestJson = writer().writeValueAsString(generateNewPostDto());
@@ -42,14 +44,14 @@ public class IntegrationTestUserController {
     }
 
     @Test
-    @DisplayName("Test: Endpoint products/post, throws exception Category not found")
+    @DisplayName("Test: Endpoint /products/post, throws exception Category not found")
     void newPostTestNotOkCategory() throws Exception {
 
         String requestJson = writer().writeValueAsString(generateNewPostDtoCase1());
         String message = "Category not found";
         String responseJson = writer().writeValueAsString(generateBaseResponseDto(message));
 
-        MvcResult mvcResult = this.mockMvc.perform(post("/products/post")
+        this.mockMvc.perform(post("/products/post")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andDo(print())
@@ -60,7 +62,7 @@ public class IntegrationTestUserController {
     }
 
     @Test
-    @DisplayName("Test: Endpoint products/post, throws exception User not found")
+    @DisplayName("Test: Endpoint /products/post, throws exception User not found")
     void newPostTestNotOkUser() throws Exception {
 
         String requestJson = writer().writeValueAsString(generateNewPostDtoCase2());
@@ -74,6 +76,28 @@ public class IntegrationTestUserController {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().json(responseJson))
                 .andExpect(jsonPath("$.message").value(message))
+                .andReturn();
+    }
+
+    @Test
+    @DisplayName("Test: Endpoint /users/{id}/followed/list")
+    void getFollowedTest() throws Exception {
+
+        this.mockMvc.perform(get("/users/{id}/followed/list", 1))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.followed", hasSize(3)))
+                .andReturn();
+    }
+
+    @Test
+    @DisplayName("Test: Endpoint /users/{id}/followers/list")
+    void getFollowersTest() throws Exception {
+
+        this.mockMvc.perform(get("/users/{id}/followers/list", 1))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.followers", hasSize(3)))
                 .andReturn();
     }
 
