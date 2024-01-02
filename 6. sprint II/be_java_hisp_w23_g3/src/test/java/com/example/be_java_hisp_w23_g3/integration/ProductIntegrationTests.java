@@ -5,7 +5,10 @@ import com.example.be_java_hisp_w23_g3.util.PostRequestDTOTestDataBuilder;
 import com.example.be_java_hisp_w23_g3.util.ProductDTOTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +34,7 @@ any integrations with real databases, the mentioned approach will be dismissed.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProductIntegrationTests {
 
     @Autowired
@@ -40,6 +44,7 @@ public class ProductIntegrationTests {
     private ObjectMapper objectMapper;
 
     @Test
+    @Order(1)
     void postProduct_shouldReturnAndCreateAPost() throws Exception {
         PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder()
                 .postRequestDTOByDefault()
@@ -69,6 +74,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(2)
     void postProduct_shouldThrowAlreadyExistsException() throws Exception {
         PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder()
                 .postRequestDTOByDefault()
@@ -93,6 +99,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(3)
     void postProduct_shouldThrowNotFoundException() throws Exception {
         PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder()
                 .postRequestDTOByDefault()
@@ -118,6 +125,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(4)
     void postProduct_shouldThrowValidationExceptionWhenProductInvalid() throws Exception {
         PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder()
                 .postRequestDTOByDefault()
@@ -143,6 +151,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(5)
     void postProduct_shouldThrowValidationExceptionWhenPriceInvalid() throws Exception {
         PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder()
                 .postRequestDTOByDefault()
@@ -169,6 +178,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(6)
     void postProduct_shouldThrowValidationExceptionWhenDateInvalid() throws Exception {
         PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder()
                 .postRequestDTOByDefault()
@@ -199,6 +209,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(7)
     void followedPostsList_shouldReturnValidPostsList() throws Exception {
         Long userId = 1L;
 
@@ -212,6 +223,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(8)
     void followedPostsList_shouldReturnValidPostsListWithOrderParam() throws Exception {
         Long userId = 1L;
         String order = "date_asc";
@@ -227,6 +239,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(9)
     void followedPostsList_shouldThrowInvalidExceptionOrderParam() throws Exception {
         Long userId = 1L;
         String order = "invalid order param";
@@ -242,6 +255,7 @@ public class ProductIntegrationTests {
     }
 
     @Test
+    @Order(10)
     void followedPostsList_shouldThrowNotFoundException() throws Exception {
         Long userId = 101L;
 

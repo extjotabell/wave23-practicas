@@ -1,6 +1,9 @@
 package com.example.be_java_hisp_w23_g3.integration;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,12 +28,14 @@ any integrations with real databases, the mentioned approach will be dismissed.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserIntegrationTests {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
+    @Order(1)
     void getFollowersList_shouldReturnValidPostsList() throws Exception {
         Long userId = 6L;
 
@@ -44,6 +49,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(2)
     void getFollowersList_shouldReturnValidPostsListWithOrderParam() throws Exception {
         Long userId = 6L;
         String order = "name_asc";
@@ -59,6 +65,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(3)
     void getFollowersList_shouldThrowInvalidExceptionOrderParam() throws Exception {
         Long userId = 6L;
         String order = "invalid order param";
@@ -74,6 +81,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(4)
     void getFollowersList_shouldThrowNotFoundException() throws Exception {
         Long userId = 101L;
 
@@ -86,6 +94,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(5)
     void getFollowersCount_shouldReturnValidCount() throws Exception {
         Long userId = 6L;
 
@@ -99,6 +108,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(6)
     void getFollowersCount_shouldThrowNotFoundException() throws Exception {
         Long userId = 101L;
 
@@ -111,6 +121,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(7)
     void getFollowedSellerList_shouldReturnValidSellersList() throws Exception {
         Long userId = 1L;
 
@@ -124,6 +135,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(8)
     void getFollowedSellerList_shouldReturnValidSellersListWithOrderParam() throws Exception {
         Long userId = 1L;
         String order = "name_asc";
@@ -139,6 +151,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(9)
     void getFollowedSellerList_shouldThrowInvalidExceptionOrderParam() throws Exception {
         Long userId = 1L;
         String order = "invalid order param";
@@ -154,6 +167,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(10)
     void getFollowedSellerList_shouldThrowNotFoundException() throws Exception {
         Long userId = 101L;
 
@@ -166,6 +180,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(11)
     void followSeller_shouldReturnValidMessage() throws Exception {
         Long userId = 1L;
         Long userIdToFollow = 9L;
@@ -178,6 +193,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(12)
     void followSeller_shouldThrowAlreadyFollowingException() throws Exception {
         Long userId = 1L;
         Long userIdToFollow = 7L;
@@ -190,6 +206,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(13)
     void followSeller_shouldThrowFollowingMyselfException() throws Exception {
         Long userId = 1L;
         Long userIdToFollow = 1L;
@@ -202,6 +219,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(14)
     void followSeller_shouldThrowNotFoundExceptionBySeller() throws Exception {
         Long userId = 1L;
         Long userIdToFollow = 2L;
@@ -214,6 +232,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(15)
     void followSeller_shouldThrowNotFoundExceptionByUser() throws Exception {
         Long userId = 101L;
         Long userIdToFollow = 6L;
@@ -226,6 +245,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(16)
     void unfollowSeller_shouldReturnValidMessage() throws Exception {
         Long userId = 1L;
         Long userIdToUnFollow = 6L;
@@ -238,6 +258,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(17)
     void unfollowSeller_shouldThrowNotFollowingException() throws Exception {
         Long userId = 1L;
         Long userIdToUnFollow = 10L;
@@ -250,6 +271,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(18)
     void unfollowSeller_shouldThrowUnfollowingMyselfException() throws Exception {
         Long userId = 1L;
         Long userIdToUnFollow = 1L;
@@ -262,6 +284,7 @@ public class UserIntegrationTests {
     }
 
     @Test
+    @Order(19)
     void unfollowSeller_shouldThrowNotFoundExceptionByUser() throws Exception {
         Long userId = 101L;
         Long userIdToUnFollow = 6L;
