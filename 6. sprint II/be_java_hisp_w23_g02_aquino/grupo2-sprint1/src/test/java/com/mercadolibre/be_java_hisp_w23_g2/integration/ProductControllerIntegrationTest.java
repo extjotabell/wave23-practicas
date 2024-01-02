@@ -76,4 +76,39 @@ class ProductControllerIntegrationTest {
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
     }
 
+    @Test
+    @DisplayName("Add a new post. Exception: Current user not exists.")
+    void addPostException() throws Exception{
+        ProductBasicDTO productBasicDTO = new ProductBasicDTO();
+        productBasicDTO.setId(1000);
+        productBasicDTO.setBrand("Brand");
+        productBasicDTO.setName("Name");
+        productBasicDTO.setType("Type");
+        productBasicDTO.setColor("color");
+        productBasicDTO.setNotes("Notes");
+
+        PostDTO payloadRequestDTO = new PostDTO();
+        payloadRequestDTO.setUserId(101);
+        payloadRequestDTO.setCategory(1);
+        payloadRequestDTO.setDate(LocalDate.now());
+        payloadRequestDTO.setPrice(10000.0);
+        payloadRequestDTO.setProduct(productBasicDTO);
+
+        MessageDTO payloadResponseDTO = new MessageDTO("Current user with id = 101 not exists.");
+
+        String payloadRequestJson = writer.writeValueAsString(payloadRequestDTO);
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = mockMvc.perform(post("/products/post")
+                        .contentType("application/json")
+                        .content(payloadRequestJson))
+                .andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+    }
+
 }
