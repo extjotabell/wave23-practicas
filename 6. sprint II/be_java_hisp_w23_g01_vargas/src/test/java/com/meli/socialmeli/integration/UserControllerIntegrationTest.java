@@ -167,4 +167,28 @@ class UserControllerIntegrationTest {
                 .andExpect(content().json(responseJSONExpected))
                 .andExpect(status().isNotFound());
     }
+
+
+    @Test
+    @DisplayName("GET: /{userId}/followers/count - Return the number of followers")
+    void getFollowersCountShouldReturnNumberOfFollowers() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'user_id': 100, 'user_name': 'Roach', 'followers_count': 2}";
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/2100/follow/100")
+                        .contentType(MediaType.APPLICATION_JSON));
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/3100/follow/100")
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders.get("/users/100/followers/count")
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isOk());
+    }
 }
