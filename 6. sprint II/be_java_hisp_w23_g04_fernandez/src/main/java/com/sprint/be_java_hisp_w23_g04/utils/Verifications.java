@@ -109,7 +109,7 @@ public class Verifications {
      */
     public static void verifySellerIsFollowedByUser(User user, User seller){
         if (!sellerIsAlreadyFollowedByUser(user, seller)) {
-            throw new BadRequestException("El vendedor con id:" + user.getId() + " no es seguido por el usuario con id:" + seller.getId());
+            throw new BadRequestException("El vendedor con id:" + seller.getId() + " no es seguido por el usuario con id:" + user.getId());
         }
     }
 

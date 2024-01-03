@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.sprint.be_java_hisp_w23_g04.dto.response.BuyerDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.SellerDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.SimpleMessageDTO;
+import com.sprint.be_java_hisp_w23_g04.exception.BadRequestException;
 import com.sprint.be_java_hisp_w23_g04.utils.UtilsIntegrationTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -504,6 +505,91 @@ public class UserMeliControllerIntegrationTest {
 
         mockMvc.perform(request)
                 .andExpect(statusExpected) // Verify status code 400
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    /** Testing US-0007: POST /users/{userId}/unfollow/{userIdToUnfollow} **/
+    @Test
+    @DisplayName("Unfollow user: User should left to follow the seller indicated and show the correct unfollow message")
+    public void unfollowUserTest() throws Exception {
+        //Arrange
+        SimpleMessageDTO expectedMessage = new SimpleMessageDTO("El usuario Penelope cruz Id: 7 ya no es seguido por el usuario Diego Lopez Id: 6");
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/users/{userId}/unfollow/{userIdToUnfollow}",6,7);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isAccepted();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedMessage));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 202
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    @Test
+    @DisplayName("Unfollow user - User not Found: Should inform error")
+    public void unfollowUserTestUserNotFound() throws Exception {
+        //Arrange
+        SimpleMessageDTO expectedMessage = UtilsIntegrationTests.generateUserNotFoundMessage(55);
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/users/{userId}/unfollow/{userIdToUnfollow}",55,1);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedMessage));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 404
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    @Test
+    @DisplayName("Unfollow user - Seller not Found: Should inform error")
+    public void unfollowUserTestSellerNotFound() throws Exception {
+        //Arrange
+        SimpleMessageDTO expectedMessage = UtilsIntegrationTests.generateUserNotFoundMessage(55);
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/users/{userId}/unfollow/{userIdToUnfollow}",4,55);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedMessage));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 404
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
+    @Test
+    @DisplayName("Unfollow user - User not follows the seller: Should inform user not follow the seller")
+    public void unfollowUserTestUserNotFollowSeller() throws Exception {
+        //Arrange
+        SimpleMessageDTO expectedMessage = new SimpleMessageDTO("El vendedor con id:8 no es seguido por el usuario con id:6");
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/users/{userId}/unfollow/{userIdToUnfollow}",6,8);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isBadRequest();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedMessage));
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 404
                 .andExpect(contentType) // Verify is content type is Application Json
                 .andExpect(contentExpected) // Verify is the response has correct message
                 .andDo(MockMvcResultHandlers.print()); // Show the request
