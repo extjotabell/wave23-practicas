@@ -183,7 +183,18 @@ URL base: http://localhost:8080
 
 
 
+## Pruebas de integración (Individual obligatorio)
 
+
+
+**[POST] US 0001:** Poder realizar la acción de “Follow” (seguir) a un determinado vendedor:
+
+    /users/{userId}/follow/{userIdToFollow}
+
+**T-0010:** Usuario logra seguir al otro usuario con éxito
+
+
+**Ejemplo:** /users/123/follow/234
 ## Integrantes:
 - Andres Alejandro Limpio
 - Alfredo Tonatiuh Diaz

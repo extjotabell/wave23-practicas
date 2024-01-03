@@ -33,7 +33,7 @@ public class UserIntegrationTest {
     }
 
     @Test
-    @DisplayName("/users/{userId}/follow/{userIdToFollow} : Usuario logra seguir al otro usuario con éxito")
+    @DisplayName("/users/{userId}/follow/{userIdToFollow} ; T-0010: Usuario logra seguir al otro usuario con éxito")
     void AddFollowerIntegrationTest() throws Exception{
         // Arrange & Act & Assert
         this.mockMvc
