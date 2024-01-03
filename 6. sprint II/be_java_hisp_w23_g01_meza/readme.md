@@ -206,6 +206,14 @@ URL base: http://localhost:8080
 
 **T-0012**: Usuario no puede seguirse a el mismo.
 
+
+
+2. **[GET] US 0002:** Obtener el resultado de la cantidad de usuarios que siguen a un determinado vendedor:
+
+**T-0013**: Usuario no tiene seguidores entonces el conteo es 0
+
+
+
 ## Integrantes:
 - Andres Alejandro Limpio
 - Alfredo Tonatiuh Diaz
