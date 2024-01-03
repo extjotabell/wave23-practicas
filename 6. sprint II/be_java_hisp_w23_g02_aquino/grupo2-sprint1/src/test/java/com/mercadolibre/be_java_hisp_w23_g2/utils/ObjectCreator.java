@@ -1,7 +1,10 @@
 package com.mercadolibre.be_java_hisp_w23_g2.utils;
 
 import com.mercadolibre.be_java_hisp_w23_g2.dto.ProductBasicDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.UserBasicDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowedDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersCountDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Post;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Product;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.User;
@@ -71,5 +74,29 @@ public class ObjectCreator {
     payloadRequestDTO.setProduct(productBasicDTO);
 
     return payloadRequestDTO;
+  }
+
+  public static UserFollowersCountDTO createUserFollowersCount() {
+    UserFollowersCountDTO payloadResponseDTO = new UserFollowersCountDTO();
+    payloadResponseDTO.setId(1);
+    payloadResponseDTO.setUserName("John Doe");
+    payloadResponseDTO.setFollowersCount(2);
+
+    return payloadResponseDTO;
+  }
+
+  public static UserFollowedDTO createUserFollowed() {
+    List<UserBasicDTO> followedExpectedDTO = List.of(
+            new UserBasicDTO(4, "Eve Wilson"),
+            new UserBasicDTO(5, "Charlie Brown"),
+            new UserBasicDTO(2, "Alice Smith")
+    );
+
+    UserFollowedDTO payloadResponseDTO = new UserFollowedDTO();
+    payloadResponseDTO.setId(1);
+    payloadResponseDTO.setUserName("John Doe");
+    payloadResponseDTO.setFollowed(followedExpectedDTO);
+
+    return payloadResponseDTO;
   }
 }
