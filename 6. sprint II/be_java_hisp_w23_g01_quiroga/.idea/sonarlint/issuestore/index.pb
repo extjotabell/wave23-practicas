@@ -17,3 +17,7 @@ w
 Gsrc/main/java/com/meli/socialmeli/services/impl/ProductServiceImpl.java,1/4/149157a05093f23dcb60a24ac3a076deb7bf738f
 q
 Asrc/main/java/com/meli/socialmeli/controllers/UserController.java,5/6/5668cad2ff0eaa3f4aa84388cc566121ede1537b
+‚
+Rsrc/test/java/com/meli/socialmeli/integrationtest/UserServicesTestIntegration.java,8/0/80bfa2b7acbe63ebe1707f593eebe19bc24cef8b
+t
+Dsrc/main/java/com/meli/socialmeli/services/impl/UserServiceImpl.java,8/0/8054d8957aa0bca2370bf979ea92eee02ed750eb
