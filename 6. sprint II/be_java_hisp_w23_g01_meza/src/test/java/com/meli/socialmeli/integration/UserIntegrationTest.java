@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.meli.socialmeli.dtos.response.FollowersCountDTO;
+import com.meli.socialmeli.services.IUserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -13,10 +14,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -30,6 +29,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class UserIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private IUserService userService;
     private static ObjectWriter objectWriter;
 
     @BeforeAll
@@ -102,6 +104,29 @@ public class UserIntegrationTest {
                 ))
                 .andDo(print())
         // Assert
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        Assertions.assertEquals(expected, mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("/users/{userId}/followers/count ; T-0013: Usuario tiene seguidores entonces el conteo es mayor a cero")
+    void countFollowersUserFollowsOtherUsersIntegrationTest() throws Exception {
+        // Arrange & Act
+        Integer user_id = 1100;
+        String expected = objectWriter.writeValueAsString(new FollowersCountDTO(user_id,"Dudley", 3));
+        userService.followSeller(100, 1100);
+        userService.followSeller(2100, 1100);
+        userService.followSeller(3100, 1100);
+
+        MvcResult mvcResult = this.mockMvc
+                .perform(get(
+                        "/users/{userId}/followers/count", "1100"
+                ))
+                .andDo(print())
+                // Assert
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
