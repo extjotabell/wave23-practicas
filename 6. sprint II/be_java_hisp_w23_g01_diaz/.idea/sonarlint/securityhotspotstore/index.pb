@@ -23,3 +23,17 @@ l
 <src/main/java/com/meli/socialmeli/services/IUserService.java,e/e/eec880311e564814cd6cb77929226aa905e3069a
 z
 Jsrc/test/java/com/meli/socialmeli/unit/controllers/UserControllerTest.java,3/8/387f6434ec520dc8b58a07ac0eae432cd72378de
+„
+Tsrc/test/java/com/meli/socialmeli/integration/ProductControllerIntegrationTests.java,5/3/5359eb21305c616e7ee0cbe3f63841dda662e403
+k
+;src/main/java/com/meli/socialmeli/dtos/request/PostDTO.java,7/e/7e136efb267954d848027050ffcf97fa4f19a688
+o
+?src/main/java/com/meli/socialmeli/dtos/response/ProductDTO.java,1/6/1665dbcbd970c0cff27a402dfa0cf40ea2008772
+w
+Gsrc/main/java/com/meli/socialmeli/services/impl/ProductServiceImpl.java,1/4/149157a05093f23dcb60a24ac3a076deb7bf738f
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+q
+Asrc/main/java/com/meli/socialmeli/dtos/response/ExceptionDTO.java,c/1/c11ba58482b136bae42852dc6e2be32afa0affda
+~
+Nsrc/main/java/com/meli/socialmeli/repositories/impl/ProductRepositoryImpl.java,c/e/ce2a8d22a9064e017bff1ecc8da43f05df114511
