@@ -83,11 +83,34 @@
       <recent name="com.mercadolibre.be_java_hisp_w23_g2.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerIntegrationTest.getFollowersSeller">
-    <configuration name="All in grupo2-sprint1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.java in grupo2-sprint1-individual">
+    <configuration name="ProductControllerIntegrationTest.addPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="grupo2-sprint1-individual" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mercadolibre.be_java_hisp_w23_g2.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration.ProductControllerIntegrationTest" />
+      <option name="METHOD_NAME" value="addPost" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="grupo2-sprint1-individual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mercadolibre.be_java_hisp_w23_g2.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration.UserControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -124,23 +147,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserControllerIntegrationTest.unfollowUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="grupo2-sprint1-individual" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.mercadolibre.be_java_hisp_w23_g2.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration.UserControllerIntegrationTest" />
-      <option name="METHOD_NAME" value="unfollowUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="java in grupo2-sprint1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="java in grupo2-sprint1-individual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="grupo2-sprint1-individual" />
       <option name="TEST_OBJECT" value="directory" />
       <dir value="$PROJECT_DIR$/src/test/java" />
@@ -158,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.java in grupo2-sprint1-individual" />
+        <item itemvalue="JUnit.ProductControllerIntegrationTest.addPost" />
+        <item itemvalue="JUnit.UserControllerIntegrationTest" />
         <item itemvalue="JUnit.UserControllerIntegrationTest.getFollowersSeller" />
         <item itemvalue="JUnit.UserControllerIntegrationTest.getFollowersCountSellerWhenUserExists" />
-        <item itemvalue="JUnit.UserControllerIntegrationTest.unfollowUser" />
-        <item itemvalue="JUnit.java in grupo2-sprint1" />
-        <item itemvalue="JUnit.All in grupo2-sprint1" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +199,7 @@
       <workItem from="1704223988521" duration="150000" />
       <workItem from="1704224242532" duration="1946000" />
       <workItem from="1704228979417" duration="1491000" />
-      <workItem from="1704285241419" duration="455000" />
+      <workItem from="1704285241419" duration="2036000" />
     </task>
     <task id="LOCAL-00001" summary="fixup! list followers of user repaired">
       <option name="closed" value="true" />
@@ -296,6 +303,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/grupo2_sprint2_individual$java_in_grupo2_sprint1_individual.ic" NAME="java in grupo2-sprint1-individual Coverage Results" MODIFIED="1704285851457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704222956541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$integration_in_grupo2_sprint1.ic" NAME="integration in grupo2-sprint1 Coverage Results" MODIFIED="1704205572130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$UserControllerIntegrationTest.ic" NAME="UserControllerIntegrationTest Coverage Results" MODIFIED="1704209850670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
