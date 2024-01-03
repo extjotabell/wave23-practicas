@@ -83,11 +83,34 @@
       <recent name="com.mercadolibre.be_java_hisp_w23_g2.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerIntegrationTest.getFollowersSeller">
-    <configuration name="All in grupo2-sprint1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ProductControllerIntegrationTest.addPost">
+    <configuration name="ProductControllerIntegrationTest.addPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="grupo2-sprint1-individual" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mercadolibre.be_java_hisp_w23_g2.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration.ProductControllerIntegrationTest" />
+      <option name="METHOD_NAME" value="addPost" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="grupo2-sprint1-individual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mercadolibre.be_java_hisp_w23_g2.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration.UserControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,14 +163,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="java in grupo2-sprint1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="grupo2-sprint1-individual" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BeJavaHispW23G2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="grupo2-sprint1-individual" />
@@ -158,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProductControllerIntegrationTest.addPost" />
+        <item itemvalue="JUnit.UserControllerIntegrationTest" />
         <item itemvalue="JUnit.UserControllerIntegrationTest.getFollowersSeller" />
         <item itemvalue="JUnit.UserControllerIntegrationTest.getFollowersCountSellerWhenUserExists" />
         <item itemvalue="JUnit.UserControllerIntegrationTest.unfollowUser" />
-        <item itemvalue="JUnit.java in grupo2-sprint1" />
-        <item itemvalue="JUnit.All in grupo2-sprint1" />
       </list>
     </recent_temporary>
   </component>
