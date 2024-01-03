@@ -37,6 +37,7 @@ public class PostMediaServiceImpl implements IPostMediaService {
      */
     @Override
     public SimpleMessageDTO savePost(PostDTO postDTO) {
+        //TODO remove unused list posts
         List<Post> posts = new ArrayList<>();
         User user = userGateway.findUser(postDTO.getUserId());
 

@@ -58,7 +58,7 @@ public class UserMeliControllerIntegrationTest {
     @DisplayName("Follow user - User not exists: Invalid userdId, should inform user not exists")
     public void followUserIntegrationTestUserNotFound() throws Exception {
         //Arrange
-        SimpleMessageDTO expectedMessage = new SimpleMessageDTO("No se encontró usuario con el id 99.");
+        SimpleMessageDTO expectedMessage = UtilsIntegrationTests.generateUserNotFoundMessage(99);
 
         //Request
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/users/{userId}/follow/{userIdToFollow}",99,7);
@@ -206,7 +206,7 @@ public class UserMeliControllerIntegrationTest {
     @DisplayName("Followers count - Invalid userId: Should inform error")
     public void followersCountTestInvalidUserId() throws Exception {
         //Arrange
-        SimpleMessageDTO expectedResponse = new SimpleMessageDTO("No se encontró usuario con el id 66.");
+        SimpleMessageDTO expectedResponse = UtilsIntegrationTests.generateUserNotFoundMessage(66);
 
         //Request
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/count",66);
@@ -293,7 +293,7 @@ public class UserMeliControllerIntegrationTest {
     @DisplayName("List followers - Invalid userId: Should inform error message")
     public void getFollowersByUserIdTestInvalidUserId() throws Exception {
         //Arrange
-        SimpleMessageDTO expectedMessage = new SimpleMessageDTO("No se encontró usuario con el id 99.");
+        SimpleMessageDTO expectedMessage = UtilsIntegrationTests.generateUserNotFoundMessage(99);
 
         //Request
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followers/list",99);
@@ -414,7 +414,7 @@ public class UserMeliControllerIntegrationTest {
     @DisplayName("List seller followed - User not found: Should inform error message")
     public void getFollowedByUserIdTestUserNotFound() throws Exception {
         //Arrange
-        SimpleMessageDTO expectedMessage = new SimpleMessageDTO("No se encontró usuario con el id 99.");
+        SimpleMessageDTO expectedMessage = UtilsIntegrationTests.generateUserNotFoundMessage(99);
 
         //Request
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/{userId}/followed/list",99);
