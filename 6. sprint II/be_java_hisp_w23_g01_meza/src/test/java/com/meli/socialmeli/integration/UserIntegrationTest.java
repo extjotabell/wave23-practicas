@@ -3,6 +3,8 @@ package com.meli.socialmeli.integration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.meli.socialmeli.dtos.response.FollowersCountDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -31,8 +36,7 @@ public class UserIntegrationTest {
     public static void setUp() {
         objectWriter = new ObjectMapper()
                 .configure(SerializationFeature.WRAP_ROOT_VALUE, false)
-                .writer()
-                .withDefaultPrettyPrinter();
+                .writer();
     }
 
     @Test
@@ -72,8 +76,7 @@ public class UserIntegrationTest {
     }
 
     @Test
-    @DisplayName("/users/{userId}/follow/{userIdToFollow} ; " +
-            "T-0012: Usuario no puede seguirse a el mismo.")
+    @DisplayName("/users/{userId}/follow/{userIdToFollow} ; T-0012: Usuario no puede seguirse a el mismo.")
     void AddFollowerTryFollowsItselfIntegrationTest() throws Exception{
         // Arrange & Act & Assert
         this.mockMvc
@@ -86,6 +89,24 @@ public class UserIntegrationTest {
                         content().contentType("application/json"),
                         jsonPath("$.message").value("Usuario inválido para seguir")
                 );
+    }
+
+    @Test
+    @DisplayName("/users/{userId}/followers/count ; T-0013: Usuario no tiene seguidores entonces el conteo es 0")
+    void countFollowersIntegrationTest() throws Exception {
+        // Arrange & Act
+        String expected = objectWriter.writeValueAsString(new FollowersCountDTO(1100,"Dudley", 0));
+        MvcResult mvcResult = this.mockMvc
+                .perform(get(
+                        "/users/{userId}/followers/count", "1100"
+                ))
+                .andDo(print())
+        // Assert
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        Assertions.assertEquals(expected, mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8));
     }
 
 }
