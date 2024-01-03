@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-public class ProductControllerIntegrationTests {
+public class ProductIntegrationTests {
     @Autowired
     MockMvc mockMvc;
 
