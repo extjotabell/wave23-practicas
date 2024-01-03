@@ -1,7 +1,11 @@
 package com.mercadolibre.be_java_hisp_w23_g2.utils;
 
 import com.mercadolibre.be_java_hisp_w23_g2.dto.ProductBasicDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.UserBasicDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowedDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersCountDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Post;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Product;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.User;
@@ -68,5 +72,35 @@ public class ObjectCreator {
 
   public static PostDTO createPostDTOExists() {
     return new PostDTO(1, LocalDate.of(2023, 1, 15),createProductBasicDTOExists(),100,1200.00);
+  }
+
+  public static UserFollowersCountDTO createUserFollowersCountDTO() {
+    return new UserFollowersCountDTO(10,"Noah Miller",2);
+  }
+
+  public static UserFollowersDTO createUserFollowersDTO() {
+    return  new UserFollowersDTO(1,"John Doe",List.of(
+            new UserBasicDTO(2, "Alice Smith"),new UserBasicDTO(3, "Bob Jones")));
+  }
+
+  public static UserFollowedDTO createUserFollowedDTOdesc() {
+    return  new UserFollowedDTO(1,"John Doe", List.of(new UserBasicDTO(4, "Eve Wilson"),
+            new UserBasicDTO(5, "Charlie Brown")));
+
+
+  }
+
+  public static UserFollowedDTO createUserFollowedDTOasc() {
+    return  new UserFollowedDTO(1,"John Doe", List.of(
+            new UserBasicDTO(5, "Charlie Brown"),new UserBasicDTO(4, "Eve Wilson")));
+
+
+  }
+
+  public static UserFollowedDTO createUserFollowedDTO() {
+    return  new UserFollowedDTO(2,"Alice Smith", List.of(new UserBasicDTO(4, "Eve Wilson"),
+            new UserBasicDTO(5, "Charlie Brown"),new UserBasicDTO(15, "Mia Wright")));
+
+
   }
 }

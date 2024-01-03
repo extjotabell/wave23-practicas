@@ -445,6 +445,20 @@ class UserServiceTest {
   }
 
   @Test
+  @DisplayName("T-0007: Followers count seller. Exception.")
+  void getFollowersCountSellerNOKTest() {
+    // ARRANGE
+    when(repository.findUserById(1)).thenReturn(null);
+
+    // ACT & ASSERT
+    NotFoundException exception = assertThrows(NotFoundException.class, () -> {
+      service.getFollowersCountSeller(1);
+    });
+
+    assertEquals(String.format("Current user with id = %d not exists.", 1), exception.getMessage());
+  }
+
+  @Test
   @DisplayName("T-0008: Test method to obtain posts with the last two weeks old.")
   void getPostsWithLastTwoWeeksOld() {
     //ARRANGE
