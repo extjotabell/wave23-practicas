@@ -7,7 +7,7 @@
     <list default="true" id="9913b44c-f52a-4220-9829-edafca121b6a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/ProductIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/ProductIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +50,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProductIntegrationTest.createProductReturnConfirmation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="socialmeli" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.meli.socialmeli.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.meli.socialmeli.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integration.ProductIntegrationTest" />
+      <option name="METHOD_NAME" value="createProductReturnConfirmation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
@@ -81,22 +97,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserIntegrationTest.AddFollowerTryFollowInexistenUserIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="socialmeli" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.meli.socialmeli.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.meli.socialmeli.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integration.UserIntegrationTest" />
-      <option name="METHOD_NAME" value="AddFollowerTryFollowInexistenUserIntegrationTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserIntegrationTest.getFollowersByIdShouldReturnListAsc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
@@ -116,10 +116,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in socialmeli" />
+        <item itemvalue="JUnit.ProductIntegrationTest.createProductReturnConfirmation" />
         <item itemvalue="JUnit.UserIntegrationTest.getFollowersByIdShouldReturnListAsc" />
         <item itemvalue="JUnit.UserIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.AddFollowerInexistenUserIntegrationTest" />
-        <item itemvalue="JUnit.UserIntegrationTest.AddFollowerTryFollowInexistenUserIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -155,6 +155,15 @@
           </properties>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/ProductIntegrationTest.java</url>
+          <line>52</line>
+          <properties class="com.meli.socialmeli.integration.ProductIntegrationTest" method="createProductReturnConfirmation">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
           <line>140</line>
@@ -164,6 +173,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_meza$All_in_socialmeli.ic" NAME="All in socialmeli Coverage Results" MODIFIED="1704314965185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_meza$All_in_socialmeli.ic" NAME="All in socialmeli Coverage Results" MODIFIED="1704316767838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

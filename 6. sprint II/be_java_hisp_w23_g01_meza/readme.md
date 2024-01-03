@@ -228,6 +228,14 @@ URL base: http://localhost:8080
 
 **T-0017**: Retorna una lista de seguidores de forma ascendente.
 
+
+
+**[POST] US 0005:** Dar de alta una nueva publicación
+
+    /products/post
+
+**T-0018**: Verificar que la creación del producto sea permitido.
+
 ## Integrantes:
 - Andres Alejandro Limpio
 - Alfredo Tonatiuh Diaz
