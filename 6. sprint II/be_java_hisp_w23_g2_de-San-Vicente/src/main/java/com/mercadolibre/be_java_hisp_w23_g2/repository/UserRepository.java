@@ -9,12 +9,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
 /**
  * Repository class for handling user-related operations.
  */
+@Profile("default")
 @Repository
 public class UserRepository implements IUserRepository {
 
