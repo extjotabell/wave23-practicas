@@ -34,7 +34,7 @@ public class ProductControllerIntegrationTest {
             .writer().withDefaultPrettyPrinter();
 
     @Test
-    @DisplayName("POST: /products - Return creation confirmation")
+    @DisplayName("POST: /products - Retorna confirmación de creación de producto")
     void createProductReturnConfirmation() throws Exception {
         //Arrange
         ProductDTO productDTO = new ProductDTO(111, "Camisa", "Camisa polo", "Polo", "blue", "algodon puro");

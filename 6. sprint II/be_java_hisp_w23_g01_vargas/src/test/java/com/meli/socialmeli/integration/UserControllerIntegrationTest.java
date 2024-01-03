@@ -22,7 +22,7 @@ class UserControllerIntegrationTest {
     MockMvc mockMvc;
 
     @Test
-    @DisplayName("GET: /users - Return a list of users")
+    @DisplayName("GET: /users - Retorna una lista de usuarios")
     void getAllUsersShouldReturnList() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders.get("/users")
@@ -33,7 +33,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Ok Return confirmation")
+    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Verifica seguimiento - Retorna confirmación")
     void followSellerShouldReturnConfirmation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'message': 'Usuario seguido agregado'}";
@@ -49,7 +49,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Seller Already Followed Return error explanation")
+    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Vendedor seguido con anterioridad - Retorna explicación")
     void followSellerAlreadyFollowedShouldReturnExplanation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'message': 'El usuario ya sigue al usuario deseado'}";
@@ -68,7 +68,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Invalid Follower Return error explanation")
+    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Usuario seguidor invalido - Retorna explicación")
     void followSellerInvalidIDFollowerShouldReturnExplanation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'message': 'Usuario seguidor no encontrado'}";
@@ -87,7 +87,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Invalid Seller Return error explanation")
+    @DisplayName("POST: /users/{userId}/follow/{userIdToFollow} - Usuario vendedor invalido - Retorna explicación")
     void followSellerInvalidIDFollowedShouldReturnExplanation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'message': 'Usuario a seguir no encontrado'}";
@@ -106,7 +106,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("GET: /users/{userId}/followers/list?order=name_asc - Return a list of followers - Order by name asc")
+    @DisplayName("GET: /users/{userId}/followers/list?order=name_asc -Retorna una lista de seguidores - Ordenado por nombre ascendente")
     void getFollowersByIdShouldReturnListAsc() throws Exception {
         //Arrange
         String responseJSONExpected = "{'user_id': 100, 'user_name': 'Roach', " +
@@ -130,7 +130,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("GET: /users/{userId}/followers/list?order=name_desc - Return a list of followers Order by name desc")
+    @DisplayName("GET: /users/{userId}/followers/list?order=name_desc - Retorna una lista de seguidores - Ordenado por nombre descendente")
     void getFollowersByIdShouldReturnListDesc() throws Exception {
         //Arrange
         String responseJSONExpected = "{'user_id': 100, 'user_name': 'Roach', " +
@@ -154,7 +154,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("GET: /users/{userId}/followers/list?order=name_desc - Invalid ID Return error explanation")
+    @DisplayName("GET: /users/{userId}/followers/list?order=name_desc - ID de Usuario invalido - Retorna explicación")
     void getFollowersByInvalidIdShouldReturnExplanation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'message':'No existe usuario con el id: 10999990'}";
@@ -170,7 +170,7 @@ class UserControllerIntegrationTest {
 
 
     @Test
-    @DisplayName("GET: /{userId}/followers/count - Return the number of followers")
+    @DisplayName("GET: /{userId}/followers/count - Retorna el numero de seguidores del usuario")
     void getFollowersCountShouldReturnNumberOfFollowers() throws Exception {
         //Arrange
         String responseJSONExpected = "{'user_id': 100, 'user_name': 'Roach', 'followers_count': 2}";
@@ -193,7 +193,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("GET: /{userId}/followers/count - Invalid ID Return error explanation")
+    @DisplayName("GET: /{userId}/followers/count - ID  de usuario invalido - Retorna explicación")
     void getFollowersCountInvalidIdShouldReturnExplanation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'message':'Usuario no encontrado'}";
@@ -208,7 +208,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("GET: /users/{userId}/followed/list?order=name_asc - Return a list of followed - Order by name asc")
+    @DisplayName("GET: /users/{userId}/followed/list?order=name_asc - Retorna una lista de seguidos - Ordenado por nombre ascendente")
     void getFollowedByIdShouldReturnListAsc() throws Exception {
         //Arrange
         String responseJSONExpected = "{'user_id': 4100, 'user_name': 'Garner', " +
@@ -233,7 +233,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("GET: /users/{userId}/followed/list?order=name_asc - Return a list of followed - Order by name desc")
+    @DisplayName("GET: /users/{userId}/followed/list?order=name_asc - Retorna una lista de seguidos - Ordenado por nombre descendente")
     void getFollowedByIdShouldReturnListDesc() throws Exception {
         //Arrange
         String responseJSONExpected = "{'user_id': 4100, 'user_name': 'Garner', " +
@@ -258,7 +258,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("GET: /users/{userId}/followed/list?order=name_asc - Invalid ID Return error explanation")
+    @DisplayName("GET: /users/{userId}/followed/list?order=name_asc - ID de usuario invalido - Retorna explicación")
     void getFollowedByInvalidIdShouldReturnExplanation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'message':'No existe usuario con el id: 10999990'}";
@@ -273,7 +273,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST: /{userId}/unfollow/{userIdToUnfollow} - Return confirmation")
+    @DisplayName("POST: /{userId}/unfollow/{userIdToUnfollow} - Retorna confirmación de dejar de seguir")
     void getUnfollowShouldReturnConfirmation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'userId':2100,'userIdToUnfollow':100}";
@@ -293,7 +293,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("POST: /{userId}/unfollow/{userIdToUnfollow} - Invalid ID Return error explanation")
+    @DisplayName("POST: /{userId}/unfollow/{userIdToUnfollow} - Id de Usuario invalido - Retorna explicación")
     void getUnfollowInvalidFollowerShouldReturnExplanation() throws Exception {
         //Arrange
         String responseJSONExpected = "{'message':'Usuario no encontrado'}";
