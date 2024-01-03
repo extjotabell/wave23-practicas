@@ -1,4 +1,4 @@
-package com.sprint.be_java_hisp_w23_g04.individual;
+package com.sprint.be_java_hisp_w23_g04.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO;
@@ -27,7 +27,7 @@ class ProductsMeliControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    @DisplayName("US-0005 Saves a new post")
+    @DisplayName("US-0005 - Saves a new post")
     void test01() throws Exception {
         PostDTO post = getPostDTO();
 
@@ -39,7 +39,7 @@ class ProductsMeliControllerTest {
     }
 
     @Test
-    @DisplayName("US-0005 Saves a new post with a user that not exist")
+    @DisplayName("US-0005 - Saves a new post with a user that not exist")
     void test02() throws Exception {
         PostDTO post = getPostDTO();
         post.setUserId(123);
@@ -52,7 +52,7 @@ class ProductsMeliControllerTest {
     }
 
     @Test
-    @DisplayName("US-0005 Saves a new post but the post is empty")
+    @DisplayName("US-0005 - Saves a new post but the post is empty")
     void test03() throws Exception {
         PostDTO post = new PostDTO();
 
@@ -68,7 +68,7 @@ class ProductsMeliControllerTest {
     }
 
     @Test
-    @DisplayName("US-0006 Returns all posts from a user")
+    @DisplayName("US-0006 - Returns all posts from a user")
     void test04() throws Exception {
         mockMvc.perform(get("/products/followed/2/list"))
                 .andExpect(status().is4xxClientError())
@@ -76,17 +76,17 @@ class ProductsMeliControllerTest {
     }
 
     @Test
-    @DisplayName("US-0006 Returns all posts from a user")
+    @DisplayName("US-0006 - Returns all posts from a user")
     void test05() throws Exception {
         mockMvc.perform(get("/products/followed/4/list"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$posts", hasSize(3)))
-                .andExpect(jsonPath("$posts[0].user_id").value(1))
-                .andExpect(jsonPath("$posts[0].id_post").value(1))
-                .andExpect(jsonPath("$posts[0].date").value("2021-10-10"))
-                .andExpect(jsonPath("$posts[0].category").value("category 1"))
-                .andExpect(jsonPath("$posts[0].price").value(1000))
-                .andExpect(jsonPath("$posts[0].product.product_id").value(2))
-                .andExpect(jsonPath("$posts[0].product.product_name").value("Teclado"));
+                .andExpect(jsonPath("$.posts", hasSize(1)))
+                .andExpect(jsonPath("$.posts[0].user_id").value(3))
+                .andExpect(jsonPath("$.posts[0].post_id").value(4))
+                .andExpect(jsonPath("$.posts[0].date").value("23-12-2023"))
+                .andExpect(jsonPath("$.posts[0].category").value(58))
+                .andExpect(jsonPath("$.posts[0].price").value(800.00))
+                .andExpect(jsonPath("$.posts[0].product.product_id").value(2))
+                .andExpect(jsonPath("$.posts[0].product.product_name").value("Teclado"));
     }
 }

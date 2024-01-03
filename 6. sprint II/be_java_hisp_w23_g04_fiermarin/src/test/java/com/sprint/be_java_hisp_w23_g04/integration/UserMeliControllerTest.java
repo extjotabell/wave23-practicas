@@ -1,4 +1,4 @@
-package com.sprint.be_java_hisp_w23_g04.individual;
+package com.sprint.be_java_hisp_w23_g04.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
