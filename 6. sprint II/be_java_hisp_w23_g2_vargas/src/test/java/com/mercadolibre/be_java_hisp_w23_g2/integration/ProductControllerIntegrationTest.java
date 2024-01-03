@@ -3,9 +3,9 @@ package com.mercadolibre.be_java_hisp_w23_g2.integration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.mercadolibre.be_java_hisp_w23_g2.dto.ProductBasicDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.PostsFollowedDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.utils.ObjectCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import com.mercadolibre.be_java_hisp_w23_g2.utils.ObjectCreator;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -38,7 +36,7 @@ class ProductControllerIntegrationTest {
     MockMvc mockMvc;
 
     ObjectWriter writer = new ObjectMapper().
-            configure(SerializationFeature.WRAP_ROOT_VALUE,false).writer();
+            configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
     ObjectMapper mapper = new ObjectMapper();
 
     @DisplayName("Add Post OK")
@@ -80,14 +78,14 @@ class ProductControllerIntegrationTest {
         PostsFollowedDTO postsFollowedDTO = new PostsFollowedDTO(1, List.of());
 
         //Act
-        MvcResult mvcResult =  mockMvc.perform(get("/products/followed/{userId}/list",1))
+        MvcResult mvcResult = mockMvc.perform(get("/products/followed/{userId}/list", 1))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
-        PostsFollowedDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(),PostsFollowedDTO.class );
+        PostsFollowedDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(), PostsFollowedDTO.class);
 
         //Assert
-        assertEquals(postsFollowedDTO,resultDto);
+        assertEquals(postsFollowedDTO, resultDto);
     }
 }

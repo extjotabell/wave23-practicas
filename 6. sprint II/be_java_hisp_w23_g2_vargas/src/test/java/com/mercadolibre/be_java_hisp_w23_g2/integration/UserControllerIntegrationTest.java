@@ -1,9 +1,6 @@
 package com.mercadolibre.be_java_hisp_w23_g2.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.mercadolibre.be_java_hisp_w23_g2.dto.UserBasicDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowedDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersCountDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersDTO;
@@ -17,13 +14,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -44,23 +39,23 @@ class UserControllerIntegrationTest {
         UserFollowersCountDTO followerExpected = ObjectCreator.createUserFollowersCountDTO();
 
         // Act
-        MvcResult mvcResult =  mockMvc.perform(get("/users/{userId}/followers/count",10))
+        MvcResult mvcResult = mockMvc.perform(get("/users/{userId}/followers/count", 10))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
-        UserFollowersCountDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(),UserFollowersCountDTO.class );
+        UserFollowersCountDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(), UserFollowersCountDTO.class);
 
         // Assert
-        assertEquals(followerExpected,resultDto);
+        assertEquals(followerExpected, resultDto);
     }
 
     @DisplayName("Count Followers, Not found user")
     @Test
     void getFollowersCountSellerNotFoundTestInt() throws Exception {
         //Act & Assert
-        mockMvc.perform(get("/users/{userId}/followers/count",99))
+        mockMvc.perform(get("/users/{userId}/followers/count", 99))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.message").value("Current user with id = 99 not exists."));
@@ -73,23 +68,23 @@ class UserControllerIntegrationTest {
         UserFollowersDTO followerExpected = ObjectCreator.createUserFollowersDTO();
 
         //Act
-        MvcResult mvcResult =  mockMvc.perform(get("/users/{userId}/followers/list",1))
+        MvcResult mvcResult = mockMvc.perform(get("/users/{userId}/followers/list", 1))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
         ObjectMapper mapper = new ObjectMapper();
-        UserFollowersDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(),UserFollowersDTO.class );
+        UserFollowersDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(), UserFollowersDTO.class);
 
         //Assert
-        assertEquals(followerExpected,resultDto);
+        assertEquals(followerExpected, resultDto);
     }
 
     @DisplayName("Unfollow user")
     @Test
     void unfollowUserTestInt() throws Exception {
         // Act & Assert
-        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToUnfollow}",12,15))
+        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToUnfollow}", 12, 15))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.message").value("Has stopped following Mia Wright"));
@@ -99,7 +94,7 @@ class UserControllerIntegrationTest {
     @Test
     void unfollowUserHimselfTestInt() throws Exception {
         // Act & Assert
-        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToUnfollow}",12,12))
+        mockMvc.perform(post("/users/{userId}/unfollow/{userIdToUnfollow}", 12, 12))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.message").value("A user cannot follow/unfollow himself"));
@@ -112,15 +107,15 @@ class UserControllerIntegrationTest {
         UserFollowedDTO followerExpected = ObjectCreator.createUserFollowedDTOdesc();
 
         //Act
-        MvcResult mvcResult =  mockMvc.perform(get("/users/{userId}/followed/list",1).param("order","name_desc"))
+        MvcResult mvcResult = mockMvc.perform(get("/users/{userId}/followed/list", 1).param("order", "name_desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
-        UserFollowedDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(),UserFollowedDTO.class );
+        UserFollowedDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(), UserFollowedDTO.class);
 
         //Assert
-        assertEquals(followerExpected,resultDto);
+        assertEquals(followerExpected, resultDto);
     }
 
     @DisplayName("Followed List order asc")
@@ -130,14 +125,14 @@ class UserControllerIntegrationTest {
         UserFollowedDTO followerExpected = ObjectCreator.createUserFollowedDTOasc();
 
         //Act
-        MvcResult mvcResult =  mockMvc.perform(get("/users/{userId}/followed/list",1).param("order","name_asc"))
+        MvcResult mvcResult = mockMvc.perform(get("/users/{userId}/followed/list", 1).param("order", "name_asc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
-        UserFollowedDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(),UserFollowedDTO.class );
+        UserFollowedDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(), UserFollowedDTO.class);
 
         //Assert
-        assertEquals(followerExpected,resultDto);
+        assertEquals(followerExpected, resultDto);
     }
 
     @DisplayName("Follow user OK")
@@ -147,23 +142,23 @@ class UserControllerIntegrationTest {
         UserFollowedDTO followExpected = ObjectCreator.createUserFollowedDTO();
 
         //Act
-        MvcResult mvcResult = mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}",2,15))
+        MvcResult mvcResult = mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", 2, 15))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
-        UserFollowedDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(),UserFollowedDTO.class );
+        UserFollowedDTO resultDto = mapper.readValue(mvcResult.getResponse().getContentAsString(), UserFollowedDTO.class);
 
         // Assert
-        assertEquals(followExpected,resultDto);
+        assertEquals(followExpected, resultDto);
     }
 
     @DisplayName("Exist Follow user")
     @Test
     void getFollowersUserExistTestInt() throws Exception {
         //Act & Assert
-        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}",1,4))
+        mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", 1, 4))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.message").value("The user 1 already follow 4"));
