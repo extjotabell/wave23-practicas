@@ -49,7 +49,7 @@ public class ProductIntegrationTest {
     }
 
     @Test
-    @DisplayName("/products - Confirmación de creación de producto ; T-")
+    @DisplayName("/products/post - Confirmación de creación de producto ; T-")
     void createProductReturnConfirmation() throws Exception {
         //Arrange
         ProductDTO productDTO = new ProductDTO(

@@ -236,6 +236,16 @@ URL base: http://localhost:8080
 
 **T-0018**: Verificar que la creación del producto sea permitido.
 
+
+
+**[GET] US 0004:** Obtener  un listado de todos los vendedores a los cuales sigue un determinado usuario (¿A quién sigo?)
+
+    /users/{userId}/followed/list
+
+**T-0019**: Verificar que si el usuario no existe mande un mensaje de error.
+
+
+
 ## Integrantes:
 - Andres Alejandro Limpio
 - Alfredo Tonatiuh Diaz

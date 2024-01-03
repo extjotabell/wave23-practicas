@@ -181,4 +181,18 @@ public class UserIntegrationTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    @DisplayName("/users/{userId}/followed/list?order=name_asc ; " +
+            "T-0019: Verificar que si el usuario no existe mande un mensaje de error.")
+    void getFollowedByInvalidIdShouldReturnExplanation() throws Exception {
+        //Arrange . Act - Assert
+        this.mockMvc.perform(
+                        get("/users/1/followed/list?order=name_asc")
+                                .contentType(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("No existe usuario con el id: 1"))
+                .andExpect(status().isNotFound());
+    }
+
 }

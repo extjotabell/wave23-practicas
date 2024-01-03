@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/ProductIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/ProductIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +82,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserIntegrationTest.AddFollowerInexistenUserIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserIntegrationTest.getFollowedByInvalidIdShouldReturnExplanation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
         <pattern>
@@ -91,7 +92,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.meli.socialmeli.integration" />
       <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integration.UserIntegrationTest" />
-      <option name="METHOD_NAME" value="AddFollowerInexistenUserIntegrationTest" />
+      <option name="METHOD_NAME" value="getFollowedByInvalidIdShouldReturnExplanation" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -116,10 +117,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in socialmeli" />
+        <item itemvalue="JUnit.UserIntegrationTest.getFollowedByInvalidIdShouldReturnExplanation" />
         <item itemvalue="JUnit.ProductIntegrationTest.createProductReturnConfirmation" />
         <item itemvalue="JUnit.UserIntegrationTest.getFollowersByIdShouldReturnListAsc" />
         <item itemvalue="JUnit.UserIntegrationTest" />
-        <item itemvalue="JUnit.UserIntegrationTest.AddFollowerInexistenUserIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
