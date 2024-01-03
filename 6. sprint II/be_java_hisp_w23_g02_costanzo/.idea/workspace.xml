@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5e83078-da9d-407b-8c75-9be9462d3f86" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mercadolibre/be_java_hisp_w23_g2/integration/UserControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mercadolibre/be_java_hisp_w23_g2/integration/UserControllerIntegrationTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="a5e83078-da9d-407b-8c75-9be9462d3f86" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +139,7 @@
     <servers />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g02_costanzo$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704295610385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g02_costanzo$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704296174899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$All_in_grupo2_sprint1.ic" NAME="All in grupo2-sprint1 Coverage Results" MODIFIED="1703772493116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$integration_in_grupo2_sprint1.ic" NAME="integration in grupo2-sprint1 Coverage Results" MODIFIED="1703792026908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/grupo2_sprint1$java_in_grupo2_sprint1.ic" NAME="java in grupo2-sprint1 Coverage Results" MODIFIED="1704221731845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
