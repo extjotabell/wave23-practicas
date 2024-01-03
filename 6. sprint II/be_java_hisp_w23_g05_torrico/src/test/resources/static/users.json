@@ -2,7 +2,7 @@
   {
     "name": "Ailen Pereira",
     "isSeller": true,
-    "followers": [3,2,4],
+    "followers": [3,2,4,6],
     "followed": [3,2,4],
     "posts": [],
     "id": "1"
@@ -11,7 +11,7 @@
     "name": "Brenda Torrico",
     "isSeller": false,
     "followers": [],
-    "followed": [],
+    "followed": [1],
     "posts": [],
     "id": "2"
   },
@@ -27,7 +27,7 @@
     "name": "Geronimo Schmidt",
     "isSeller": true,
     "followers": [1,2,3],
-    "followed": [],
+    "followed": [1],
     "posts": [],
     "id": "4"
   },
@@ -43,7 +43,7 @@
     "name": "Martin Marquez",
     "isSeller": false,
     "followers": [],
-    "followed": [],
+    "followed": [1],
     "posts": [],
     "id": "6"
   },
@@ -57,7 +57,7 @@
   },
   {
     "name": "Nicolas Reinaldo",
-    "isSeller": false,
+    "isSeller": true,
     "followers": [],
     "followed": [],
     "posts": [],

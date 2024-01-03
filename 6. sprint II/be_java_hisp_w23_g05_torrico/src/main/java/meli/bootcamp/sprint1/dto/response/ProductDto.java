@@ -3,9 +3,11 @@ package meli.bootcamp.sprint1.dto.response;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Getter
+@NoArgsConstructor
 @EqualsAndHashCode
 public class ProductDto {
   private int product_id;
