@@ -1,5 +1,7 @@
 package com.mercadolibre.be_java_hisp_w23_g2.utils;
 
+import com.mercadolibre.be_java_hisp_w23_g2.dto.ProductBasicDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Post;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Product;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.User;
@@ -50,5 +52,21 @@ public class ObjectCreator {
 
   public static Post createPostOld() {
     return createPost(LocalDate.now().minusDays(15));
+  }
+
+  public static ProductBasicDTO createProductBasicDTO() {
+    return new ProductBasicDTO(5,"Silla Gamer","Gamer","Racer","Red and Black","Special Edition");
+  }
+
+  public static PostDTO createPostDTO() {
+    return new PostDTO(1, LocalDate.of(2024, 2, 2), createProductBasicDTO(), 100,1500.50);
+  }
+
+  public static ProductBasicDTO createProductBasicDTOExists() {
+    return new ProductBasicDTO(201,"Laptop Pro","Electronics","TechMaster","Silver","Powerful laptop for professionals");
+  }
+
+  public static PostDTO createPostDTOExists() {
+    return new PostDTO(1, LocalDate.of(2023, 1, 15),createProductBasicDTOExists(),100,1200.00);
   }
 }
