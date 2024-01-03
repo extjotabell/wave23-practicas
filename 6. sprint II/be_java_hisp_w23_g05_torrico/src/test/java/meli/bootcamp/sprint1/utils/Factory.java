@@ -128,6 +128,15 @@ public class Factory {
                         "Special Edition"),1,100.00);
     }
 
+    public static NewPostDto generateNewPostDtoMoreThanTwoWeeksAgo(){
+        return new NewPostDto(  1, LocalDate.of(2023, 9, 1),
+                new NewProductDto( 1,
+                        "Tele",
+                        "Gamer",
+                        "Razer",
+                        "Red Black",
+                        "Special Edition"),1,100.00);
+    }
     public static NewPostDto generateNewPostDtoCategoryNotFound(){
         return new NewPostDto(  1, LocalDate.of(2024, 1, 1),
                 new NewProductDto( 1,

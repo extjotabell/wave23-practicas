@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import meli.bootcamp.sprint1.dto.request.NewPostDto;
+import meli.bootcamp.sprint1.dto.response.LastPostsDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import static meli.bootcamp.sprint1.utils.Factory.generateNewPostDto;
-import static meli.bootcamp.sprint1.utils.Factory.generateNewPostDtoCategoryNotFound;
+
+import static meli.bootcamp.sprint1.utils.Factory.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -199,6 +201,10 @@ public class UserControllerTest {
         //Reutilizo el metodo para crear un post
         addNewPost(newPostDto);
 
+        //Agrega un post antiguo
+        NewPostDto newPostDtooreThanTwoWeeksAgo = generateNewPostDtoMoreThanTwoWeeksAgo();
+        addNewPost(newPostDtooreThanTwoWeeksAgo);
+
         // Obtiene los últimos posts para el usuario
         MvcResult result = this.mockMvc.perform(MockMvcRequestBuilders.get("/products/followed/{userId}/list", 6)
                         .param("order", "date_desc"))
@@ -218,8 +224,16 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$.posts[0].price").value(100.0))
                 .andReturn();
 
+        String responseJson = result.getResponse().getContentAsString();
+        LastPostsDto lastPostsDto = objectMapper.readValue(responseJson, LastPostsDto.class);
+
+        assertFalse(lastPostsDto.getPosts().isEmpty());
+
+        //No tiene en cuenta el post de hace mas de dos semanas
+        assertEquals(1, lastPostsDto.getPosts().size());
 
     }
+
 
 
 
