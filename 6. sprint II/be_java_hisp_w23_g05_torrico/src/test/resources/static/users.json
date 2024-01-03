@@ -4,7 +4,42 @@
     "isSeller": true,
     "followers": [3,2,4,6],
     "followed": [3,2,4],
-    "posts": [],
+    "posts": [
+      {
+            "post_id": 1,
+            "date": "16-01-2023",
+            "product": {
+              "product_id": 1,
+              "product_name": "Teclado Mecánico",
+              "type": "Gamer",
+              "brand": "Corsair",
+              "color": "Black",
+              "notes": "RGB Backlit"
+            },
+            "category": {
+              "id": "1",
+              "description": "Electronics"
+            },
+            "price": 200.0
+          },
+          {
+            "post_id": 2,
+            "date": "01-01-2024",
+            "product": {
+              "product_id": 2,
+              "product_name": "Monitor Curvo",
+              "type": "Monitor",
+              "brand": "Samsung",
+              "color": "Silver",
+              "notes": "27-inch"
+            },
+            "category": {
+              "id": "1",
+              "description": "Electronics"
+            },
+            "price": 500.0
+          }
+    ],
     "id": "1"
   },
   {
@@ -63,4 +98,5 @@
     "posts": [],
     "id": "8"
   }
+
 ]

@@ -43,3 +43,5 @@ p
 @src/main/java/meli/bootcamp/sprint1/dto/response/ProductDto.java,f/e/feba635572679ebea0bbc861b4811faf2886af84
 u
 Esrc/test/java/meli/bootcamp/sprint1/unit/service/UserServiceTest.java,f/4/f4d40d84573e77064871c2186c5f1266f3c69a2e
+z
+Jsrc/main/java/meli/bootcamp/sprint1/repository/impl/GeneralRepository.java,2/1/21f7ccb6495373a4ddb8704b274fa349d7d0cc1b
