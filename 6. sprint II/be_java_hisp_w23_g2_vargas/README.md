@@ -89,7 +89,8 @@ posts, and interact within the community.
     - Responsible: [Hernan De San Vicente]
 
 ## Test Individual
-- Add test integrations.
+- Add test integrations 
+- Responsible: [Claudia Vargas]
 
 ## Technologies Used
 
