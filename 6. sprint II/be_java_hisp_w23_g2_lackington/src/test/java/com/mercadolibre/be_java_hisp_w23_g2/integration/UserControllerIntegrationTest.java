@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -27,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @SpringBootTest
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UserControllerIntegrationTest {
 
     ObjectWriter writer = new ObjectMapper().
@@ -37,7 +39,7 @@ public class UserControllerIntegrationTest {
     @DisplayName("User followers count integration test")
     @Test
     public void getFollowersCountSellerTest() throws Exception {
-        UserFollowersCountDTO expected = new UserFollowersCountDTO(1,"John Doe",3);
+        UserFollowersCountDTO expected = new UserFollowersCountDTO(1,"John Doe",2);
 
         MvcResult mvcResult =  this.mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followers/count","1"))
                 .andDo(print())
@@ -68,7 +70,9 @@ public class UserControllerIntegrationTest {
     @DisplayName("User followed list integration test")
     @Test
     public void getFollowedUserTest() throws Exception {
-        UserFollowedDTO expected = new UserFollowedDTO(1,"John Doe", List.of(new UserBasicDTO(5,"Charlie Brown")));
+        UserFollowedDTO expected = new UserFollowedDTO(1,"John Doe", List.of(
+                new UserBasicDTO(4,"Eve Wilson"),
+                new UserBasicDTO(5,"Charlie Brown")));
 
         MvcResult mvcResult =  this.mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followed/list","1"))
                 .andDo(print())
