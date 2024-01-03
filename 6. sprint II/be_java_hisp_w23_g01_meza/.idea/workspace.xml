@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9913b44c-f52a-4220-9829-edafca121b6a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/repositories/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/repositories/IUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/repositories/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/repositories/impl/UserRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,20 +28,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "meza__fernando",
-    "last_opened_file_path": "/Users/fmezaortega/Documents/bootcamp/wave23-practicas/6. sprint II/be_java_hisp_w23_g01_meza/src/test"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;meza__fernando&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/fmezaortega/Documents/bootcamp/wave23-practicas/6. sprint II/be_java_hisp_w23_g01_meza/src/test&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserIntegrationTest">
+  <component name="RunManager" selected="JUnit.All in socialmeli">
+    <configuration name="All in socialmeli" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="socialmeli" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
@@ -90,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserIntegrationTest.countFollowersIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserIntegrationTest.getFollowersByIdShouldReturnListAsc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
         <pattern>
@@ -100,23 +107,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.meli.socialmeli.integration" />
       <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integration.UserIntegrationTest" />
-      <option name="METHOD_NAME" value="countFollowersIntegrationTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserIntegrationTest.countFollowersUserFollowsOtherUsersIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="socialmeli" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.meli.socialmeli.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.meli.socialmeli.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integration.UserIntegrationTest" />
-      <option name="METHOD_NAME" value="countFollowersUserFollowsOtherUsersIntegrationTest" />
+      <option name="METHOD_NAME" value="getFollowersByIdShouldReturnListAsc" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,11 +115,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in socialmeli" />
+        <item itemvalue="JUnit.UserIntegrationTest.getFollowersByIdShouldReturnListAsc" />
         <item itemvalue="JUnit.UserIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.AddFollowerInexistenUserIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.AddFollowerTryFollowInexistenUserIntegrationTest" />
-        <item itemvalue="JUnit.UserIntegrationTest.countFollowersUserFollowsOtherUsersIntegrationTest" />
-        <item itemvalue="JUnit.UserIntegrationTest.countFollowersIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -171,5 +162,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_meza$All_in_socialmeli.ic" NAME="All in socialmeli Coverage Results" MODIFIED="1704314965185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

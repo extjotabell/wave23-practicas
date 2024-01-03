@@ -139,7 +139,7 @@ public class UserIntegrationTest {
 
     @Test
     @DisplayName("/users/{userId}/followers/count ; " +
-            "T-0013: Consigue la respuesta correcta y el nñumero correcto de usuarios que lo siguen.")
+            "T-0013: Consigue la respuesta correcta y el numero correcto de usuarios que lo siguen.")
     void countFollowersIntegrationTest() throws Exception {
         // Arrange & Act
         String expected = objectWriter.writeValueAsString(new FollowersCountDTO(1100,"Dudley", 0));
@@ -157,10 +157,11 @@ public class UserIntegrationTest {
     }
 
     @Test
-    @DisplayName("GET: /users/{userId}/followers/list?order=name_asc - Return a list of followers - Order by name asc")
+    @DisplayName("/users/{userId}/followers/list?order=name_asc ; " +
+            "T-0017: Retorna una lista de seguidores de forma ascendente.")
     void getFollowersByIdShouldReturnListAsc() throws Exception {
         //Arrange
-        String responseJSONExpected = "{'user_id': 100, 'user_name': 'Roach', " +
+        String expected = "{'user_id': 100, 'user_name': 'Roach', " +
                 "'followers': [{'user_id': 2100, 'user_name': 'Moreno'}, {'user_id': 3100, 'user_name': 'Peters'}]}";
 
         this.mockMvc.perform(
@@ -175,8 +176,8 @@ public class UserIntegrationTest {
                         get("/users/100/followers/list?order=name_asc")
                                 .contentType(APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(content().contentType("application/json"))
-                .andExpect(content().json(responseJSONExpected))
+                .andExpect(content().contentType(APPLICATION_JSON))
+                .andExpect(content().json(expected))
                 .andExpect(status().isOk());
     }
 

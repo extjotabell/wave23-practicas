@@ -226,7 +226,7 @@ URL base: http://localhost:8080
     /users/{userId}/followers/list?order=name_asc
     /users/{userId}/followers/list?order=name_desc
 
-
+**T-0017**: Retorna una lista de seguidores de forma ascendente.
 
 ## Integrantes:
 - Andres Alejandro Limpio
