@@ -57,7 +57,7 @@ class UserControllerIntegrationTest {
     @Order(2)
     @DisplayName("Returns the number of followers of a user given their ID. Exception: Current user not exists.")
     void getFollowersCountSellerExceptionIntegrationTest() throws Exception {
-        MessageDTO payloadResponseDTO = new MessageDTO("Current user with id = 100 does not exist.");
+        MessageDTO payloadResponseDTO = new MessageDTO("Current user with id = 100 not exists.");
 
         String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO); // Convert the MessageDTO to JSON
 
