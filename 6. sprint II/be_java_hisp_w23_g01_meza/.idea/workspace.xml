@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9913b44c-f52a-4220-9829-edafca121b6a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/repositories/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/repositories/IUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/repositories/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/repositories/impl/UserRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +148,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>131</line>
+          <line>142</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="countFollowersIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -156,12 +157,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>47</line>
+          <line>57</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="AddFollowerIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

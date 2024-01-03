@@ -4,11 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.meli.socialmeli.dtos.response.FollowersCountDTO;
+import com.meli.socialmeli.repositories.IUserRepository;
 import com.meli.socialmeli.services.IUserService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,6 +32,8 @@ public class UserIntegrationTest {
 
     @Autowired
     private IUserService userService;
+    @Autowired
+    private IUserRepository userRepository;
     private static ObjectWriter objectWriter;
 
     @BeforeAll
@@ -41,6 +41,16 @@ public class UserIntegrationTest {
         objectWriter = new ObjectMapper()
                 .configure(SerializationFeature.WRAP_ROOT_VALUE, false)
                 .writer();
+    }
+
+    @BeforeEach
+    public void initialization() {
+        userRepository.loadData();
+    }
+
+    @AfterEach
+    public void clean() {
+        userRepository.clearData();
     }
 
     @Test
@@ -128,7 +138,8 @@ public class UserIntegrationTest {
     }
 
     @Test
-    @DisplayName("/users/{userId}/followers/count ; T-0013: Usuario no tiene seguidores entonces el conteo es 0")
+    @DisplayName("/users/{userId}/followers/count ; " +
+            "T-0013: Consigue la respuesta correcta y el nñumero correcto de usuarios que lo siguen.")
     void countFollowersIntegrationTest() throws Exception {
         // Arrange & Act
         String expected = objectWriter.writeValueAsString(new FollowersCountDTO(1100,"Dudley", 0));

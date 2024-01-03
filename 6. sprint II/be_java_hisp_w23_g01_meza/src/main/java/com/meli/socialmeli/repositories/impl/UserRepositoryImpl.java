@@ -42,6 +42,16 @@ public class UserRepositoryImpl implements IUserRepository {
         return user.getFollowed();
     }
 
+    @Override
+    public void clearData() {
+        users.clear();
+    }
+
+    @Override
+    public void loadData() {
+        loadDataBase();
+    }
+
     private void loadDataBase() {
         users = new ArrayList<>();
         try {
