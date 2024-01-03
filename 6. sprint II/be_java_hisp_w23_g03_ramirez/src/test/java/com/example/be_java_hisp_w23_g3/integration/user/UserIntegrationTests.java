@@ -194,5 +194,17 @@ public class UserIntegrationTests {
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.message").value("Seller with id " + userId + " not found"));
     }
-    
+
+    @Test
+    void getFollowersList_shouldBeEmpty() throws Exception {
+        //arrange
+        Long userId = 11L;
+        //act & assert
+        mockMvc.perform(get("/users/{userID}/followed/list", userId))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.followed").isEmpty());
+    }
+
 }
