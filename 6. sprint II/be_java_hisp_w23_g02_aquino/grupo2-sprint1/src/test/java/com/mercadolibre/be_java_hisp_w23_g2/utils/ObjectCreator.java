@@ -11,6 +11,9 @@ import com.mercadolibre.be_java_hisp_w23_g2.entity.User;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Utility class for creating various objects used in testing scenarios.
+ */
 public class ObjectCreator {
 
   public static User createUser(Integer id, String name) {
