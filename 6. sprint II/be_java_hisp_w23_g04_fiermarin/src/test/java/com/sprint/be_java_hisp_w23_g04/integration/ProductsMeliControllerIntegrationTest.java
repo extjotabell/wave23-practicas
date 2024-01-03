@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ProductsMeliControllerTest {
+class ProductsMeliControllerIntegrationTest {
     @Autowired
     MockMvc mockMvc;
 
@@ -52,7 +52,7 @@ class ProductsMeliControllerTest {
     }
 
     @Test
-    @DisplayName("US-0005 - Saves a new post but the post is empty")
+    @DisplayName("US-0005 - Saves a new post but the post is empty BAD REQUEST")
     void test03() throws Exception {
         PostDTO post = new PostDTO();
 
@@ -68,7 +68,7 @@ class ProductsMeliControllerTest {
     }
 
     @Test
-    @DisplayName("US-0006 - Returns all posts from a user")
+    @DisplayName("US-0006 - Returns all posts from a user that not have posts")
     void test04() throws Exception {
         mockMvc.perform(get("/products/followed/2/list"))
                 .andExpect(status().is4xxClientError())
@@ -88,5 +88,13 @@ class ProductsMeliControllerTest {
                 .andExpect(jsonPath("$.posts[0].price").value(800.00))
                 .andExpect(jsonPath("$.posts[0].product.product_id").value(2))
                 .andExpect(jsonPath("$.posts[0].product.product_name").value("Teclado"));
+    }
+
+    @Test
+    @DisplayName("US-0006 - Returns all posts from a user that not exist")
+    void test06() throws Exception {
+        mockMvc.perform(get("/products/followed/123/list"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.description").value("No se encontró usuario con el id 123."));
     }
 }

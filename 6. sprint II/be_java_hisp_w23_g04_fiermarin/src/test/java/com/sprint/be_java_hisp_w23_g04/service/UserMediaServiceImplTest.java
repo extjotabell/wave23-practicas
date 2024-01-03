@@ -18,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,7 +32,7 @@ import static com.sprint.be_java_hisp_w23_g04.utils.UtilsTest.*;
 import static org.mockito.ArgumentMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
-public class UserMediaServiceImplTest {
+class UserMediaServiceImplTest {
     @Mock
     UserGatewayImpl userGateway;
 
@@ -179,7 +180,7 @@ public class UserMediaServiceImplTest {
     }
 
     @Test
-    public void unfollowUserTest() {
+    void unfollowUserTest() {
         int userId = 4;
         int unfollowId = 1;
 
@@ -194,7 +195,7 @@ public class UserMediaServiceImplTest {
     }
 
     @Test
-    public void unfollowUserWithUserNotFoundTest() {
+    void unfollowUserWithUserNotFoundTest() {
         int userId = 400;
         int unfollowId = 1;
 
@@ -205,7 +206,7 @@ public class UserMediaServiceImplTest {
     }
 
     @Test
-    public void unfollowUserBuyerDontFollowSellerTest() {
+    void unfollowUserBuyerDontFollowSellerTest() {
         int userId = 6;
         int unfollowId = 1;
 
@@ -271,19 +272,26 @@ public class UserMediaServiceImplTest {
     void testFollowersCountOk() {
         // Arrange
         Integer userId = 1;
+        User mockUser = new User();
+        mockUser.setId(userId);
+        mockUser.setName("Raul");
+        mockUser.setFollowersId(Collections.emptyList());
 
         SellerDTO expected = new SellerDTO();
         expected.setFollowersCount(0);
         expected.setId(1);
-        expected.setName("test");
+        expected.setName("Raul");
+
+        when(userGateway.findUser(userId)).thenReturn(mockUser);
 
         // Act
-        when(userGateway.findUser(any())).thenReturn(new User());
-
         SellerDTO result = userService.followersCount(userId);
 
         // Assert
-        assertEquals(expected, result);
+        assertEquals(expected.getId(), result.getId());
+        assertEquals(expected.getName(), result.getName());
+        assertEquals(expected.getFollowersCount(), result.getFollowersCount());
+
     }
 
     @Test

@@ -67,7 +67,7 @@ public class ProductMediaServiceImplTest {
 
     @Test
     @DisplayName("T-0006: Should return published posts in the last 2 weeks of the sellers followed by the given user ordered by date ASC.")
-    public void getFilteredPostsOrderByDateAsc(){
+    void getFilteredPostsOrderByDateAsc(){
         int userId = 99;
         String order = "date_asc";
         User userTest = UtilsTest.getUserTest(99);

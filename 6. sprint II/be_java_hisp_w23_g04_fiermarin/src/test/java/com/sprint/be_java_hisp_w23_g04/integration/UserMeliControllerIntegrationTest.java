@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserMeliControllerTest {
+class UserMeliControllerIntegrationTest {
     @Autowired
     MockMvc mockMvc;
 
@@ -32,7 +32,7 @@ class UserMeliControllerTest {
     }
 
     @Test
-    @DisplayName("US-0001 - Test for followSellerUser")
+    @DisplayName("US-0001 - Test follow seller user with user id and seller id")
     void test02() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/1/follow/2"))
                 .andExpect(status().isOk())
@@ -55,9 +55,26 @@ class UserMeliControllerTest {
                 .andExpect(jsonPath("$.description").value("No se encontró usuario con el id 123."));
     }
 
+    // el usuario ya sigue al vendedor
+    @Test
+    @DisplayName("US-0001 - Test for followSellerUser with a user already follows seller")
+    void test05() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/4/follow/3"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.description").value("El usuario con id:4 ya sigue al vendedor con id:3"));
+    }
+
+    @Test
+    @DisplayName("US-0001 - Test for followSellerUser with a seller id is not valid")
+    void test06() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/6/follow/4"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.description").value("El id de usuario vendedor proporcionado no es valido."));
+    }
+
     @Test
     @DisplayName("US-0001 - Test for followSellerUser with a seller is a same user")
-    void test05() throws Exception {
+    void test07() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/1/follow/1"))
                 .andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("$.description").value("El usuario y vendedor con id:1 no pueden ser el mismo."));
@@ -65,7 +82,7 @@ class UserMeliControllerTest {
 
     @Test
     @DisplayName("US-0002 - Test for followersCount with a user that not exist")
-    void test06() throws Exception {
+    void test08() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/123/followers/count"))
                 .andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("$.description").value("No se encontró usuario con el id 123."));
@@ -73,7 +90,7 @@ class UserMeliControllerTest {
 
     @Test
     @DisplayName("US-0002 - Test for followersCount with a user that exist")
-    void test07() throws Exception {
+    void test09() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/1/followers/count"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.user_id").value(1))
@@ -83,7 +100,7 @@ class UserMeliControllerTest {
 
     @Test
     @DisplayName("US-0003 - Test for followers with user id is cero")
-    void test08() throws Exception {
+    void test10() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/0/followers/list"))
                 .andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("$.description").value("Se encontraron los siguientes errores en las validaciones:"))
@@ -92,7 +109,7 @@ class UserMeliControllerTest {
 
     @Test
     @DisplayName("US-0003 - Test for followers by user id and order by name asc")
-    void test09() throws Exception {
+    void test11() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/1/followers/list"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.followed", hasSize(2)))
@@ -104,7 +121,7 @@ class UserMeliControllerTest {
 
     @Test
     @DisplayName("US-0003 - Test for followers by user id and order by name desc")
-    void test10() throws Exception {
+    void test12() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/1/followers/list?order=name_dsc"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.followed", hasSize(2)))
@@ -116,7 +133,7 @@ class UserMeliControllerTest {
 
     @Test
     @DisplayName("US-0004 - Test for follow sellers with user id and id seller is cero")
-    void test11() throws Exception {
+    void test13() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/0/followed/list"))
                 .andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("$.description").value("Se encontraron los siguientes errores en las validaciones:"))
@@ -125,7 +142,7 @@ class UserMeliControllerTest {
 
     @Test
     @DisplayName("US-0004 - Test for follow sellers with user is OK and order by name asc")
-    void test12() throws Exception {
+    void test14() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/4/followed/list"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.followed", hasSize(2)))
@@ -137,7 +154,7 @@ class UserMeliControllerTest {
 
     @Test
     @DisplayName("US-0004 - Test for follow sellers with user is OK and order by name desc")
-    void test13() throws Exception {
+    void test15() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/users/4/followed/list?order=name_dsc"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.followed", hasSize(2)))
@@ -148,37 +165,51 @@ class UserMeliControllerTest {
     }
 
     @Test
-    @DisplayName("Test for unfollow seller by user id and seller id")
-    void test14() throws Exception {
+    @DisplayName("US-0007 - Test for unfollow seller by user id and seller id")
+    void test16() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/4/unfollow/1"))
                 .andExpect(status().isAccepted())
                 .andExpect(jsonPath("$.description").value("El usuario Juan Perez Id: 1 ya no es seguido por el usuario Sofia Gomez Id: 4"));
     }
 
     @Test
-    @DisplayName("Test for unfollow seller by user id and seller id with user id not exist")
-    void test15() throws Exception {
+    @DisplayName("US-0007 - Test for unfollow seller by user id and seller id with user id not exist")
+    void test17() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/123/unfollow/2"))
                 .andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("$.description").value("No se encontró usuario con el id 123."));
     }
 
     @Test
-    @DisplayName("Test for unfollow seller by user id and seller id with seller id not exist")
-    void test16() throws Exception {
+    @DisplayName("US-0007 - Test for unfollow seller by user id and seller id with seller id not exist")
+    void test18() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/1/unfollow/123"))
                 .andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("$.description").value("No se encontró usuario con el id 123."));
     }
 
     @Test
-    @DisplayName("Test for unfollow seller by user id and seller id with user id and seller id is cero")
-    void test17() throws Exception {
+    @DisplayName("US-0007 - Test for unfollow seller by user id and seller id with user id and seller id is cero")
+    void test19() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/0/unfollow/0"))
                 .andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("$.description").value("Se encontraron los siguientes errores en las validaciones:"))
                 .andExpect(jsonPath("$.messages", hasItem("El id del usuario debe ser mayor a cero")));
     }
 
+    @Test
+    @DisplayName("US-0003 - Get all followers error because criteria not exist")
+    void test20() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/users/1/followers/list?order=error"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.description").value("El criterio de ordenamiento no existe."));
+    }
 
+    @Test
+    @DisplayName("US-0007 - Test for unfollow seller by user but this is not followed")
+    void test21() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/2/unfollow/1"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.description").value("El vendedor con id:2 no es seguido por el usuario con id:1"));
+    }
 }
