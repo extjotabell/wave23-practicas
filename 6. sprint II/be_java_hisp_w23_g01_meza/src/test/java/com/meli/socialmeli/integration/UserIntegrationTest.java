@@ -69,7 +69,23 @@ public class UserIntegrationTest {
                         content().contentType("application/json"),
                         jsonPath("$.message").value("El usuario ya sigue al usuario deseado")
                 );
+    }
 
+    @Test
+    @DisplayName("/users/{userId}/follow/{userIdToFollow} ; " +
+            "T-0012: Usuario no puede seguirse a el mismo.")
+    void AddFollowerTryFollowsItselfIntegrationTest() throws Exception{
+        // Arrange & Act & Assert
+        this.mockMvc
+                .perform(post(
+                        "/users/{userId}/follow/{userIdToFollow}", "100", "100"
+                ))
+                .andDo(print())
+                .andExpectAll(
+                        status().isBadRequest(),
+                        content().contentType("application/json"),
+                        jsonPath("$.message").value("Usuario inválido para seguir")
+                );
     }
 
 }

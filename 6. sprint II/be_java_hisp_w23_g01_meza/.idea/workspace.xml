@@ -40,7 +40,7 @@
       <recent name="$PROJECT_DIR$/src/test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserIntegrationTest.AddFollowerItsFollowingIntegrationTest">
+  <component name="RunManager" selected="JUnit.UserIntegrationTest.AddFollowerTryFollowsItselfIntegrationTest">
     <configuration name="SocialmeliApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.SocialmeliApplication" />
       <module name="socialmeli" />
@@ -86,10 +86,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserIntegrationTest.AddFollowerTryFollowsItselfIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="socialmeli" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.meli.socialmeli.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.meli.socialmeli.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integration.UserIntegrationTest" />
+      <option name="METHOD_NAME" value="AddFollowerTryFollowsItselfIntegrationTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserIntegrationTest.AddFollowerItsFollowingIntegrationTest" />
+        <item itemvalue="JUnit.UserIntegrationTest.AddFollowerTryFollowsItselfIntegrationTest" />
         <item itemvalue="Application.SocialmeliApplication" />
+        <item itemvalue="JUnit.UserIntegrationTest.AddFollowerItsFollowingIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.AddFollowerIntegrationTest" />
       </list>
     </recent_temporary>
