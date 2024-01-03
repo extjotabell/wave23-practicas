@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.MessageDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.PostsFollowedDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.utils.ObjectCreator;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -68,6 +70,24 @@ class ProductControllerIntegrationTest {
                 .andExpect(status().is4xxClientError()) // Expecting an HTTP 4xx status code (client error).
                 .andExpect(content().contentType("application/json")) // Expecting content type "application/json".
                 .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage())) // Expecting a specific value in the JSON response body.
+                .andReturn(); // Returns the result of the performed request.
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Posts followed by a user given their ID with no posts less than 2 weeks returned empty.")
+    void getPostsByFollowedUsersEmpty() throws Exception{
+        PostsFollowedDTO payloadResponseDTO = ObjectCreator.PostsFollowedUsersEmpty();
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO); // Converts DTO to JSON
+
+        //Performs a GET request to the "/products/followed/{userId}/list" endpoint using the configured mockMvc instance.
+        MvcResult result = mockMvc.perform(get("/products/followed/{userId}/list", 1)
+                        .contentType("application/json"))
+                .andDo(print()) // Print the request and response details for debugging purposes.
+                .andExpect(status().isOk()) // Expecting HTTP status code 200 (OK).
+                .andExpect(content().contentType("application/json")) // Expecting content type "application/json".
                 .andReturn(); // Returns the result of the performed request.
 
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());

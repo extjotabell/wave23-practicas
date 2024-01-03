@@ -92,7 +92,7 @@ posts, and interact within the community.
     - Responsible: [Jannett Aquino]
 -[Integration Test]
     - Integration tests that are responsible for verifying the correct end-to-end operation of both UserController and ProductController
-    - Responsible: [Jannett Aquino]
+    - Responsible: [Jannett Aquinogit add ]
 
 ## Technologies Used
 
