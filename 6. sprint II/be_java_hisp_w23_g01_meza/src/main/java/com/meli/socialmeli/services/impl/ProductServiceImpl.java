@@ -93,10 +93,6 @@ public class ProductServiceImpl implements IProductService {
             int numberPosts = user.getPosts().size();
             user.addPost(Mappers.mapNewPost(post, user.getPosts().get(numberPosts - 1).getPost_id() + 1000));
         }
-<<<<<<< HEAD
         return new MessageDTO("El usuario "+ user.getUser_id() + " ha creado una nueva publicación.");
-=======
-        return new MessageDTO("The User "+ user.getUser_id() + " has created new post.");
->>>>>>> b90e6ba (Test)
     }
 }
