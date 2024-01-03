@@ -204,7 +204,7 @@ URL base: http://localhost:8080
 
 **T-0011**: Usuario no logra seguir al otro usuario porque ya lo esta siguiendo.
 
-
+**T-0012**: Usuario no puede seguirse a el mismo.
 
 ## Integrantes:
 - Andres Alejandro Limpio
