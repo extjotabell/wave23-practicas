@@ -19,6 +19,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
@@ -89,7 +92,7 @@ public class ProductServicesTestIntegration {
 
     @Test
     @DisplayName("Integración de US - 0006 cuando no sigue a nadie")
-    void getAllPostTwoLastWeeks() throws Exception{
+    void getAllPostTwoLastWeeksWithoutFolloweds() throws Exception{
 
         //Arrange
         MessageDTO devolucion = new MessageDTO("El usuario con id: 1100 no sigue a nadie");
@@ -107,11 +110,5 @@ public class ProductServicesTestIntegration {
                 .andExpect(bodyExpected)
                 .andDo(MockMvcResultHandlers.print());
     }
-
-
-
-
-
-
-
 }
+
