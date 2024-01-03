@@ -33,9 +33,9 @@ public class IntegrationTestUserController {
     private FollowersDto followers;
     private BaseResponseDto responseDto;
     private UserWFollowerListDto user = generateUserDtoList("name_asc");
-    private LastPostsDto lastPostsDto;
     private MockHttpServletRequestBuilder request;
     private MvcResult result;
+    private String order;
 
     private ObjectWriter objectWriter = new ObjectMapper()
             .registerModule(new JavaTimeModule())
@@ -74,32 +74,9 @@ public class IntegrationTestUserController {
     }
 
     @Test
-    @DisplayName("Endpoint - LastPost -> OK")
-    void testGetLastPost_WithOrder_Ok() throws Exception{
-        String order = "date_asc";
-        lastPostsDto = generateLastPostDtoOrdered(order);
-        /*
-        List<PostDto> posts = new ArrayList<>(lastPostsDto.getPosts());
-        posts.stream()
-                .forEach(postDto -> service.addPost(objectMapper.convertValue(postDto, NewPostDto.class)));
-        */
-
-        request = get("/products/followed/{userId}/list", 2)
-                .param("order", order);
-
-        result = mockMvc.perform(request)
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-
-        assertEquals(objectWriter.writeValueAsString(lastPostsDto), result.getResponse().getContentAsString());
-    }
-
-    @Test
     @DisplayName("Endpoint - LastPost -> Exception")
     void testGetLastPost_WithOrder_ThrowsBadRequestException() throws Exception{
-        String order = "wrong_param";
+        order = "wrong_param";
         responseDto = new BaseResponseDto("Parameter '" + order + "' is not valid");
 
         request = get("/products/followed/{userId}/list", 2)
@@ -284,6 +261,42 @@ public class IntegrationTestUserController {
         result = mockMvc.perform(request)
                 .andDo(print())
                 .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - Followed List - OK")
+    void testFollowedList_OK() throws Exception{
+        order = "name_asc";
+        UserWFollowedDto userFollowedDto = generateUserFollowedDtoList(order);
+
+        request = get("/users/{userId}/followed/list", 1)
+                .param("order", order);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(userFollowedDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - Followed List - Exception: Empty List")
+    void testFollowedList_ThrowsEmptyListException() throws Exception{
+        order = "name_asc";
+        responseDto = new BaseResponseDto("The User 6 has no followed users");
+
+        request = get("/users/{userId}/followed/list", 6)
+                .param("order", order);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 

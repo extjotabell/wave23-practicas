@@ -123,4 +123,14 @@ public class Factory {
         NewProductDto product = new NewProductDto(1,"Tele","Gamer","Razer","Special Edition","Red Black");
         return new NewPostDto(userId, LocalDate.now(), product, categoryId,100.00);
     }
+
+    public static UserWFollowedDto generateUserFollowedDtoList(String order){
+        List<UserDto> userDtoList =  new ArrayList<>();
+        userDtoList.add(new UserDto(3,"Fatima Noble"));
+        userDtoList.add(new UserDto(2,"Brenda Torrico"));
+        userDtoList.add(new UserDto(4,"Geronimo Schmidt"));
+
+        return new UserWFollowedDto(1,"Ailen Pereira",orderUserDtoList(userDtoList,order));
+    }
+
 }
