@@ -113,4 +113,18 @@ public class ObjectCreator {
 
     return payloadResponseDTO;
   }
+
+  public static UserFollowedDTO createUserFollowedIntegration() {
+    List<UserBasicDTO> followedExpectedDTO = List.of(
+            new UserBasicDTO(4, "Eve Wilson"),
+            new UserBasicDTO(5, "Charlie Brown")
+    );
+
+    UserFollowedDTO payloadResponseDTO = new UserFollowedDTO();
+    payloadResponseDTO.setId(1);
+    payloadResponseDTO.setUserName("John Doe");
+    payloadResponseDTO.setFollowed(followedExpectedDTO);
+
+    return payloadResponseDTO;
+  }
 }

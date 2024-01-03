@@ -183,4 +183,23 @@ class UserControllerIntegrationTest {
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
     }
 
+    @Test
+    @DisplayName("List of all followed by a given user given their ID.")
+    void getFollowedUserIntegrationTest() throws Exception{
+        UserFollowedDTO payloadResponseDTO = ObjectCreator.createUserFollowedIntegration();
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = mockMvc.perform(get("/users/{userId}/followed/list", 1)
+                        .contentType("application/json"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.user_id").value(payloadResponseDTO.getId()))
+                .andExpect(jsonPath("$.user_name").value(payloadResponseDTO.getUserName()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+    }
+
 }
