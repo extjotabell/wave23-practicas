@@ -28,7 +28,7 @@ class StudentControllerIntegrationTest {
 
     @BeforeEach
     @AfterEach
-    private void setUp() {
+    public void setUp() {
         TestUtilsGenerator.emptyUsersFile();
     }
 

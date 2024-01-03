@@ -19,9 +19,6 @@ public class FindControllerIntegrationTest {
     @Autowired
     MockMvc mockMvc;
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @Test
     void findCharacterWhenQueryIsName() throws Exception {
         String query = "Luke";
