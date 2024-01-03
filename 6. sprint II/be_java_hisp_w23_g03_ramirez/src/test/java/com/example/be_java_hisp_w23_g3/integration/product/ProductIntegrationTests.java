@@ -30,24 +30,29 @@ public class ProductIntegrationTests {
 
     @Test
     void postProduct_shouldReturnCorrectResponse() throws Exception {
+        //arrange
         Long userId = 1L;
         Long productId = 99L;
         ProductDTO product = new ProductDTOTestDataBuilder().productDTOByDefault().withProductId(productId).build();
         PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder().postRequestDTOByDefault().withProduct(product).build();
         String payloadJson = writer.writeValueAsString(postRequestDTO);
-        MvcResult mvcResult = mockMvc.perform(post("/products/post")
+
+        //act & assert
+        mockMvc.perform(post("/products/post")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payloadJson))
                 .andDo(print())
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.product.product_id").value(99))
-                .andReturn();
+                .andExpect(jsonPath("$.product.product_id").value(99));
     }
     @Test
     void postProduct_shouldThrowAlreadyExistsExceptionWhenProductAlreadyExists() throws Exception {
+        //arrange
         ProductDTO productExits = new ProductDTOTestDataBuilder().productDTOByDefault().build();
         PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder().postRequestDTOByDefault().withProduct(productExits).build();
         String payloadJson = writer.writeValueAsString(postRequestDTO);
+
+        //act & assert
         mockMvc.perform(post("/products/post")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payloadJson))
@@ -57,9 +62,11 @@ public class ProductIntegrationTests {
 
     @Test
     void followedPostsList_ReturnsCorrectResponseWithAscOrder() throws Exception {
+        //arrange
         Long userId = 1L;
         String order ="DATE_ASC";
 
+        //act & assert
         mockMvc.perform(get("/products/followed/{userId}/list", userId)
                         .param("order", order))
                 .andDo(print())
@@ -73,9 +80,11 @@ public class ProductIntegrationTests {
 
     @Test
     void followedPostsList_ReturnsCorrectResponseWithDescOrder() throws Exception {
+        //arrange
         Long userId = 1L;
         String order ="DATE_DESC";
 
+        //act & assert
         mockMvc.perform(get("/products/followed/{userId}/list", userId)
                         .param("order", order))
                 .andDo(print())
@@ -89,9 +98,11 @@ public class ProductIntegrationTests {
 
     @Test
     void followedPostsList_ReturnsCorrectResponseWithInvalidOrder() throws Exception {
+        //arrange
         Long userId = 1L;
         String order ="ALPHABETICAL";
 
+        //act & assert
         mockMvc.perform(get("/products/followed/{userId}/list", userId)
                         .param("order", order))
                 .andDo(print())

@@ -25,8 +25,10 @@ public class UserIntegrationTests {
 
     @Test
     void followSeller_shouldWorkWhenSellerExists() throws Exception {
+        //arrange
         Long userId = 2L;
         Long sellerIdToFollow = 9L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -36,8 +38,10 @@ public class UserIntegrationTests {
 
     @Test
     void followSeller_shouldThrowNotFoundException() throws Exception {
+        //arrange
         Long userId = 99L;
         Long sellerIdToFollow = 9L;
+        //act and assert
         mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isNotFound())
@@ -47,8 +51,10 @@ public class UserIntegrationTests {
 
     @Test
     void followSeller_shouldThrowFollowingMyselfException() throws Exception {
+        //arrange
         Long userId = 2L;
         Long sellerIdToFollow = 2L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -58,8 +64,10 @@ public class UserIntegrationTests {
 
     @Test
     void followSeller_shouldThrowExceptionForInvalidUserId() throws Exception {
+        //arrange
         Long userId = -2L;
         Long sellerIdToFollow = 9L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -70,8 +78,10 @@ public class UserIntegrationTests {
     }
     @Test
     void followSeller_shouldThrowExceptionForInvalidUserIdToFollow() throws Exception {
+        //act & assert
         Long userId = 2L;
         Long sellerIdToFollow = -9L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -83,8 +93,10 @@ public class UserIntegrationTests {
 
     @Test
     void followSeller_shouldThrowAlreadyAFollowerException() throws Exception {
+        //arrange
         Long userId = 1L;
         Long sellerIdToFollow = 6L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", userId,sellerIdToFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -94,8 +106,10 @@ public class UserIntegrationTests {
 
     @Test
     void unfollowSeller_shouldWorkWhenSellerExistsOnFollowings() throws Exception {
+        //arrange
         Long userId = 1L;
         Long sellerIdToUnFollow = 6L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -105,8 +119,10 @@ public class UserIntegrationTests {
 
     @Test
     void unfollowSeller_shouldThrowNotAFollowerException() throws Exception {
+        //arrange
         Long userId = 1L;
         Long sellerIdToUnFollow = 9L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -116,8 +132,10 @@ public class UserIntegrationTests {
 
     @Test
     void unfollowSeller_shouldThrowUnFollowingMyselfException() throws Exception {
+        //arrange
         Long userId = 1L;
         Long sellerIdToUnFollow = 1L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -127,8 +145,10 @@ public class UserIntegrationTests {
 
     @Test
     void unFollowSeller_shouldThrowExceptionForInvalidUserId() throws Exception {
+        //arrange
         Long userId = -1L;
         Long sellerIdToUnFollow = 6L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -140,8 +160,10 @@ public class UserIntegrationTests {
 
     @Test
     void unFollowSeller_shouldThrowExceptionForInvalidUserIdToUnfollow() throws Exception {
+        //arrange
         Long userId = 1L;
         Long sellerIdToUnFollow = -6L;
+        //act & assert
         mockMvc.perform(post("/users/{userId}/unfollow/{userIdToFollow}", userId,sellerIdToUnFollow))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
@@ -152,7 +174,9 @@ public class UserIntegrationTests {
     }
     @Test
     void getFollowersCount_shouldGetCorrectResult() throws Exception {
-    Long userId = 8L;
+        //arrange
+        Long userId = 8L;
+        //act & assert
         mockMvc.perform(get("/users/{userId}/followers/count", userId))
                 .andDo(print())
                 .andExpect(status().isOk())
