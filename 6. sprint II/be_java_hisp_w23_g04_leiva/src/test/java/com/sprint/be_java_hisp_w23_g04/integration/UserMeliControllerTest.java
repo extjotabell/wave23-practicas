@@ -198,4 +198,119 @@ public class UserMeliControllerTest {
         assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
     }
 
+    /* Tests for getAllFollowersByUserId() */
+
+    @Test
+    @DisplayName("GetAllFollowersByUserId successful integration test with name_asc order")
+    void testGetAllFollowersByUserIdOrderAsc() throws Exception {
+        // param
+        int userId = 1;
+        String order = "name_asc";
+        BuyerDTO buyerDTO = IntegrationUtils.getBuyerFollowersDTO();
+        String expectedResult = writer.writeValueAsString(buyerDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetAllFollowersByUserId successful integration test with name_dsc order")
+    void testGetAllFollowersByUserIdOrderDesc() throws Exception {
+        // param
+        int userId = 1;
+        String order = "name_dsc";
+        BuyerDTO buyerDTO = IntegrationUtils.getBuyerFollowersDTO();
+        List<UserDTO> reorderedList = buyerDTO.getFollowed().stream()
+                .sorted(Comparator.comparing(UserDTO::getName).reversed())
+                .toList();
+        buyerDTO.setFollowed(reorderedList);
+        String expectedResult = writer.writeValueAsString(buyerDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetAllFollowersByUserId fails because userId is zero and throw a BadRequestException")
+    void testGetAllFollowersByUserIdZero() throws Exception {
+        // param
+        int userId = 0;
+        String order = "name_asc";
+        SimpleMessageDTO messageDTO = new SimpleMessageDTO(
+                "Se encontraron los siguientes errores en las validaciones:",
+                List.of("El id del usuario debe ser mayor a cero"));
+        String expectedResult = writer.writeValueAsString(messageDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetAllFollowersByUserId fails because order criteria not-exists and throw a BadRequestException")
+    void testGetAllFollowersByUserIdCriteriaNotExist() throws Exception {
+        // param
+        int userId = 1;
+        String order = "test";
+        SimpleMessageDTO messageDTO = new SimpleMessageDTO("El criterio de ordenamiento no existe.");
+        String expectedResult = writer.writeValueAsString(messageDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetAllFollowersByUserId fails because userId not exist and throw a NotFoundException")
+    void testGetAllFollowersByUserIdNotExist() throws Exception {
+        // param
+        int userId = 99;
+        String order = "name_asc";
+        SimpleMessageDTO messageDTO = new SimpleMessageDTO("No se encontró usuario con el id " + userId + ".");
+        String expectedResult = writer.writeValueAsString(messageDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetAllFollowersByUserId return NoContent when the user doesn't have followers")
+    void testGetAllFollowersByUserIdWithoutFollowers() throws Exception {
+        // param
+        int userId = 5;
+        String order = "name_asc";
+
+        this.mockMvc.perform(get("/users/{userId}/followers/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
 }
