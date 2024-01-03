@@ -2,14 +2,9 @@ package com.example.be_java_hisp_w23_g3.integration.product;
 
 import com.example.be_java_hisp_w23_g3.dto.request.PostRequestDTO;
 import com.example.be_java_hisp_w23_g3.dto.request.ProductDTO;
-import com.example.be_java_hisp_w23_g3.entity.product.Product;
 import com.example.be_java_hisp_w23_g3.util.PostRequestDTOTestDataBuilder;
-import com.example.be_java_hisp_w23_g3.util.PostResponseDTOTestDataBuilder;
 import com.example.be_java_hisp_w23_g3.util.ProductDTOTestDataBuilder;
-import com.example.be_java_hisp_w23_g3.util.ProductTestDataBuilder;
-import com.example.be_java_hisp_w23_g3.util.mapper.PostMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,10 +13,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-
-import java.nio.charset.StandardCharsets;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -51,6 +42,17 @@ public class ProductControllerIntegrationTests {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.product.product_id").value(99))
                 .andReturn();
+    }
+    @Test
+    void postProduct_shouldThrowAlreadyExistsExceptionWhenProductAlreadyExists() throws Exception {
+        ProductDTO productExits = new ProductDTOTestDataBuilder().productDTOByDefault().build();
+        PostRequestDTO postRequestDTO = new PostRequestDTOTestDataBuilder().postRequestDTOByDefault().withProduct(productExits).build();
+        String payloadJson = writer.writeValueAsString(postRequestDTO);
+        mockMvc.perform(post("/products/post")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(payloadJson))
+                .andDo(print())
+                .andExpect(status().isBadRequest());
     }
 
     @Test
