@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8a6a85c-8963-4af8-a692-c29a0f585ca7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/a/7abac483803b92796ecb19f43d5e6b9c90109388" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/a/7abac483803b92796ecb19f43d5e6b9c90109388" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80bfa2b7acbe63ebe1707f593eebe19bc24cef8b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80bfa2b7acbe63ebe1707f593eebe19bc24cef8b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/users-2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/users-2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integrationtest/ProductServicesTestIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integrationtest/ProductServicesTestIntegration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integrationtest/UserServicesTestIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integrationtest/UserServicesTestIntegration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +49,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ProductServicesTestIntegration.getListOfAllProducts">
+  <component name="RunManager" selected="JUnit.java in socialmeli">
     <configuration name="ProductServicesTestIntegration.getAllPostTwoLastWeeks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
@@ -102,7 +98,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServicesTestIntegration.getFollowerCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServicesTestIntegration.getFollowersByIdList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
         <pattern>
@@ -112,7 +108,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.meli.socialmeli.integrationtest" />
       <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integrationtest.UserServicesTestIntegration" />
-      <option name="METHOD_NAME" value="getFollowerCount" />
+      <option name="METHOD_NAME" value="getFollowersByIdList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -136,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductServicesTestIntegration.getListOfAllProducts" />
         <item itemvalue="JUnit.java in socialmeli" />
+        <item itemvalue="JUnit.UserServicesTestIntegration.getFollowersByIdList" />
+        <item itemvalue="JUnit.ProductServicesTestIntegration.getListOfAllProducts" />
         <item itemvalue="JUnit.UserServicesTestIntegration.getAllUsersShouldReturnList" />
         <item itemvalue="JUnit.ProductServicesTestIntegration.getAllPostTwoLastWeeks" />
-        <item itemvalue="JUnit.UserServicesTestIntegration.getFollowerCount" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +148,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704214177963</updated>
-      <workItem from="1704214179120" duration="12447000" />
+      <workItem from="1704214179120" duration="13321000" />
     </task>
     <servers />
   </component>
@@ -163,6 +159,6 @@
     <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_quiroga$SocialmeliApplicationTests.ic" NAME="SocialmeliApplicationTests Coverage Results" MODIFIED="1704214513738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.meli.socialmeli.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_quiroga$java_in_socialmeli.ic" NAME="java in socialmeli Coverage Results" MODIFIED="1704257989704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_quiroga$java_in_socialmeli.ic" NAME="java in socialmeli Coverage Results" MODIFIED="1704258627298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

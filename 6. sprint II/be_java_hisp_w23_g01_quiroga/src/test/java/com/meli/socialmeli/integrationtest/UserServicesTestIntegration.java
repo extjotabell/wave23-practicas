@@ -98,4 +98,34 @@ public class UserServicesTestIntegration {
                 .andExpect(contentTypeExpected)
                 .andDo(MockMvcResultHandlers.print());
     }
+
+    @Test
+    @DisplayName("Integración de US-0003 - US-0008")
+    void getFollowersByIdList () throws Exception {
+        //Arrange
+
+        String responseJSONExpected = "{'user_id': 100, 'user_name': 'Roach', " +
+                "'followers': [{'user_id': 2100, 'user_name': 'Moreno'}, {'user_id': 3100, 'user_name': 'Peters'}]}";
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/2100/follow/100")
+                        .contentType(MediaType.APPLICATION_JSON));
+        this.mockMvc.perform(
+                MockMvcRequestBuilders.post("/users/3100/follow/100")
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/users/100/followers/list?order=name_asc");
+        //Expected Status - ContentType - Body
+
+        ResultMatcher statusExpected = status().isOk();
+        ResultMatcher contentTypeExpected = content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher bodyExpected = content().json(responseJSONExpected);
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpected)
+                .andExpect(bodyExpected)
+                .andDo(MockMvcResultHandlers.print());
+    }
 }
