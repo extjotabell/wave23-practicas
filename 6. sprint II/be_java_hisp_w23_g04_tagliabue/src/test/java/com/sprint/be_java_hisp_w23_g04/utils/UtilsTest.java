@@ -148,4 +148,13 @@ public class UtilsTest {
 
         return new PostResponseDTO(3, 0, LocalDate.of(2020, 6, 18), productDTO, 10, 999.99);
     }
+
+
+    public static SellerDTO getSellerDTO() {
+        return new SellerDTO(1, "Juan Perez", 2);
+    }
+
+    public static SimpleMessageDTO getSimpleMessageDTOUserNotExist() {
+        return new SimpleMessageDTO("No se encontró usuario con el id 99.");
+    }
 }
