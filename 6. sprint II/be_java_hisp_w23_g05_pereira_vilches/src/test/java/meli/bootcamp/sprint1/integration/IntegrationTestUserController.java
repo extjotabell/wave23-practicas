@@ -160,6 +160,20 @@ class IntegrationTestUserController {
         //hasSize(0) indicates that there are no posts from sellers following in the last two weeks
     }
 
+    @Test
+    @DisplayName("Test: Endpoint GET /products/followed/{userId}/list")
+    void getPostsFromFollowedTestWPosts() throws Exception {
+
+        int userId = 5;
+
+        this.mockMvc.perform(get("/products/followed/{userId}/list", userId))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.posts", hasSize(2)))
+                .andReturn();
+        //hasSize(2) indicates that there are 2 posts from sellers following in the last two weeks
+    }
+
     private ObjectWriter writer(){
         return  new ObjectMapper()
                 .registerModule(new JavaTimeModule())

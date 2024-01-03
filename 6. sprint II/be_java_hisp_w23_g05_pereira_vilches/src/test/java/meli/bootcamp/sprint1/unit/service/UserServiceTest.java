@@ -57,6 +57,25 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
+    @DisplayName("Bonus/ User is already followed")
+    void T_0001OkTestCase1(){
+
+        //Arrange
+        User seller = generateSeller();
+        User user = generateUser();
+
+        when(repository.findUserById(user.getId())).thenReturn(user);
+        when(repository.findUserById(seller.getId())).thenReturn(seller);
+        BaseResponseDto expected = new BaseResponseDto("The user is already followed");
+
+        //Act
+        BaseResponseDto response = service.followUser(user.getId(), seller.getId());
+
+        //Assert
+        assertEquals(expected,response);
+    }
+
+    @Test
     @DisplayName("T-0001/ Verify user to follow not exist test")
     void T_0001ExceptionTest(){
 
@@ -74,7 +93,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0001/ Verify if user to follow is a seller")
+    @DisplayName("Bonus/ Verify if user to follow is a seller")
     void T_0001ExceptionTestCase2(){
         //Arrange
         User user = generateUser2();
@@ -92,7 +111,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0001/ Verify if user to follow is same as user")
+    @DisplayName("Bonus/ Verify if user to follow is same as user")
     void T_0001ExceptionTestCase3(){
         //Arrange
         User user = generateSeller();
@@ -145,7 +164,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    @DisplayName("T-0002/ Verify empty lists from users")
+    @DisplayName("Bonus/ Verify empty lists from users")
     void T_0002NotOkCase1(){
         //Arrange
         User userFollower = generateSellerNoFollowers();
@@ -162,6 +181,27 @@ import static org.mockito.Mockito.when;
         //Assert
         BadRequestException exception = assertThrows(BadRequestException.class, ()-> service.unfollowUser(userFollowerId, userFollowedId));
         assertEquals("Followed list and following lists are empty", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("Bonus/ Cannot unfollow because is not a followed")
+    void T_0002Error(){
+        //Arrange
+        User userFollower = generateUser();
+        int userId = userFollower.getId();
+        User userFollowed = generateSeller();
+        int userIdToUnfollow = userFollowed.getId();
+        BaseResponseDto expected = new BaseResponseDto("Error unfollowing user, user " + userId + " doesn't follow user " + userIdToUnfollow);
+
+        when(repository.findUserById(userFollower.getId())).thenReturn(userFollower);
+        when(repository.findUserById(userFollowed.getId())).thenReturn(userFollowed);
+        when(repository.unfollowUser(userFollower.getId(), userFollowed.getId())).thenReturn(false);
+
+        //Act
+        BaseResponseDto actual = service.unfollowUser(userFollower.getId(), userFollowed.getId());
+
+        //Assert
+        assertEquals(expected,actual);
     }
 
     @Test

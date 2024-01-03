@@ -44,7 +44,23 @@
     "isSeller": false,
     "followers": [],
     "followed": [],
-    "posts": [],
+    "posts": [{
+      "post_id": 1,
+      "date": "01-01-2024",
+      "product": {
+        "product_id": 1,
+        "product_name": "Silla Gamer",
+        "type": "Gamer",
+        "brand": "Racer",
+        "color": "Red",
+        "notes": "Special Edition"
+      },
+      "category": {
+        "id": "1",
+        "description": "Electronics"
+      },
+      "price": 1500.50
+    }],
     "id": "6"
   },
   {
@@ -52,7 +68,23 @@
     "isSeller": false,
     "followers": [],
     "followed": [],
-    "posts": [],
+    "posts": [{
+      "post_id": 2,
+      "date": "01-01-2022",
+      "product": {
+        "product_id": 1,
+        "product_name": "Silla Gamer",
+        "type": "Gamer",
+        "brand": "Racer",
+        "color": "Red",
+        "notes": "Special Edition"
+      },
+      "category": {
+        "id": "1",
+        "description": "Electronics"
+      },
+      "price": 1500.50
+    }],
     "id": "7"
   },
   {
@@ -60,7 +92,23 @@
     "isSeller": false,
     "followers": [],
     "followed": [],
-    "posts": [],
+    "posts": [{
+      "post_id": 3,
+      "date": "02-01-2024",
+      "product": {
+        "product_id": 1,
+        "product_name": "Silla Gamer",
+        "type": "Gamer",
+        "brand": "Racer",
+        "color": "Red",
+        "notes": "Special Edition"
+      },
+      "category": {
+        "id": "1",
+        "description": "Electronics"
+      },
+      "price": 1500.50
+    }],
     "id": "8"
   }
 ]
