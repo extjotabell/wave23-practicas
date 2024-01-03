@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Juan Perez",
-    "posts_id": [1, 2, 7],
+    "posts_id": [1, 2, 7, 8],
     "followed_id": [],
     "followers_id": [4, 6]
   },
@@ -51,7 +51,7 @@
   {
     "id": 8,
     "name": "Pablo Gonzalez",
-    "posts_id": [5],
+    "posts_id": [6],
     "followed_id": [],
     "followers_id": []
   }
