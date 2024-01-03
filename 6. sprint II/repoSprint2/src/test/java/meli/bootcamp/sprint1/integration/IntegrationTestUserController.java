@@ -239,4 +239,55 @@ public class IntegrationTestUserController {
         assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
     }
 
+    @Test
+    @DisplayName("Endpoint - Unfollow User - OK")
+    void testUnfollowUser_OK() throws Exception{
+        responseDto = new BaseResponseDto("User 4 was unfollowed");
+
+        request = post("/users/{userId}/unfollow/{userIdToUnfollow}", 1, 4)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - Follow User - Exception: Empty Users Lists")
+    void testFollowUser_ThrowsBadRequestException_EmptyUsersLists() throws Exception{
+        responseDto = new BaseResponseDto("Followed list and following lists are empty");
+
+        request = post("/users/{userId}/unfollow/{userIdToUnFollow}", 7, 4)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("Endpoint - Unfollow User - Error Unfollowing - User doesn't follow")
+    void testUnfollowUser_ErrorUnfollowing_DoesNotFollow() throws Exception{
+        responseDto = new BaseResponseDto("Error unfollowing user, user 5 doesn't follow user 4");
+
+        request = post("/users/{userId}/unfollow/{userIdToUnfollow}", 5, 4)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        result = mockMvc.perform(request)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(objectWriter.writeValueAsString(responseDto), result.getResponse().getContentAsString());
+    }
+
 }
