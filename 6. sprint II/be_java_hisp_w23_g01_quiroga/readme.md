@@ -182,11 +182,10 @@ URL base: http://localhost:8080
 | T-0009                                                     | Verificar la correcta creación de un nuevo Post `(US-0005)`                                                                                                              | Indica el id del usuario y la confirmación de la creación.                                                                                         | Danilo Quiroga |
 
 
--  ***Test integrales***:
+***Test integrales***:
 
-   Se realizaron los test integrales dividos en dos secciones, para el productServices y para el userServices.
-   En ellos se realizaron la validación de correcto funcionamiento buscando cual era el correcto funcionamiento y también los posibles casos de error.
 
+   - Se llevaron a cabo pruebas integrales divididas en dos secciones: una para el productServices y otra para el userServices. En estas pruebas, se validó el correcto funcionamiento, identificando los casos de éxito, así como los posibles escenarios de error. El objetivo fue asegurar un desempeño adecuado y manejo adecuado de situaciones inesperadas en ambos servicios.
 
 
 - ***El coverage obtenido en los métodos es del 81%,en clases del 93% y linea del 83%***
