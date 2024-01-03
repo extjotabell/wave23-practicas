@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Juan Perez",
+    "posts_id": [1, 2, 7, 8],
+    "followed_id": [],
+    "followers_id": [4, 6]
+  },
+  {
+    "id": 2,
+    "name": "Maria Gonzalez",
+    "posts_id": [3],
+    "followed_id": [],
+    "followers_id": [3]
+  },
+  {
+    "id": 3,
+    "name": "Pablo Gonzalez",
+    "posts_id": [4],
+    "followed_id": [],
+    "followers_id": [2, 4]
+  },
+  {
+    "id": 4,
+    "name": "Sofia Gomez",
+    "posts_id": [],
+    "followed_id": [1, 3],
+    "followers_id": []
+  },
+  {
+    "id": 5,
+    "name": "Pedro Lopez",
+    "posts_id": [],
+    "followed_id": [],
+    "followers_id": []
+  },
+  {
+    "id": 6,
+    "name": "Diego Lopez",
+    "posts_id": [],
+    "followed_id": [7],
+    "followers_id": []
+  },
+  {
+    "id": 7,
+    "name": "Penelope cruz",
+    "posts_id": [5],
+    "followed_id": [],
+    "followers_id": []
+  },
+  {
+    "id": 8,
+    "name": "Pablo Gonzalez",
+    "posts_id": [6],
+    "followed_id": [],
+    "followers_id": []
+  }
+]
