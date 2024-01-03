@@ -313,4 +313,103 @@ public class UserMeliControllerTest {
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
+
+    /* Tests for getFollowedByUserId() */
+
+    @Test
+    @DisplayName("GetFollowedByUserId successful integration test with name_asc order")
+    void testGetFollowedByUserIdOrderAsc() throws Exception {
+        // param
+        int userId = 4;
+        String order = "name_asc";
+        BuyerDTO buyerDTO = IntegrationUtils.getBuyerFollowedDTO();
+
+        String expectedResult = writer.writeValueAsString(buyerDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followed/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetFollowedByUserId successful integration test with name_dsc order")
+    void testGetFollowedByUserIdOrderDesc() throws Exception {
+        // param
+        int userId = 4;
+        String order = "name_dsc";
+        BuyerDTO buyerDTO = IntegrationUtils.getBuyerFollowedDTO();
+        List<UserDTO> reorderedList = buyerDTO.getFollowed().stream()
+                .sorted(Comparator.comparing(UserDTO::getName).reversed())
+                .toList();
+        buyerDTO.setFollowed(reorderedList);
+
+        String expectedResult = writer.writeValueAsString(buyerDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followed/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetFollowedByUserId fails because userId is zero and throw a BadRequestException")
+    void testGetFollowedByUserIdZero() throws Exception {
+        // param
+        int userId = 0;
+        String order = "name_asc";
+        SimpleMessageDTO messageDTO = new SimpleMessageDTO(
+                "Se encontraron los siguientes errores en las validaciones:",
+                List.of("El id del usuario debe ser mayor a cero"));
+        String expectedResult = writer.writeValueAsString(messageDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followed/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetFollowedByUserId fails because userId not exist and throw a NotFoundException")
+    void testGetFollowedByUserIdNotExist() throws Exception {
+        // param
+        int userId = 99;
+        String order = "name_asc";
+        SimpleMessageDTO messageDTO = new SimpleMessageDTO("No se encontró usuario con el id " + userId + ".");
+        String expectedResult = writer.writeValueAsString(messageDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followed/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetFollowedByUserId return NoContent when the user is not following anyone")
+    void testGetFollowedByUserIdNotFollowingAnyone() throws Exception {
+        // param
+        int userId = 1;
+        String order = "name_asc";
+
+        this.mockMvc.perform(get("/users/{userId}/followed/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isNoContent());
+    }
 }
