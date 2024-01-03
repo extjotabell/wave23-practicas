@@ -194,7 +194,18 @@ URL base: http://localhost:8080
 **T-0010:** Usuario logra seguir al otro usuario con éxito
 
 
-**Ejemplo:** /users/123/follow/234
+
+## Pruebas de integración (Individual extra)
+
+
+**[POST] US 0001:** Poder realizar la acción de “Follow” (seguir) a un determinado vendedor:
+
+    /users/{userId}/follow/{userIdToFollow}
+
+**T-0011**: Usuario no logra seguir al otro usuario porque ya lo esta siguiendo.
+
+
+
 ## Integrantes:
 - Andres Alejandro Limpio
 - Alfredo Tonatiuh Diaz
