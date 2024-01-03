@@ -208,6 +208,8 @@ URL base: http://localhost:8080
 
 **T-0015**: Usuario no puede seguir a usuario no existente."
 
+**T-0016**: Usuario no existente no puede seguir a nadie
+
 
 
 **[GET] US 0002:** Obtener el resultado de la cantidad de usuarios que siguen a un determinado vendedor:

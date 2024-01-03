@@ -156,7 +156,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>114</line>
+          <line>130</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="countFollowersIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -165,7 +165,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>132</line>
+          <line>148</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="countFollowersUserFollowsOtherUsersIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
