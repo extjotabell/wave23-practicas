@@ -1,10 +1,7 @@
 package com.sprint.be_java_hisp_w23_g04.utils;
 
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO;
-import com.sprint.be_java_hisp_w23_g04.dto.response.BuyerDTO;
-import com.sprint.be_java_hisp_w23_g04.dto.response.ProductDTO;
-import com.sprint.be_java_hisp_w23_g04.dto.response.SimpleMessageDTO;
-import com.sprint.be_java_hisp_w23_g04.dto.response.UserDTO;
+import com.sprint.be_java_hisp_w23_g04.dto.response.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -49,14 +46,7 @@ public class UtilsIntegrationTests {
 
     public static PostDTO generatePostDTOUS0005(){
         LocalDate date = LocalDate.of(2023,12,19);
-
-        ProductDTO product = new ProductDTO();
-        product.setId(1);
-        product.setName("Silla Gamer");
-        product.setType("Gamer");
-        product.setBrand("bracer");
-        product.setColor("Red and Black");
-        product.setNotes("Special Edition");
+        ProductDTO product = getProductDTO(1);
 
         PostDTO post = new PostDTO();
         post.setUserId(5);
@@ -66,6 +56,35 @@ public class UtilsIntegrationTests {
         post.setPrice(1500.50);
 
         return post;
+    }
+
+    private static ProductDTO getProductDTO(int productId){
+        switch (productId) {
+            case 1 -> {
+                ProductDTO product = new ProductDTO();
+                product.setId(1);
+                product.setType("Gamer");
+                product.setBrand("Racer");
+                product.setColor("Red and Black");
+                product.setNotes("Special Edition");
+                product.setName("Silla gamer");
+
+                return product;
+            }
+            case 2 -> {
+                ProductDTO product = new ProductDTO();
+                product.setId(2);
+                product.setType("Gamer");
+                product.setBrand("Redragon");
+                product.setColor("Black");
+                product.setNotes("Special Edition");
+                product.setName("Teclado");
+
+                return product;
+            }
+        }
+
+        return null;
     }
 
     public static PostDTO generatePostDTOUS0005(String modifier){
@@ -97,5 +116,37 @@ public class UtilsIntegrationTests {
 
     public static SimpleMessageDTO generateUserNotFoundMessage(Integer userID){
         return new SimpleMessageDTO("No se encontró usuario con el id "+ userID+".");
+    }
+
+    public static PostListDTO generatePostListDTOUS0006(Integer userId,String order) {
+        PostResponseDTO post1 = new PostResponseDTO();
+        post1.setDate(LocalDate.of(2023,12,23));
+        post1.setProduct(getProductDTO(2));
+        post1.setCategory(58);
+        post1.setPrice(800.0);
+        post1.setUserId(3);
+        post1.setPostId(4);
+
+        PostResponseDTO post2 = new PostResponseDTO();
+        post2.setDate(LocalDate.of(2023,12,29));
+        post2.setProduct(getProductDTO(1));
+        post2.setCategory(100);
+        post2.setPrice(1000.0);
+        post2.setUserId(1);
+        post2.setPostId(7);
+
+        PostResponseDTO post3 = new PostResponseDTO();
+        post3.setDate(LocalDate.of(2023,12,31));
+        post3.setProduct(getProductDTO(1));
+        post3.setCategory(100);
+        post3.setPrice(1000.0);
+        post3.setUserId(1);
+        post3.setPostId(8);
+
+        if(order.equals("date_asc")){
+            return new PostListDTO(userId,List.of(post1,post2,post3));
+        }
+
+        return new PostListDTO(userId,List.of(post3,post2,post1));
     }
 }

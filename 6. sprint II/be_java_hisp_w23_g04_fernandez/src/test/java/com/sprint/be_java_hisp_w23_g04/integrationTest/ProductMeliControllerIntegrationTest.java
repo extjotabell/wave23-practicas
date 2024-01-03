@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO;
+import com.sprint.be_java_hisp_w23_g04.dto.response.PostListDTO;
 import com.sprint.be_java_hisp_w23_g04.dto.response.SimpleMessageDTO;
 import com.sprint.be_java_hisp_w23_g04.utils.UtilsIntegrationTests;
 import org.junit.jupiter.api.DisplayName;
@@ -434,4 +435,29 @@ public class ProductMeliControllerIntegrationTest {
     }
 
     //TODO: Add validation test for productDTO.message and productDTO.notes
+
+    /** Testing US-0006: GET /products/followed/{userId}/list **/
+
+    @Test
+    @DisplayName("Get posts published in the lasts 2 weeks: Should return the list with posts published in the last 2 weeks oby the followed sellers, sorted by date ASC")
+    public void getFilteredPostTest() throws Exception {
+        //Arrange
+        PostListDTO expectedList = UtilsIntegrationTests.generatePostListDTOUS0006(4,"date_asc");
+
+        //Request
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/products/followed/{userId}/list",4);
+
+        //Expects
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isOk();
+        ResultMatcher contentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher contentExpected = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedList));
+
+
+        mockMvc.perform(request)
+                .andExpect(statusExpected) // Verify status code 200
+                .andExpect(contentType) // Verify is content type is Application Json
+                .andExpect(contentExpected) // Verify is the response has correct message
+                .andDo(MockMvcResultHandlers.print()); // Show the request
+    }
+
 }
