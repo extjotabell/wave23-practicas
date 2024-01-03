@@ -7,6 +7,7 @@ import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.MessageDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowedDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersCountDTO;
 
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.utils.ObjectCreator;
 import org.junit.jupiter.api.*;
 
@@ -191,6 +192,25 @@ class UserControllerIntegrationTest {
         String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
 
         MvcResult result = mockMvc.perform(get("/users/{userId}/followed/list", 1)
+                        .contentType("application/json"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.user_id").value(payloadResponseDTO.getId()))
+                .andExpect(jsonPath("$.user_name").value(payloadResponseDTO.getUserName()))
+                .andReturn();
+
+        assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("List of all followers by a given user given their ID.")
+    void getFollowersUserIntegrationTest() throws Exception{
+        UserFollowersDTO payloadResponseDTO = ObjectCreator.createUserFollowersIntegration();
+
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+
+        MvcResult result = mockMvc.perform(get("/users/{userId}/followers/list", 1)
                         .contentType("application/json"))
                 .andDo(print())
                 .andExpect(status().isOk())
