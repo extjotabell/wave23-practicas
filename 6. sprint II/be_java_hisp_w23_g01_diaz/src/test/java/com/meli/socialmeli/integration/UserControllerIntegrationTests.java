@@ -661,4 +661,25 @@ class UserControllerIntegrationTests {
                 .andDo(MockMvcResultHandlers.print());
     }
 
+    /*
+        Encontrar a todos los usuarios
+    */
+    @Test
+    @DisplayName("Find all: Encontrar a todos los usuarios")
+    void findAllOk() throws Exception{
+        //Arrange
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get(
+                "/users"
+        );
+
+        ResultMatcher statusExpected = MockMvcResultMatchers.status().isOk();
+        ResultMatcher contentTypeExpectecd = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+
+        //Act & Assert
+        mockMvc.perform(request)
+                .andExpect(statusExpected)
+                .andExpect(contentTypeExpectecd);
+
+    }
+
 }
