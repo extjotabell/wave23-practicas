@@ -246,6 +246,14 @@ URL base: http://localhost:8080
 
 
 
+## Coverage:
+
+
+
+![Coverage](Coverage.png)
+
+
+
 ## Integrantes:
 - Andres Alejandro Limpio
 - Alfredo Tonatiuh Diaz
