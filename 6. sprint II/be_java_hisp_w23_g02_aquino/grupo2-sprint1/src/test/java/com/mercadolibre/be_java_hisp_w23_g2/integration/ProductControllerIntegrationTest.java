@@ -19,35 +19,36 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@SpringBootTest
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@AutoConfigureMockMvc
+@SpringBootTest //It initializes the Spring application context.
+@AutoConfigureMockMvc //Is used to automatically configure a MockMvc instance, allowing for easier testing of MVC controllers in a Spring application.
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class) //Specifies the test execution order based on the explicit order.
 class ProductControllerIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
 
-    ObjectWriter writer = new ObjectMapper()
+    ObjectWriter writer = new ObjectMapper() //To configure serialization options (JSON)
             .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
 
     @Test
-    @Order(1)
+    @Order(1) //Specifies the execution order of a test method within a test class
     @DisplayName("Add a new post.")
     void addPost() throws Exception{
         PostDTO payloadRequestDTO = ObjectCreator.createPostWithProduct();
         MessageDTO payloadResponseDTO = new MessageDTO("Publication successfully added.");
 
-        String payloadRequestJson = writer.writeValueAsString(payloadRequestDTO);
+        String payloadRequestJson = writer.writeValueAsString(payloadRequestDTO); // Converts DTO to JSON
         String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
 
+        //Performs a POST request to the "/products/post" endpoint using the configured mockMvc instance.
         MvcResult result = mockMvc.perform(post("/products/post")
                         .contentType("application/json")
                         .content(payloadRequestJson))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
-                .andReturn();
+                .andDo(print()) // Print the request and response details for debugging purposes.
+                .andExpect(status().isOk()) // Expecting HTTP status code 200 (OK).
+                .andExpect(content().contentType("application/json")) // Expecting content type "application/json".
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage())) // Expecting a specific value in the JSON response body.
+                .andReturn(); // Returns the result of the performed request.
 
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
     }
@@ -62,14 +63,15 @@ class ProductControllerIntegrationTest {
         String payloadRequestJson = writer.writeValueAsString(payloadRequestDTO);
         String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
 
+        //Performs a POST request to the "/products/post" endpoint using the configured mockMvc instance.
         MvcResult result = mockMvc.perform(post("/products/post")
                         .contentType("application/json")
                         .content(payloadRequestJson))
-                .andDo(print())
-                .andExpect(status().is4xxClientError())
-                .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
-                .andReturn();
+                .andDo(print()) // Print the request and response details for debugging purposes.
+                .andExpect(status().is4xxClientError()) // Expecting an HTTP 4xx status code (client error).
+                .andExpect(content().contentType("application/json")) // Expecting content type "application/json".
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage())) // Expecting a specific value in the JSON response body.
+                .andReturn(); // Returns the result of the performed request.
 
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
     }

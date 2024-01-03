@@ -22,33 +22,33 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@SpringBootTest //It initializes the Spring application context.
+@AutoConfigureMockMvc //Is used to automatically configure a MockMvc instance, allowing for easier testing of MVC controllers in a Spring application.
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class) //Specifies the test execution order based on the explicit order.
 class UserControllerIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
 
-    ObjectWriter writer = new ObjectMapper()
-            .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
+    ObjectWriter writer = new ObjectMapper() // Jackson ObjectWriter for JSON writing
+            .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer(); // Configures serialization options
 
     @Test
-    @Order(1)
+    @Order(1) //Specifies the execution order of a test method within a test class
     @DisplayName("Returns the number of followers of a user given their ID.")
     void getFollowersCountSellerIntegrationTest() throws Exception {
         UserFollowersCountDTO payloadResponseDTO = ObjectCreator.createUserFollowersCount();
 
-        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO); // Converts DTO to JSON
 
         MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/count", 1))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$.user_id").value(payloadResponseDTO.getId()))
+                .andDo(print()) // Print request and response details
+                .andExpect(status().isOk()) // Expects an HTTP 200 status code
+                .andExpect(content().contentType("application/json")) // Expects content type "application/json"
+                .andExpect(jsonPath("$.user_id").value(payloadResponseDTO.getId())) // Expects specific values in JSON response
                 .andExpect(jsonPath("$.user_name").value(payloadResponseDTO.getUserName()))
                 .andExpect(jsonPath("$.followers_count").value(payloadResponseDTO.getFollowersCount()))
-                .andReturn();
+                .andReturn(); // Returns the result of the performed request.
 
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
     }
@@ -57,19 +57,22 @@ class UserControllerIntegrationTest {
     @Order(2)
     @DisplayName("Returns the number of followers of a user given their ID. Exception: Current user not exists.")
     void getFollowersCountSellerExceptionIntegrationTest() throws Exception {
-        MessageDTO payloadResponseDTO = new MessageDTO("Current user with id = 100 not exists.");
+        MessageDTO payloadResponseDTO = new MessageDTO("Current user with id = 100 does not exist.");
 
-        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO);
+        String payloadResponseJson = writer.writeValueAsString(payloadResponseDTO); // Convert the MessageDTO to JSON
 
+        // Perform a GET request to "/users/{userId}/followers/count" with userId = 100
         MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/count", 100))
-                .andDo(print())
-                .andExpect(status().is4xxClientError())
-                .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage()))
+                .andDo(print()) // Print request and response details
+                .andExpect(status().is4xxClientError()) // Expects an HTTP 4xx status code (client error)
+                .andExpect(content().contentType("application/json")) // Expects content type "application/json"
+                .andExpect(jsonPath("$.message").value(payloadResponseDTO.getMessage())) // Expects specific error message
                 .andReturn();
 
+        // Asserts that the expected JSON and the actual JSON in the response match
         assertEquals(payloadResponseJson, result.getResponse().getContentAsString());
     }
+
 
     @Test
     @Order(3)
