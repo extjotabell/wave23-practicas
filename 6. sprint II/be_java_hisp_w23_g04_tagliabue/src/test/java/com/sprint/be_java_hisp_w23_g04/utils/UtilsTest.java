@@ -157,4 +157,34 @@ public class UtilsTest {
     public static SimpleMessageDTO getSimpleMessageDTOUserNotExist() {
         return new SimpleMessageDTO("No se encontró usuario con el id 99.");
     }
+
+    public static com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO requestPostDtoUserIdNotFound() {
+        ProductDTO productDTO = new ProductDTO(99, "Product", "Type", "Brand", "Color", "Notes");
+
+        com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO postDTO = new com.sprint.be_java_hisp_w23_g04.dto.request.PostDTO();
+        postDTO.setUserId(99);
+        postDTO.setDate(LocalDate.now());
+        postDTO.setProduct(productDTO);
+        postDTO.setCategory(123);
+        postDTO.setPrice(99.99);
+
+        return postDTO;
+    }
+
+    public static SimpleMessageDTO getSimpleMessageDTO(PostDTO request) {
+        return new SimpleMessageDTO("El post para el user: " + request.getUserId() + " se guardó exitosamente");
+    }
+
+    public static PostDTO requestPostDto() {
+        ProductDTO productDTO = new ProductDTO(1, "Product", "Type", "Brand", "Color", "Notes");
+
+        PostDTO postDTO = new PostDTO();
+        postDTO.setUserId(1);
+        postDTO.setDate(LocalDate.now());
+        postDTO.setProduct(productDTO);
+        postDTO.setCategory(123);
+        postDTO.setPrice(99.99);
+
+        return postDTO;
+    }
 }
