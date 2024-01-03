@@ -9,6 +9,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -149,7 +150,14 @@ public class UserIntegrationTests {
                 .andExpect(jsonPath("$.errors").value("The user_id to unfollow must be greater than zero"));
 
     }
-
-
+    @Test
+    void getFollowersCount_shouldGetCorrectResult() throws Exception {
+    Long userId = 8L;
+        mockMvc.perform(get("/users/{userId}/followers/count", userId))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.followers_count").value(4));
+    }
 
 }
