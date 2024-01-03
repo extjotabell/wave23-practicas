@@ -212,6 +212,8 @@ URL base: http://localhost:8080
 
 **T-0013**: Usuario no tiene seguidores entonces el conteo es 0
 
+**T-0014**: Usuario tiene seguidores entonces el conteo es mayor a cero
+
 
 
 ## Integrantes:

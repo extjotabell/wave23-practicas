@@ -112,7 +112,7 @@ public class UserIntegrationTest {
     }
 
     @Test
-    @DisplayName("/users/{userId}/followers/count ; T-0013: Usuario tiene seguidores entonces el conteo es mayor a cero")
+    @DisplayName("/users/{userId}/followers/count ; T-0014: Usuario tiene seguidores entonces el conteo es mayor a cero")
     void countFollowersUserFollowsOtherUsersIntegrationTest() throws Exception {
         // Arrange & Act
         Integer user_id = 1100;

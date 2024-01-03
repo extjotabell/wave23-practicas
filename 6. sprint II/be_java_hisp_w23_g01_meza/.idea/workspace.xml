@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9913b44c-f52a-4220-9829-edafca121b6a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +144,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>49</line>
+          <line>45</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="AddFollowerIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -153,7 +153,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>101</line>
+          <line>97</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="countFollowersIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -162,7 +162,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>119</line>
+          <line>115</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="countFollowersUserFollowsOtherUsersIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
