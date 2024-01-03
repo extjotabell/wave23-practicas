@@ -52,7 +52,7 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "costa__felipe",
-    "last_opened_file_path": "/Users/felipcosta/Documents/Bootcamp/wave23-practicas/6. sprint II/grupo2-sprint2-individual",
+    "last_opened_file_path": "/Users/felipcosta/Documents/Bootcamp/wave23-practicas/6. sprint II/grupo2-sprint1-individual",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,7 +83,7 @@
       <recent name="com.mercadolibre.be_java_hisp_w23_g2.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerIntegrationTest.unfollowUser">
+  <component name="RunManager" selected="JUnit.java in grupo2-sprint1">
     <configuration name="All in grupo2-sprint1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="grupo2-sprint1-individual" />
       <option name="PACKAGE_NAME" value="" />
@@ -123,7 +123,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserControllerIntegrationTest.unfollowUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="com.mercadolibre.be_java_hisp_w23_g2.integration in grupo2-sprint1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="grupo2-sprint1-individual" />
       <extension name="coverage">
         <pattern>
@@ -132,9 +132,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration" />
-      <option name="MAIN_CLASS_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration.UserControllerIntegrationTest" />
-      <option name="METHOD_NAME" value="unfollowUser" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -157,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserControllerIntegrationTest.unfollowUser" />
         <item itemvalue="JUnit.java in grupo2-sprint1" />
         <item itemvalue="JUnit.All in grupo2-sprint1" />
         <item itemvalue="JUnit.ProductControllerIntegrationTest.addPost" />
         <item itemvalue="JUnit.UserControllerIntegrationTest" />
+        <item itemvalue="JUnit.com.mercadolibre.be_java_hisp_w23_g2.integration in grupo2-sprint1" />
       </list>
     </recent_temporary>
   </component>
@@ -190,8 +188,7 @@
       <workItem from="1704222091953" duration="1527000" />
       <workItem from="1704223988521" duration="150000" />
       <workItem from="1704224242532" duration="1946000" />
-      <workItem from="1704228979417" duration="1491000" />
-      <workItem from="1704285241419" duration="159000" />
+      <workItem from="1704228979417" duration="1738000" />
     </task>
     <task id="LOCAL-00001" summary="fixup! list followers of user repaired">
       <option name="closed" value="true" />

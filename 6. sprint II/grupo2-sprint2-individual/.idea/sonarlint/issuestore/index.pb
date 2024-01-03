@@ -35,13 +35,8 @@ Wsrc/main/java/com/mercadolibre/be_java_hisp_w23_g2/exception/NotFollowingExcept
 Qsrc/main/java/com/mercadolibre/be_java_hisp_w23_g2/exception/ExceptionConfig.java,6/8/68175405ae1547ff0290043826a5d02483b68ba1
 4
 lsof,d/9/d933e2b520b1078166f4d72612a9dca262519538
-G
-.pre-commit-config.yaml,e/7/e7d14d429f898757a423156de0e8c49d75240694
 7
 HELP.md,1/a/1a273f73b7a477b0745593641bd708a6182c7ad5
-:
-
-.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 ƒ
 Ssrc/main/java/com/mercadolibre/be_java_hisp_w23_g2/exception/NotFoundException.java,7/e/7e0ba8297ca045f2d001677ac3abc89833c1fc3a
 8
