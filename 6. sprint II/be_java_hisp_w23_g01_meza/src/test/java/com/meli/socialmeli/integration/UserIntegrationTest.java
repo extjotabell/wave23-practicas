@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -94,6 +95,22 @@ public class UserIntegrationTest {
     }
 
     @Test
+    @DisplayName("/users/{userId}/follow/{userIdToFollow} ; T-0015: Usuario no puede seguir a usuario no existente.")
+    void AddFollowerTryFollowInexistenUserIntegrationTest() throws Exception{
+        // Arrange & Act & Assert
+        this.mockMvc
+                .perform(post(
+                        "/users/{userId}/follow/{userIdToFollow}", "100", "1213"
+                ))
+                .andDo(print())
+                .andExpectAll(
+                        status().isBadRequest(),
+                        content().contentType("application/json"),
+                        jsonPath("$.message").value("Usuario a seguir no encontrado")
+                );
+    }
+
+    @Test
     @DisplayName("/users/{userId}/followers/count ; T-0013: Usuario no tiene seguidores entonces el conteo es 0")
     void countFollowersIntegrationTest() throws Exception {
         // Arrange & Act
@@ -116,10 +133,8 @@ public class UserIntegrationTest {
     void countFollowersUserFollowsOtherUsersIntegrationTest() throws Exception {
         // Arrange & Act
         Integer user_id = 1100;
-        String expected = objectWriter.writeValueAsString(new FollowersCountDTO(user_id,"Dudley", 3));
-        userService.followSeller(100, 1100);
-        userService.followSeller(2100, 1100);
-        userService.followSeller(3100, 1100);
+        String expected = objectWriter.writeValueAsString(new FollowersCountDTO(user_id, "Dudley", 3));
+        List.of(100, 2100, 3100).forEach(i -> userService.followSeller(i, 1100));
 
         MvcResult mvcResult = this.mockMvc
                 .perform(get(

@@ -208,11 +208,21 @@ URL base: http://localhost:8080
 
 
 
-2. **[GET] US 0002:** Obtener el resultado de la cantidad de usuarios que siguen a un determinado vendedor:
+**[GET] US 0002:** Obtener el resultado de la cantidad de usuarios que siguen a un determinado vendedor:
+
+    /users/{userId}/followers/count
 
 **T-0013**: Usuario no tiene seguidores entonces el conteo es 0
 
 **T-0014**: Usuario tiene seguidores entonces el conteo es mayor a cero
+
+
+
+**[GET] US 0003 & US 0008:** Obtener un listado de todos los usuarios que siguen a un determinado vendedor (¿Quién me sigue?) con y sin ordenamiento:
+
+    /users/{userId}/followers/list
+    /users/{userId}/followers/list?order=name_asc
+    /users/{userId}/followers/list?order=name_desc
 
 
 

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9913b44c-f52a-4220-9829-edafca121b6a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" afterDir="false" />
     </list>
@@ -40,7 +41,7 @@
       <recent name="$PROJECT_DIR$/src/test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserIntegrationTest.countFollowersUserFollowsOtherUsersIntegrationTest">
+  <component name="RunManager" selected="JUnit.UserIntegrationTest.AddFollowerTryFollowInexistenUserIntegrationTest">
     <configuration name="SocialmeliApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.SocialmeliApplication" />
       <module name="socialmeli" />
@@ -54,7 +55,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserIntegrationTest.AddFollowerItsFollowingIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserIntegrationTest.AddFollowerTryFollowInexistenUserIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
         <pattern>
@@ -64,7 +65,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.meli.socialmeli.integration" />
       <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integration.UserIntegrationTest" />
-      <option name="METHOD_NAME" value="AddFollowerItsFollowingIntegrationTest" />
+      <option name="METHOD_NAME" value="AddFollowerTryFollowInexistenUserIntegrationTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -120,11 +121,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserIntegrationTest.AddFollowerTryFollowInexistenUserIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.countFollowersUserFollowsOtherUsersIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.countFollowersIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.AddFollowerTryFollowsItselfIntegrationTest" />
         <item itemvalue="Application.SocialmeliApplication" />
-        <item itemvalue="JUnit.UserIntegrationTest.AddFollowerItsFollowingIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -144,7 +145,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>45</line>
+          <line>46</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="AddFollowerIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -153,7 +154,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>97</line>
+          <line>114</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="countFollowersIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -162,7 +163,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java</url>
-          <line>115</line>
+          <line>132</line>
           <properties class="com.meli.socialmeli.integration.UserIntegrationTest" method="countFollowersUserFollowsOtherUsersIntegrationTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
