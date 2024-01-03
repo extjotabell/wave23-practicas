@@ -21,7 +21,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest //It initializes the Spring application context.
 @AutoConfigureMockMvc //Is used to automatically configure a MockMvc instance, allowing for easier testing of MVC controllers in a Spring application.
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class) //Specifies the test execution order based on the explicit order.
 class ProductControllerIntegrationTest {
 
     @Autowired
@@ -31,7 +30,6 @@ class ProductControllerIntegrationTest {
             .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer();
 
     @Test
-    @Order(1) //Specifies the execution order of a test method within a test class
     @DisplayName("Add a new post.")
     void addPost() throws Exception{
         PostDTO payloadRequestDTO = ObjectCreator.createPostWithProduct();
@@ -54,7 +52,6 @@ class ProductControllerIntegrationTest {
     }
 
     @Test
-    @Order(2)
     @DisplayName("Add a new post. Exception: The product id already exists.")
     void addPostException() throws Exception{
         PostDTO payloadRequestDTO = ObjectCreator.createPostWithProduct();

@@ -13,6 +13,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -24,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest //It initializes the Spring application context.
 @AutoConfigureMockMvc //Is used to automatically configure a MockMvc instance, allowing for easier testing of MVC controllers in a Spring application.
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class) //Specifies the test execution order based on the explicit order.
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD) //Spring will destroy and recreate the application context before executing the next test method.
 class UserControllerIntegrationTest {
 
     @Autowired
@@ -34,7 +35,6 @@ class UserControllerIntegrationTest {
             .configure(SerializationFeature.WRAP_ROOT_VALUE, false).writer(); // Configures serialization options
 
     @Test
-    @Order(1) //Specifies the execution order of a test method within a test class
     @DisplayName("Returns the number of followers of a user given their ID.")
     void getFollowersCountSellerIntegrationTest() throws Exception {
         UserFollowersCountDTO payloadResponseDTO = ObjectCreator.createUserFollowersCount();
@@ -54,7 +54,6 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @Order(2)
     @DisplayName("Returns the number of followers of a user given their ID. Exception: Current user not exists.")
     void getFollowersCountSellerExceptionIntegrationTest() throws Exception {
         MessageDTO payloadResponseDTO = new MessageDTO("Current user with id = 100 not exists.");
@@ -75,7 +74,6 @@ class UserControllerIntegrationTest {
 
 
     @Test
-    @Order(3)
     @DisplayName("Follow a user given their id and the id of the user to follow.")
     void followUserIntegrationTest() throws Exception{
         UserFollowedDTO payloadResponseDTO = ObjectCreator.createUserFollowed();
@@ -95,7 +93,6 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @Order(4)
     @DisplayName("Follow a user given their id and the id of the user to follow. Exception: Follow himself.")
     void followUserIntegrationExceptionTest() throws Exception{
         MessageDTO payloadResponseDTO = new MessageDTO("A user cannot follow/unfollow himself");
@@ -114,7 +111,7 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @Order(5)
+    //@Order(5)
     @DisplayName("Follow a user given their id and the id of the user to follow. Exception: Already follow.")
     void followUserIntegrationException2Test() throws Exception{
         MessageDTO payloadResponseDTO = new MessageDTO("The user 1 already follow 4");
@@ -133,7 +130,6 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @Order(6)
     @DisplayName("Unfollow a user given their id and the id of the user to unfollow.")
     void unfollowUserIntegrationTest() throws Exception{
         MessageDTO payloadResponseDTO = new MessageDTO("Has stopped following Charlie Brown");
@@ -152,7 +148,6 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @Order(7)
     @DisplayName("Unfollow a user given their id and the id of the user to unfollow. Exception: User not follower.")
     void unfollowUserIntegrationExceptionTest() throws Exception{
         MessageDTO payloadResponseDTO = new MessageDTO("The current user does not follow the user to unfollow.");
@@ -171,7 +166,6 @@ class UserControllerIntegrationTest {
     }
 
     @Test
-    @Order(8)
     @DisplayName("Unfollow a user given their id and the id of the user to unfollow. Exception: Unfollow himself.")
     void unfollowUserIntegrationException2Test() throws Exception{
         MessageDTO payloadResponseDTO = new MessageDTO("A user cannot follow/unfollow himself");

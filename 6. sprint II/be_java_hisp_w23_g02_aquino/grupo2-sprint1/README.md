@@ -87,6 +87,12 @@ posts, and interact within the community.
 - [Validations]
     - Add validations in dtos classes to perform the code.
     - Responsible: [Hernan De San Vicente]
+- [Repository Test cases]
+    - Test methods to verify the correct operation of the repository methods:findUserById(), addPost(), followUser() & unFollowUser()
+    - Responsible: [Jannett Aquino]
+-[Integration Test]
+    - Integration tests that are responsible for verifying the correct end-to-end operation of both UserController and ProductController
+    - Responsible: [Jannett Aquino]
 
 ## Technologies Used
 
