@@ -25,33 +25,30 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowersList_shouldReturnFollowersListForValidUserIdAndOrder() throws Exception {
+        // Arrange
         Long userId = 8L;
         String order = "name_asc";
-
         FollowersListDTO followersListDTO = new FollowersListDTOTestDataBuilder()
                 .followersListDTOWithFollowers().build();
-
         String followersListDTOJson = objectMapper.writeValueAsString(followersListDTO);
 
-
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followers/list", userId)
                         .param("order", order)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(followersListDTOJson))
                 .andExpect(status().isOk());
-
     }
 
     @Test
     void getFollowersList_shouldReturnFollowersListForValidUserIdAndNoOrder() throws Exception {
+        // Arrange
         Long userId = 8L;
-
         FollowersListDTO followersListDTO = new FollowersListDTOTestDataBuilder()
                 .followersListDTOWithFollowers().build();
-
         String followersListDTOJson = objectMapper.writeValueAsString(followersListDTO);
 
-
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followers/list", userId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(followersListDTOJson))
@@ -60,9 +57,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowersList_shouldReturnBadRequestForInvalidUserId() throws Exception {
+        // Arrange
         Long userId = -1L;
         String order = "name_asc";
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followers/list", userId)
                         .param("order", order)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -71,9 +70,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowersList_shouldReturnBadRequestForInvalidOrder() throws Exception {
+        // Arrange
         Long userId = 1L;
         String order = "invalid_order";
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followers/list", userId)
                         .param("order", order)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -82,8 +83,10 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowersCount_shouldReturnFollowersCountForValidUserId() throws Exception {
+        // Arrange
         Long userId = 8L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followers/count", userId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -91,8 +94,10 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowersCount_shouldReturnBadRequestForInvalidUserId() throws Exception {
+        // Arrange
         Long userId = -1L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followers/count", userId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
@@ -100,9 +105,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowedSellerList_shouldReturnFollowedListForValidUserIdAndOrder() throws Exception {
+        // Arrange
         Long userId = 1L;
         String order = "name_asc";
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followed/list", userId)
                         .param("order", order)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -111,8 +118,10 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowedSellerList_shouldReturnFollowedListForValidUserIdAndNoOrder() throws Exception {
+        // Arrange
         Long userId = 1L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followed/list", userId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -120,9 +129,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowedSellerList_shouldReturnBadRequestForInvalidUserId() throws Exception {
+        // Arrange
         Long userId = -1L;
         String order = "name_asc";
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followed/list", userId)
                         .param("order", order)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -131,9 +142,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void getFollowedSellerList_shouldReturnBadRequestForInvalidOrder() throws Exception {
+        // Arrange
         Long userId = 1L;
         String order = "invalid_order";
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/users/{userId}/followed/list", userId)
                         .param("order", order)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -142,9 +155,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void followSeller_shouldReturnMessageResponseDTOForValidUserIds() throws Exception {
+        // Arrange
         Long userId = 1L;
         Long userIdToFollow = 8L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.post("/users/{userId}/follow/{userIdToFollow}", userId, userIdToFollow)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -152,9 +167,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void followSeller_shouldReturnBadRequestForInvalidUserId() throws Exception {
+        // Arrange
         Long userId = -1L;
         Long userIdToFollow = 2L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.post("/users/{userId}/follow/{userIdToFollow}", userId, userIdToFollow)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
@@ -162,9 +179,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void followSeller_shouldReturnBadRequestForInvalidUserIdToFollow() throws Exception {
+        // Arrange
         Long userId = 1L;
         Long userIdToFollow = -1L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.post("/users/{userId}/follow/{userIdToFollow}", userId, userIdToFollow)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
@@ -172,9 +191,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void unfollowSeller_shouldReturnMessageResponseDTOForValidUserIds() throws Exception {
+        // Arrange
         Long userId = 1L;
         Long userIdToUnfollow = 8L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.post("/users/{userId}/unfollow/{userIdToUnfollow}", userId, userIdToUnfollow)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -182,9 +203,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void unfollowSeller_shouldReturnBadRequestForInvalidUserId() throws Exception {
+        // Arrange
         Long userId = -1L;
         Long userIdToUnfollow = 2L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.post("/users/{userId}/unfollow/{userIdToUnfollow}", userId, userIdToUnfollow)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
@@ -192,9 +215,11 @@ class UserControllerIntegrationTests {
 
     @Test
     void unfollowSeller_shouldReturnBadRequestForInvalidUserIdToUnfollow() throws Exception {
+        // Arrange
         Long userId = 1L;
         Long userIdToUnfollow = -1L;
 
+        // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.post("/users/{userId}/unfollow/{userIdToUnfollow}", userId, userIdToUnfollow)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
