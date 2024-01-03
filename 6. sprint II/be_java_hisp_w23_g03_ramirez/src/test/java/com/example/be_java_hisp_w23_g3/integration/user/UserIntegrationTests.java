@@ -196,7 +196,7 @@ public class UserIntegrationTests {
     }
 
     @Test
-    void getFollowersList_shouldBeEmpty() throws Exception {
+    void getFollowedList_shouldBeEmpty() throws Exception {
         //arrange
         Long userId = 11L;
         //act & assert
@@ -206,5 +206,50 @@ public class UserIntegrationTests {
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.followed").isEmpty());
     }
+
+    @Test
+    void getFollowersList_shouldBeEmpty() throws Exception {
+        //arrange
+        Long userId = 11L;
+        //act & assert
+        mockMvc.perform(get("/users/{userID}/followers/list", userId))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.followers").isEmpty());
+    }
+    @Test
+    void getFollowedSellersList_shouldReturnNameAscOrderedList() throws Exception {
+        //arrange
+        Long userId = 1L;
+        String order = "name_asc";
+        //act & assert
+        mockMvc.perform(get("/users/{userID}/followed/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.followed[0].user_name").value("Jorge Hernandez"))
+                .andExpect(jsonPath("$.followed[1].user_name").value("Natalia Sanchez"))
+                .andExpect(jsonPath("$.followed[2].user_name").value("Samuel Diaz"));
+
+    }
+    @Test
+    void getFollowersList_shouldReturnNameAscOrderedList() throws Exception {
+        //arrange
+        Long userId = 7L;
+        String order = "name_asc";
+        //act & assert
+        mockMvc.perform(get("/users/{userID}/followers/list", userId)
+                        .param("order", order))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.followers[0].user_name").value("Jhon Perez"))
+                .andExpect(jsonPath("$.followers[1].user_name").value("Maria Rodriguez"))
+                .andExpect(jsonPath("$.followers[2].user_name").value("Oscar Ramirez"));
+
+    }
+
 
 }
