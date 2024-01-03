@@ -183,5 +183,16 @@ public class UserIntegrationTests {
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.followers_count").value(4));
     }
-
+    @Test
+    void getFollowersCount_shouldThrowNotFoundException() throws Exception {
+        //arrange
+        Long userId = 1L;
+        //act & assert
+        mockMvc.perform(get("/users/{userId}/followers/count", userId))
+                .andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.message").value("Seller with id " + userId + " not found"));
+    }
+    
 }
