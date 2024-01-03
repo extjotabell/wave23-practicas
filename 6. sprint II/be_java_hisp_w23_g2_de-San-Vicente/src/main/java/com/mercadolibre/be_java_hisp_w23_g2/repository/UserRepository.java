@@ -17,7 +17,6 @@ import org.springframework.util.ResourceUtils;
 /**
  * Repository class for handling user-related operations.
  */
-@Profile("default")
 @Repository
 public class UserRepository implements IUserRepository {
 

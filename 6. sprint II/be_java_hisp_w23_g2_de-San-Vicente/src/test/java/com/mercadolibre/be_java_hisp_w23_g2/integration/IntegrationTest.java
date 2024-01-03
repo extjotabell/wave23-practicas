@@ -4,24 +4,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.UserBasicDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.MessageDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowedDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class IntegrationTest {
 
     @Autowired
@@ -31,34 +35,10 @@ public class IntegrationTest {
             .registerModule(new JavaTimeModule())
             .writer();
 
-    @Test
-    void addPost(){
-
-    }
-
-    @Test
-    void getPostsByFollowedUsers(){
-
-    }
-
-    @Test
-    void getFollowersCountSeller(){
-
-    }
-
-    @Test
-    void getFollowersUser(){
-
-    }
-
-    @Test
-    void unfollowUser(){
-
-    }
 
     @Test
     void getFollowedUser() throws Exception{
-        MockHttpServletRequestBuilder req = MockMvcRequestBuilders.get("/users/1/followed/list");
+        MockHttpServletRequestBuilder req = get("/users/1/followed/list");
 
         UserFollowedDTO expectedResult = new UserFollowedDTO(
                 1,
@@ -82,7 +62,7 @@ public class IntegrationTest {
 
     @Test
     void getAll() throws Exception {
-        MockHttpServletRequestBuilder req = MockMvcRequestBuilders.get("/users/all");
+        MockHttpServletRequestBuilder req = get("/users/all");
 
         List<UserBasicDTO> expectedResult = List.of(
                 new UserBasicDTO(1, "John Doe"),
@@ -115,7 +95,7 @@ public class IntegrationTest {
 
     @Test
     void followUser() throws Exception {
-        MockHttpServletRequestBuilder req = MockMvcRequestBuilders.post("/users/1/follow/6");
+        MockHttpServletRequestBuilder req = post("/users/1/follow/6");
 
         UserFollowedDTO expectedResult = new UserFollowedDTO(
                 1,
