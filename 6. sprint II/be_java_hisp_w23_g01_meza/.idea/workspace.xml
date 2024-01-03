@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9913b44c-f52a-4220-9829-edafca121b6a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/services/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meli/socialmeli/services/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/ProductIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/ProductIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/static/users-2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integration/UserIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "meza__fernando",
-    "last_opened_file_path": "/Users/fmezaortega/Documents/bootcamp/wave23-practicas/6. sprint II/be_java_hisp_w23_g01_meza"
+    "last_opened_file_path": "/Users/fmezaortega/Documents/bootcamp/wave23-practicas/6. sprint II/be_java_hisp_w23_g01_meza/src/test"
   }
 }]]></component>
   <component name="RunManager">
