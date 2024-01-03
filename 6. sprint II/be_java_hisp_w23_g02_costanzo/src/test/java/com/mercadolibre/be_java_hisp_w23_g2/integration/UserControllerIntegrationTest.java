@@ -139,4 +139,22 @@ class UserControllerIntegrationTest {
                 .andExpect(content().json(expectedJson));
     }
 
+    @Test
+    @DisplayName("TI-0006: Test that verifies the functionality of unfollowing user")
+    void unfollowUserIntegrationTest() throws Exception {
+        MessageDTO expected = new MessageDTO("Has stopped following Eve Wilson");
+
+        ObjectMapper writer = new ObjectMapper();
+        writer.registerModule(new JavaTimeModule());
+        writer.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false).writer();
+
+        String expectedJson = writer.writeValueAsString(expected);
+
+        this.mockMvc.perform(post("/users/{userId}/unfollow/{userIdToUnfollow}", 2, 4))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(expectedJson));
+    }
+
 }
