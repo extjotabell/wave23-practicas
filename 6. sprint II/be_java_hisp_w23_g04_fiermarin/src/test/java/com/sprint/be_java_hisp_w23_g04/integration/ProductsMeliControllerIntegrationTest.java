@@ -80,7 +80,7 @@ class ProductsMeliControllerIntegrationTest {
     void test05() throws Exception {
         mockMvc.perform(get("/products/followed/4/list"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.posts", hasSize(1)))
+                .andExpect(jsonPath("$.posts", hasSize(3)))
                 .andExpect(jsonPath("$.posts[0].user_id").value(3))
                 .andExpect(jsonPath("$.posts[0].post_id").value(4))
                 .andExpect(jsonPath("$.posts[0].date").value("23-12-2023"))

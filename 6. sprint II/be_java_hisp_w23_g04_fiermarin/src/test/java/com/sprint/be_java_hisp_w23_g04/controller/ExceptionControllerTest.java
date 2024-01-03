@@ -4,6 +4,7 @@ import com.sprint.be_java_hisp_w23_g04.dto.response.SimpleMessageDTO;
 import com.sprint.be_java_hisp_w23_g04.exception.BadRequestException;
 import com.sprint.be_java_hisp_w23_g04.exception.NoContentException;
 import com.sprint.be_java_hisp_w23_g04.exception.NotFoundException;
+import jakarta.validation.UnexpectedTypeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,7 @@ import org.springframework.http.ResponseEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class ExceptionControllerTest {
-
+class ExceptionControllerTest {
     @Autowired
     ExceptionController exceptionController;
 
@@ -58,6 +58,21 @@ public class ExceptionControllerTest {
 
         // Act
         ResponseEntity<?> response = exceptionController.emptyContent(e);
+
+        // Assert
+        assertEquals(expectedResponse, response);
+    }
+
+    @Test
+    @DisplayName("Validation exception")
+    void test4() {
+        // Arrange
+        UnexpectedTypeException e = new UnexpectedTypeException("message");
+        SimpleMessageDTO simpleMessageDTO = new SimpleMessageDTO(e.getMessage());
+        ResponseEntity<?> expectedResponse = new ResponseEntity<>(simpleMessageDTO, HttpStatus.BAD_REQUEST);
+
+        // Act
+        ResponseEntity<?> response = exceptionController.validationException(e);
 
         // Assert
         assertEquals(expectedResponse, response);
