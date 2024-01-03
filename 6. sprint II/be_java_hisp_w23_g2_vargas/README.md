@@ -58,7 +58,7 @@ posts, and interact within the community.
     - Endpoint perform the “List the products from followed in date order” action to a user
     - Responsible: [Hernan De San Vicente]
 
-## Test
+## Test Grupal
 
 - [T-0001]
     - Verify that the user to follow exists.
@@ -87,6 +87,9 @@ posts, and interact within the community.
 - [Validations]
     - Add validations in dtos classes to perform the code.
     - Responsible: [Hernan De San Vicente]
+
+## Test Individual
+- Add test integrations.
 
 ## Technologies Used
 
@@ -130,7 +133,8 @@ mvn spring-boot:run
 
 ### PostMan Collection
 
-Path: [PostManCollection](src/main/resources/Sprint%201.postman_collection.json)
+Path: [PostManCollectionSprint1](src/main/resources/Sprint%201.postman_collection.json)
+Path: [PostManCollectionSprint2](src/main/resources/Sprint%202.postman_collection.json)
 
 ### Integers:
 
