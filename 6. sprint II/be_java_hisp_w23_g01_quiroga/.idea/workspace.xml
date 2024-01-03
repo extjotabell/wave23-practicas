@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8a6a85c-8963-4af8-a692-c29a0f585ca7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integrationtest/UserServicesTestIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/meli/socialmeli/integrationtest/UserServicesTestIntegration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +147,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704214177963</updated>
-      <workItem from="1704214179120" duration="13321000" />
+      <workItem from="1704214179120" duration="13881000" />
     </task>
     <servers />
   </component>
@@ -159,6 +158,6 @@
     <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_quiroga$SocialmeliApplicationTests.ic" NAME="SocialmeliApplicationTests Coverage Results" MODIFIED="1704214513738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.meli.socialmeli.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_quiroga$java_in_socialmeli.ic" NAME="java in socialmeli Coverage Results" MODIFIED="1704258627298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/be_java_hisp_w23_g01_quiroga$java_in_socialmeli.ic" NAME="java in socialmeli Coverage Results" MODIFIED="1704259057996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
