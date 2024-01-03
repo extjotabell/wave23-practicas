@@ -7,8 +7,6 @@ Asrc/test/java/com/meli/socialmeli/SocialmeliApplicationTests.java,d/6/d6197481
 Usrc/test/java/com/meli/socialmeli/integrationtest/ProductServicesTestIntegration.java,7/a/7abac483803b92796ecb19f43d5e6b9c90109388
 t
 Dsrc/main/java/com/meli/socialmeli/controllers/ProductController.java,3/f/3f3e9440cf8410781c0cdb1ddffe070f0d6a4bed
-x
-Hsrc/test/java/com/meli/socialmeli/controllers/ProductControllerTest.java,b/f/bf24a0c3bd170b2bdcdf6fb70357d11629e951f8
 u
 Esrc/test/java/com/meli/socialmeli/controllers/UserControllerTest.java,c/b/cb4763ea01417148e4a79feeba06547053a5502b
 v
