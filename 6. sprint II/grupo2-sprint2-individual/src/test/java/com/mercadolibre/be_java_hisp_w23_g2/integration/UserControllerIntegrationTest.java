@@ -12,12 +12,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.UserBasicDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersCountDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowersDTO;
 import java.util.List;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,7 +26,6 @@ import org.springframework.test.web.servlet.MvcResult;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestMethodOrder(OrderAnnotation.class)
 class UserControllerIntegrationTest {
 
   @Autowired
@@ -55,5 +52,16 @@ class UserControllerIntegrationTest {
         .andReturn();
 
     assertEquals(responseJson, result.getResponse().getContentAsString());
+  }
+
+  @Test
+  void getFollowersUserCount() throws Exception {
+    UserFollowersCountDTO expected = new UserFollowersCountDTO(4, "Eve Wilson", 3);
+    MvcResult result = mockMvc.perform(get("/users/{userId}/followers/count", 4)).andDo(print())
+        .andExpect(status().isOk()).andReturn();
+    ObjectMapper mapper = new ObjectMapper();
+    UserFollowersCountDTO resultDto = mapper.readValue(result.getResponse().getContentAsString(),
+        UserFollowersCountDTO.class);
+    assertEquals(expected, resultDto);
   }
 }
