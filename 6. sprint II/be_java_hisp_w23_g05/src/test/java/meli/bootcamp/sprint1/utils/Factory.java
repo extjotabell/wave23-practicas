@@ -16,6 +16,7 @@ import static meli.bootcamp.sprint1.utils.Sorter.*;
 public class Factory {
 
     public static LastPostsDto generateLastPostDto(){
+        LocalDate today = LocalDate.now();
         return new LastPostsDto(2,List.of(
                 new PostDto(  1,  1,  LocalDate.now(),
                     new ProductDto( 1,
@@ -24,14 +25,14 @@ public class Factory {
                             "Razer",
                             "Red Black",
                             "Special Edition"),1,100.00),
-                new PostDto(  1,  2,  LocalDate.of(2023,12,20),
+                new PostDto(  1,  2,  today.minusDays(2),
                     new ProductDto( 1,
                             "Tele",
                             "Gamer",
                             "Razer",
                             "Red Black",
                             "Special Edition"),1,100.00),
-                        new PostDto(  1,  3,  LocalDate.of(2023,12,18),
+                        new PostDto(  1,  3,  today.minusDays(11),
                                 new ProductDto( 1,
                                         "Tele",
                                         "Gamer",
@@ -41,6 +42,7 @@ public class Factory {
 
     }
     public static LastPostsDto generateLastPostDtoOrdered(String order){
+        LocalDate today = LocalDate.now();
 
         List<PostDto> postDtoList = List.of(new PostDto(  1,  1,  LocalDate.now(),
                         new ProductDto( 1,
@@ -49,14 +51,14 @@ public class Factory {
                                 "Razer",
                                 "Red Black",
                                 "Special Edition"),1,100.00),
-                new PostDto(  1,  2,  LocalDate.of(2023,12,20),
+                new PostDto(  1,  2,  today.minusDays(2),
                         new ProductDto( 1,
                                 "Tele",
                                 "Gamer",
                                 "Razer",
                                 "Red Black",
                                 "Special Edition"),1,100.00),
-                new PostDto(  1,  3,  LocalDate.of(2023,12,18),
+                new PostDto(  1,  3,  today.minusDays(11),
                         new ProductDto( 1,
                                 "Tele",
                                 "Gamer",
@@ -69,13 +71,14 @@ public class Factory {
     }
 
     public static List<Post> generatePost(){
+        LocalDate today = LocalDate.now();
         Product product = new Product(1,"Tele","Gamer","Razer","Special Edition","Red Black");
         return List.of(
                 new Post(product, LocalDate.now(),new Category(1,"Electronic"),100.00),
-                new Post(product, LocalDate.of(2023,12,20),new Category(1,"Electronic"),100.00),
-                new Post(product, LocalDate.of(2023,12,18),new Category(1,"Electronic"),100.00),
-                new Post(product, LocalDate.of(2022,12,18),new Category(1,"Electronic"),100.00),
-                new Post(product, LocalDate.of(2021,12,18),new Category(1,"Electronic"),100.00)
+                new Post(product, today.minusDays(2),new Category(1,"Electronic"),100.00),
+                new Post(product, today.minusDays(11),new Category(1,"Electronic"),100.00),
+                new Post(product, today.minusYears(1) ,new Category(1,"Electronic"),100.00),
+                new Post(product, today.minusYears(2),new Category(1,"Electronic"),100.00)
                 );
     }
     public static User generateSeller() {
