@@ -143,4 +143,59 @@ public class UserMeliControllerTest {
 
         assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
     }
+
+    /* Tests for getFollowers() */
+    @Test
+    @DisplayName("GetFollowers successful integration test")
+    void testGetFollowersOk() throws Exception {
+        // param
+        int userId = 3;
+        SellerDTO sellerDTO = new SellerDTO(userId, "Pablo Gonzalez", 2);
+        String expectedResult = writer.writeValueAsString(sellerDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/count", userId))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetFollowers fails because userId is zero and throw a BadRequestException")
+    void testGetFollowersWithUserIdZero() throws Exception {
+        // param
+        int userId = 0;
+        SimpleMessageDTO messageDTO = new SimpleMessageDTO(
+                "Se encontraron los siguientes errores en las validaciones:",
+                List.of("El id del usuario debe ser mayor a cero"));
+        String expectedResult = writer.writeValueAsString(messageDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/count", userId))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
+    @Test
+    @DisplayName("GetFollowers fails because userId not exist and throw a NotFoundException")
+    void testGetFollowersWhenUserNotExist() throws Exception {
+        // param
+        int userId = 99;
+        SimpleMessageDTO messageDTO = new SimpleMessageDTO("No se encontró usuario con el id " + userId + ".");
+        String expectedResult = writer.writeValueAsString(messageDTO);
+
+        MvcResult result = this.mockMvc.perform(get("/users/{userId}/followers/count", userId))
+                .andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        assertEquals(expectedResult, result.getResponse().getContentAsString(StandardCharsets.UTF_8));
+    }
+
 }
