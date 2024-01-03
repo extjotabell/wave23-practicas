@@ -111,6 +111,22 @@ public class UserIntegrationTest {
     }
 
     @Test
+    @DisplayName("/users/{userId}/follow/{userIdToFollow} ; T-0016: Usuario no existente no puede seguir a nadie.")
+    void AddFollowerInexistenUserIntegrationTest() throws Exception{
+        // Arrange & Act & Assert
+        this.mockMvc
+                .perform(post(
+                        "/users/{userId}/follow/{userIdToFollow}", "1213", "100"
+                ))
+                .andDo(print())
+                .andExpectAll(
+                        status().isBadRequest(),
+                        content().contentType("application/json"),
+                        jsonPath("$.message").value("Usuario seguidor no encontrado")
+                );
+    }
+
+    @Test
     @DisplayName("/users/{userId}/followers/count ; T-0013: Usuario no tiene seguidores entonces el conteo es 0")
     void countFollowersIntegrationTest() throws Exception {
         // Arrange & Act

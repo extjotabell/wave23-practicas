@@ -40,16 +40,19 @@
       <recent name="$PROJECT_DIR$/src/test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserIntegrationTest.AddFollowerTryFollowInexistenUserIntegrationTest">
-    <configuration name="SocialmeliApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.SocialmeliApplication" />
+  <component name="RunManager" selected="JUnit.UserIntegrationTest.AddFollowerInexistenUserIntegrationTest">
+    <configuration name="UserIntegrationTest.AddFollowerInexistenUserIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="socialmeli" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.meli.socialmeli.*" />
+          <option name="PATTERN" value="com.meli.socialmeli.integration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.meli.socialmeli.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.meli.socialmeli.integration.UserIntegrationTest" />
+      <option name="METHOD_NAME" value="AddFollowerInexistenUserIntegrationTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserIntegrationTest.AddFollowerInexistenUserIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.AddFollowerTryFollowInexistenUserIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.countFollowersUserFollowsOtherUsersIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.countFollowersIntegrationTest" />
         <item itemvalue="JUnit.UserIntegrationTest.AddFollowerTryFollowsItselfIntegrationTest" />
-        <item itemvalue="Application.SocialmeliApplication" />
       </list>
     </recent_temporary>
   </component>
