@@ -31,20 +31,12 @@ import static com.sprint.be_java_hisp_w23_g04.utils.UtilsTest.*;
 import static org.mockito.ArgumentMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
-public class UserMediaServiceImplTest {
+ class UserMediaServiceImplTest {
     @Mock
     UserGatewayImpl userGateway;
 
-    @Mock
-    Verifications verifications;
-
     @InjectMocks
     UserMediaServiceImpl userService;
-
-    @BeforeEach
-    void setUp(){
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     @DisplayName("Verify that the alphabetical asc sort type exists in getFollowersByUserId")
