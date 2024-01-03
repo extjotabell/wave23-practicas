@@ -3,8 +3,10 @@ package com.mercadolibre.be_java_hisp_w23_g2.integration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.ProductBasicDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.UserBasicDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.ErrorDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.MessageDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowedDTO;
 import org.junit.jupiter.api.Test;
@@ -18,6 +20,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -35,6 +38,59 @@ public class IntegrationTest {
             .registerModule(new JavaTimeModule())
             .writer();
 
+    @Test
+    void addPost() throws Exception{
+        PostDTO payload = new PostDTO(
+            1,
+            LocalDate.now(),
+            new ProductBasicDTO(302, "Mi producto", "Tipo", "Gucci", "Rojo", "No hay notas"),
+            101,
+            1000.0
+        );
+        MockHttpServletRequestBuilder req = post("/products/post")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(writer.writeValueAsString(payload));
+
+        MessageDTO expectedResult = new MessageDTO("Publication successfully added.");
+        ResultMatcher expectedStatus = MockMvcResultMatchers.status().isOk();
+        ResultMatcher expectedContentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher expectedContent = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedResult));
+
+        mockMvc.perform(req)
+                .andDo(print())
+                .andExpect(expectedStatus)
+                .andExpect(expectedContentType)
+                .andExpect(expectedContent);
+    }
+    @Test
+    void addInvalidPost() throws Exception{
+        PostDTO payload = new PostDTO(
+                1,
+                LocalDate.now(),
+                new ProductBasicDTO(302, "Mi producto", "Tipo", "Gucci", "&%$", "No hay notas"),
+                101,
+                1000.0
+        );
+        MockHttpServletRequestBuilder req = post("/products/post")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(writer.writeValueAsString(payload));
+
+        ErrorDTO expectedResult = new ErrorDTO(
+                "Se encontraron errores de validación",
+                List.of(
+                        "El color no puede poseer caracteres especiales"
+                )
+        );
+        ResultMatcher expectedStatus = MockMvcResultMatchers.status().isBadRequest();
+        ResultMatcher expectedContentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher expectedContent = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedResult));
+
+        mockMvc.perform(req)
+                .andDo(print())
+                .andExpect(expectedStatus)
+                .andExpect(expectedContentType)
+                .andExpect(expectedContent);
+    }
 
     @Test
     void getFollowedUser() throws Exception{
@@ -108,6 +164,22 @@ public class IntegrationTest {
         );
 
         ResultMatcher expectedStatus = MockMvcResultMatchers.status().isOk();
+        ResultMatcher expectedContentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
+        ResultMatcher expectedContent = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedResult));
+
+        mockMvc.perform(req)
+                .andDo(print())
+                .andExpect(expectedStatus)
+                .andExpect(expectedContentType)
+                .andExpect(expectedContent);
+    }
+    @Test
+    void unfollowUser() throws Exception {
+        MockHttpServletRequestBuilder req = post("/users/1/unfollow/6");
+
+        MessageDTO expectedResult = new MessageDTO("The current user does not follow the user to unfollow.");
+
+        ResultMatcher expectedStatus = MockMvcResultMatchers.status().isConflict();
         ResultMatcher expectedContentType = MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON);
         ResultMatcher expectedContent = MockMvcResultMatchers.content().json(writer.writeValueAsString(expectedResult));
 
