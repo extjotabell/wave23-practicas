@@ -83,7 +83,11 @@
       <recent name="com.mercadolibre.be_java_hisp_w23_g2.service" />
     </key>
   </component>
+<<<<<<< HEAD:6. sprint II/be_java_hisp_w23_g02_costa/.idea/workspace.xml
   <component name="RunManager" selected="JUnit.java in grupo2-sprint1-individual">
+=======
+  <component name="RunManager" selected="JUnit.ProductControllerIntegrationTest.addPost">
+>>>>>>> 36354a89ac1ae04aa11230980b3092c0880f6382:6. sprint II/grupo2-sprint2-individual/.idea/workspace.xml
     <configuration name="ProductControllerIntegrationTest.addPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="grupo2-sprint1-individual" />
       <extension name="coverage">
@@ -147,10 +151,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD:6. sprint II/be_java_hisp_w23_g02_costa/.idea/workspace.xml
     <configuration name="java in grupo2-sprint1-individual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="grupo2-sprint1-individual" />
       <option name="TEST_OBJECT" value="directory" />
       <dir value="$PROJECT_DIR$/src/test/java" />
+=======
+    <configuration name="UserControllerIntegrationTest.unfollowUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="grupo2-sprint1-individual" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mercadolibre.be_java_hisp_w23_g2.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.mercadolibre.be_java_hisp_w23_g2.integration.UserControllerIntegrationTest" />
+      <option name="METHOD_NAME" value="unfollowUser" />
+      <option name="TEST_OBJECT" value="method" />
+>>>>>>> 36354a89ac1ae04aa11230980b3092c0880f6382:6. sprint II/grupo2-sprint2-individual/.idea/workspace.xml
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -165,11 +184,18 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD:6. sprint II/be_java_hisp_w23_g02_costa/.idea/workspace.xml
         <item itemvalue="JUnit.java in grupo2-sprint1-individual" />
+=======
+>>>>>>> 36354a89ac1ae04aa11230980b3092c0880f6382:6. sprint II/grupo2-sprint2-individual/.idea/workspace.xml
         <item itemvalue="JUnit.ProductControllerIntegrationTest.addPost" />
         <item itemvalue="JUnit.UserControllerIntegrationTest" />
         <item itemvalue="JUnit.UserControllerIntegrationTest.getFollowersSeller" />
         <item itemvalue="JUnit.UserControllerIntegrationTest.getFollowersCountSellerWhenUserExists" />
+<<<<<<< HEAD:6. sprint II/be_java_hisp_w23_g02_costa/.idea/workspace.xml
+=======
+        <item itemvalue="JUnit.UserControllerIntegrationTest.unfollowUser" />
+>>>>>>> 36354a89ac1ae04aa11230980b3092c0880f6382:6. sprint II/grupo2-sprint2-individual/.idea/workspace.xml
       </list>
     </recent_temporary>
   </component>
