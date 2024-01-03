@@ -121,4 +121,22 @@ class UserControllerIntegrationTest {
                 .andExpect(content().json(expectedJson));
     }
 
+    @Test
+    @DisplayName("TI-0005: Test that verifies the triggering of the exception when following a user")
+    void followUserExceptionIntegrationTest() throws Exception {
+        MessageDTO expected = new MessageDTO("The user 2 already follow 4");
+
+        ObjectMapper writer = new ObjectMapper();
+        writer.registerModule(new JavaTimeModule());
+        writer.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false).writer();
+
+        String expectedJson = writer.writeValueAsString(expected);
+
+        this.mockMvc.perform(post("/users/{userId}/follow/{userIdToFollow}", 2, 4))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(content().json(expectedJson));
+    }
+
 }
