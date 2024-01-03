@@ -1,5 +1,7 @@
 package com.mercadolibre.be_java_hisp_w23_g2.utils;
 
+import com.mercadolibre.be_java_hisp_w23_g2.dto.ProductBasicDTO;
+import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Post;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.Product;
 import com.mercadolibre.be_java_hisp_w23_g2.entity.User;
@@ -50,5 +52,24 @@ public class ObjectCreator {
 
   public static Post createPostOld() {
     return createPost(LocalDate.now().minusDays(15));
+  }
+
+  public static PostDTO createPostWithProduct() {
+    ProductBasicDTO productBasicDTO = new ProductBasicDTO();
+    productBasicDTO.setId(1000);
+    productBasicDTO.setBrand("Samsung");
+    productBasicDTO.setName("Digital Camera");
+    productBasicDTO.setType("Photography");
+    productBasicDTO.setColor("Silver");
+    productBasicDTO.setNotes("Professional digital camera for photographers");
+
+    PostDTO payloadRequestDTO = new PostDTO();
+    payloadRequestDTO.setUserId(1);
+    payloadRequestDTO.setCategory(1);
+    payloadRequestDTO.setDate(LocalDate.now());
+    payloadRequestDTO.setPrice(10000.0);
+    payloadRequestDTO.setProduct(productBasicDTO);
+
+    return payloadRequestDTO;
   }
 }
