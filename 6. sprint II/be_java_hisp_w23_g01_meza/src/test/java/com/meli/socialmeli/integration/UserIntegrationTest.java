@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -48,11 +49,11 @@ public class UserIntegrationTest {
         // Arrange & Act & Assert
         this.mockMvc
                 .perform(post(
-                        "/users/{userId}/follow/{userIdToFollow}", "100", "1100"
+                        "/users/{userId}/follow/{userIdToFollow}", "100", "2100"
                 ))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"))
+                .andExpect(content().contentType(APPLICATION_JSON))
                 .andExpect(jsonPath("$.message").value("Usuario seguido agregado"));
     }
 
@@ -73,7 +74,7 @@ public class UserIntegrationTest {
                 .andDo(print())
                 .andExpectAll(
                         status().isBadRequest(),
-                        content().contentType("application/json"),
+                        content().contentType(APPLICATION_JSON),
                         jsonPath("$.message").value("El usuario ya sigue al usuario deseado")
                 );
     }
@@ -89,7 +90,7 @@ public class UserIntegrationTest {
                 .andDo(print())
                 .andExpectAll(
                         status().isBadRequest(),
-                        content().contentType("application/json"),
+                        content().contentType(APPLICATION_JSON),
                         jsonPath("$.message").value("Usuario inválido para seguir")
                 );
     }
@@ -105,7 +106,7 @@ public class UserIntegrationTest {
                 .andDo(print())
                 .andExpectAll(
                         status().isBadRequest(),
-                        content().contentType("application/json"),
+                        content().contentType(APPLICATION_JSON),
                         jsonPath("$.message").value("Usuario a seguir no encontrado")
                 );
     }
@@ -121,7 +122,7 @@ public class UserIntegrationTest {
                 .andDo(print())
                 .andExpectAll(
                         status().isBadRequest(),
-                        content().contentType("application/json"),
+                        content().contentType(APPLICATION_JSON),
                         jsonPath("$.message").value("Usuario seguidor no encontrado")
                 );
     }
@@ -138,31 +139,34 @@ public class UserIntegrationTest {
                 .andDo(print())
         // Assert
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"))
+                .andExpect(content().contentType(APPLICATION_JSON))
                 .andReturn();
 
         Assertions.assertEquals(expected, mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8));
     }
 
     @Test
-    @DisplayName("/users/{userId}/followers/count ; T-0014: Usuario tiene seguidores entonces el conteo es mayor a cero")
-    void countFollowersUserFollowsOtherUsersIntegrationTest() throws Exception {
-        // Arrange & Act
-        Integer user_id = 1100;
-        String expected = objectWriter.writeValueAsString(new FollowersCountDTO(user_id, "Dudley", 3));
-        List.of(100, 2100, 3100).forEach(i -> userService.followSeller(i, 1100));
+    @DisplayName("GET: /users/{userId}/followers/list?order=name_asc - Return a list of followers - Order by name asc")
+    void getFollowersByIdShouldReturnListAsc() throws Exception {
+        //Arrange
+        String responseJSONExpected = "{'user_id': 100, 'user_name': 'Roach', " +
+                "'followers': [{'user_id': 2100, 'user_name': 'Moreno'}, {'user_id': 3100, 'user_name': 'Peters'}]}";
 
-        MvcResult mvcResult = this.mockMvc
-                .perform(get(
-                        "/users/{userId}/followers/count", "1100"
-                ))
+        this.mockMvc.perform(
+                post("/users/2100/follow/100")
+                        .contentType(APPLICATION_JSON));
+        this.mockMvc.perform(
+                post("/users/3100/follow/100")
+                        .contentType(APPLICATION_JSON));
+
+        //Act - Assert
+        this.mockMvc.perform(
+                        get("/users/100/followers/list?order=name_asc")
+                                .contentType(APPLICATION_JSON))
                 .andDo(print())
-                // Assert
-                .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
-                .andReturn();
-
-        Assertions.assertEquals(expected, mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8));
+                .andExpect(content().json(responseJSONExpected))
+                .andExpect(status().isOk());
     }
 
 }
