@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Ailen Pereira",
+    "isSeller": true,
+    "followers": [3,2,4],
+    "followed": [3,2,4],
+    "posts": [{
+      "post_id":1,
+      "date":"03-01-2024",
+      "product":
+      {"product_id":1,
+        "product_name":"Silla Gamer",
+        "type":"Gamer",
+        "brand":"Racer",
+        "color":"Red Black",
+        "notes":"Special Edition"
+      },
+      "category":{
+        "id": "1",
+        "description": "Electronics"
+      },
+      "price":1500.5}],
+    "id": "1"
+  },
+  {
+    "name": "Brenda Torrico",
+    "isSeller": false,
+    "followers": [],
+    "followed": [],
+    "posts": [],
+    "id": "2"
+  },
+  {
+    "name": "Fatima Noble",
+    "isSeller": false,
+    "followers": [],
+    "followed": [],
+    "posts": [],
+    "id": "3"
+  },
+  {
+    "name": "Geronimo Schmidt",
+    "isSeller": true,
+    "followers": [1,2,3],
+    "followed": [1],
+    "posts": [],
+    "id": "4"
+  },
+  {
+    "name": "Lucas Salerno",
+    "isSeller": false,
+    "followers": [],
+    "followed": [6, 7, 8],
+    "posts": [],
+    "id": "5"
+  },
+  {
+    "name": "Martin Marquez",
+    "isSeller": false,
+    "followers": [],
+    "followed": [],
+    "posts": [],
+    "id": "6"
+  },
+  {
+    "name": "Tiago Ramirez",
+    "isSeller": false,
+    "followers": [],
+    "followed": [],
+    "posts": [],
+    "id": "7"
+  },
+  {
+    "name": "Nicolas Reinaldo",
+    "isSeller": true,
+    "followers": [],
+    "followed": [],
+    "posts": [],
+    "id": "8"
+  }
+]
