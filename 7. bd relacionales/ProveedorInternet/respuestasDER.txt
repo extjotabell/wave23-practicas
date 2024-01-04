@@ -1,0 +1,10 @@
+a. Primary Key para la tabla de clientes:
+La primary key para la tabla de clientes es como el "documento de identidad" en el mundo digital. Utilizamos el campo "dni" (Documento Nacional de Identidad) porque cada cliente tiene uno único. Es como su huella digital en nuestra base de datos.
+
+b. Primary Key para la tabla de planes de internet:
+La primary key para la tabla de planes de internet es como el "nombre exclusivo" de cada plan. En nuestro caso, elegimos el campo "plan_id". Es como darle a cada plan un número especial que lo identifica de manera única, como un nombre clave.
+
+c. Relaciones entre tablas y Foreign Keys:
+En la tabla "contratos", tenemos dos de estas relaciones:
+El enlace cliente_dni en "contratos" se refiere al "dni" en la tabla "clientes". Esto es como decir que cada contrato está asociado con un cliente específico. Es como si cada contrato llevara el nombre de su dueño.
+El enlace plan_id en "contratos" se refiere al "plan_id" en la tabla "planes_internet". Esto significa que cada contrato está relacionado con un plan de internet específico. Es como indicar qué tipo de servicio de internet tiene cada contrato.
