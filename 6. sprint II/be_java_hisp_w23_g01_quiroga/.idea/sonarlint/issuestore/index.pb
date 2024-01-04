@@ -19,3 +19,7 @@ Asrc/main/java/com/meli/socialmeli/controllers/UserController.java,5/6/5668cad2
 Rsrc/test/java/com/meli/socialmeli/integrationtest/UserServicesTestIntegration.java,8/0/80bfa2b7acbe63ebe1707f593eebe19bc24cef8b
 t
 Dsrc/main/java/com/meli/socialmeli/services/impl/UserServiceImpl.java,8/0/8054d8957aa0bca2370bf979ea92eee02ed750eb
+s
+Csrc/test/java/com/meli/socialmeli/services/UserServiceImplTest.java,8/3/83c924df64c75677d1813b5f00c1e401a3066548
+`
+0src/test/java/util/UserEntityUtilsGenerator.java,8/3/83bb9addfd08b1aa93e59ad951e9942e15ec96f8
