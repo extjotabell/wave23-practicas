@@ -9,6 +9,7 @@ import com.mercadolibre.be_java_hisp_w23_g2.dto.requests.PostDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.ErrorDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.MessageDTO;
 import com.mercadolibre.be_java_hisp_w23_g2.dto.responses.UserFollowedDTO;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -39,6 +40,7 @@ public class IntegrationTest {
             .writer();
 
     @Test
+    @DisplayName("Add a valid post to a user")
     void addPost() throws Exception{
         PostDTO payload = new PostDTO(
             1,
@@ -63,6 +65,7 @@ public class IntegrationTest {
                 .andExpect(expectedContent);
     }
     @Test
+    @DisplayName("Add a post with invalid data")
     void addInvalidPost() throws Exception{
         PostDTO payload = new PostDTO(
                 1,
@@ -93,6 +96,7 @@ public class IntegrationTest {
     }
 
     @Test
+    @DisplayName("Get followed users from a certain user")
     void getFollowedUser() throws Exception{
         MockHttpServletRequestBuilder req = get("/users/1/followed/list");
 
@@ -117,6 +121,7 @@ public class IntegrationTest {
     }
 
     @Test
+    @DisplayName("Get all users")
     void getAll() throws Exception {
         MockHttpServletRequestBuilder req = get("/users/all");
 
@@ -150,6 +155,7 @@ public class IntegrationTest {
     }
 
     @Test
+    @DisplayName("Have a user follow another one")
     void followUser() throws Exception {
         MockHttpServletRequestBuilder req = post("/users/1/follow/6");
 
@@ -174,6 +180,7 @@ public class IntegrationTest {
                 .andExpect(expectedContent);
     }
     @Test
+    @DisplayName("Try to unfollow a user that is not actually being followed")
     void unfollowUser() throws Exception {
         MockHttpServletRequestBuilder req = post("/users/1/unfollow/6");
 
