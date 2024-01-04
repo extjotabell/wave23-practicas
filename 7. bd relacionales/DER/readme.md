@@ -3,7 +3,8 @@
  Planteo Diagrama Entidad-Relación
 // Práctica Individual
 
-Ejercicio
+Ejercicio:
+
 Una mueblería necesita la implementación de una base de datos para controlar las ventas que realiza por día, el stock de sus artículos (productos) y la lista de sus clientes que realizan las compras.
 
 Se necesita plantear:
@@ -19,7 +20,8 @@ Se necesita plantear:
 Diseño Diagrama Entidad-Relación
 // Práctica en clase
 
-Ejercicio
+Ejercicio:
+
 Realizar un diagrama de entidad - relación para el sistema de una concesionaria, que desea gestionar los servicios de los coches de sus clientes. 
 
 - Para el módulo del sistema, se necesita almacenar información de los clientes, los coches que estos poseen y los service/revisiones de cada uno de estos.
