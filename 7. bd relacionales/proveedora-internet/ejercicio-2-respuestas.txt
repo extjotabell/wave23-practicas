@@ -1,0 +1,14 @@
+a. ¿Cuál es la primary key para la tabla de clientes? Justificar respuesta
+R: El DNI del cliente. Al ser un dato de identificación único puede usarse como primary key.
+
+b. ¿Cuál es la primary key para la tabla de planes de internet? Justificar respuesta.
+R: Un dato númerico  que representa 'identificación del plan' encontrado en el análisis.
+
+c. ¿Cómo serían las relaciones entre tablas? ¿En qué tabla debería haber foreign key? 
+¿A qué campo de qué tabla hace referencia dicha foreign key? Justificar respuesta.
+R: La relación entre planes y clientes es de muchos a muchos por lo que se necesita una tabla
+intermedia con el dato del id del cliente y el id del plan que permita relacionarlos.
+El campo cliente_dni es una llave foranea de dni en la tabla clientes y el campo plan_internet_id hace
+referencia al campo plan_id en planes_internet.
+
+ 
