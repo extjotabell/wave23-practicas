@@ -15,6 +15,7 @@ Se necesita plantear:
 
 
 [DER VIVO]
+
 Diseño Diagrama Entidad-Relación
 // Práctica en clase
 
