@@ -7,18 +7,12 @@ Xsrc/test/java/com/sprint/be_java_hisp_w23_g04/controller/ProductsMeliController
 Tsrc/test/java/com/sprint/be_java_hisp_w23_g04/controller/UserMeliControllerTest.java,a/1/a1ffc6f15e20621ca43382286a234e08392282b4
 Ö
 Usrc/test/java/com/sprint/be_java_hisp_w23_g04/controller/ExceptionControllerTest.java,d/8/d80e63a2bbea551b7567264db4d9a244969bcaf0
-à
-Xsrc/test/java/com/sprint/be_java_hisp_w23_g04/individual/ProductsMeliControllerTest.java,d/6/d6a10c0b24a7e1439598b362a77c78f9276c6412
-Ñ
-Tsrc/test/java/com/sprint/be_java_hisp_w23_g04/individual/UserMeliControllerTest.java,1/3/13ba4cb609bfe1900a5f5a9be2fa80d7a7661745
 Å
 Qsrc/main/java/com/sprint/be_java_hisp_w23_g04/controller/ExceptionController.java,3/9/393ee178c1bb5b2117b477f5ff45da0145361146
 Ä
 Psrc/main/java/com/sprint/be_java_hisp_w23_g04/dto/response/SimpleMessageDTO.java,f/5/f5c799dfeeaebda3d50f4333a322ca56dd1721c3
 É
 Ssrc/test/java/com/sprint/be_java_hisp_w23_g04/service/UserMediaServiceImplTest.java,5/f/5fb5fd9112d9498337faa55b9ad1f34d4b680ab5
-Ö
-Usrc/test/java/com/sprint/be_java_hisp_w23_g04/integration/UserMeliControllerTest.java,7/3/73e79a8d468b1fdb0700a47166842a5cb038a98d
 
 Osrc/main/java/com/sprint/be_java_hisp_w23_g04/service/PostMediaServiceImpl.java,4/0/403a5dff6c4e2b8e502a6a674f98f704c7a50525
 Ç
@@ -57,8 +51,6 @@ z
 Jsrc/main/java/com/sprint/be_java_hisp_w23_g04/dto/response/ProductDTO.java,9/b/9b4e105e5353850202747cedda06f44dbaad6534
 q
 Asrc/main/java/com/sprint/be_java_hisp_w23_g04/entity/Product.java,1/4/14afd50749a089d4bc117e58d54280263492ba26
-â
-Ysrc/test/java/com/sprint/be_java_hisp_w23_g04/integration/ProductsMeliControllerTest.java,6/5/65a25fd074aafc135bbc7c78cc8d2f11c09179ed
 r
 Bsrc/test/java/com/sprint/be_java_hisp_w23_g04/utils/UtilsTest.java,1/d/1d908d0091ef2ccb4d9782de4d64a9372f58040e
 Ö
