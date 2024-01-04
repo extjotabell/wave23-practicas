@@ -1,0 +1,8 @@
+a) La pk de cliente es id (id_cliente) ya que el dni lo descartamos porque 
+nos pareció mejor optar por lo más general.
+
+b) La pk de planes es id (id_plan).
+
+c) La fk se encuentra en cliente ya que acotamos porque un plan puede 
+tener muchos clientes. 1 plan a n clientes. La fk es el id del plan y se 
+encuenta en la tabla cliente.
