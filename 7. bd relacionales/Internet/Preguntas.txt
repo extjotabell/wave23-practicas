@@ -1,0 +1,14 @@
+1. La llave primaria de clientes el el cliente_id,
+aunque dni es una buena llave candidata; los
+manejadores de bases de datos suelen optimizarlo
+si la llave primaria es un entero.
+
+2. Similarmente para los planes de internet, 
+una posible llave candidata es el nombre_plan,
+pero sigue siendo mejor utilizar la llave 
+artificial plan_internet_id.
+
+3. Asumiré que un cliente solo puede tener
+un plan; siendo ese el caso la relación es 1
+a muchos y el cliente tiene que tener la llave foranea
+por este motivo.
