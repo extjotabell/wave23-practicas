@@ -1,0 +1,5 @@
+Describir con sus palabras cada paso de la descomposición y aplicación de las reglas para visualizar el planteo realizado:
+
+Primero, procedí a identificar las tablas que podrían derivarse de la tabla principal. En este análisis, identifiqué campos que podrían asociarse con una tabla "Cliente" y otra con "Artículo". Los campos restantes fueron asignados a la tabla "Facturas".
+Posteriormente, doté a las nuevas tablas con índices, incluyendo la creación de campos como "id_cliente" e "id_articulo".
+Finalmente, integré estos campos, ahora como claves foráneas, en la tabla "Facturas" con el objetivo de establecer una relación coherente entre todas las tablas.
