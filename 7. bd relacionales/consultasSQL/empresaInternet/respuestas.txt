@@ -1,12 +1,12 @@
 
-¿Cuál es la primary key para la tabla de clientes? Justificar respuesta:
+A) ¿Cuál es la primary key para la tabla de clientes? Justificar respuesta:
 
 La clave primaria (pk) para la tabla de clientes es "idCliente". Esta elección se basa en la preferencia por utilizar un identificador único y general, en este caso, el "idCliente". Descartamos el uso del DNI, ya que optamos por una clave más general y menos propensa a cambios, lo que facilita la gestión de la base de datos a largo plazo.
 
-¿Cuál es la primary key para la tabla de planes de internet? Justificar respuesta:
+B) ¿Cuál es la primary key para la tabla de planes de internet? Justificar respuesta:
 
 La clave primaria (pk) para la tabla de planes de internet es "idPlan". Esta elección se fundamenta en asignar un identificador único a cada plan de internet, facilitando así la identificación y gestión de los registros en la tabla.
 
-c. ¿Cómo serían las relaciones entre tablas? ¿En qué tabla debería haber foreign key? ¿A qué campo de qué tabla hace referencia dicha foreign key? Justificar respuesta:
+C) ¿Cómo serían las relaciones entre tablas? ¿En qué tabla debería haber foreign key? ¿A qué campo de qué tabla hace referencia dicha foreign key? Justificar respuesta:
 
 Las relaciones entre las tablas implican que un plan de internet puede tener muchos clientes, estableciendo una relación uno a muchos (1:N). Por lo tanto, la foreign key (fk) debería estar en la tabla cliente. La fk específica es el "FKidPlan", que hace referencia al "idPlan" en la tabla planes de internet. Esta elección refleja la idea de que un plan puede estar asociado a varios clientes, mientras que un cliente solo puede tener un plan de internet. La fk garantiza la integridad referencial y la coherencia en la base de datos.
