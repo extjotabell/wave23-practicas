@@ -1,0 +1,14 @@
+- Primera Forma Normal (1FN):
+
+   Se debe analizar la presencia de campos que contengan información concatenada. En el caso presente, no se identifican columnas que requieran descomposición.
+
+
+- Segunda Forma Normal (2FN):
+
+   Se procede a revisar y reestructurar los campos que no mantienen una relación directa con id_factura. En este escenario, es factible separar y agrupar los atributos relacionados con la factura (id_factura, fecha_factura, forma_pago, iva, cantidad, importe, descripción_articulo). Por otro lado, se puede crear una tabla independiente para almacenar la información del cliente (nombre_cliente, apellido_cliente, direccion_cliente). Este paso resulta en la creación de dos 
+tablas distintas.
+
+
+- Tercera Forma Normal (3FN):
+
+   Finalmente, se valida qué información puede separarse aún más para evitar redundancias. En este caso, se observa la posibilidad de agrupar la forma de pago para estandarizarla y aplicar un enfoque similar para los artículos.
