@@ -1,0 +1,33 @@
+SELECT series.title, genres.name 
+FROM series
+INNER JOIN genres
+ON series.genre_id = genres.id;
+
+SELECT episodes.title, concat(actors.first_name, " ", actors.last_name) AS actors
+FROM episodes
+INNER JOIN actor_episode 
+ON episodes.id = actor_episode.episode_id
+INNER JOIN actors
+ON actor_episode.actor_id = actors.id;
+
+SELECT series.title, count(seasons.id) AS total_seasons
+FROM series
+INNER JOIN seasons
+ON series.id = seasons.serie_id
+GROUP BY series.title;
+
+SELECT genres.name, count(movies.genre_id) AS total_movies
+FROM genres
+INNER JOIN movies
+ON genres.id = movies.genre_id
+GROUP BY genres.name
+HAVING total_movies > 3;
+
+SELECT concat(actors.first_name, " ", actors.last_name) AS actors
+FROM actors
+WHERE actors.id IN 
+(SELECT DISTINCT actor_id
+FROM actor_movie
+INNER JOIN movies
+ON actor_movie.movie_id = movies.id
+WHERE movies.title LIKE "%galaxias%")
