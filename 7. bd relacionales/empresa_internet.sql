@@ -120,4 +120,9 @@ SELECT *
 FROM plan
 WHERE price > 13000;
 
+-- Todos los nombres de personas que empiecen con "P"
+SELECT * 
+FROM client
+WHERE first_name LIKE "P%"; 
+
 
