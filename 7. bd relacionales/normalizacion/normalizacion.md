@@ -20,4 +20,4 @@ Aún tenemos que resolver la relación de muchos a muchos entre facturas y artí
 
 ## Resultado final
 
-\* Espacio para el DER *
+![image](https://github.com/extjotabell/wave23-practicas/assets/45053254/c1b2ff70-a001-438d-ab79-cd2a0875fa6c)
