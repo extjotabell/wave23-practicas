@@ -1,0 +1,3 @@
+En el estado inicial de la tabla, cada vez que quiero agregar una factura para un mismo cliente debo cargar nuevamente los datos del cliente, lo mismo sucede con la descripción del articulo y la cantidad de este. De esta forma se permite la existencia de grupos de datos repetitivos por lo cual se debe separar en diferentes entidades las cuales serán: Facturas, Clientes, Artículos y Pagos.
+La decisión de crear la entidad Pagos viene dada por la posibilidad de emitir facturas y que el pago sea realizado después.
+Al realizar la descomposición se deben mantener relaciones mediante el uso de foreign y primary key para no perder la vinculación de las entidades y mediante el uso de joins o subconsultas poder obtener el conjunto de datos relacionados.
