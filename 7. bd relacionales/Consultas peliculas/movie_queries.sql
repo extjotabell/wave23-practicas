@@ -50,5 +50,18 @@ AND release_date BETWEEN "19880101" AND "20091231"
 ORDER BY rating DESC 
 LIMIT 3;
 
+/* Consultas avanzadas*/
+SELECT series.title, genres.name 
+FROM series INNER JOIN genres
+ON series.genre_id = genres.id;
+
+USE movies_db;
+
+SELECT title, first_name, last_name
+FROM actors INNER JOIN
+actor_episode 
+ON actor_episode.actor_id = actors.id
+INNER JOIN episodes 
+ON actor_episode.episode_id = episodes.id;
 
 
