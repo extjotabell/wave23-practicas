@@ -1,4 +1,6 @@
-[MOVIES SQL]
+[MOVIES SQL] 
+
+//EJECUTAR PREVIAMENTE: movies_query_script_initial.sql
 
 
 Consultas a Base de Datos
@@ -27,7 +29,9 @@ Importar el archivo movies_db.sql desde PHPMyAdmin o MySQL Workbench y resolver 
 
 
 
-[INTERNET PROVIDER QUERY]
+[INTERNET PROVIDER QUERY] 
+
+//EJECUTAR PREVIAMENTE: movies_query_advanced_script_initial.sql
 
 Escenario
 
