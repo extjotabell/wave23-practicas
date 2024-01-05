@@ -1,0 +1,42 @@
+SELECT nombre, puesto, localidad FROM empleado 
+left join departamento on empleado.depto_nro = departamento.depto_nro;
+
+SELECT depto_nro, nombre_depto
+FROM departamento WHERE depto_nro IN (
+    SELECT depto_nro
+    FROM empleado
+    GROUP BY depto_nro
+    HAVING COUNT(cod_emp) > 5
+);
+
+Select e.nombre, e.apellido, e.salario, d.nombre_depto 
+from empleado e join departamento d on e.depto_nro=d.depto_nro 
+where e.puesto = 
+(
+SELECT puesto from empleado 
+where nombre = "Mito" and apellido = "Barchuk"
+);
+
+SELECT e.nombre, e.apellido, e.puesto, e.salario, e.comision, e.fecha_alta 
+from empleado e 
+left join departamento d on e.depto_nro=d.depto_nro where d.nombre_depto LIKE "Contabilidad";
+
+SELECT nombre
+FROM empleado
+WHERE salario = (
+    SELECT MIN(salario)
+    FROM empleado
+);
+
+SELECT *
+FROM empleado
+WHERE salario = (
+    SELECT MAX(salario)
+    FROM empleado
+    WHERE depto_nro = (
+        SELECT depto_nro
+        FROM departamento
+        WHERE nombre_depto = 'Ventas'
+    )
+);
+ 

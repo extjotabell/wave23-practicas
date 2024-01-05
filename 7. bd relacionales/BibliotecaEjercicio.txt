@@ -1,0 +1,58 @@
+SELECT nombre,nacionalidad FROM autor;
+
+SELECT nombre, edad FROM estudiante;
+
+SELECT nombre, apellido FROM estudiante WHERE carrera LIKE "Computer%";
+
+SELECT nombre 
+FROM autor 
+WHERE nacionalidad LIKE "French" OR nacionalidad LIKE "Italian";
+
+SELECT título 
+FROM libro l 
+WHERE l.área != "Internet";
+
+SELECT título 
+FROM libro l 
+WHERE l.editorial LIKE "Salamandra";
+
+SELECT *
+FROM Estudiante
+WHERE Edad > (SELECT AVG(Edad) FROM Estudiante);
+
+SELECT Nombre
+FROM Estudiante
+WHERE Apellido LIKE 'G%';
+
+SELECT Autor.Nombre
+FROM Autor
+JOIN LibroAutor ON Autor.idAutor = LibroAutor.idAutor
+JOIN Libro ON LibroAutor.idLibro = Libro.idLibro
+WHERE Libro.Título = 'El Universo: Guía de viaje';
+
+SELECT Libro.Título
+FROM Libro
+JOIN Préstamo ON Libro.idLibro = Préstamo.idLibro
+JOIN Estudiante ON Préstamo.idLector = Estudiante.idLector
+WHERE Estudiante.Nombre = 'Filippo Galli';
+
+SELECT Nombre
+FROM Estudiante
+WHERE Edad = (SELECT MIN(Edad) FROM Estudiante);
+
+SELECT DISTINCT Estudiante.Nombre
+FROM Estudiante
+JOIN Préstamo ON Estudiante.idLector = Préstamo.idLector
+JOIN Libro ON Préstamo.idLibro = Libro.idLibro
+WHERE Libro.Área = 'Base de Datos';
+
+SELECT Libro.Título
+FROM Libro
+JOIN LibroAutor ON Libro.idLibro = LibroAutor.idLibro
+JOIN Autor ON LibroAutor.idAutor = Autor.idAutor
+WHERE Autor.Nombre = 'J.K. Rowling';
+
+SELECT Libro.Título
+FROM Libro
+JOIN Préstamo ON Libro.idLibro = Préstamo.idLibro
+WHERE Préstamo.FechaDevolucion = '2021-07-16';
