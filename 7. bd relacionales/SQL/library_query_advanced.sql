@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS Biblioteca;
+DROP SCHEMA IF EXISTS biblioteca;
 CREATE DATABASE IF NOT EXISTS bibioteca;
 
 USE bibioteca;
@@ -83,17 +83,25 @@ INSERT INTO libro_autor (id_autor, id_libro) VALUES
 (3, 3),
 (4, 4),
 (5, 5),
+(6, 7),
+(7, 8),
 (8, 6),
 (9, 9);
 
 -- Insert data into Estudiante table
 INSERT INTO estudiante (id, nombre, apellido, direccion, carrera, edad) VALUES
-(1, 'John', 'Doe', '123 Main St', 'Computer Science', 20),
-(2, 'Alice', 'Smith', '456 Oak St', 'Literature', 22),
-(3, 'Bob', 'Johnson', '789 Pine St', 'Physics', 21),
-(4, 'Emma', 'Williams', '101 Elm St', 'Medicine', 23),
-(5, 'David', 'Brown', '202 Maple St', 'History', 22),
-(6, 'Marcelo', 'Gomez', '202 Maple St', 'Computer Science', 22);
+(1, 'John', 'Doe', '123 Main St', 'Informática', 20),
+(2, 'Alice', 'Smith', '456 Oak St', 'Literatura', 22),
+(3, 'Bob', 'Johnson', '789 Pine St', 'Psicología', 21),
+(4, 'Emma', 'Williams', '101 Elm St', 'Medicina', 23),
+(5, 'David', 'Brown', '202 Maple St', 'Historia', 22),
+(6, 'Marcelo', 'Gomez', '202 Maple St', 'Informática', 22),
+(7, 'Laura', 'Martinez', '303 Cedar St', 'Informática', 19),
+(8, 'Carlos', 'Rodriguez', '404 Pine St', 'Literatura', 20),
+(9, 'Isabel', 'Gonzalez', '505 Elm St', 'Psicología', 22),
+(10, 'Alex', 'Perez', '606 Maple St', 'Medicina', 21),
+(11, 'Sophia', 'Hernandez', '707 Oak St', 'Historia', 23),
+(12, 'Miguel', 'Lopez', '808 Cedar St', 'Informática', 24);
 
 -- Insert data into Préstamo table
 INSERT INTO prestamo (id_estudiante, id_libro, fecha_prestamo, fecha_devolucion, devuelto) VALUES
@@ -101,8 +109,14 @@ INSERT INTO prestamo (id_estudiante, id_libro, fecha_prestamo, fecha_devolucion,
 (2, 2, '2023-02-01', '2023-02-15', 1),
 (3, 3, '2023-03-01', '2023-03-15', 0),
 (4, 4, '2023-04-01', NULL, 0),
-(5, 5, '2023-05-01', NULL, 0);
-
+(5, 5, '2023-05-01', NULL, 0),
+(6, 1, '2023-06-01', '2023-06-15', 1),
+(7, 2, '2023-07-01', '2023-07-15', 1),
+(8, 3, '2023-08-01', '2023-08-15', 0),
+(9, 4, '2023-09-01', NULL, 0),
+(10, 5, '2023-10-01', NULL, 0),
+(11, 6, '2023-11-01', NULL, 0),
+(12, 7, '2023-12-01', '2023-12-15', 1);
 
 
 -- Listar los datos de los autores.
@@ -163,14 +177,73 @@ SELECT
 FROM 
 	estudiante
 WHERE
-	apellido LIKE '%G';
+	apellido LIKE 'G%';
 
 -- Listar los autores del libro “El Universo: Guía de viaje”. (Se debe listar solamente los nombres).
-
+SELECT
+    autor.nombre
+FROM
+    autor
+JOIN
+    libro_autor ON Autor.id = libro_autor.id_autor
+JOIN
+    libro ON libro_autor.id_libro = libro.id
+WHERE
+    libro.titulo = 'El Universo: Guía de viaje';
 
 -- ¿Qué libros se prestaron al lector “Filippo Galli”?
+SELECT
+    libro.titulo
+FROM
+    estudiante
+JOIN
+    prestamo ON estudiante.id = prestamo.id_estudiante
+JOIN
+    libro ON prestamo.id_libro = libro.id
+WHERE
+    estudiante.nombre = 'Filippo Galli';
+
 -- Listar el nombre del estudiante de menor edad.
+SELECT 
+	nombre
+FROM 
+	estudiante
+WHERE
+	edad < 18;
+
 -- Listar nombres de los estudiantes a los que se prestaron libros de Base de Datos.
+SELECT
+    estudiante.nombre,
+    estudiante.apellido
+FROM
+    estudiante
+JOIN
+    prestamo ON estudiante.id = prestamo.id_estudiante
+JOIN
+    libro ON prestamo.id_libro = libro.id
+WHERE
+    libro.area = 'Base de Datos';
+
 -- Listar los libros que pertenecen a la autora J.K. Rowling.
+SELECT
+    libro.titulo
+FROM
+    autor
+JOIN
+    libro_autor ON autor.id = libro_autor.id_autor
+JOIN
+    Libro ON libro_autor.id_libro = libro.id
+WHERE
+    autor.nombre = 'J.K. Rowling';
+
 -- Listar títulos de los libros que debían devolverse el 16/07/2021.
+SELECT
+    libro.titulo
+FROM
+    prestamo
+JOIN
+    libro ON prestamo.id_libro = libro.id
+WHERE
+    prestamo.fecha_devolucion = '2021-07-16';
+
 
