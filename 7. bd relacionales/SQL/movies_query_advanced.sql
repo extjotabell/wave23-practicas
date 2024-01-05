@@ -88,5 +88,9 @@ WHERE
 			movies ON movies.id = actor_movie.movie_id
         WHERE 
             movies.title LIKE '%La Guerra de las galaxias%'
+		GROUP BY 
+			actor_movie.actor_id
+        HAVING 
+			COUNT(movies.id) = (SELECT COUNT(*) FROM movies WHERE title LIKE '%La Guerra de las galaxias%')
     );
 
