@@ -106,8 +106,8 @@ SELECT *
 FROM Autor;
 
 -- Listar nombre y edad de los estudiantes
-SELECT e.Nombre, e.Edad
-FROM Estudiante e;
+EXPLAIN SELECT e.Nombre, e.Edad
+FROM Estudiante;
 
 -- ¿Qué estudiantes pertenecen a la carrera informática?
 SELECT * 
@@ -137,7 +137,73 @@ WHERE e.Edad > (
     FROM Estudiante e2
 );
 
+-- Listar los nombres de los estudiantes cuyo apellido comience con la letra G.
+SELECT e.Nombre
+FROM Estudiante e
+WHERE e.Apellido LIKE "G%";
 
+-- Listar los autores del libro “El Universo: Guía de viaje”. (Se debe listar solamente los nombres).
+SELECT a.Nombre
+FROM Autor a
+JOIN LibroAutor la ON la.idAutor = a.idAutor
+JOIN Libro l ON l.idLibro = la.idLibro
+WHERE l.Título LIKE "El Universo: Guía de viaje";
 
+-- ¿Qué libros se prestaron al lector “Filippo Galli”?
+SELECT l.idLibro, l.Título, l.Editorial, l.Área
+FROM Libro l 
+JOIN Préstamo p ON l.idLibro = p.idLibro
+JOIN Estudiante e ON p.idLector = e.idLector
+WHERE e.Nombre LIKE "Filippo" AND e.Apellido LIKE "Galli";
 
+-- Listar el nombre del estudiante de menor edad.
+SELECT e.Nombre
+FROM Estudiante e
+WHERE e.Edad < 18;
+
+-- Listar nombres de los estudiantes a los que se prestaron libros de Base de Datos.
+SELECT e.Nombre
+FROM Estudiante e
+JOIN Préstamo p ON e.idLector = p.IdLector
+JOIN Libro l ON l.idLibro = p.idLibro
+WHERE l.Área LIKE "Base de Datos"; 
+
+-- Listar los libros que pertenecen a la autora J.K. Rowling.
+SELECT l.* 
+FROM Libro l
+JOIN LibroAutor la ON la.idLibro = l.idLibro
+JOIN Autor a ON a.idAutor = la.idAutor
+WHERE a.Nombre LIKE "J.K. Rowling";
+
+/*
+SIN JOIN 
+SELECT *
+FROM Libro
+WHERE idLibro IN (
+    SELECT idLibro
+    FROM LibroAutor
+    WHERE idAutor = (
+        SELECT idAutor
+        FROM Autor
+        WHERE Nombre = 'J.K. Rowling'
+    )
+);
+ */
+
+-- Listar títulos de los libros que debían devolverse el 16/07/2021.
+SELECT Libro.Título
+FROM Libro 
+WHERE Libro.idLibro = (
+    SELECT Préstamo.idLibro
+    FROM Préstamo
+    WHERE Préstamo.FechaDevolucion = '2021-07-16'
+);
+
+/* 
+CON JOINS
+SELECT Libro.Título
+FROM Libro
+JOIN Préstamo ON Préstamo.idLibro = Libro.idLibro
+WHERE Préstamo.FechaDevolucion = '2021-07-16' 
+*/ 
 
