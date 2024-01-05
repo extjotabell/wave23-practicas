@@ -129,6 +129,15 @@ SELECT *
 FROM Libro l
 WHERE l.Editorial = "Salamandra";
 
+-- Listar los datos de los estudiantes cuya edad es mayor al promedio.
+SELECT * 
+FROM Estudiante e
+WHERE e.Edad > (
+	SELECT AVG(e2.Edad)
+    FROM Estudiante e2
+);
+
+
 
 
 
