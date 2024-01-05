@@ -1,0 +1,34 @@
+CONSULTAS SQL AVANZADAS DE MOVIES.DB
+
+Mostrar el título y el nombre del género de todas las series.
+
+SELECT se.title, gen.name FROM series se
+JOIN genres gen ON se.genre_id = gen.id
+
+Mostrar el título de los episodios, el nombre y apellido de los actores que trabajan en cada uno de ellos.
+
+SELECT ep.title, act.first_name, act.last_name FROM episodes ep
+JOIN actor_episode actep ON actep.episode_id = ep.id
+JOIN actors act ON act.id = actep.actor_id
+
+Mostrar el título de todas las series y el total de temporadas que tiene cada una de ellas.
+
+SELECT s.title, COUNT(*) as total_seasons FROM series s
+JOIN seasons se ON se.serie_id = s.id
+GROUP BY s.title
+
+Mostrar el nombre de todos los géneros y la cantidad total de películas por cada uno, siempre que sea mayor o igual a 3.
+
+SELECT gen.name, COUNT(*) as total_movies FROM genres gen
+JOIN movies mo ON mo.genre_id = gen.id
+GROUP BY gen.name
+HAVING total_movies >= 3
+
+Mostrar sólo el nombre y apellido de los actores que trabajan en todas las películas de la guerra de las galaxias y que estos no se repitan.
+
+
+SELECT distinct act.first_name, act.last_name FROM actors act
+JOIN actor_movie am ON am.actor_id = act.id
+JOIN movies mov ON mov.id = am.movie_id
+GROUP BY act.id, mov.title
+HAVING mov.title LIKE '%La Guerra de las galaxias%'
