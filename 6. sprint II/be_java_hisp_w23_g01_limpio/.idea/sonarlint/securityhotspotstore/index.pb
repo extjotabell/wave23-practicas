@@ -27,3 +27,7 @@ q
 Asrc/test/java/com/meli/socialmeli/SocialmeliApplicationTests.java,d/6/d619748120a35e194074f9845f426dc97317e644
 v
 Fsrc/test/java/com/meli/socialmeli/services/ProductServiceImplTest.java,0/0/003ba5b102de68997c150ac9c3b875cd98977032
+…
+Usrc/test/java/com/meli/socialmeli/integrations/ProductcControllerIntegrationTest.java,e/2/e2a9e3d2ff3a926feffeec1d5301bcbb69717d2b
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
