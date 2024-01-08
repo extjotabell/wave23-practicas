@@ -1,0 +1,8 @@
+Describir con sus palabras cada paso de la descomposición y aplicación de las reglas para visualizar el planteo realizado.
+
+Se separó la base de datos en 3 tablas (client, bill, product), para cumplir con la primera forma normal (1FN),  eliminando datos duplicados en atributos y creando registros independientes (respetando la atomicidad de los datos).
+
+Se agregaron primary key, que son atributos con nombre que empiezan por la palabra 'id', correspondiente a cada tabla para eliminar dependencias parciales. 
+
+Al crear las 3 tablas (client, bill, product) se eliminaron los subgrupos de datos en múltiples columnas que habían con la base de datos original, ya que cada una tiene relaciones y cardinalidades definidas, una identificación única definida con una llave primaria y evita datos repetidos.
+ 
