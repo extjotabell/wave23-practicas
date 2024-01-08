@@ -12,6 +12,7 @@ Como se puede observar, la tabla cuenta con datos que podrían ser normalizados 
 
 Se solicita para el escenario anterior: 
 
-  ° Aplicar reglas de normalización y elaborar un modelo de DER que alcance la tercera forma normal (3FN).
-  ° Describir con sus palabras cada paso de la descomposición y aplicación de las reglas para visualizar 
+  -> Aplicar reglas de normalización y elaborar un modelo de DER que alcance la tercera forma normal (3FN).
+  
+  -> Describir con sus palabras cada paso de la descomposición y aplicación de las reglas para visualizar 
     el planteo realizado.
