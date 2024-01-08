@@ -22,5 +22,19 @@ WHERE puesto like (SELECT puesto
     where concat(nombre ,' ', apellido) like "Mito Barchuk");
 
 -- Mostrar los datos de los empleados que trabajan en el departamento de contabilidad, ordenados por nombre.
+Use mi_empresa;
+SELECT * 
+FROM empleado inner join 
+departamento 
+ON empleado.depto_nro = departamento.depto_nro
+WHERE nombre_depto like "contabilidad"
+ORDER BY empleado.nombre ASC;
 
 -- Mostrar los datos del empleado que tiene el salario más alto en el departamento de ‘Ventas’.
+SELECT * 
+FROM empleado inner join 
+departamento 
+ON empleado.depto_nro = departamento.depto_nro
+WHERE nombre_depto like "ventas"
+ORDER BY empleado.salario DESC
+LIMIT 1;

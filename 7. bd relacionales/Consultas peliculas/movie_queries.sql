@@ -64,4 +64,56 @@ ON actor_episode.actor_id = actors.id
 INNER JOIN episodes 
 ON actor_episode.episode_id = episodes.id;
 
+/*Consultas avanzadas 2*/
+
+-- Agregar una película a la tabla movies.
+DELIMITER $$
+CREATE PROCEDURE insertarpelicula (in in_title varchar(50), in in_rating decimal, in in_awards int, in in_release_date datetime, in in_length int, in in_genre_id int)
+BEGIN
+DECLARE exit handler for sqlwarning
+START TRANSACTION;
+
+insert into movies(title, rating, awards, release_date, length, genre_id)
+values(in_title, in_rating, in_awards,  in_release_date,  in_length ,  in_genre_id);
+
+COMMIT;
+END$$
+DELIMITER ;
+
+call insertarpelicula("scooby doo", 7.5, 40, '2024-01-05 12:30:00', 10, 12);
+
+-- Agregar un género a la tabla genres.
+insert into genres(name, ranking)
+values('aventura', 13);
+
+select * from genres;
+
+-- Asociar a la película del punto 1. genre el género creado en el punto 2.
+
+UPDATE movies
+SET genre_id = 13
+WHERE id = 22;
+
+-- Modificar la tabla actors para que al menos un actor tenga como favorita la película agregada en el punto 1.
+UPDATE actors
+SET favorite_movie_id = 13 
+WHERE id = 2;
+
+select * from actors;
+
+-- Crear una tabla temporal copia de la tabla movies.
+Create temporary table movies_db.moviesTemp select * from movies;
+select * from moviesTemp;
+
+
+-- Eliminar de esa tabla temporal todas las películas que hayan ganado menos de 5 awards.
+SET SQL_SAFE_UPDATES = 0;
+Delete from moviesTemp where awards< 5; 
+
+-- Obtener la lista de todos los géneros que tengan al menos una película.
+-- Obtener la lista de actores cuya película favorita haya ganado más de 3 awards.
+-- Crear un índice sobre el nombre en la tabla movies.
+
+
+
 
