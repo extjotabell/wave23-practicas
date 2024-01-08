@@ -26,7 +26,7 @@ Responder las siguientes preguntas:
 
 5. Escribir una consulta genérica para cada uno de los siguientes diagramas:
 
-![JOIN.png](..%2Fwave23-practicas%2F7.%20bd%20relacionales%2FmoviesAdvancedQueries%2Fimg%2FJOIN.png)
+![JOIN.png](https://github.com/extjotabell/wave23-practicas/blob/limpio_andres/7.%20bd%20relacionales/moviesAdvancedQueries/img/JOIN.png)
 
     SELECT movies.*, actors.first_name, actors.last_name 
     FROM movies INNER JOIN actors 
@@ -46,4 +46,4 @@ Importar el archivo movies_db.sql desde PHPMyAdmin o MySQL Workbench y resolver 
     5. Mostrar sólo el nombre y apellido de los actores que trabajan en todas las películas de la guerra de las galaxias y que estos no se repitan.
 
 A modo de guía para el planteo de consultas, recordar el DER del escenario:
-![DER movies.png](..%2Fwave23-practicas%2F7.%20bd%20relacionales%2FmoviesAdvancedQueries%2Fimg%2FDER%20movies.png)
+![DER movies.png](https://github.com/extjotabell/wave23-practicas/blob/limpio_andres/7.%20bd%20relacionales/moviesAdvancedQueries/img/DER%20movies.png)
