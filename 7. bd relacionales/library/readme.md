@@ -16,8 +16,7 @@ En base al mismo, plantear las consultas SQL para resolver los siguientes requer
     6. Listar los libros de la editorial Salamandra.
     7. Listar los datos de los estudiantes cuya edad es mayor al promedio.
     8. Listar los nombres de los estudiantes cuyo apellido comience con la letra G.
-    9. Listar los autores del libro “El Universo: Guía de viaje”. 
-    (Se debe listar solamente los nombres).
+    9. Listar los autores del libro “El Universo: Guía de viaje”. (Se debe listar solamente los nombres).
     10. ¿Qué libros se prestaron al lector “Filippo Galli”?
     11. Listar el nombre del estudiante de menor edad.
     12. Listar nombres de los estudiantes a los que se prestaron libros de Base de Datos.
