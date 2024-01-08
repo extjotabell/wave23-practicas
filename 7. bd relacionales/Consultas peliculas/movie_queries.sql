@@ -131,14 +131,37 @@ select * from actors;
 Create temporary table movies_db.moviesTemp select * from movies;
 select * from moviesTemp;
 
-
 -- Eliminar de esa tabla temporal todas las películas que hayan ganado menos de 5 awards.
 SET SQL_SAFE_UPDATES = 0;
 Delete from moviesTemp where awards< 5; 
 
 -- Obtener la lista de todos los géneros que tengan al menos una película.
+SELECT genres.name, count(movies.genre_id) as peliculas
+FROM genres INNER JOIN
+movies
+ON genres.id = movies.genre_id
+group by genres.name
+having peliculas >0;
+
 -- Obtener la lista de actores cuya película favorita haya ganado más de 3 awards.
+SELECT first_name, last_name, title, awards
+FROM actors INNER JOIN
+movies
+ON actors.favorite_movie_id = movies.id
+WHERE awards >3;
+
 -- Crear un índice sobre el nombre en la tabla movies.
+CREATE INDEX idx_movies_title ON movies(title);
+
+-- Chequee que el índice fue creado correctamente.
+SHOW INDEX FROM movies;
+
+-- En la base de datos movies ¿Existiría una mejora notable al crear índices? Analizar y justificar la respuesta.
+-- Si, debido a que al cagar más peliculas, actores, series aumentaria el tiempo de busqueda pero con la ayuda de los indices se puede otimizar la busqueda.
+
+-- ¿En qué otra tabla crearía un índice y por qué? Justificar la respuesta
+-- Yo crearía un indice en la tabla series en el campo de nobre para agilizar su busqueda cuando se desconoce su id
+SHOW INDEX FROM series;
 
 
 
