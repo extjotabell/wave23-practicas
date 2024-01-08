@@ -25,8 +25,7 @@ SELECT * FROM TWD;
 -- 1. En la base de datos “movies”, seleccionar una tabla donde crear un índice y luego chequear la creación del mismo. 
 
 ALTER TABLE `movies_db`.`episodes` 
-ADD INDEX `index_rating` (`rating` ASC) VISIBLE;
-;
+ADD INDEX `index_rating` (`rating` ASC);
 
 -- Para quitar el índice
 ALTER TABLE `movies_db`.`episodes` 
