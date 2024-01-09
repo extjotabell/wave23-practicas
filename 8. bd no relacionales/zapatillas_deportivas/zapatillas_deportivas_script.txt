@@ -1,0 +1,83 @@
+# Create index
+PUT /zapatillas_deportivas
+{
+  "mappings": {
+    "properties": {
+      "brand": {
+        "type": "keyword"
+      },
+      "size": {
+        "type": "integer"
+      },
+      "color": {
+        "type": "keyword"
+      },
+      "price": {
+        "type": "float"
+      },
+      "stock":{
+        "type": "integer"
+      }
+    }
+  }
+}
+
+#Insert 20 records
+POST /zapatillas_deportivas/_bulk
+{"index":{}}
+{"brand": "Nike", "size": 9, "color": "Blue", "price": 99.99, "stock": 50}
+{"index":{}}
+{"brand": "Nike", "size": 9, "color": "Green", "price": 99.00, "stock": 50}
+{"index":{}}
+{"brand": "Nike", "size": 9, "color": "Black", "price": 79.99, "stock": 50}
+{"index":{}}
+{"brand": "Adidas", "size": 8, "color": "Red", "price": 79.99, "stock": 30}
+{"index":{}}
+{"brand": "Adidas", "size": 7, "color": "Blue", "price": 179.99, "stock": 90}
+{"index":{}}
+{"brand": "Adidas", "size": 8, "color": "Purple", "price": 199.99, "stock": 80}
+{"index":{}}
+{"brand": "Adidas", "size": 8, "color": "White", "price": 49.99, "stock": 12}
+{"index":{}}
+{"brand": "Puma", "size": 7, "color": "Green", "price": 59.99, "stock": 25}
+{"index":{}}
+{"brand": "Croydon", "size": 9, "color": "Blue", "price": 99.99, "stock": 150}
+{"index":{}}
+{"brand": "NewBalance", "size": 9, "color": "Blue", "price": 199.99, "stock": 20}
+{"index":{}}
+{"brand": "Converse", "size": 7, "color": "Black", "price": 199.99, "stock": 50}
+{"index":{}}
+{"brand": "Converse", "size": 6, "color": "White", "price": 199.99, "stock": 50}
+{"index":{}}
+{"brand": "Converse", "size": 7, "color": "Red", "price": 189.99, "stock": 30}
+{"index":{}}
+{"brand": "Vans", "size": 6, "color": "Black", "price": 129.99, "stock": 130}
+{"index":{}}
+{"brand": "Vans", "size": 8, "color": "White", "price": 229.99, "stock": 130}
+{"index":{}}
+{"brand": "Vans", "size": 7, "color": "Brown", "price": 29.99, "stock": 13}
+{"index":{}}
+{"brand": "Fila", "size": 9, "color": "White", "price": 229.99, "stock": 130}
+{"index":{}}
+{"brand": "Fila", "size": 9, "color": "Orange", "price": 89.99, "stock": 70}
+{"index":{}}
+{"brand": "Reebok", "size": 6, "color": "White", "price": 189.99, "stock": 170}
+{"index":{}}
+{"brand": "Reebok", "size": 9, "color": "Green", "price": 129.99, "stock": 100}
+
+
+#QUERIES
+
+#Get size 9 products available
+GET /zapatillas_deportivas/_search?q=size:9 AND stock:>0
+
+#Get products priced at more than $50 and less than $100. 
+GET /zapatillas_deportivas/_search?q=price:>=50 AND price:<=100
+
+#Get products worth more than $50 and less than $100
+GET /zapatillas_deportivas/_search?q=price:>=50 AND price:<=100
+
+#Get white or blue products in size 6 or 7 order by price. 
+GET /zapatillas_deportivas/_search?q=color:(Blue OR White) AND size: (6 OR 7)&sort=price:asc
+
+
