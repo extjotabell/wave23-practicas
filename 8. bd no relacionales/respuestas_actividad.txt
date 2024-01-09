@@ -1,0 +1,73 @@
+#CREACION DE LOS DATOS
+POST /catalogo_zapatillas/zapatilla/_bulk
+{"index":{}}
+{"modelo": "Zapatilla001", "cantidad": 15, "precio": 80.00}
+{"index":{}}
+{"modelo": "Zapatilla002", "cantidad": 20, "precio": 65.00}
+{"index":{}}
+{"modelo": "Zapatilla003", "cantidad": 12, "precio": 90.00}
+{"index":{}}
+{"modelo": "Zapatilla004", "cantidad": 18, "precio": 75.00}
+{"index":{}}
+{"modelo": "Zapatilla005", "cantidad": 25, "precio": 100.00}
+{"index":{}}
+{"modelo": "Zapatilla006", "cantidad": 8, "precio": 120.00}
+{"index":{}}
+{"modelo": "Zapatilla007", "cantidad": 30, "precio": 50.00}
+{"index":{}}
+{"modelo": "Zapatilla008", "cantidad": 22, "precio": 70.00}
+{"index":{}}
+{"modelo": "Zapatilla009", "cantidad": 17, "precio": 85.00}
+{"index":{}}
+{"modelo": "Zapatilla010", "cantidad": 10, "precio": 110.00}
+{"index":{}}
+{"modelo": "Zapatilla011", "cantidad": 28, "precio": 55.00}
+{"index":{}}
+{"modelo": "Zapatilla012", "cantidad": 14, "precio": 95.00}
+{"index":{}}
+{"modelo": "Zapatilla013", "cantidad": 23, "precio": 60.00}
+{"index":{}}
+{"modelo": "Zapatilla014", "cantidad": 16, "precio": 105.00}
+{"index":{}}
+{"modelo": "Zapatilla015", "cantidad": 19, "precio": 72.00}
+{"index":{}}
+{"modelo": "Zapatilla016", "cantidad": 11, "precio": 88.00}
+{"index":{}}
+{"modelo": "Zapatilla017", "cantidad": 26, "precio": 68.00}
+{"index":{}}
+{"modelo": "Zapatilla018", "cantidad": 13, "precio": 78.00}
+{"index":{}}
+{"modelo": "Zapatilla019", "cantidad": 21, "precio": 82.00}
+{"index":{}}
+{"modelo": "Zapatilla020", "cantidad": 24, "precio": 92.00}
+
+GET /catalogo_zapatillas/zapatilla/_search
+{
+  "query": {
+    "range": {
+      "precio": {
+        "gte": 70,
+        "lte": 90
+      }
+    }
+  }
+}
+
+GET /catalogo_zapatillas/zapatilla/_search
+{
+  "query": {
+    "match": {
+      "modelo": "Zapatilla005"
+    }
+  }
+}
+
+GET /catalogo_zapatillas/zapatilla/_search
+{
+  "query": {
+    "wildcard": {
+      "modelo.keyword": "*Zapatilla*"
+    }
+  }
+}
+
