@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "045ff36b-2597-407c-b9aa-55bd00019f75",
+		"name": "zapatillasDeportivas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31609463"
+	},
+	"item": [
+		{
+			"name": "crear indice zapatilla",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mappings\":{\n        \"properties\": {\n            \"marca\": {\n                \"type\": \"keyword\"\n            },\n            \"modelo\": {\n                \"type\": \"text\"\n            },\n            \"talla\": {\n                \"type\": \"float\"\n            },\n            \"color\": {\n                \"type\": \"keyword\"\n            },\n            \"precio\": {\n                \"type\": \"float\"\n            },\n            \"stock\": {\n                \"type\": \"boolean\"\n            }\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/zapatillas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar zapatilla",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"index\":{}}\n{\"marca\":\"Nike\",\"modelo\":\"Air Max\",\"talla\":9.0,\"color\":\"Blue\",\"precio\":119.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Adidas\",\"modelo\":\"Superstar\",\"talla\":8.5,\"color\":\"White/Black\",\"precio\":89.99,\"stock\":false}\n{\"index\":{}}\n{\"marca\":\"Puma\",\"modelo\":\"RS-X\",\"talla\":10.0,\"color\":\"Gray\",\"precio\":109.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Reebok\",\"modelo\":\"Nano X\",\"talla\":11.0,\"color\":\"Red\",\"precio\":129.99,\"stock\":false}\n{\"index\":{}}\n{\"marca\":\"New Balance\",\"modelo\":\"Fresh Foam\",\"talla\":7.0,\"color\":\"Black\",\"precio\":99.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Under Armour\",\"modelo\":\"HOVR Phantom\",\"talla\":8.0,\"color\":\"Green\",\"precio\":119.99,\"stock\":false}\n{\"index\":{}}\n{\"marca\":\"Converse\",\"modelo\":\"One Star\",\"talla\":9.5,\"color\":\"Yellow\",\"precio\":79.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Vans\",\"modelo\":\"Sk8-Hi\",\"talla\":10.5,\"color\":\"Black/White\",\"precio\":69.99,\"stock\":false}\n{\"index\":{}}\n{\"marca\":\"ASICS\",\"modelo\":\"GEL-Nimbus\",\"talla\":8.5,\"color\":\"Purple\",\"precio\":139.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Salomon\",\"modelo\":\"XA Pro 3D\",\"talla\":10.0,\"color\":\"Orange\",\"precio\":159.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Saucony\",\"modelo\":\"Kinvara\",\"talla\":9.0,\"color\":\"Blue/White\",\"precio\":119.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Brooks\",\"modelo\":\"Ghost\",\"talla\":8.0,\"color\":\"Pink\",\"precio\":129.99,\"stock\":false}\n{\"index\":{}}\n{\"marca\":\"Merrell\",\"modelo\":\"Moab\",\"talla\":10.5,\"color\":\"Brown\",\"precio\":109.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Mizuno\",\"modelo\":\"Wave Rider\",\"talla\":7.5,\"color\":\"Silver\",\"precio\":89.99,\"stock\":false}\n{\"index\":{}}\n{\"marca\":\"Fila\",\"modelo\":\"Disruptor\",\"talla\":8.5,\"color\":\"Gold\",\"precio\":79.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Lacoste\",\"modelo\":\"Carnaby\",\"talla\":9.5,\"color\":\"Black\",\"precio\":99.99,\"stock\":false}\n{\"index\":{}}\n{\"marca\":\"Hoka One One\",\"modelo\":\"Clifton\",\"talla\":11.0,\"color\":\"Teal\",\"precio\":139.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Tommy Hilfiger\",\"modelo\":\"Essential\",\"talla\":8.0,\"color\":\"Navy\",\"precio\":119.99,\"stock\":false}\n{\"index\":{}}\n{\"marca\":\"DC Shoes\",\"modelo\":\"Pure\",\"talla\":10.0,\"color\":\"Gray/Black\",\"precio\":69.99,\"stock\":true}\n{\"index\":{}}\n{\"marca\":\"Etnies\",\"modelo\":\"Marana\",\"talla\":9.0,\"color\":\"Burgundy\",\"precio\":79.99,\"stock\":false}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/zapatillas/_bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas",
+						"_bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener objeto Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/zapatillas/_doc/qTBB8IwBLXlyOdgQ-YDA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas",
+						"_doc",
+						"qTBB8IwBLXlyOdgQ-YDA"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
