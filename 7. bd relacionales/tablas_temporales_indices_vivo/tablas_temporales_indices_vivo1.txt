@@ -1,0 +1,36 @@
+use movies_db;
+
+create temporary table TWD(
+	id_twd int not null auto_increment primary key,
+    title varchar(50),
+    rating decimal,
+    season_id int
+);
+
+select * from twd;
+
+delimiter //
+create procedure insertarPeliculasTheWalkingDead()
+	begin
+		insert into TWD(title, rating, season_id)
+			select episode.title, episode.rating, episode.season_id
+			from series serie
+			inner join seasons season on season.serie_id = serie.id
+            inner join episodes episode on episode.season_id = season.id
+            where serie.id = 3;
+	end //
+delimiter ;
+
+call insertarPeliculasTheWalkingDead();
+
+select * from twd;
+
+
+create index idx_first_name on actors(first_name);
+
+show index from actors;
+
+        
+
+drop table twd;
+drop procedure insertarPeliculasTheWalkingDead;

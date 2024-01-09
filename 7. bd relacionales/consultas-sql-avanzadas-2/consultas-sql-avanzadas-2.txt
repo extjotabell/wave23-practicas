@@ -1,0 +1,97 @@
+use movies_db;
+
+delimiter //
+create procedure insertMovie(in in_title varchar(50), in in_rating decimal, in in_awards int, in in_release_date date, in in_length int, in in_genre_id int)
+	begin
+    start transaction;
+		insert into movies (title, rating, awards, release_date, length, genre_id)
+			values (in_title, in_rating, in_awards, in_release_date, in_length, in_genre_id);
+	commit;
+    end //
+delimiter ;
+
+delimiter //
+create procedure insertGenre(in in_name varchar(50), in in_ranking int, in in_active int)
+	begin
+    start transaction;
+		insert into genres (name, ranking, active)
+			values (in_name, in_ranking, in_active);
+	commit;
+    end //
+delimiter ;
+
+call insertGenre("Cine 2D", 13, 1);
+
+call insertMovie("scott pilgrim vs the world", 7.6, 3, "2010-08-13", 152,13);
+
+update actors set favorite_movie_id = 22 where id = 21;
+
+
+create temporary table movies_temporary(
+	id_movie_temporary int not null auto_increment primary key,
+    title varchar(150),
+    rating double,
+    awards int,
+    release_date date,
+    length int,
+    genre_id int
+);
+
+delimiter //
+create procedure insertMoviesTemporary()
+	begin
+		start transaction;
+        insert movies_temporary(title, rating, awards, release_date, length, genre_id)
+			select title, rating, awards, release_date, length, genre_id
+            from movies;
+		commit;
+    end //
+delimiter ;
+
+call insertMoviesTemporary();
+
+select * from movies_temprary;
+
+
+delete from movies_temporary where awards < 5;
+
+select genre.*
+from genres genre
+inner join movies movie on movie.genre_id = genre.id
+group by genre.id;
+
+select *
+from actors actor
+inner join movies movie on movie.id = actor.favorite_movie_id
+where movie.awards > 3;
+
+create index idx_title on movies(title);
+
+show index from movies;
+
+/*
+
+Pregunta: ¿Existiría una mejora notable al crear índices?
+Respuesta: Se nota una mejora notable al hacer consultas y son mas eficientes. Pero, al momento de hacer inserccion 
+puede tener una demora al hacerlo. Por ello, es mejor añadir indices en tablas que no se actualizan de manera constante.
+
+*/
+
+create index idx_first_name on actors(first_name);
+
+show index from actors;
+
+/*
+
+Realizo este indice a la tabla actors, ya que, al analizar esta tabla no se actualiza de manera constante y se puede crear
+indices en los nombres para ser mas eficacez al hacer una consulta
+
+*/
+
+
+drop procedure insertGenre;
+drop procedure insertMovie;
+drop procedure insertMoviesTemporary;
+drop table movies_temporary;
+
+
