@@ -1,0 +1,24 @@
+USE movies_db;
+
+DROP TABLE IF EXISTS TWD;
+CREATE TEMPORARY TABLE TWD
+
+SELECT episodes.title AS episode, seasons.title AS season, seasons.number AS season_number, series.title AS series
+FROM episodes
+INNER JOIN seasons
+ON episodes.season_id = seasons.id
+INNER JOIN series
+ON seasons.serie_id = series.id
+WHERE series.title LIKE "%Walking%";
+
+/* Alternativo con Subconsultas
+select * from episodes where season_id in 
+(select ss.id from seasons ss join series s on ss.serie_id = s.id where s.title like "The walking dead")
+*/
+
+SELECT * FROM TWD WHERE season_number = 1;
+
+SHOW INDEX FROM actors;
+EXPLAIN SELECT rating FROM actors WHERE rating > 6;
+CREATE INDEX idx_rating ON actors(rating);
+EXPLAIN SELECT rating FROM actors WHERE rating > 6;

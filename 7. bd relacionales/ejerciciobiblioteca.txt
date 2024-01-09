@@ -1,0 +1,96 @@
+USE Biblioteca;
+
+/* Listar los datos de los autores */
+SELECT autor.nombre, autor.nacionalidad
+FROM autor;
+
+/* Listar nombre y edad de los estudiantes */
+SELECT CONCAT(estudiante.nombre, " ", estudiante.apellido), estudiante.edad
+FROM estudiante;
+
+/* ¿Qué estudiantes pertenecen a la carrera informática? */
+SELECT CONCAT(estudiante.nombre, " ", estudiante.apellido)
+FROM estudiante
+WHERE estudiante.carrera LIKE "%Computer Science";
+
+/* ¿Qué autores son de nacionalidad francesa o italiana? */
+SELECT autor.nombre, autor.nacionalidad
+FROM autor
+WHERE autor.nacionalidad LIKE "French" 
+OR autor.nacionalidad LIKE "Italian";
+
+/* ¿Qué libros no son del área de internet? */
+SELECT libro.título, libro.editorial, libro.área
+FROM libro
+WHERE libro.área NOT LIKE "%Internet%";
+
+/* Listar los libros de la editorial Salamandra. */
+SELECT libro.título, libro.editorial, libro.área
+FROM libro
+WHERE libro.editorial LIKE "%Salamandra%";
+
+/* Listar los datos de los estudiantes cuya edad es mayor al promedio. */
+SELECT CONCAT(estudiante.nombre, " ", estudiante.apellido), estudiante.edad, estudiante.dirección, estudiante.carrera
+FROM estudiante
+WHERE estudiante.edad > 
+(SELECT AVG(estudiante.edad)
+FROM estudiante);
+
+/* Listar los nombres de los estudiantes cuyo apellido comience con la letra G */
+SELECT CONCAT(estudiante.nombre, " ", estudiante.apellido)
+FROM estudiante
+WHERE estudiante.apellido LIKE "G%";
+
+/* Listar los autores del libro “El Universo: Guía de viaje”. (Se debe listar solamente los nombres). */
+SELECT autor.nombre
+FROM autor
+WHERE autor.idAutor IN
+(SELECT libroautor.idAutor
+FROM libroautor
+INNER JOIN libro 
+ON libroautor.idLibro = libro.idLibro
+WHERE libro.título = "%Guide to the Universe%");
+
+/* ¿Qué libros se prestaron al lector “Filippo Galli”? */
+SELECT libro.título
+FROM libro
+WHERE libro.idLibro IN
+(SELECT préstamo.idLibro
+FROM préstamo
+INNER JOIN estudiante
+ON préstamo.idLector = estudiante.idLector
+WHERE estudiante.apellido LIKE "%Galli%");
+
+/* Listar el nombre del estudiante de menor edad. */
+SELECT CONCAT(estudiante.nombre, " ", estudiante.apellido)
+FROM estudiante
+ORDER BY estudiante.edad ASC
+LIMIT 1;
+
+/* Listar nombres de los estudiantes a los que se prestaron libros de Base de Datos. */
+SELECT CONCAT(estudiante.nombre, " ", estudiante.apellido)
+FROM estudiante
+WHERE idLector IN
+(SELECT préstamo.idLector
+FROM préstamo
+INNER JOIN libro
+ON préstamo.idLibro = libro.idLibro
+WHERE libro.área LIKE "%Data Base%");
+
+/* Listar los libros que pertenecen a la autora J.K. Rowling. */
+SELECT libro.título
+FROM libro
+WHERE libro.idLibro IN
+(SELECT libroautor.idLibro
+FROM libroautor
+INNER JOIN autor 
+ON libroautor.idautor = autor.idautor
+WHERE autor.nombre LIKE "%J. K. Rowling%");
+
+/* Listar títulos de los libros que debían devolverse el 16/07/2021. */
+SELECT libro.título
+FROM libro
+WHERE libro.idLibro IN
+(SELECT idLibro
+FROM préstamo
+WHERE préstamo.fechadevolucion = '2021-07-16');
