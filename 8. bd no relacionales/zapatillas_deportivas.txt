@@ -1,0 +1,71 @@
+Para crear el indice
+
+PUT /zapatillas_deportivas
+{
+  "mappings": {
+    "properties": {
+      "name": { "type": "text" },
+      "price": {
+        "type": "scaled_float",
+        "scaling_factor": 100
+      },
+      "brand": { "type" : "text" },
+      "description": { "type" : "text" }
+    }
+  }
+}
+
+Para agregar mas propiedades al documento
+PUT /zapatillas_deportivas/_mapping
+{
+  "properties": {
+    "color":  { "type": "text"},
+    "modelo":  { "type": "text"}
+  }
+}
+
+Para crear todos los 20 registros en una sola llamada a la api
+POST /zapatillas_deportivas/_bulk
+{ "index" : {} }
+{ "name": "Tenis Deportivas para Hombre", "price": 2099, "brand": "Nike","description": "Nike Tenis Zapatillas Deportivas para Hombre", "color": "Negro Blanco Antracita Volt", "modelo": "CK9388-101"}
+{ "index" : {} }
+{ "name": "Tenis Deportivas para Mujer", "price": 2200, "brand": "Nike","description": "Nike Tenis Zapatillas Deportivas para Mujer", "color": "Negro Blanco Antracita Volt", "modelo": "CK9388-103"}
+{ "index" : {} }
+{ "name": "Tenis Deportivas Hombre", "price": 369.00, "brand": "DAHAN","description": "DAHAN Tenis Hombre, Zapatos Hombre Deportivos, Zapatos de Malla Transpirable para Hombre, Zapatillas de Deporte Casuales de Moda para Entrenamiento Caminar Correr Gimnasio con Suela Antiderrapante", "color": "Azul Oscuro", "modelo": "B0CDPX7Q9G"}
+{ "index" : {} }
+{ "name": "Zapatos deportivos para correr", "price": 499, "brand": "RAINSMORE","description": "RAINSMORE Zapatos Deportivos para Correr para Hombres y Mujeres,Zapatos Tenis,Zapatos cómodos y Transpirables para Caminar,con amortiguación de Aire,Tenis de Malla,Gimnasio,Trabajo,26cm-29.5cm", "color": "Negro", "modelo": "MXRM-80467-green-41"}
+{ "index" : {} }
+{ "name": "Zapatos deportivos para correr", "price": 499, "brand": "RAINSMORE","description": "RAINSMORE Zapatos Deportivos para Correr para Hombres y Mujeres,Zapatos Tenis,Zapatos cómodos y Transpirables para Caminar,con amortiguación de Aire,Tenis de Malla,Gimnasio,Trabajo,26cm-29.5cm", "color": "Verde", "modelo": "MXRM-80467-green-41"}
+{ "index" : {} }
+{ "name": "Zapatos deportivos para correr", "price": 499, "brand": "RAINSMORE","description": "RAINSMORE Zapatos Deportivos para Correr para Hombres y Mujeres,Zapatos Tenis,Zapatos cómodos y Transpirables para Caminar,con amortiguación de Aire,Tenis de Malla,Gimnasio,Trabajo,26cm-29.5cm", "color": "Rojo", "modelo": "MXRM-80467-green-41"}
+{ "index" : {} }
+{ "name": "Tenis Deportivos Antideslizantes Y Transpirables Para Mujer", "price": 132.33, "brand": "Generica","description": "Transpirable: Parte superior de tela de malla que tiene una gran transpirabilidad. Las rejillas de ventilación del tejido de punto mantienen los pies frescos después de un largo entrenamiento. Comodidad: La malla acolchada se coloca en el antepié y a lo largo del cuello para ofrecer una sensación de comodidad. Varias ocasiones aplicables: Para todas las estaciones, adecuadas para caminar, trotar, deportes al aire libre, gimnasio, turismo y otras actividades.", "color": "Negro", "modelo": "1XJJM-8023"}
+{ "index" : {} }
+{ "name": "Tenis Deportivas para Hombre", "price": 2099, "brand": "Nike","description": "Nike Tenis Zapatillas Deportivas para Hombre", "color": "Negro", "modelo": "CK9388-101"}
+{ "index" : {} }
+{ "name": "Tenis Deportivas para Hombre", "price": 2099, "brand": "Nike","description": "Nike Tenis Zapatillas Deportivas para Hombre", "color": "Blanco", "modelo": "CK9388-101"}
+{ "index" : {} }
+{ "name": "Tenis Deportivas para Hombre", "price": 2099, "brand": "Nike","description": "Nike Tenis Zapatillas Deportivas para Hombre", "color": "Verde", "modelo": "CK9388-101"}
+{ "index" : {} }
+{ "name": "Tenis Deportivas para Hombre", "price": 2099, "brand": "Nike","description": "Nike Tenis Zapatillas Deportivas para Hombre", "color": "Azul", "modelo": "CK9388-101"}
+{ "index" : {} }
+{ "name": "TENIS KAPTIR FLOW", "price": 1105, "brand": "Adidas","description": "TENIS CÓMODOS PARA USO DIARIO HECHOS PARCIALMENTE CON MATERIALES RECICLADOS", "color": "Blanco", "modelo": "7DFIO03"}
+{ "index" : {} }
+{ "name": "TENIS KAPTIR FLOW", "price": 1105, "brand": "Adidas","description": "TENIS CÓMODOS PARA USO DIARIO HECHOS PARCIALMENTE CON MATERIALES RECICLADOS", "color": "Negro", "modelo": "7DFIO03"}
+{ "index" : {} }
+{ "name": "TENIS KAPTIR FLOW", "price": 1105, "brand": "Adidas","description": "TENIS CÓMODOS PARA USO DIARIO HECHOS PARCIALMENTE CON MATERIALES RECICLADOS", "color": "Amarillo", "modelo": "7DFIO03"}
+{ "index" : {} }
+{ "name": "TENIS KAPTIR FLOW", "price": 1105, "brand": "Adidas","description": "TENIS CÓMODOS PARA USO DIARIO HECHOS PARCIALMENTE CON MATERIALES RECICLADOS", "color": "Azul", "modelo": "7DFIO03"}
+{ "index" : {} }
+{ "name": "TENIS KAPTIR FLOW", "price": 1105, "brand": "Adidas","description": "TENIS CÓMODOS PARA USO DIARIO HECHOS PARCIALMENTE CON MATERIALES RECICLADOS", "color": "Rojo", "modelo": "7DFIO03"}
+{ "index" : {} }
+{ "name": "Tenis Puma Rbd Game Low", "price": 1999, "brand": "Puma","description": "alzado que va con todo, son los Tenis Puma RBD Game Low para mujeres que son ideales para usar cualquier día de la semana. Además de combinar colores neutros y audaces", "color": "Rosa", "modelo": "386373 23"}
+{ "index" : {} }
+{ "name": "Tenis Puma Rbd Game Low", "price": 1999, "brand": "Puma","description": "alzado que va con todo, son los Tenis Puma RBD Game Low para mujeres que son ideales para usar cualquier día de la semana. Además de combinar colores neutros y audaces", "color": "Rojo", "modelo": "386373 23"}
+{ "index" : {} }
+{ "name": "Tenis Puma Rbd Game Low", "price": 1999, "brand": "Puma","description": "alzado que va con todo, son los Tenis Puma RBD Game Low para mujeres que son ideales para usar cualquier día de la semana. Además de combinar colores neutros y audaces", "color": "Blanco", "modelo": "386373 23"}
+{ "index" : {} }
+{ "name": "Tenis Puma Rbd Game Low", "price": 1999, "brand": "Puma","description": "alzado que va con todo, son los Tenis Puma RBD Game Low para mujeres que son ideales para usar cualquier día de la semana. Además de combinar colores neutros y audaces", "color": "Azul", "modelo": "386373 23"}
+
+Para conseguir todos los documentos con una llamada a la api
+GET /zapatillas_deportivas/_search?size=100
