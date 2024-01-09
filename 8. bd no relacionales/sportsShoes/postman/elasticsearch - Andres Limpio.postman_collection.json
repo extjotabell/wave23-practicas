@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "34323e02-3aaa-4407-a4a4-31202c37eb81",
+		"name": "elasticsearch - Andres Limpio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612957"
+	},
+	"item": [
+		{
+			"name": "Create Index",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mappings\":{\n        \"properties\":{\n            \"name\":{\n                \"type\": \"text\"\n            },\n            \"model\":{\n                \"type\": \"text\"\n            },\n            \"brand\":{\n                \"type\": \"text\"\n            },\n            \"color\":{\n                \"type\": \"text\"\n            },\n            \"stock\":{\n                \"type\": \"integer\"\n            },\n            \"price\":{\n                \"type\": \"double\"\n            }\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/sports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add massive 20 registers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatos Deportivos Elite\", \"model\": \"FlexStride 5000\", \"brand\": \"ActiveFit\", \"color\": \"Gris oscuro\", \"stock\": \"150\", \"price\": \"89.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatillas Running Pro\", \"model\": \"SpeedX 200\", \"brand\": \"Runners United\", \"color\": \"Rojo\", \"stock\": \"120\", \"price\": \"79.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Botas de Montaña Extrem\", \"model\": \"ClimbTech 800\", \"brand\": \"Adventure Gear\", \"color\": \"Verde\", \"stock\": \"90\", \"price\": \"109.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatillas Fitness Power\", \"model\": \"FitZone 3000\", \"brand\": \"FitStyle\", \"color\": \"Negro\", \"stock\": \"200\", \"price\": \"69.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Sandalias de Playa Active\", \"model\": \"SportComfort 300\", \"brand\": \"ActiveLife\", \"color\": \"Azul\", \"stock\": \"80\", \"price\": \"49.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Botines de Cuero Classic\", \"model\": \"LeatherCraft 500\", \"brand\": \"UrbanStyle\", \"color\": \"Negro\", \"stock\": \"110\", \"price\": \"119.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatos Casuales Everyday\", \"model\": \"CasualWear 800\", \"brand\": \"FashionTrend\", \"color\": \"Gris claro\", \"stock\": \"95\", \"price\": \"59.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatillas de Baloncesto Pro\", \"model\": \"HoopsMaster 1000\", \"brand\": \"Ballers Inc.\", \"color\": \"Blanco\", \"stock\": \"70\", \"price\": \"99.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Tenis Retro Vintage\", \"model\": \"OldSchool Classics\", \"brand\": \"Vintage Vibes\", \"color\": \"Blanco\", \"stock\": \"85\", \"price\": \"79.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Botas de Senderismo Adventure\", \"model\": \"HikeTech 600\", \"brand\": \"Trail Blazers\", \"color\": \"Café\", \"stock\": \"105\", \"price\": \"129.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatillas de Tenis Pro\", \"model\": \"AceStrike 300\", \"brand\": \"TennisPro\", \"color\": \"Morado\", \"stock\": \"75\", \"price\": \"89.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatos de Trabajo Resistentes\", \"model\": \"WorkForce 700\", \"brand\": \"WorkGear\", \"color\": \"Negro\", \"stock\": \"100\", \"price\": \"109.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Sandalias de Excursionismo Pro\", \"model\": \"HikeComfort 400\", \"brand\": \"OutdoorLife\", \"color\": \"Celeste\", \"stock\": \"65\", \"price\": \"79.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatillas de Golf Performance\", \"model\": \"GolfTech 900\", \"brand\": \"GolfPros\", \"color\": \"Vinotinto\", \"stock\": \"55\", \"price\": \"149.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Botines de Moda Trendy\", \"model\": \"FashionBoot 600\", \"brand\": \"Trendsetters\", \"color\": \"Marrón\", \"stock\": \"125\", \"price\": \"89.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatillas de Escalada Extreme\", \"model\": \"ClimbTech 800\", \"brand\": \"ExtremeGear\", \"color\": \"Rojo\", \"stock\": \"45\", \"price\": \"139.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatos de Danza Profesional\", \"model\": \"DanceFlex 400\", \"brand\": \"DanceMoves\", \"color\": \"Lila\", \"stock\": \"60\", \"price\": \"69.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Botas de Nieve Arctic\", \"model\": \"SnowTech 700\", \"brand\": \"WinterWear\", \"color\": \"Naranja\", \"stock\": \"70\", \"price\": \"99.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Zapatos Formales Elegance\", \"model\": \"FormalStyle 900\", \"brand\": \"ElegantWear\", \"color\": \"Negro\", \"stock\": \"150\", \"price\": \"119.99\" }\n{\"index\": {\"_index\": \"sports\", \"_type\": \"_doc\"}}\n{\"name\": \"Sandalias Deportivas Adventure\", \"model\": \"SportComfort 300\", \"brand\": \"ActiveLife\", \"color\": \"Azul\", \"stock\": \"85\", \"price\": \"59.99\" }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/sports/_bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sports",
+						"_bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add 1 register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Chanclas coloridas\",\n        \"model\": \"Chanclas3000\",\n        \"brand\": \"AirFeet\",\n        \"color\": \"Arcoiris\",\n        \"stock\": \"20\",\n        \"price\": \"49.99\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/sports/_doc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sports",
+						"_doc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search shoes by color \"Negro\"",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match\": {\n      \"color\": \"Negro\"\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/sports/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sports",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search all registers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/sports/_search?q=*:*&size=22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sports",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "*:*"
+						},
+						{
+							"key": "size",
+							"value": "22"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search shoes by price between 40 and 130",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/sports/_search?q=price: (>=40 AND <=130)&size=22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sports",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "price: (>=40 AND <=130)"
+						},
+						{
+							"key": "size",
+							"value": "22"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
