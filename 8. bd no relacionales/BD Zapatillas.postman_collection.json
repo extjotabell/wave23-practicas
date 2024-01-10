@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "99602673-8b16-4441-af3c-f96b119a8292",
+		"name": "BD Zapatillas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Agregar índices",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"mappings\": {\n    \"properties\": {\n      \"marca\": {\"type\": \"keyword\"},\n      \"modelo\": {\"type\": \"keyword\"},\n      \"precio\": {\"type\": \"float\"},\n      \"talla\": {\"type\": \"keyword\"},\n      \"color\": {\"type\": \"keyword\"}\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/zapatillas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Registro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"marca\": \"Nike\",\n  \"modelo\": \"Air Max\",\n  \"precio\": 120.0,\n  \"talla\": \"10\",\n  \"color\": \"Negro\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/zapatillas/_doc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas",
+						"_doc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Varios Registros",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"index\":{}}\n{\"marca\": \"Reebok\", \"modelo\": \"Classic Leather\", \"precio\": 80.0, \"talla\": \"8.5\", \"color\": \"Blanco\"}\n{\"index\":{}}\n{\"marca\": \"New Balance\", \"modelo\": \"990v5\", \"precio\": 175.0, \"talla\": \"9\", \"color\": \"Gris\"}\n{\"index\":{}}\n{\"marca\": \"Under Armour\", \"modelo\": \"HOVR Phantom\", \"precio\": 130.0, \"talla\": \"10.5\", \"color\": \"Rojo\"}\n{\"index\":{}}\n{\"marca\": \"Vans\", \"modelo\": \"Old Skool\", \"precio\": 65.0, \"talla\": \"7\", \"color\": \"Negro\"}\n{\"index\":{}}\n{\"marca\": \"Converse\", \"modelo\": \"Chuck Taylor All Star\", \"precio\": 55.0, \"talla\": \"6\", \"color\": \"Azul\"}\n{\"index\":{}}\n{\"marca\": \"Adidas\", \"modelo\": \"Superstar\", \"precio\": 90.0, \"talla\": \"8\", \"color\": \"Blanco\"}\n{\"index\":{}}\n{\"marca\": \"Puma\", \"modelo\": \"Cali\", \"precio\": 75.0, \"talla\": \"7.5\", \"color\": \"Rosa\"}\n{\"index\":{}}\n{\"marca\": \"ASICS\", \"modelo\": \"GEL-Kayano 27\", \"precio\": 160.0, \"talla\": \"9.5\", \"color\": \"Verde\"}\n{\"index\":{}}\n{\"marca\": \"Salomon\", \"modelo\": \"Speedcross 5\", \"precio\": 140.0, \"talla\": \"10\", \"color\": \"Negro/Amarillo\"}\n{\"index\":{}}\n{\"marca\": \"Brooks\", \"modelo\": \"Ghost 13\", \"precio\": 130.0, \"talla\": \"8\", \"color\": \"Azul\"}\n{\"index\":{}}\n{\"marca\": \"Nike\", \"modelo\": \"React Element 55\", \"precio\": 110.0, \"talla\": \"8\", \"color\": \"Verde\"}\n{\"index\":{}}\n{\"marca\": \"Adidas\", \"modelo\": \"NMD R1\", \"precio\": 130.0, \"talla\": \"9\", \"color\": \"Negro/Rojo\"}\n{\"index\":{}}\n{\"marca\": \"Reebok\", \"modelo\": \"Zig Kinetica\", \"precio\": 95.0, \"talla\": \"8.5\", \"color\": \"Gris\"}\n{\"index\":{}}\n{\"marca\": \"Puma\", \"modelo\": \"Thunder Spectra\", \"precio\": 120.0, \"talla\": \"10\", \"color\": \"Blanco/Azul\"}\n{\"index\":{}}\n{\"marca\": \"Vans\", \"modelo\": \"Authentic\", \"precio\": 50.0, \"talla\": \"7\", \"color\": \"Rojo\"}\n{\"index\":{}}\n{\"marca\": \"Converse\", \"modelo\": \"One Star\", \"precio\": 60.0, \"talla\": \"7.5\", \"color\": \"Negro/Blanco\"}\n{\"index\":{}}\n{\"marca\": \"ASICS\", \"modelo\": \"GT-2000 9\", \"precio\": 120.0, \"talla\": \"9.5\", \"color\": \"Azul/Naranja\"}\n{\"index\":{}}\n{\"marca\": \"New Balance\", \"modelo\": \"574\", \"precio\": 70.0, \"talla\": \"8\", \"color\": \"Gris/Rojo\"}\n{\"index\":{}}\n{\"marca\": \"Under Armour\", \"modelo\": \"Charged Assert 9\", \"precio\": 80.0, \"talla\": \"10.5\", \"color\": \"Negro/Azul\"}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/zapatillas/_bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas",
+						"_bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Registros",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match_all\": {}\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/zapatillas/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
