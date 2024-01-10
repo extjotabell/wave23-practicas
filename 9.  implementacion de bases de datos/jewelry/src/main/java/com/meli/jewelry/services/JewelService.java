@@ -6,6 +6,8 @@ import com.meli.jewelry.repositories.IJewelRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JewelService implements IJewelService{
 
@@ -20,5 +22,9 @@ public class JewelService implements IJewelService{
         return jewelRepository.save(JewelMapper.toEntity(jewelDTO)).getIdentityNumber();
     }
 
+    @Override
+    public List<JewelDTO> getAllJewels() {
+        return jewelRepository.findAll().stream().map(JewelMapper::toDTO).toList();
+    }
 
 }
