@@ -2,6 +2,7 @@ package com.ospina.joyeria.servicio;
 
 import com.ospina.joyeria.excepcion.NotFoundException;
 import com.ospina.joyeria.modelo.entidad.Joya;
+import com.ospina.joyeria.modelo.request.JoyaCompletaRequestDTO;
 import com.ospina.joyeria.modelo.request.JoyaRequestDTO;
 import com.ospina.joyeria.repositorio.JoyaRepositorio;
 import jakarta.transaction.Transactional;
@@ -40,9 +41,18 @@ public class JoyaServicioImpl implements JoyaServicio {
     }
 
     @Override
-    @Transactional
-    public Joya buscarJoyaPorId(Long id) {
-        return joyaRepositorio.findById(id).orElse(null);
+    public Joya actualizarJoya(Long id, JoyaCompletaRequestDTO joyaCompletaRequestDTO) {
+        Joya joya = joyaRepositorio
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException("No se encontró una joya con el id proporcionado: " + id));
+        joya.setNombre(joyaCompletaRequestDTO.getNombre());
+        joya.setMaterial(joyaCompletaRequestDTO.getMaterial());
+        joya.setPeso(joyaCompletaRequestDTO.getPeso());
+        joya.setParticularidad(joyaCompletaRequestDTO.getParticularidad());
+        joya.setPoseePiedra(joyaCompletaRequestDTO.getPoseePiedra());
+        joya.setVentaONo(joyaCompletaRequestDTO.getVentaONo());
+        joyaRepositorio.save(joya);
+        return joya;
     }
 
     private Joya convertirJoyaRequestDTOAJoya(JoyaRequestDTO joyaRequestDTO) {

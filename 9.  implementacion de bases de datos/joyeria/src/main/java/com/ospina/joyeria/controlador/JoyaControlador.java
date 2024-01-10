@@ -1,6 +1,7 @@
 package com.ospina.joyeria.controlador;
 
 import com.ospina.joyeria.modelo.entidad.Joya;
+import com.ospina.joyeria.modelo.request.JoyaCompletaRequestDTO;
 import com.ospina.joyeria.modelo.request.JoyaRequestDTO;
 import com.ospina.joyeria.servicio.JoyaServicio;
 import org.springframework.http.HttpStatus;
@@ -34,5 +35,11 @@ public class JoyaControlador {
     public ResponseEntity<String> borrarJoya(@PathVariable Long id) {
         joyaServicio.borrarJoya(id);
         return new ResponseEntity<>("Joya borrada con el ID: " + id, HttpStatus.OK);
+    }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<Joya> actualizarJoya(@PathVariable Long id, @RequestBody JoyaCompletaRequestDTO joyaCompletaRequestDTO) {
+        Joya joya = joyaServicio.actualizarJoya(id, joyaCompletaRequestDTO);
+        return new ResponseEntity<>(joya, HttpStatus.OK);
     }
 }
