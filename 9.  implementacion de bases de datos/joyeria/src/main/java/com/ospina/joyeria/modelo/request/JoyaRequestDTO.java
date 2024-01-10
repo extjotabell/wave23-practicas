@@ -17,6 +17,4 @@ public class JoyaRequestDTO {
     String particularidad;
     @JsonProperty("posee_piedra")
     Boolean poseePiedra;
-    @JsonProperty("venta_o_no")
-    Boolean ventaONo;
 }

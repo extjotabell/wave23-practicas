@@ -1,5 +1,6 @@
 package com.ospina.joyeria.servicio;
 
+import com.ospina.joyeria.excepcion.NotFoundException;
 import com.ospina.joyeria.modelo.entidad.Joya;
 import com.ospina.joyeria.modelo.request.JoyaRequestDTO;
 import com.ospina.joyeria.repositorio.JoyaRepositorio;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class JoyaServicioImpl implements JoyaServicio{
+public class JoyaServicioImpl implements JoyaServicio {
 
     private final JoyaRepositorio joyaRepositorio;
 
@@ -31,7 +32,11 @@ public class JoyaServicioImpl implements JoyaServicio{
 
     @Override
     public void borrarJoya(Long id) {
-        joyaRepositorio.deleteById(id);
+        Joya joya = joyaRepositorio
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException("No se encontró una joya con el id proporcionado: " + id));
+        joya.setVentaONo(false);
+        joyaRepositorio.save(joya);
     }
 
     @Override
@@ -47,7 +52,7 @@ public class JoyaServicioImpl implements JoyaServicio{
         joya.setPeso(joyaRequestDTO.getPeso());
         joya.setParticularidad(joyaRequestDTO.getParticularidad());
         joya.setPoseePiedra(joyaRequestDTO.getPoseePiedra());
-        joya.setVentaONo(joyaRequestDTO.getVentaONo());
+        joya.setVentaONo(true);
         return joya;
     }
 }

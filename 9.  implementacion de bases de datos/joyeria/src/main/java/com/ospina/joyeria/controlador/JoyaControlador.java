@@ -29,4 +29,10 @@ public class JoyaControlador {
     public ResponseEntity<List<Joya>> obtenerJoyas() {
         return new ResponseEntity<>(joyaServicio.obtenerJoyas(), HttpStatus.OK);
     }
+
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<String> borrarJoya(@PathVariable Long id) {
+        joyaServicio.borrarJoya(id);
+        return new ResponseEntity<>("Joya borrada con el ID: " + id, HttpStatus.OK);
+    }
 }
