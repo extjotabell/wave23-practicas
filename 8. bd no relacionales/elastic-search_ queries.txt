@@ -1,0 +1,141 @@
+Elastic Search
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET _mapping
+
+GET clientes/_search?q=*ilen*
+
+GET clientes/_search?q=Ailen
+
+GET clientes/_search?q=Localidad:Posadas AND Nombre:Diego
+
+GET clientes/_search?q=(Id: >=740)
+
+GET clientes/_search?q=Id: (>740 AND <750)
+
+GET clientes/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "AR",
+      "fields": ["Pais"]
+    }
+  }
+}
+
+GET clientes/_search
+{
+  "query": {
+    "query_string": {
+      "query": "7"
+    }
+  }
+}
+
+POST clientes/_doc
+{
+  "Apellido": "Vilches",
+  "Localidad": "Posadas",
+  "Nombre": "Ailen",
+  "Pais": "Argentina"
+}
+
+//Respuesta
+{
+  "_index": "clientes",
+  "_id": "axBY74wBSydJEhxwK5Rd",
+  "_version": 1,
+  "result": "created",
+  "_shards": {
+    "total": 2,
+    "successful": 1,
+    "failed": 0
+  },
+  "_seq_no": 754,
+  "_primary_term": 1
+}
+
+GET _search // _search
+{
+  "query": {
+    "${m}": {
+      "Nombre": "Ailen"
+    } // _match
+  }
+}
+
+//Respuesta
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 2,
+      "relation": "eq"
+    },
+    "max_score": 5.71175,
+    "hits": [
+      {
+        "_index": "clientes",
+        "_id": "8hBA74wBSydJEhxwmJEN",
+        "_score": 5.71175,
+        "_source": {
+          "Nombre": "Ailen",
+          "Apellido": "Vera",
+          "Id": "122",
+          "Localidad": "Posadas",
+          "Pais": "AR"
+        }
+      },
+      {
+        "_index": "clientes",
+        "_id": "axBY74wBSydJEhxwK5Rd",
+        "_score": 5.71175,
+        "_source": {
+          "Apellido": "Vilches",
+          "Localidad": "Posadas",
+          "Nombre": "Ailen",
+          "Pais": "Argentina"
+        }
+      }
+    ]
+  }
+}
+
+//Update
+POST clientes/_doc/axBY74wBSydJEhxwK5Rd
+{
+  "doc": {
+          "Apellido": "Vilches",
+          "Localidad": "Posadas",
+          "Nombre": "Ailen",
+          "Pais": "AR"
+  }
+}
+
+//Check
+GET clientes/_doc/axBY74wBSydJEhxwK5Rd
+
+//Get varios campos
+GET /clientes/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "Nombre": "Ailen" } },
+        { "match": { "Apellido": "Vera" } }
+      ]
+    }
+  }
+}

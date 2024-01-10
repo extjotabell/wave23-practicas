@@ -1,0 +1,220 @@
+# Devuelve todos los datos de los documentos del index
+GET _search
+{
+  "query": {
+    "match_all": {
+    }
+  }
+}
+
+# Devuelve todos los datos de un cierto index
+GET employees/_search?size=50
+{
+  "query": {
+    "match_all": {
+    }
+  }
+}
+
+# Un valor entre todos los documentos y todos sus atributos
+GET employees/_search?q="Gietz"
+
+# Uso de comodin * para busqueda por comienzo y terminacion
+GET employees/_search?q=*tz
+
+#Busqueda por un atributo y un valor en especifico
+GET employees/_search?q=FIRST_NAME: William
+
+#Busqueda por una condicion especifica
+GET employees/_search?q=FIRST_NAME: Steven OR FIRST_NAME: William
+
+#Busqueda bajo una condicion de menor o igual.
+GET employees/_search?q=FIRST_NAME: <=M
+
+#Busqueda bajo una condicion multiple y un size de 20 valores.
+GET employees/_search?q=EMPLOYEE_ID: (>=110 AND <=130)&size=20
+
+#Busqueda bajo una propiedad de un objeto/propiedad de un documento
+GET employees/_search?q=PERSON.NAME: (>=Jean AND <=Robert)&size=20
+
+
+#MANERA SIMPLIFICADA POR URL
+GET employees/_search?q=FIRST_NAME: William
+
+#MANERA COMPLICADA POR BODY
+GET employees/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "FIRST_NAME": {
+              "value": "William"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+GET employees/_search?q=EMPLOYEE_ID: (>=110 AND <=120)&size=20
+
+GET employees/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "EMPLOYEE_ID": {
+              "gte": 110,
+              "lte": 120
+            }
+          }
+        }
+      ]
+    }
+  },
+  "size": 20
+}
+
+GET employees/_search?q="Gietz"
+
+GET employees/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "Gietz"
+    }
+  }
+}
+
+GET employees/_search
+{
+  "query": {
+    "wildcard": {
+      "PHONE_NUMBER": "*8181"
+    }
+  }
+}
+
+GET employees/_search?q=FIRST_NAME: Steven OR FIRST_NAME: William
+
+GET employees/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "term": {
+            "FIRST_NAME": {
+              "value": "Steven"
+            }
+          }
+        },
+        {
+          "term": {
+            "FIRST_NAME": {
+              "value": "William"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+POST employees/_doc
+{
+  "JOB_ID": "PROGRAMMER",
+  "EMPLOYEE_ID": 110,
+  "SALARY": 200,
+  "HIRE_DATE": "08-FER-08",
+  "DEPARTMENT_ID": 51,
+  "LAST_NAME": "CARDO",
+  "EMAIL": "JEANC",
+  "PHONE_NUMBER": "650.124.1434",
+  "FIRST_NAME": "JEAN",
+  "COMMISSION_PCT": " - ",
+  "MANAGER_ID": "120",
+  "BIRTH_DATE": "1998-02-05"
+}
+
+GET employees/_doc/DcEM94oBUwpGFmQDYUF6
+
+POST employees/_doc/JEANELMASGENIO
+{
+  "JOB_ID": "PROGRAMMER",
+  "EMPLOYEE_ID": 110,
+  "SALARY": 200,
+  "HIRE_DATE": "08-FER-08",
+  "DEPARTMENT_ID": 51,
+  "LAST_NAME": "CARDO",
+  "EMAIL": "JEANC",
+  "PHONE_NUMBER": "650.124.1434",
+  "FIRST_NAME": "JEAN",
+  "COMMISSION_PCT": " - ",
+  "MANAGER_ID": "120",
+  "BIRTH_DATE": "1998-02-05"
+}
+
+PUT employees/_doc/JEANELMASGENIO2
+{
+    "JOB_ID": "PSICOLOGO",
+    "EMPLOYEE_ID": 110,
+    "SALARY": 200,
+    "HIRE_DATE": "08-FER-08",
+    "DEPARTMENT_ID": 51,
+    "LAST_NAME": "CARDO",
+    "EMAIL": "JEANC",
+    "PHONE_NUMBER": "650.124.1434",
+    "FIRST_NAME": "JEAN",
+    "COMMISSION_PCT": " - ",
+    "MANAGER_ID": "120",
+    "BIRTH_DATE": "1998-02-05"
+}
+
+POST employees/_update_by_query
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "EMPLOYEE_ID": {
+              "value": "110"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "script": {
+    "source": "ctx._source['FIRST_NAME'] = 'JUAN'",
+    "lang": "painless"
+  }
+}
+
+
+DELETE employees/_doc/JEANELMASGENIO
+
+POST employees/_delete_by_query
+{
+  "query": {
+    "bool" : {
+      "must" :[
+        {
+          "term": {
+            "EMPLOYEE_ID": {
+              "value": "110"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+GET employees/_search?q=EMPLOYEE_ID: 110
