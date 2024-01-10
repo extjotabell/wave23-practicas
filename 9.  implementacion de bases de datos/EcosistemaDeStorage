@@ -1,0 +1,12 @@
+caso de uso 1
+La unica integracion que esta disponible es golden gate big queue para notificar la API 
+
+caso de uso 2
+KVS streams migracion a KVS queryable (el problema es que es una migracion)
+KVS streams document search
+
+caso de uso 3
+KVS - Object storage (dump)
+
+caso de uso 4
+KVS con streams Sink HTTP (o Golden Gate pero al final todo pasa por streams entonces Sink HTTP queda mejor)
