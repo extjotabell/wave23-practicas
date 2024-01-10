@@ -20,7 +20,8 @@ public class JoyaControlador {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<Long> crearJoya(@RequestBody JoyaRequestDTO joyaRequestDTO) {
-        return new ResponseEntity<>(joyaServicio.guardarJoya(joyaRequestDTO), HttpStatus.CREATED);
+    public ResponseEntity<String> crearJoya(@RequestBody JoyaRequestDTO joyaRequestDTO) {
+        Long id = joyaServicio.guardarJoya(joyaRequestDTO);
+        return new ResponseEntity<>("Joya creada con el ID: " + id, HttpStatus.CREATED);
     }
 }
