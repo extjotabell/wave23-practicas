@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "dc2dbe64-9738-4960-8354-485ccb1a7a7e",
+		"name": "Jewerly",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31868001"
+	},
+	"item": [
+		{
+			"name": "new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"nombre\" : \"Anillo\",\n\t\"material\": \"oro\",\n\t\"peso\": 300,\n\t\"particularidad\" : \"Forma circular con triángulos\",\n\t\"posee_piedra\" : false,\n\t\"venta_o_no\" : false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jewerly/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jewerly",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jewerly",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jewerly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jewerly/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jewerly",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"nombre\" : \"Anillo\",\n\t\"material\": \"oro\",\n\t\"peso\": 300,\n\t\"particularidad\" : \"Otra particularidad\",\n\t\"posee_piedra\" : false,\n\t\"ventaONo\" : true\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jewerly/update/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jewerly",
+						"update",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
