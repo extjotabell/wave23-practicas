@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "9fdbf029-b558-48f9-adb7-a50e48850c7f",
+		"name": "jewelry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32113280"
+	},
+	"item": [
+		{
+			"name": "new jewel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Golden ring\",\n    \"material\": \"GOLD\",\n    \"weight\": 1.1,\n    \"particularity\": \"Round Cut\",\n    \"hasStone\": true,\n    \"available\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/v1/jewels",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"jewels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get jewels",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/jewels",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"jewels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete jewel",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/jewels/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"jewels",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update jewel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Golden ring\",\n    \"material\": \"GOLD\",\n    \"weight\": 1.1,\n    \"particularity\": \"Round Cut, Limited, Pre-order needed\",\n    \"hasStone\": true,\n    \"available\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/v1/jewels/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"jewels",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
