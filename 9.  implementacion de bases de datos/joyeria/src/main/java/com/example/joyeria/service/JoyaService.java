@@ -8,4 +8,8 @@ public interface JoyaService {
     ListJoyaDto getJoyasList();
 
     MessageDto addJoya(JoyaDto joya);
+
+    ListJoyaDto deleteJoya(Long id);
+
+    JoyaDto updateJoya(JoyaDto joya, Long id);
 }

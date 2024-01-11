@@ -37,4 +37,24 @@ public class JoyaServiceImp implements JoyaService{
         return new MessageDto("Nueva joya agregada");
     }
 
+    @Override
+    public ListJoyaDto deleteJoya(Long id) {
+        repository.deleteById(id);
+        return getJoyasList();
+    }
+
+    @Override
+    public JoyaDto updateJoya(JoyaDto joya, Long id) {
+        Joya update = repository.findById(id).orElse(null);
+        update.setMaterial(joya.getMaterial());
+        update.setPeso(joya.getPeso());
+        update.setNombre(joya.getNombre());
+        update.setParticularidad(joya.getParticularidad());
+        update.setPosee_piedra(joya.getPosee_piedra());
+
+        repository.save(update);
+        return mapper.convertValue(update, JoyaDto.class);
+    }
+
+
 }

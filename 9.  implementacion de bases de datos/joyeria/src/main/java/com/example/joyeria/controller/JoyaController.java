@@ -23,6 +23,16 @@ public class JoyaController {
         return new ResponseEntity<>(service.addJoya(joya), HttpStatus.OK);
 
     }
+    @PostMapping("/update/{id}")
+    public ResponseEntity<JoyaDto> updateJoya(@RequestBody JoyaDto joya, @PathVariable Long id) {
+        return new ResponseEntity<>(service.updateJoya(joya, id), HttpStatus.OK);
+
+    }
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<ListJoyaDto> deleteJoya(@PathVariable Long id) {
+        return new ResponseEntity<>(service.deleteJoya(id), HttpStatus.OK);
+
+    }
     @GetMapping("/list")
     public ResponseEntity<ListJoyaDto> getJoyasList() {
         return new ResponseEntity<>(service.getJoyasList(), HttpStatus.OK);
