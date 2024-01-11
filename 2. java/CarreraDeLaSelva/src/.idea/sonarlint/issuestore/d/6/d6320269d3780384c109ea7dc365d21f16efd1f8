@@ -1,0 +1,7 @@
+
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î»ìŒıÿÿÿÿ
+m	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö¨Ö8¥ØîÇÏ1
+v	java:S116	"ZRename this field "id_participante" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍôÛç8­ØîÇÏ1
+b	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(Î»ìŒıÿÿÿÿ8¯ØîÇÏ1
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ…Öıÿÿÿÿÿ8‹ñìÇÏ1
+j	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö¨Ö8ŒñìÇÏ1
