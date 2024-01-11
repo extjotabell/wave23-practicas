@@ -1,18 +1,14 @@
 package com.meli.miniseries.model;
 
 
-import jakarta.persistence.Entity;
-
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name="miniseries")
 public class MiniSerie {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
