@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "bdee3ee8-5ded-4dc2-b8ae-39b2912f4e10",
+		"name": "Jewerly",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612957"
+	},
+	"item": [
+		{
+			"name": "Read Jewels",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jewerly",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jewerly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Jewel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"name\": \"Knight Ring\",\n    \"material\": \"Onyx\",\n    \"weight\": 5.34,\n    \"particularity\": \"Rare\",\n    \"haveStone\": true,\n    \"sellOrNo\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jewerly/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jewerly",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Jewel",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jewerly/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jewerly",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Jewel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Bracelet Diamond\",\n    \"material\": \"Diamond\",\n    \"weight\": 12.14,\n    \"particularity\": \"Very Rare\",\n    \"haveStone\": true,\n    \"sellOrNo\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jewerly/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jewerly",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
