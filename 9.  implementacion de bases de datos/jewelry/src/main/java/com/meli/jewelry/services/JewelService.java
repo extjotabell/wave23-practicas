@@ -6,13 +6,14 @@ import com.meli.jewelry.exceptions.custom.NotFoundException;
 import com.meli.jewelry.mappers.JewelMapper;
 import com.meli.jewelry.repositories.IJewelRepository;
 
+import com.meli.jewelry.services.impl.IJewelService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class JewelService implements IJewelService{
+public class JewelService implements IJewelService {
 
     private final IJewelRepository jewelRepository;
 
@@ -39,5 +40,17 @@ public class JewelService implements IJewelService{
 
         jewel.get().setAvailable(false);
         jewelRepository.save(jewel.get());
+    }
+
+    @Override
+    public JewelDTO updateJewel(Long id, JewelDTO jewelDTO) {
+        Optional<Jewel> jewel = jewelRepository.findById(id);
+        if (jewel.isEmpty()) throw new NotFoundException("Jewel not found");
+
+        Jewel newJewel = JewelMapper.toEntity(jewelDTO);
+        newJewel.setIdentityNumber(jewel.get().getIdentityNumber());
+
+        jewelRepository.save(newJewel);
+        return JewelMapper.toDTO(newJewel);
     }
 }

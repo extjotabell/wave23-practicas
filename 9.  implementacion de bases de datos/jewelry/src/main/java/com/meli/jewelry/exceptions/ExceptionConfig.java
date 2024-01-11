@@ -3,7 +3,6 @@ package com.meli.jewelry.exceptions;
 
 import com.meli.jewelry.dtos.response.ExceptionDTO;
 import com.meli.jewelry.exceptions.custom.NotFoundException;
-import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
