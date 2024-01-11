@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.ejercicio</groupId>
-    <artifactId>impleVideo</artifactId>
+    <artifactId>miniserie</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>test</name>
-    <description>test</description>
+    <name>miniSerie</name>
+    <description>miniSerie</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -53,23 +53,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <profiles>
-        <profile>
-            <id>application-mysql</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <spring.profiles.active>mysql</spring.profiles.active>
-            </properties>
-        </profile>
-        <profile>
-            <id>application-h2</id>
-            <properties>
-                <spring.profiles.active>h2</spring.profiles.active>
-            </properties>
-        </profile>
-    </profiles>
+
     <build>
         <plugins>
             <plugin>
