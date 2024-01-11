@@ -1,12 +1,15 @@
 package com.meli.jewelry.services;
 
-import com.meli.jewelry.dtos.JewelDTO;
+import com.meli.jewelry.dtos.request.JewelDTO;
+import com.meli.jewelry.entities.Jewel;
+import com.meli.jewelry.exceptions.custom.NotFoundException;
 import com.meli.jewelry.mappers.JewelMapper;
 import com.meli.jewelry.repositories.IJewelRepository;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JewelService implements IJewelService{
@@ -24,7 +27,9 @@ public class JewelService implements IJewelService{
 
     @Override
     public List<JewelDTO> getAllJewels() {
-        return jewelRepository.findAll().stream().map(JewelMapper::toDTO).toList();
+        return jewelRepository.findAll().stream()
+                                        .map(JewelMapper::toDTO)
+                                        .filter(JewelDTO::getAvailable).toList();
     }
 
 }
