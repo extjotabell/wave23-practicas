@@ -12,7 +12,7 @@ public class Joya {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Integer nroIdentificatorio;
+    Long nroIdentificatorio;
     String nombre;
     String material;
     Double peso;

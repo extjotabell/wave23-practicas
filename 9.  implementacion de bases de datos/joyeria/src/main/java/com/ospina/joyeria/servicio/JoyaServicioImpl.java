@@ -27,8 +27,8 @@ public class JoyaServicioImpl implements JoyaServicio {
 
     @Override
     public Long guardarJoya(JoyaRequestDTO joyaRequestDTO) {
-        joyaRepositorio.save(convertirJoyaRequestDTOAJoya(joyaRequestDTO));
-        return joyaRepositorio.count();
+        Joya joya = joyaRepositorio.save(convertirJoyaRequestDTOAJoya(joyaRequestDTO));
+        return joya.getNroIdentificatorio();
     }
 
     @Override
