@@ -12,6 +12,7 @@ public class Course {
     @Column(name = "id")
     private Long id;
 
+    // mappedBy hace referencia al nombre del atributo en Student.class
     @ManyToMany(mappedBy = "likedCourses")
     private Set<Student> likes;
 }

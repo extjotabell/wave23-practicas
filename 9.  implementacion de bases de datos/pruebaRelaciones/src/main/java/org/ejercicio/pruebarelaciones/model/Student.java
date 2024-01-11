@@ -13,6 +13,9 @@ public class Student {
     private Long id;
 
     @ManyToMany
+    // configuracion de la tabla intermedia
+    // nombre de la tabla
+    // Luego, de que manera quiero que se unan los ids que voy a tener
     @JoinTable(
             name = "couse_like",
             joinColumns = @JoinColumn(name = "student_id"),

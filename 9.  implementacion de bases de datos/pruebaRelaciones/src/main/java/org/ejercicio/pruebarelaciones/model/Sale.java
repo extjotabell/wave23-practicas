@@ -18,7 +18,9 @@ public class Sale {
     @Column(name = "id")
     private Long id;
 
+    // En esta logica de OneToMany Unidireccional para acceder a saleDatails hay que pasar primero por Sale
     @OneToMany(cascade = CascadeType.ALL)
+    // Como se va a llamar el del lado de la N
     @JoinColumn(name = "sale_id")
     private List<SaleDetails> list;
 }
