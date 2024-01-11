@@ -9,8 +9,9 @@ import com.meli.tests.exceptions.custom.NotFoundException;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class TestCaseService implements ITestCaseService {
@@ -27,8 +28,11 @@ public class TestCaseService implements ITestCaseService {
     }
 
     @Override
-    public List<TestCaseDTO> getAllTestCases() {
-        return testCaseRepository.findAll().stream().map(TestCaseMapper::toDTO).collect(Collectors.toList());
+    public List<TestCaseDTO> getAllTestCases(Optional<LocalDate> lastUpdate) {
+        List<TestCaseDTO> allTests = testCaseRepository.findAll().stream().map(TestCaseMapper::toDTO).toList();
+        return lastUpdate.map(date -> allTests.stream()
+                .filter(t -> t.getLastUpdate().isAfter(date))
+                .toList()).orElse(allTests);
     }
 
     @Override
@@ -47,4 +51,11 @@ public class TestCaseService implements ITestCaseService {
         return TestCaseMapper.toDTO(testCaseRepository.findById(id).get());
     }
 
+    @Override
+    public Boolean deleteTestCase(Long id) {
+        return testCaseRepository.findById(id).map(testCase -> {
+                    testCaseRepository.delete(testCase);
+                    return true;
+               }).orElseThrow(() -> new NotFoundException("Test case not found"));
+    }
 }
