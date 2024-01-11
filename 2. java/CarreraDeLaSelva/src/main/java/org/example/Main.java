@@ -79,5 +79,50 @@ public class Main {
                         ", Numero inscripcion " + inscripciones.get(i).getId());
             }
         }
+
+        // Desinscribir un participante
+
+        Participante participanteBorrar = participanteUno;
+        Categoria infoCategoria = inscripciones.get(inscripciones.indexOf(inscripcionUno)).getCategoria();
+        System.out.println("E. BORRANDO AL PARTICIPANTE  "+ participanteBorrar.getNombre() + " "+ participanteBorrar.getApellido() + ":");
+
+
+        System.out.println("  Lista  de la categoria " + infoCategoria.getNombre()+" antes de borrar: ");
+        for (Participante p : mapInscritos.get(infoCategoria))
+            System.out.println("   "+p.getNombre() +" "+ p.getApellido() );
+
+        //Borrando
+        inscripciones.remove(inscripcionUno);
+        mapInscritos.get(infoCategoria).remove(participanteBorrar);
+
+        System.out.println("  Lista de la categoria "+infoCategoria.getNombre()+ " de borrar: ");
+        for (Participante p : mapInscritos.get(infoCategoria))
+            System.out.println("   "+p.getNombre() +" "+ p.getApellido() );
+
+
+
+        //Calcular el monto total recaudado por cada categoría y el total de toda la carrera incluyendo todas las categorías.
+
+        double totalCategoria1 = 0;
+        double totalCategoria2 = 0;
+        double totalCategoria3 = 0;
+
+        for(int i = 0; i < inscripciones.size(); i++){
+            if (inscripciones.get(i).getCategoria().getNombre().equals("Circuito chico"))
+                totalCategoria1 = totalCategoria1 + inscripciones.get(i).getMonto();
+
+            else if (inscripciones.get(i).getCategoria().getNombre().equals("Circuito mediano"))
+                totalCategoria2 = totalCategoria2 + inscripciones.get(i).getMonto();
+
+            else if (inscripciones.get(i).getCategoria().getNombre().equals("Circuito avanzado"))
+                totalCategoria3 = totalCategoria3 + inscripciones.get(i).getMonto();
+
+        }
+        System.out.println("F. INFO MONTOS INDIVIDUALES Y TOTAL: ");
+        System.out.println("  TOTAL CAT. CIRCUITO CHICO " + totalCategoria1);
+        System.out.println("  TOTAL CAT. CIRCUITO MEDIO " + totalCategoria2);
+        System.out.println("  TOTAL CAT. CIRCUITO AVANZADO " + totalCategoria3);
+        System.out.println("  SUMA TOTAL  " + (totalCategoria1 + totalCategoria2 + totalCategoria3));
+
     }
 }
