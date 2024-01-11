@@ -26,9 +26,20 @@ public class TestCaseController {
         return new ResponseEntity<>(testCaseService.getAllTestCases(), HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<TestCaseDTO> getTestCaseById(@PathVariable Long id){
+        return new ResponseEntity<>(testCaseService.getTestCaseById(id), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<TestCaseDTO> createTestCase(@RequestBody TestCaseDTO testCaseDTO){
         return new ResponseEntity<>(testCaseService.createTestCase(testCaseDTO), HttpStatus.CREATED);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TestCaseDTO> updateTestCase(@PathVariable Long id, @RequestBody TestCaseDTO testCaseDTO){
+        return new ResponseEntity<>(testCaseService.updateTestCase(id, testCaseDTO), HttpStatus.OK);
+    }
+
 
 }
