@@ -1,6 +1,6 @@
 package com.meli.jewelry.mappers;
 
-import com.meli.jewelry.dtos.JewelDTO;
+import com.meli.jewelry.dtos.request.JewelDTO;
 import com.meli.jewelry.entities.Jewel;
 
 public class JewelMapper {

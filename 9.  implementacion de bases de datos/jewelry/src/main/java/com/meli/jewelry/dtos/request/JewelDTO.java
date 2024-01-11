@@ -1,4 +1,4 @@
-package com.meli.jewelry.dtos;
+package com.meli.jewelry.dtos.request;
 
 import com.meli.jewelry.enums.MATERIAL;
 

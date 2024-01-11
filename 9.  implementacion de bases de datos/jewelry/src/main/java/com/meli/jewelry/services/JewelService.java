@@ -32,4 +32,12 @@ public class JewelService implements IJewelService{
                                         .filter(JewelDTO::getAvailable).toList();
     }
 
+    @Override
+    public void deleteJewel(Long id) {
+        Optional<Jewel> jewel = jewelRepository.findById(id);
+        if (jewel.isEmpty()) throw new NotFoundException("Jewel not found");
+
+        jewel.get().setAvailable(false);
+        jewelRepository.save(jewel.get());
+    }
 }
