@@ -1,4 +1,4 @@
-package com.example.joyerialasperlas.service.exception;
+package com.example.joyerialasperlas.exception;
 
 public class IllegalJewelCreationException extends RuntimeException{
 

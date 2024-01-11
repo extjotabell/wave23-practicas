@@ -1,8 +1,10 @@
 package com.example.joyerialasperlas.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class JoyaIdDTO {
+@AllArgsConstructor
+public class JewelIdDTO {
   private Long id;
 }
