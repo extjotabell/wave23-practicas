@@ -9,20 +9,15 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class TestCaseServicioImpl implements TestCaseServicio{
+public class TestCaseServicioImpl implements TestCaseServicio {
 
     private final TestCaseRepositorio testCaseRepositorio;
 
     public TestCaseServicioImpl(TestCaseRepositorio testCaseRepositorio) {
         this.testCaseRepositorio = testCaseRepositorio;
-    }
-
-    @Override
-    @Transactional
-    public List<TestCase> obtenerTestCases() {
-        return testCaseRepositorio.findAll();
     }
 
     @Override
@@ -35,15 +30,21 @@ public class TestCaseServicioImpl implements TestCaseServicio{
 
     @Override
     @Transactional
-    public List<TestCase> obtenerTestCaseDespuesDeFecha(LocalDate fecha) {
-        return null;
+    public List<TestCase> obtenerTestCases(LocalDate lastUpdate) {
+        if (lastUpdate == null) {
+            return testCaseRepositorio.findAll();
+        } else {
+            return testCaseRepositorio.findAll().stream()
+                    .filter(testCase -> testCase.getLastUpdate().isAfter(lastUpdate))
+                    .collect(Collectors.toList());
+        }
     }
 
     @Override
     @Transactional
     public Long guardarTestCase(TestCaseRequestDTO testCaseRequestDTO) {
-        testCaseRepositorio.save(convertirTestCaseRequestDTOaTestCase(testCaseRequestDTO));
-        return testCaseRepositorio.count();
+        TestCase testCase = testCaseRepositorio.save(convertirTestCaseRequestDTOaTestCase(testCaseRequestDTO));
+        return testCase.getIdCase();
     }
 
     @Override

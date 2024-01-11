@@ -8,11 +8,9 @@ import java.util.List;
 
 public interface TestCaseServicio {
 
-    List<TestCase> obtenerTestCases();
+    List<TestCase> obtenerTestCases(LocalDate lastUpdateDate);
 
     TestCase obtenerTestCasePorId(Long id);
-
-    List<TestCase> obtenerTestCaseDespuesDeFecha(LocalDate fecha);
 
     Long guardarTestCase(TestCaseRequestDTO testCaseRequestDTO);
 
