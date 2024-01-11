@@ -7,10 +7,9 @@ import com.meli.tests.services.ITestCaseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/testcases")
@@ -20,6 +19,11 @@ public class TestCaseController {
 
     public TestCaseController(ITestCaseService testCaseService) {
         this.testCaseService = testCaseService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TestCaseDTO>> getAllTestCases(){
+        return new ResponseEntity<>(testCaseService.getAllTestCases(), HttpStatus.OK);
     }
 
     @PostMapping

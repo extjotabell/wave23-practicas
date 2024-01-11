@@ -6,6 +6,9 @@ import com.meli.tests.repositories.ITestCaseRepository;
 import com.meli.tests.services.ITestCaseService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class TestCaseService implements ITestCaseService {
 
@@ -18,6 +21,11 @@ public class TestCaseService implements ITestCaseService {
     @Override
     public TestCaseDTO createTestCase(TestCaseDTO testCaseDTO) {
         return TestCaseMapper.toDTO(testCaseRepository.save(TestCaseMapper.toEntity(testCaseDTO)));
+    }
+
+    @Override
+    public List<TestCaseDTO> getAllTestCases() {
+        return testCaseRepository.findAll().stream().map(TestCaseMapper::toDTO).collect(Collectors.toList());
     }
 
 }
