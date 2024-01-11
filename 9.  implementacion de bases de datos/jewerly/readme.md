@@ -36,6 +36,5 @@ Para ello tener en cuenta que la API debe ser capaz de:
 //Vamos a modificar, por ejemplo la particularidad de la joya que guardamos en el punto 1
 ![Joya Modificada.png](https://github.com/extjotabell/wave23-practicas/blob/limpio_andres/9.%20%20implementacion%20de%20bases%20de%20datos/jewerly/img/Joya%20Modificada.png)
 
-<p style="color:red;">
-//Tener en cuenta que si usamos H2 como BD para los ejercicios (por defecto), cada vez que detengamos y volvamos a ejecutar la app, la BD se vacía y deberemos cargar de nuevo todos los registros
-</p>
+
+**//Tener en cuenta que si usamos H2 como BD para los ejercicios (por defecto), cada vez que detengamos y volvamos a ejecutar la app, la BD se vacía y deberemos cargar de nuevo todos los registros**
