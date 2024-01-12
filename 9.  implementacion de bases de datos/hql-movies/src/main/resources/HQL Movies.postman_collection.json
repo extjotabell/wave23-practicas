@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "7edb205b-851c-4c2b-a239-4c499ff8eac3",
+		"name": "HQL Movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31669715"
+	},
+	"item": [
+		{
+			"name": "Actores con película favorita",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actors/withFavoriteMovie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actors",
+						"withFavoriteMovie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actores con rating mayor a X",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actors/rating/greater/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actors",
+						"rating",
+						"greater",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actores que trabajan en X película",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actors/movie/Avatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actors",
+						"movie",
+						"Avatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Episodios de cualquier serie donde trabaja X actor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/episodes/actors/Clarke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"episodes",
+						"actors",
+						"Clarke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Películas con actores con rating mayor a X",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/actors/rating/greater/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"actors",
+						"rating",
+						"greater",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Películas por género",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/genre/Comedia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"genre",
+						"Comedia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Series que tengan mas de X temporadas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/series/seasons/count/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"series",
+						"seasons",
+						"count",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
