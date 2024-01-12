@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "97606227-4ea5-47d6-8436-75a34a39a771",
+		"name": "MoviesBD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener Actores con pelicula favorita",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/actor/actores-con-pelicula-favorita",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"actor",
+						"actores-con-pelicula-favorita"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Actores con pelicula favorita Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/actor/actores-con-rating-superior-a?rating=8.5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"actor",
+						"actores-con-rating-superior-a"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "8.5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Actores por titulo pelicula",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/actor/actores-por-pelicula?titulo_pelicula=galaxias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"actor",
+						"actores-por-pelicula"
+					],
+					"query": [
+						{
+							"key": "titulo_pelicula",
+							"value": "galaxias"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Peliculas por rating de Actores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pelicula/peliculas-por-rating-actores?rating=8.5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pelicula",
+						"peliculas-por-rating-actores"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "8.5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Peliculas por Género",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pelicula/peliculas-por-genero?genreId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pelicula",
+						"peliculas-por-genero"
+					],
+					"query": [
+						{
+							"key": "genreId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Series con mas de N cantidad de temporadas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/serie/mas-de-n-temporadas?cantidad_temporadas=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"serie",
+						"mas-de-n-temporadas"
+					],
+					"query": [
+						{
+							"key": "cantidad_temporadas",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Episodio donde actuo X actor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/episodio/episodios-por-actor?nombre_actor=Kaley",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"episodio",
+						"episodios-por-actor"
+					],
+					"query": [
+						{
+							"key": "nombre_actor",
+							"value": "Kaley"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
