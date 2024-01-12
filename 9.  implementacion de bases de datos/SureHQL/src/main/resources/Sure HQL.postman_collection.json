@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "9bc7f7e5-052b-406e-ac0b-67c287f6548d",
+		"name": "Sure HQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31369607"
+	},
+	"item": [
+		{
+			"name": "Patents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sure/patents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sure",
+						"patents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patents And Brand",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sure/patents-brand",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sure",
+						"patents-brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patents Filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sure/patents/filter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sure",
+						"patents",
+						"filter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patent, Brand and Model sinister",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sure/sinister-filter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sure",
+						"sinister-filter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patent, Brand and Model sinister sum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sure/sinister-sum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sure",
+						"sinister-sum"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
