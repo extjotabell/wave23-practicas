@@ -25,4 +25,14 @@ public class ObraLiterariaController {
     public List<ObraLiterariaDTO> findByAutor(@PathVariable String autor){
         return obraLiterariaService.findByAutor(autor);
     }
+
+    @GetMapping("/pages")
+    public List<ObraLiterariaDTO> findByMorePagesThan(@RequestParam Integer paginas){
+        return obraLiterariaService.findByMorePagesThan(paginas);
+    }
+
+    @GetMapping
+    public List<ObraLiterariaDTO> getAll(){
+        return obraLiterariaService.getAll();
+    }
 }
