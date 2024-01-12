@@ -41,7 +41,7 @@ public class Episode {
     @JoinColumn(name = "season_id")
     private Season season;
 
-    @OneToMany(mappedBy = "episode")
-    private Set<ActorEpisode> actorEpisodes = new LinkedHashSet<>();
+    @ManyToMany(mappedBy = "episodes")
+    private Set<Actor> actors = new LinkedHashSet<>();
 
 }

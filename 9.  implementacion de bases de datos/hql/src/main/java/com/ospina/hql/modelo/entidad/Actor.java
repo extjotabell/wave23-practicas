@@ -42,9 +42,6 @@ public class Actor {
     @JoinColumn(name = "favorite_movie_id")
     private Pelicula favoriteMovie;
 
-    @OneToMany(mappedBy = "actor")
-    private Set<ActorEpisode> actorEpisodes = new LinkedHashSet<>();
-
     @ManyToMany
     @JoinTable(
             name = "actor_movie",
@@ -53,5 +50,13 @@ public class Actor {
     )
     private Set<Pelicula> peliculas = new LinkedHashSet<>();
 
+
+    @ManyToMany
+    @JoinTable(
+            name = "actor_episode",
+            joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "episode_id", referencedColumnName = "id")
+    )
+    private Set<Episode> episodes = new LinkedHashSet<>();
 
 }
