@@ -1,0 +1,39 @@
+use composite_db;
+
+/* Primer Insert */
+INSERT INTO `composite_db`.`compras`
+(`fecha`, `importe`, `cliente_id`)
+VALUES
+('2023-12-20', 1000.00, 1);
+
+/* Mismo Id pero fecha diferente */
+INSERT INTO `composite_db`.`compras`
+(`fecha`, `importe`, `cliente_id`)
+VALUES
+('2023-12-21', 3500.00, 1);
+
+/* Ejemplo de error, para probar clave compuesta - Misma fecha e Id de cliente */
+INSERT INTO `composite_db`.`compras`
+(`fecha`, `importe`, `cliente_id`)
+VALUES
+('2023-12-20', 4000.00, 1);
+
+/* Misma fecha pero diferente cliente ID */
+INSERT INTO `composite_db`.`compras`
+(`fecha`, `importe`, `cliente_id`)
+VALUES
+('2023-12-20', 1000.00, 2);
+
+/* Mismo caso */
+INSERT INTO `composite_db`.`compras`
+(`fecha`, `importe`, `cliente_id`)
+VALUES
+('2023-12-20', 50000.00, 3);
+
+/* Mismo cliente, diferente fecha */
+INSERT INTO `composite_db`.`compras`
+(`fecha`, `importe`, `cliente_id`)
+VALUES
+('2023-12-21', 50000.00, 3);
+
+SELECT * FROM compras;
