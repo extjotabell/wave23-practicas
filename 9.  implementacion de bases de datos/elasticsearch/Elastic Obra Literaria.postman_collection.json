@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "2e1d5fa4-8b39-4150-8834-9322e4f564b1",
+		"name": "Elastic Obra Literaria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Obra Literaria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"1984\",\n  \"autor\": \"George Orwell\",\n  \"cantidadPaginas\": \"328\",\n  \"editorial\": \"Secker & Warburg\",\n  \"anioPublicacion\": \"1949\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/obra/crear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"obra",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/obra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"obra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obra por autor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/obra/por-autor?autor=Gabriel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"obra",
+						"por-autor"
+					],
+					"query": [
+						{
+							"key": "autor",
+							"value": "Gabriel"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obra por titulo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/obra/por-titulo?titulo=cien",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"obra",
+						"por-titulo"
+					],
+					"query": [
+						{
+							"key": "titulo",
+							"value": "cien"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obra con más de n páginas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/obra/mas-de-n-paginas?paginas=360",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"obra",
+						"mas-de-n-paginas"
+					],
+					"query": [
+						{
+							"key": "paginas",
+							"value": "360"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras publicadas antes de",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/obra/publicadas-antes-de?anio=1500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"obra",
+						"publicadas-antes-de"
+					],
+					"query": [
+						{
+							"key": "anio",
+							"value": "1500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras publicadas despues de",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/obra/publicadas-despues-de?anio=1950",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"obra",
+						"publicadas-despues-de"
+					],
+					"query": [
+						{
+							"key": "anio",
+							"value": "1950"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por editorial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/obra/por-editorial?editorial=oveja",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"obra",
+						"por-editorial"
+					],
+					"query": [
+						{
+							"key": "editorial",
+							"value": "oveja"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
