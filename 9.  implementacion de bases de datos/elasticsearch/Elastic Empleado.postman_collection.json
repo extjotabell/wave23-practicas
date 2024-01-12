@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "b16cd245-bbc5-4639-aa2e-b9dcc6f3fd57",
+		"name": "Elastic Empleado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Guardar Empleado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Carlos\",\n  \"apellido\": \"López\",\n  \"edad\": 35,\n  \"ciudad\": \"Guadalajara\",\n  \"departamento\": \"Jalisco\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/empleado/crear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empleado",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Empleados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/empleado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empleado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Empleado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Ana\",\n  \"apellido\": \"Martínez\",\n  \"edad\": 27,\n  \"ciudad\": \"Madrid\",\n  \"departamento\": \"Comunidad de Madrid\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/empleado/dd0D_4wB23SD2QnKK95X",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empleado",
+						"dd0D_4wB23SD2QnKK95X"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
