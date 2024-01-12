@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 public class Empleado {
 
     @Id
-    Long id;
+    String id;
     String nombre;
     String apellido;
     Integer edad;
