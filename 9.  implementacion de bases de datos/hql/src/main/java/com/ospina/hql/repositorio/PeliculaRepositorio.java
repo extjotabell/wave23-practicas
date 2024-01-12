@@ -12,10 +12,11 @@ import java.util.List;
 @Repository
 public interface PeliculaRepositorio extends CrudRepository<Pelicula, Long> {
 
-    @Query("SELECT p FROM Pelicula p JOIN p.actores a WHERE a.rating > :rating")
+    @Query("SELECT p FROM Pelicula p JOIN p.actoresQueActuan a WHERE a.rating > :rating")
     List<Pelicula> encontrarPeliculasPorRatingActores(@Param("rating") BigDecimal rating);
 
     @Query("SELECT p FROM Pelicula p WHERE p.genreId = :genreId")
     List<Pelicula> encontrarPeliculasPorGenero(@Param("genreId") Integer genreId);
+
 
 }

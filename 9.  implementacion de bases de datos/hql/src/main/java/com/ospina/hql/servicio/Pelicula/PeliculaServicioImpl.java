@@ -1,14 +1,15 @@
-package com.ospina.hql.servicio.Pelicula;
+package com.ospina.hql.servicio.pelicula;
 
-import com.ospina.hql.modelo.entidad.Pelicula;
+import com.ospina.hql.modelo.dto.PeliculaDto;
 import com.ospina.hql.repositorio.PeliculaRepositorio;
+import com.ospina.hql.util.DTOMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class PeliculaServicioImpl implements PeliculaServicio{
+public class PeliculaServicioImpl implements PeliculaServicio {
 
     private final PeliculaRepositorio peliculaRepositorio;
 
@@ -17,12 +18,12 @@ public class PeliculaServicioImpl implements PeliculaServicio{
     }
 
     @Override
-    public List<Pelicula> encontrarPeliculasPorRatingActores(BigDecimal rating) {
-        return peliculaRepositorio.encontrarPeliculasPorRatingActores(rating);
+    public List<PeliculaDto> encontrarPeliculasPorRatingActores(BigDecimal rating) {
+        return DTOMapper.toPeliculaDtoList(peliculaRepositorio.encontrarPeliculasPorRatingActores(rating));
     }
 
     @Override
-    public List<Pelicula> encontrarPeliculasPorGenero(Integer genreId) {
-        return peliculaRepositorio.encontrarPeliculasPorGenero(genreId);
+    public List<PeliculaDto> encontrarPeliculasPorGenero(Integer genreId) {
+        return DTOMapper.toPeliculaDtoList(peliculaRepositorio.encontrarPeliculasPorGenero(genreId));
     }
 }

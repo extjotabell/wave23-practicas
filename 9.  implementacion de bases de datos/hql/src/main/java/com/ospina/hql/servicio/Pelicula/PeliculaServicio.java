@@ -1,13 +1,13 @@
-package com.ospina.hql.servicio.Pelicula;
+package com.ospina.hql.servicio.pelicula;
 
-import com.ospina.hql.modelo.entidad.Pelicula;
+import com.ospina.hql.modelo.dto.PeliculaDto;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public interface PeliculaServicio {
 
-    List<Pelicula> encontrarPeliculasPorRatingActores(BigDecimal rating);
+    List<PeliculaDto> encontrarPeliculasPorRatingActores(BigDecimal rating);
 
-    List<Pelicula> encontrarPeliculasPorGenero(Integer genreId);
+    List<PeliculaDto> encontrarPeliculasPorGenero(Integer genreId);
 }

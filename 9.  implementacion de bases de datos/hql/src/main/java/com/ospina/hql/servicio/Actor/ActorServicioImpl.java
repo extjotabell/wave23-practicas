@@ -1,7 +1,8 @@
-package com.ospina.hql.servicio.Actor;
+package com.ospina.hql.servicio.actor;
 
-import com.ospina.hql.modelo.entidad.Actor;
+import com.ospina.hql.modelo.dto.ActorDto;
 import com.ospina.hql.repositorio.ActorRepositorio;
+import com.ospina.hql.util.DTOMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -19,19 +20,19 @@ public class ActorServicioImpl implements ActorServicio {
 
     @Override
     @Transactional
-    public List<Actor> encontrarActoresConPeliculaFavorita() {
-        return actorRepositorio.encontrarActoresConPeliculaFavorita();
+    public List<ActorDto> encontrarActoresConPeliculaFavorita() {
+        return DTOMapper.toActorDtoList(actorRepositorio.encontrarActoresConPeliculaFavorita());
     }
 
     @Override
     @Transactional
-    public List<Actor> encontrarActoresConRatingSuperiorA(BigDecimal rating) {
-        return actorRepositorio.encontrarActoresConRatingSuperiorA(rating);
+    public List<ActorDto> encontrarActoresConRatingSuperiorA(BigDecimal rating) {
+        return DTOMapper.toActorDtoList(actorRepositorio.encontrarActoresConRatingSuperiorA(rating));
     }
 
     @Override
     @Transactional
-    public List<Actor> encontrarActoresPorPelicula(Integer idPelicula) {
-        return actorRepositorio.encontrarActoresPorPelicula(idPelicula);
+    public List<ActorDto> encontrarActoresPorPelicula(String tituloPelicula) {
+        return DTOMapper.toActorDtoList(actorRepositorio.encontrarActoresPorPelicula(tituloPelicula));
     }
 }

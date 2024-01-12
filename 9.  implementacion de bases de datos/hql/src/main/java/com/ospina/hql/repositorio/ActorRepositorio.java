@@ -18,6 +18,7 @@ public interface ActorRepositorio extends CrudRepository<Actor, Long> {
     @Query("SELECT a FROM Actor a WHERE a.rating > :rating")
     List<Actor> encontrarActoresConRatingSuperiorA(@Param("rating") BigDecimal rating);
 
-    @Query("SELECT a FROM Actor a JOIN a.peliculas p WHERE p.id = :idPelicula")
-    List<Actor> encontrarActoresPorPelicula(@Param("idPelicula") Integer idPelicula);
+    @Query("SELECT a FROM Actor a JOIN a.peliculas p WHERE p.title LIKE %:title%")
+    List<Actor> encontrarActoresPorPelicula(@Param("title") String title);
+
 }

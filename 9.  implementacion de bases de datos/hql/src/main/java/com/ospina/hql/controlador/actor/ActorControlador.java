@@ -1,7 +1,7 @@
 package com.ospina.hql.controlador.actor;
 
-import com.ospina.hql.modelo.entidad.Actor;
-import com.ospina.hql.servicio.Actor.ActorServicio;
+import com.ospina.hql.modelo.dto.ActorDto;
+import com.ospina.hql.servicio.actor.ActorServicio;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,17 +21,17 @@ public class ActorControlador {
     }
 
     @GetMapping("/actores-con-pelicula-favorita")
-    public ResponseEntity<List<Actor>> encontrarActoresConPeliculaFavorita() {
+    public ResponseEntity<List<ActorDto>> encontrarActoresConPeliculaFavorita() {
         return ResponseEntity.ok(actorServicio.encontrarActoresConPeliculaFavorita());
     }
 
     @GetMapping("/actores-con-rating-superior-a")
-    public ResponseEntity<List<Actor>> encontrarActoresConRatingSuperiorA(@RequestParam("rating") BigDecimal rating) {
+    public ResponseEntity<List<ActorDto>> encontrarActoresConRatingSuperiorA(@RequestParam("rating") BigDecimal rating) {
         return ResponseEntity.ok(actorServicio.encontrarActoresConRatingSuperiorA(rating));
     }
 
     @GetMapping("/actores-por-pelicula")
-    public ResponseEntity<List<Actor>> encontrarActoresPorPelicula(@RequestParam("idPelicula") Integer idPelicula) {
-        return ResponseEntity.ok(actorServicio.encontrarActoresPorPelicula(idPelicula));
+    public ResponseEntity<List<ActorDto>> encontrarActoresPorPelicula(@RequestParam("titulo_pelicula") String tituloPelicula) {
+        return ResponseEntity.ok(actorServicio.encontrarActoresPorPelicula(tituloPelicula));
     }
 }

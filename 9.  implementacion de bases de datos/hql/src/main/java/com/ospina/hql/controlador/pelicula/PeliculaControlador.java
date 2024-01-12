@@ -1,7 +1,7 @@
 package com.ospina.hql.controlador.pelicula;
 
-import com.ospina.hql.modelo.entidad.Pelicula;
-import com.ospina.hql.servicio.Pelicula.PeliculaServicio;
+import com.ospina.hql.modelo.dto.PeliculaDto;
+import com.ospina.hql.servicio.pelicula.PeliculaServicio;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +22,12 @@ public class PeliculaControlador {
     }
 
     @GetMapping("/peliculas-por-rating-actores")
-    public ResponseEntity<List<Pelicula>> encontrarPeliculasPorRatingActores(@RequestParam("rating") BigDecimal rating) {
+    public ResponseEntity<List<PeliculaDto>> encontrarPeliculasPorRatingActores(@RequestParam("rating") BigDecimal rating) {
         return ResponseEntity.ok(peliculaServicio.encontrarPeliculasPorRatingActores(rating));
     }
 
     @GetMapping("/peliculas-por-genero")
-    public ResponseEntity<List<Pelicula>> encontrarPeliculasPorGenero(@RequestParam("genreId") Integer genreId) {
+    public ResponseEntity<List<PeliculaDto>> encontrarPeliculasPorGenero(@RequestParam("genreId") Integer genreId) {
         return ResponseEntity.ok(peliculaServicio.encontrarPeliculasPorGenero(genreId));
     }
 }
