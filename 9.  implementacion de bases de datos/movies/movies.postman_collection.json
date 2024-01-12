@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "bc0d2c19-baa1-4a6d-bdaf-ddf5f15f8339",
+		"name": "movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32113280"
+	},
+	"item": [
+		{
+			"name": "get actors with fav movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/actors/favorite-movies",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"actors",
+						"favorite-movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get favorite filter by rating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/actors?rating=9",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"actors"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get actors by title",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/actors/by-title?title=Avatar",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"actors",
+						"by-title"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Avatar"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get movies by actors rating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/movies/rating?rating=9",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"movies",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get movies by genre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/movies/genre?genre=Drama",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"movies",
+						"genre"
+					],
+					"query": [
+						{
+							"key": "genre",
+							"value": "Drama"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get serie by number of seasons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/series?seasons=6",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"series"
+					],
+					"query": [
+						{
+							"key": "seasons",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get episodes from actor name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/episodes?first_name=Emilia&last_name=Clarke",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"episodes"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": "Emilia"
+						},
+						{
+							"key": "last_name",
+							"value": "Clarke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get best movies by year",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/movies/best_movies?year=2003",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"movies",
+						"best_movies"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2003"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
