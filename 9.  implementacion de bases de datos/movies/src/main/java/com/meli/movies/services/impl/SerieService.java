@@ -20,7 +20,7 @@ public class SerieService implements ISerieService {
     @Override
     public List<SerieDTO> getSeriesBySeasons(Integer seasons) {
         return serieRepository.getSeriesBySeasons(seasons).stream()
-                .map(SerieMapper::toSerieDTO)
+                .map(SerieMapper::toDTO)
                 .toList();
     }
 }

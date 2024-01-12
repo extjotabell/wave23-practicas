@@ -7,7 +7,7 @@ public class SerieMapper {
 
     private SerieMapper() {}
 
-    public static SerieDTO toSerieDTO(Serie serie) {
+    public static SerieDTO toDTO(Serie serie) {
         return new SerieDTO(
                 serie.getTitle(),
                 serie.getReleaseDate(),
