@@ -40,5 +40,10 @@ public class MovieController {
         return new ResponseEntity<>(movieService.getMoviesByGenre(genre), HttpStatus.OK);
     }
 
+    @GetMapping("/best_movies")
+    public ResponseEntity<List<MovieDTO>> getBestMovies(@RequestParam Integer year) {
+        return new ResponseEntity<>(movieService.getBestMovies(year), HttpStatus.OK);
+    }
+
 
 }

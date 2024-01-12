@@ -7,8 +7,7 @@ import java.util.List;
 
 public interface IMovieService {
     List<MovieActorsDTO> getMoviesActors();
-
     List<MovieActorsDTO> getMoviesActorsByRating(Double rating);
-
     List<MovieDTO> getMoviesByGenre(String genre);
+    List<MovieDTO> getBestMovies(Integer year);
 }

@@ -33,9 +33,14 @@ public class MovieService implements IMovieService {
     }
 
     @Override
-    public List<MovieDTO> getMoviesByGenre(String genre){
+    public List<MovieDTO> getMoviesByGenre(String genre) {
         return movieRepository.getMoviesByGenre(genre).stream()
                 .map(MovieMapper::toDTO)
                 .toList();
+    }
+
+    @Override
+    public List<MovieDTO> getBestMovies(Integer year) {
+        return movieRepository.getMoviesByReleaseDate(year).stream().map(MovieMapper::toDTO).toList();
     }
 }

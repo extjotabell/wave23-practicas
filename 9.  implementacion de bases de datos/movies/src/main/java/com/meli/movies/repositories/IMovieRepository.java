@@ -15,4 +15,8 @@ public interface IMovieRepository extends JpaRepository<Movie, Long> {
     //Listar todas las películas que pertenezcan al <género recibido por parametro>
     @Query("SELECT U FROM Movie U WHERE U.genre.name = :genre")
     List<Movie> getMoviesByGenre(String genre);
+    //listar las mejores peliculas (rating y premios ) que sean del <año recibido por parámetro>
+    @Query("SELECT U FROM Movie U WHERE YEAR(U.releaseDate) = :releaseDate ORDER BY U.rating DESC, U.awards DESC")
+    List<Movie> getMoviesByReleaseDate(Integer releaseDate);
+
 }
