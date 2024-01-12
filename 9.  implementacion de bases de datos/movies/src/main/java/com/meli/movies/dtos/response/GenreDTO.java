@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActorDTO {
-    private String firstName;
-    private String lastName;
-    private Double rating;
-    private MovieDTO favoriteMovie;
+public class GenreDTO {
+    private String name;
+    private Integer ranking;
+    private Boolean active;
 }

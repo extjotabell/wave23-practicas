@@ -4,13 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActorDTO {
-    private String firstName;
-    private String lastName;
+public class MovieDTO {
+    private String title;
     private Double rating;
-    private MovieDTO favoriteMovie;
+    private Integer awards;
+    private LocalDate releaseDate;
+    private Integer length;
+    private GenreDTO genre;
 }

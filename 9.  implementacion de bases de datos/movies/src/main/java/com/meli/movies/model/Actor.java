@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,7 +31,15 @@ public class Actor {
     @Column(name = "last_name")
     private String lastName;
     private Double rating;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "favorite_movie_id", referencedColumnName = "id")
     private Movie favoriteMovie;
+
+    @ManyToMany
+    @JoinTable(
+            name = "actor_movie",
+            joinColumns = @JoinColumn(name = "actor_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
+    public Set<Movie> movies = new HashSet<>();
 }
