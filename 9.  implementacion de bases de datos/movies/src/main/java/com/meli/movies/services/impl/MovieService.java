@@ -1,6 +1,7 @@
 package com.meli.movies.services.impl;
 
 import com.meli.movies.dtos.response.MovieActorsDTO;
+import com.meli.movies.dtos.response.MovieDTO;
 import com.meli.movies.mappers.MovieMapper;
 import com.meli.movies.repositories.IMovieRepository;
 import com.meli.movies.services.IMovieService;
@@ -31,4 +32,10 @@ public class MovieService implements IMovieService {
                 .toList();
     }
 
+    @Override
+    public List<MovieDTO> getMoviesByGenre(String genre){
+        return movieRepository.getMoviesByGenre(genre).stream()
+                .map(MovieMapper::toDTO)
+                .toList();
+    }
 }

@@ -2,6 +2,7 @@ package com.meli.movies.controllers;
 
 
 import com.meli.movies.dtos.response.MovieActorsDTO;
+import com.meli.movies.dtos.response.MovieDTO;
 import com.meli.movies.services.IMovieService;
 
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,15 @@ public class MovieController {
         return new ResponseEntity<>(movieService.getMoviesActors(), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/rating")
     public ResponseEntity<List<MovieActorsDTO>> getMoviesByRating(@RequestParam Double rating) {
         return new ResponseEntity<>(movieService.getMoviesActorsByRating(rating), HttpStatus.OK);
     }
+
+    @GetMapping("/genre")
+    public ResponseEntity<List<MovieDTO>> getMoviesByGenre(@RequestParam String genre) {
+        return new ResponseEntity<>(movieService.getMoviesByGenre(genre), HttpStatus.OK);
+    }
+
+
 }
