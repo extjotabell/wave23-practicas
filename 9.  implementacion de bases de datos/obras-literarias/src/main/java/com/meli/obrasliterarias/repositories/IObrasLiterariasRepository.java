@@ -6,7 +6,6 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 @Repository
 public interface IObrasLiterariasRepository extends ElasticsearchRepository<ObraLiteraria,String> {
