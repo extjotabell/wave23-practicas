@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "227514f4-764d-40e6-8355-5479e13bda0c",
+		"name": "compras",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32113280"
+	},
+	"item": [
+		{
+			"name": "save batch compras",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"clienteId\": 1,\n        \"fecha\": \"2023-01-01\",\n        \"total\": 100.0\n    },\n    {\n        \"clienteId\": 2,\n        \"fecha\": \"2023-01-02\",\n        \"total\": 200.0\n    },\n    {\n        \"clienteId\": 3,\n        \"fecha\": \"2023-01-03\",\n        \"total\": 300.0\n    },\n    {\n        \"clienteId\": 4,\n        \"fecha\": \"2023-01-04\",\n        \"total\": 400.0\n    },\n    {\n        \"clienteId\": 5,\n        \"fecha\": \"2023-01-05\",\n        \"total\": 500.0\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/compras",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"compras"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
