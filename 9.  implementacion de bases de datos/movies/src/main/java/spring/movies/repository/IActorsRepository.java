@@ -1,0 +1,21 @@
+package spring.movies.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import spring.movies.dto.ActorDto;
+import spring.movies.model.Actor;
+
+import java.util.List;
+
+@Repository
+public interface IActorsRepository extends JpaRepository<Actor,Long> {
+
+    List<ActorDto> findByFavoriteMovieIdIsNotNull();
+
+    List<ActorDto> findByRatingGreaterThan(@Param("parametroRating") Double parametroRating);
+
+    @Query("SELECT a FROM Actor a JOIN a.actorMovies am JOIN am.movie m WHERE m.id = :parametroPelicula")
+    List<ActorDto> findActorByMovie(@Param("parametroPelicula") Long parametroPelicula);
+}
