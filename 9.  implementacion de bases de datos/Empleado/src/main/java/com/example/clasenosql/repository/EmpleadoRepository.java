@@ -22,5 +22,4 @@ public interface EmpleadoRepository extends ElasticsearchRepository<Empleado, St
 
     public List<Empleado> findByEdadGreaterThan(String edad);
 
-
 }

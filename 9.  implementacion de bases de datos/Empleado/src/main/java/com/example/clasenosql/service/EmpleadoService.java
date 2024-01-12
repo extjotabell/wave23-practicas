@@ -37,6 +37,11 @@ public class EmpleadoService {
 
     public List<Empleado> findByNames(String nombre){ return  empleadoRepository.findByNames(nombre);}
 
+    public Empleado updateEmpleadoById(String id, Empleado empleado){
+        empleado.setId(id);
+        empleadoRepository.save(empleado);
+        return empleado;
+    }
 
 
 }

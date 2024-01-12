@@ -22,6 +22,6 @@ public class Empleado {
     private String edad;
 
     private String ciudad;
-
+    private String provincia;
 
 }
