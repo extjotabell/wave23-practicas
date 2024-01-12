@@ -2,9 +2,12 @@ package com.example.movies.utils;
 
 import com.example.movies.dto.ActorFavoriteMovieDTO;
 import com.example.movies.dto.ActorSimpleDTO;
+import com.example.movies.dto.EpisodeDTO;
+import com.example.movies.dto.EpisodeSimpleDTO;
 import com.example.movies.dto.MovieSimpleDTO;
 import com.example.movies.dto.SerieNumberSeasonDTO;
 import com.example.movies.models.Actor;
+import com.example.movies.models.Episode;
 import com.example.movies.models.Movie;
 import com.example.movies.models.Serie;
 
@@ -26,13 +29,12 @@ public class Mapper {
   }
 
   public static SerieNumberSeasonDTO serieToSerieNumberSeasonDTO(Serie serie) {
-    System.out.println(
-
-        serie.getSeasons()
-
-    );
     return new SerieNumberSeasonDTO(serie.getId(), serie.getTitle(), serie.getReleaseDate(),
         serie.getEndDate(), (long) serie.getSeasons().size());
+  }
+
+  public static EpisodeSimpleDTO episodeToEpisodeDTO(Episode episode){
+    return new EpisodeSimpleDTO(episode.getId(), episode.getTitle(), episode.getNumber(), episode.getRating(),episode.getReleaseDate());
   }
 
 }

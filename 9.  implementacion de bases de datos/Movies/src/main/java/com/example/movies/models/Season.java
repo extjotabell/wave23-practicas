@@ -34,8 +34,6 @@ public class Season {
   private Date releaseDate;
   @Column(name = "end_date")
   private Date endDate;
-  @ManyToOne(fetch = FetchType.LAZY)
-  private Serie serie;
   @OneToMany(mappedBy = "season")
   private Set<Episode> episodes;
 }

@@ -36,6 +36,6 @@ public class Episode {
   @JoinColumn(name = "season_id", referencedColumnName = "id")
   private Season season;
   @ManyToMany
-  @JoinTable(name = "actor_episode", joinColumns = @JoinColumn(name = "actor_id"), inverseJoinColumns = @JoinColumn(name = "episode_id"))
+  @JoinTable(name = "actor_episode", joinColumns = @JoinColumn(name = "episode_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
   private Set<Actor> actors;
 }
