@@ -1,10 +1,8 @@
 package com.example.seguros.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.time.LocalDate;
@@ -15,15 +13,26 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Table(name = "vehicles")
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    private String patent;
     private String brand;
+    private String model;
+    @JsonProperty("year_fabrication")
+    private LocalDate yearOfFabrication;
+    private int wheels;
 
-    public Vehicle(String brand) {
+
+    public Vehicle(String patent, String brand, String model, LocalDate yearOfFabrication, int wheels) {
+        this.patent = patent;
         this.brand = brand;
+        this.model = model;
+        this.yearOfFabrication = yearOfFabrication;
+        this.wheels = wheels;
     }
 
     @Override

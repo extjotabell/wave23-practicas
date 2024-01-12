@@ -1,10 +1,7 @@
 package com.example.seguros.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.time.LocalDate;
@@ -15,17 +12,19 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "accidents")
 public class Accident {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private LocalDate date;
+    private Double cost;
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
-    public Accident(LocalDate date, Vehicle vehicle) {
+    public Accident(LocalDate date, Double cost, Vehicle vehicle) {
         this.date = date;
         this.vehicle = vehicle;
     }
