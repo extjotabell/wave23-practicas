@@ -35,7 +35,7 @@ public class ActorController {
     }
 
     @GetMapping("/by-title")
-    public ResponseEntity<List<ActorDTO>> getActorsByMoviesTitle(@RequestParam String title) {
+    public ResponseEntity<List<ActorDTO>> getActorsByMoviesTitle(@RequestParam(required = true) String title) {
         return new ResponseEntity<>(actorService.getActorsByMoviesTitle(title), HttpStatus.OK);
     }
 
