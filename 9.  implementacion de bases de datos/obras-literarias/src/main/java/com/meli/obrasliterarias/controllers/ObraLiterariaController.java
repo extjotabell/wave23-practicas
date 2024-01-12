@@ -27,12 +27,17 @@ public class ObraLiterariaController {
     }
 
     @GetMapping("/pages")
-    public List<ObraLiterariaDTO> findByMorePagesThan(@RequestParam Integer paginas){
-        return obraLiterariaService.findByMorePagesThan(paginas);
+    public List<ObraLiterariaDTO> findByMorePagesThan(@RequestParam Integer pages){
+        return obraLiterariaService.findByMorePagesThan(pages);
     }
 
     @GetMapping
     public List<ObraLiterariaDTO> getAll(){
         return obraLiterariaService.getAll();
+    }
+
+    @GetMapping("/before")
+    public List<ObraLiterariaDTO> getAllDateBefore(@RequestParam String year){
+        return obraLiterariaService.getAllDateBefore(year);
     }
 }

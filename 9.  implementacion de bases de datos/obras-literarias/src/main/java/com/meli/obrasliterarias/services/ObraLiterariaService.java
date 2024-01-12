@@ -27,13 +27,17 @@ public class ObraLiterariaService {
         return obrasLiterariasRepository.findByAutor(autor).stream().map(ObraLiterariaMapper::toDTO).toList();
     }
 
-    public List<ObraLiterariaDTO> findByMorePagesThan(Integer paginas) {
-        return obrasLiterariasRepository.findByCantidadDePaginasGreaterThan(paginas).stream().map(ObraLiterariaMapper::toDTO).toList();
+    public List<ObraLiterariaDTO> findByMorePagesThan(Integer pages) {
+        return obrasLiterariasRepository.findByCantidadDePaginasGreaterThan(pages).stream().map(ObraLiterariaMapper::toDTO).toList();
     }
 
     public List<ObraLiterariaDTO> getAll() {
         Iterable<ObraLiteraria> obraLiterariasIterator= obrasLiterariasRepository.findAll();
         return StreamSupport.stream(obraLiterariasIterator.spliterator(), false).toList()
                                                 .stream().map(ObraLiterariaMapper::toDTO).toList();
+    }
+
+    public List<ObraLiterariaDTO> getAllDateBefore(String year) {
+        return obrasLiterariasRepository.findByPrimeraPublicacionBefore(year).stream().map(ObraLiterariaMapper::toDTO).toList();
     }
 }
