@@ -5,7 +5,6 @@ import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
@@ -20,4 +19,10 @@ public interface IObrasLiterariasRepository extends ElasticsearchRepository<Obra
 
     @Query("{\"bool\": {\"filter\": {\"range\": {\"primera_publicacion\": {\"lt\": \"?0\"}}}}}")
     List<ObraLiteraria> findByPrimeraPublicacionBefore(String year);
+
+    @Query("{\"bool\": {\"filter\": {\"range\": {\"primera_publicacion\": {\"gt\": \"?0\"}}}}}")
+    List<ObraLiteraria> findByPrimeraPublicacionAfter(String year);
+
+    @Query("{\"bool\": {\"filter\": {\"match\": {\"editorial\": \"?0\"}}}}")
+    List<ObraLiteraria> findByEditorial(String editorial);
 }

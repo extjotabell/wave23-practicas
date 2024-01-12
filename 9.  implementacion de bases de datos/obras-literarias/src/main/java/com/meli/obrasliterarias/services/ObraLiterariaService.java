@@ -40,4 +40,12 @@ public class ObraLiterariaService {
     public List<ObraLiterariaDTO> getAllDateBefore(String year) {
         return obrasLiterariasRepository.findByPrimeraPublicacionBefore(year).stream().map(ObraLiterariaMapper::toDTO).toList();
     }
+
+    public List<ObraLiterariaDTO> getAllDateAfter(String year) {
+        return obrasLiterariasRepository.findByPrimeraPublicacionAfter(year).stream().map(ObraLiterariaMapper::toDTO).toList();
+    }
+
+    public List<ObraLiterariaDTO> getAllByEditorial(String editorial) {
+        return obrasLiterariasRepository.findByEditorial(editorial).stream().map(ObraLiterariaMapper::toDTO).toList();
+    }
 }

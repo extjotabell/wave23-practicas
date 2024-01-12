@@ -40,4 +40,14 @@ public class ObraLiterariaController {
     public List<ObraLiterariaDTO> getAllDateBefore(@RequestParam String year){
         return obraLiterariaService.getAllDateBefore(year);
     }
+
+    @GetMapping("/after")
+    public List<ObraLiterariaDTO> getAllDateAfter(@RequestParam String year){
+        return obraLiterariaService.getAllDateAfter(year);
+    }
+
+    @GetMapping("/editorial")
+    public List<ObraLiterariaDTO> getAllByEditorial(@RequestParam String editorial){
+        return obraLiterariaService.getAllByEditorial(editorial);
+    }
 }
