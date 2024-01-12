@@ -13,5 +13,6 @@ import java.time.LocalDate;
 public class AccidentResponseDTO {
     private Long id;
     private LocalDate date;
+    private Double cost;
     private VehicleResponseDTO vehicle;
 }

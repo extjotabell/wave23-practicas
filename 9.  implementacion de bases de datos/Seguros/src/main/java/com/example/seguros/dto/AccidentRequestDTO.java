@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Data
 public class AccidentRequestDTO {
     private LocalDate date;
+    private Double cost;
     @JsonProperty("vehicle_id")
     private Long vehicleId;
 }
