@@ -21,4 +21,9 @@ public class ActorService implements IActorService {
     public List<ActorDTO> getActorsWithFavoriteMovie() {
         return actorRepository.getActorsWithFavoriteMovie().stream().map(ActorMapper::toDTO).toList();
     }
+
+    @Override
+    public List<ActorDTO> getActorsFilterByRating(Double rating) {
+        return actorRepository.getActorsFilterByRating(rating).stream().map(ActorMapper::toDTO).toList();
+    }
 }

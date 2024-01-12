@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IActorService {
     List<ActorDTO> getActorsWithFavoriteMovie();
+    List<ActorDTO> getActorsFilterByRating(Double rating);
 }
