@@ -2,10 +2,9 @@ package com.meli.obrasliterarias.controllers;
 
 import com.meli.obrasliterarias.dtos.ObraLiterariaDTO;
 import com.meli.obrasliterarias.services.ObraLiterariaService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("obras")
@@ -20,5 +19,10 @@ public class ObraLiterariaController {
     @PostMapping
     public ObraLiterariaDTO save( @RequestBody ObraLiterariaDTO obraLiterariaDTO) {
         return obraLiterariaService.save(obraLiterariaDTO);
+    }
+
+    @GetMapping("/autor/{autor}")
+    public List<ObraLiterariaDTO> findByAutor(@PathVariable String autor){
+        return obraLiterariaService.findByAutor(autor);
     }
 }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.time.LocalDate;
 
@@ -21,6 +22,6 @@ public class ObraLiteraria {
     @Field(name = "cantidad_de_paginas")
     private Integer cantidadDePaginas;
     private String editorial;
-    @Field(name = "primera_publicacion")
+    @Field(name = "primera_publicacion", type = FieldType.Date)
     private LocalDate primeraPublicacion;
 }
