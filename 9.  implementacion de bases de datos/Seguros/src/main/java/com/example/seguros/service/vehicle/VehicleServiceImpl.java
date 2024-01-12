@@ -27,4 +27,28 @@ public class VehicleServiceImpl implements VehicleService {
     public List<VehicleResponseDTO> findAll() {
         return vehicleRepository.findAll().stream().map(DTOMapper::mapToVehicleResponseDTO).toList();
     }
+
+    @Override
+    public List<String> findAllPatents() {
+        return vehicleRepository.findAllPatents();
+    }
+
+    @Override
+    public List<Object[]> findAllPatentsAndBrand() {
+        return vehicleRepository.findAllPatentsAndBrand();
+    }
+
+    @Override
+    public List<VehicleResponseDTO> findAllByCurrentYear() {
+        return vehicleRepository.findAllByCurrentYear(java.time.Year.now().getValue())
+                .stream().map(DTOMapper::mapToVehicleResponseDTO).toList();
+    }
+
+    @Override
+    public List<VehicleResponseDTO> findAllByCostGreaterThan(Double cost) {
+        return vehicleRepository.findAllByCostGreaterThan(cost)
+                .stream().map(DTOMapper::mapToVehicleResponseDTO).toList();
+    }
+
+
 }
