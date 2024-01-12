@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,8 +24,13 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<MovieActorsDTO>> getMovies() {
         return new ResponseEntity<>(movieService.getMoviesActors(), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<MovieActorsDTO>> getMoviesByRating(@RequestParam Double rating) {
+        return new ResponseEntity<>(movieService.getMoviesActorsByRating(rating), HttpStatus.OK);
     }
 }
