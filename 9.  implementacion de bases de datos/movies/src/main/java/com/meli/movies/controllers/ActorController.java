@@ -1,6 +1,7 @@
 package com.meli.movies.controllers;
 
 import com.meli.movies.dtos.response.ActorDTO;
+import com.meli.movies.dtos.response.ActorFavoriteMovieDTO;
 import com.meli.movies.services.IActorService;
 
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,13 @@ public class ActorController {
     }
 
     @GetMapping("/favorite-movies")
-    public ResponseEntity<List<ActorDTO>> getActorsWithFavoriteMovie() {
+    public ResponseEntity<List<ActorFavoriteMovieDTO>> getActorsWithFavoriteMovie() {
         return new ResponseEntity<>(actorService.getActorsWithFavoriteMovie(), HttpStatus.OK);
+    }
+
+    @GetMapping("/by-title")
+    public ResponseEntity<List<ActorDTO>> getActorsByMoviesTitle(@RequestParam String title) {
+        return new ResponseEntity<>(actorService.getActorsByMoviesTitle(title), HttpStatus.OK);
     }
 
 }
