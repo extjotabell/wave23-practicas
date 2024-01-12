@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Setter
@@ -17,7 +18,7 @@ import java.util.Date;
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Long id;
+    int id;
     @Column
     Date created_at;
     @Column
@@ -26,8 +27,10 @@ public class Actor {
     String first_name;
     @Column
     String last_name;
-    @Column
-    double rating;
-    @Column
-    Long favorite_movie_id;
+    @Column(name = "rating", precision = 3, scale = 1)
+    private BigDecimal rating;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "favorite_movie_id")
+    private Movie favoriteMovie;
+
 }

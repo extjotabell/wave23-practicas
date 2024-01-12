@@ -20,6 +20,11 @@ public class movieController {
     @GetMapping("/actors/favoriteMovie")
     public ResponseEntity<ActorsListDto> findActorsWithFavoriteMovie() {
         return new ResponseEntity<>(service.findActorsWithFavoriteMovie(), HttpStatus.OK);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<ActorsListDto> findActorsWithRatingHigerThan(@RequestParam double rating) {
+        return new ResponseEntity<>(service.findActorsWithRatingHigerThan(rating), HttpStatus.OK);
 
     }
 }
