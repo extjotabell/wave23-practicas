@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "fd740117-1f7c-4aac-a203-9cc52cca60a5",
+		"name": "elastic-obras",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Libro 02\",\n    \"autor\": \"Autor 02\",\n    \"cantidadDePaginas\": 250,\n    \"anioPublicacion\": 2003,\n    \"editorial\": \"editorial2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ObraLiterarias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ObraLiterarias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/find-by-autor/J.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/find-by-autor/J.",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find-by-autor",
+						"J."
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/find-by-name/Libro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/find-by-name/Libro",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find-by-name",
+						"Libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/find-by-pages/300",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/find-by-pages/300",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find-by-pages",
+						"300"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/find-by-year-before/2003",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/find-by-year-before/2003",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find-by-year-before",
+						"2003"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/find-by-year-after/2000",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/find-by-year-after/2000",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find-by-year-after",
+						"2000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/find-by-editorial/editorial2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/find-by-editorial/editorial2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find-by-editorial",
+						"editorial2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
