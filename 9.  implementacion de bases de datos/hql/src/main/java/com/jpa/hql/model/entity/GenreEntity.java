@@ -1,4 +1,4 @@
-package com.jpa.hql.model;
+package com.jpa.hql.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

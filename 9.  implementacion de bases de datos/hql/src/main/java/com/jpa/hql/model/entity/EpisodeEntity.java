@@ -1,9 +1,10 @@
-package com.jpa.hql.model;
+package com.jpa.hql.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -11,8 +12,8 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode
 @Entity
-@Table(name = "seasons", schema = "movies_db")
-public class SeasonEntity {
+@Table(name = "episodes", schema = "movies_db")
+public class EpisodeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -33,12 +34,11 @@ public class SeasonEntity {
     @Column(name = "release_date", nullable = false)
     private LocalDate releaseDate;
     @Basic
-    @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+    @Column(name = "rating", nullable = false, precision = 1)
+    private BigDecimal rating;
     @ManyToOne
-    @JoinColumn(name = "serie_id", nullable = true)
-    private SerieEntity serie;
-
-    @OneToMany(mappedBy = "seasonEntity")
-    private Set<EpisodeEntity> episodesEntities;
+    @JoinColumn(name = "season_id", nullable = true)
+    private SeasonEntity seasonEntity;
+    @ManyToMany(mappedBy = "episodesEntities")
+    private Set<ActorEntity> actorsEntities;
 }

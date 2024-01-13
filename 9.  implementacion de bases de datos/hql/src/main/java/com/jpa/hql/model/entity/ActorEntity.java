@@ -1,4 +1,4 @@
-package com.jpa.hql.model;
+package com.jpa.hql.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -17,7 +17,6 @@ public class ActorEntity {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
-    @Basic
     @Column(name = "created_at", nullable = true)
     private LocalDateTime createdAt;
     @Basic
