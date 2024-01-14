@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "0f5eeb0b-d1b4-41d3-8d0a-3c4a5b972abc",
+		"name": "JewelryStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31732673"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/jewelry/new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Anillo\",\n    \"material\": \"oro\",\n    \"peso\": 300,\n    \"particularidad\": \"Forma circular con triangulos\",\n    \"posee_piedra\": false,\n    \"venta_o_no\": true\n   \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/jewelry/new"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jewelry",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/jewelry"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jewelry/update/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Anillo\",\n    \"material\": \"oro\",\n    \"peso\": 300,\n    \"particularidad\": \"Otra particularidad\",\n    \"posee_piedra\": true,\n    \"venta_o_no\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/jewelry/update/1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jewelry/delete/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/jewelry/delete/1"
+			},
+			"response": []
+		}
+	]
+}
