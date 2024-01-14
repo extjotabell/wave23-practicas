@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "ec1304bd-f153-4838-b0d4-5e9c99a81e8d",
+		"name": "QATesters",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31732673"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/testcases/new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"QA Tester\",\n    \"tested\": true,\n    \"passed\": true,\n    \"number_of_tries\": 2,\n    \"last_update\": \"2023-06-21\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/testcases/new"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/testcases",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/testcases"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/testcases/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/testcases/1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/testcases/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Modified description\",\n    \"tested\": true,\n    \"passed\": false,\n    \"number_of_tries\": 2,\n    \"last_update\": \"2023-06-21\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/testcases/1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/testcases/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/api/testcases/1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/testcases?last_update=20/06/2023",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/testcases?last_update=20/06/2023",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"testcases"
+					],
+					"query": [
+						{
+							"key": "last_update",
+							"value": "20/06/2023"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
