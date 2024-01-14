@@ -6,4 +6,6 @@ import java.math.BigDecimal;
 
 public interface IMovieService {
     MoviesDTO findByActorRatingGreaterThan(BigDecimal rating);
+
+    MoviesDTO findByGenre(String genre);
 }

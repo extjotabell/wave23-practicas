@@ -12,4 +12,7 @@ import java.util.List;
 public interface IMovieRepository extends JpaRepository<Movie, Long> {
     @Query("FROM Movie m JOIN m.actors a WHERE a.rating > :rating")
     List<Movie> findByActorRatingGreaterThan(@Param("rating") BigDecimal rating);
+
+    @Query("FROM Movie m JOIN m.genre g WHERE g.name = :genre")
+    List<Movie> findByGenre(@Param("genre") String genre);
 }

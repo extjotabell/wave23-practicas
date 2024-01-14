@@ -24,4 +24,13 @@ public class MovieServiceImpl implements IMovieService {
 
         return new MoviesDTO(movies);
     }
+
+    @Override
+    public MoviesDTO findByGenre(String genre) {
+        List<MovieDTO> movies = repository.findByGenre(genre).stream()
+                .map(MovieMapper::map)
+                .toList();
+
+        return new MoviesDTO(movies);
+    }
 }

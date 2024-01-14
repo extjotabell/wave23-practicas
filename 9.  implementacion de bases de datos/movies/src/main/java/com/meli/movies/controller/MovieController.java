@@ -23,4 +23,9 @@ public class MovieController {
     private ResponseEntity<?> findByActorRatingGreaterThan(@PathVariable BigDecimal rating) {
         return new ResponseEntity<>(service.findByActorRatingGreaterThan(rating), HttpStatus.OK);
     }
+
+    @GetMapping("/{genre}")
+    private ResponseEntity<?> findByGenre(@PathVariable String genre) {
+        return new ResponseEntity<>(service.findByGenre(genre), HttpStatus.OK);
+    }
 }
