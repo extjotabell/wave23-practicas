@@ -6,6 +6,7 @@ import com.meli.movies.repository.IActorRepository;
 import com.meli.movies.util.ActorMapper;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -20,6 +21,14 @@ public class ActorServiceImpl implements IActorService {
     @Override
     public ActorsDTO getActorWithFavoriteMovies() {
         List<ActorDTO> actors = repository.findAllActorsWithFavoriteMovie().stream()
+                .map(ActorMapper::map)
+                .toList();
+        return new ActorsDTO(actors);
+    }
+
+    @Override
+    public ActorsDTO findByRatingGreaterThan(BigDecimal rating) {
+        List<ActorDTO> actors = repository.findByRatingGreaterThan(rating).stream()
                 .map(ActorMapper::map)
                 .toList();
         return new ActorsDTO(actors);

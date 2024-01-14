@@ -4,9 +4,9 @@ import com.meli.movies.service.actor.ActorServiceImpl;
 import com.meli.movies.service.actor.IActorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/actors")
@@ -23,4 +23,8 @@ public class ActorController {
         return new ResponseEntity<>(service.getActorWithFavoriteMovies(), HttpStatus.OK);
     }
 
+    @GetMapping("/rating-greater-than/{rating}")
+    private ResponseEntity<?> findByRatingGreaterThan(@PathVariable BigDecimal rating) {
+        return new ResponseEntity<>(service.findByRatingGreaterThan(rating), HttpStatus.OK);
+    }
 }
