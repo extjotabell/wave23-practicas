@@ -19,8 +19,8 @@ public class ActorController {
     }
 
     @GetMapping("/favorite-movies")
-    public ResponseEntity<?> getActorWithFavoriteMovies() {
-        return new ResponseEntity<>(service.getActorWithFavoriteMovies(), HttpStatus.OK);
+    public ResponseEntity<?> findByFavoriteMovieNotNull() {
+        return new ResponseEntity<>(service.findByFavoriteMovieNotNull(), HttpStatus.OK);
     }
 
     @GetMapping("/rating-greater-than/{rating}")

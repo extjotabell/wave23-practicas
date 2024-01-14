@@ -13,7 +13,7 @@ import java.util.List;
 public interface IActorRepository extends JpaRepository<Actor, Long> {
 
     @Query("FROM Actor a WHERE a.favoriteMovie IS NOT NULL")
-    List<Actor> findAllActorsWithFavoriteMovie();
+    List<Actor> findByFavoriteMovieNotNull();
 
     @Query("FROM Actor a WHERE a.rating > :rating")
     List<Actor> findByRatingGreaterThan(@Param("rating") BigDecimal rating);

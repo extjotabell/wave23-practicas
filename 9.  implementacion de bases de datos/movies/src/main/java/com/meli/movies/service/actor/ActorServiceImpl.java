@@ -19,8 +19,8 @@ public class ActorServiceImpl implements IActorService {
     }
 
     @Override
-    public ActorsDTO getActorWithFavoriteMovies() {
-        List<ActorDTO> actors = repository.findAllActorsWithFavoriteMovie().stream()
+    public ActorsDTO findByFavoriteMovieNotNull() {
+        List<ActorDTO> actors = repository.findByFavoriteMovieNotNull().stream()
                 .map(ActorMapper::map)
                 .toList();
         return new ActorsDTO(actors);
