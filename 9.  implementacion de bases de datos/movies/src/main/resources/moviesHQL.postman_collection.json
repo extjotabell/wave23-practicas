@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "c8bea652-07f6-406d-bfbf-8f3ab5901501",
+		"name": "moviesHQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31609463"
+	},
+	"item": [
+		{
+			"name": "getActorsWithFavorteMovie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getActorsWithFavorteMovie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getActorsWithFavorteMovie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getActorsRatingThant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getActorsRatingThant/9.5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getActorsRatingThant",
+						"9.5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getActorsWorkIn",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getActorsWorkIn/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getActorsWorkIn",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMoviesWithActorsRating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getMoviesWithActorsRating/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getMoviesWithActorsRating",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMoviesWithGenreIn",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getMoviesWithGenreIn/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getMoviesWithGenreIn",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSeriesWithMore - error",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getMoviesWithGenreIn/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getMoviesWithGenreIn",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEpisodesWithActor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getEpisodesWithActor/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getEpisodesWithActor",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
