@@ -1,8 +1,6 @@
 package com.meli.movies.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,7 +31,7 @@ public class Actor extends BaseEntity {
             joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id")
     )
-    private Set<Movie> actorMovie;
+    private Set<Movie> movies;
 
     @ManyToMany
     @JoinTable(
@@ -41,5 +39,5 @@ public class Actor extends BaseEntity {
             joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "episode_id", referencedColumnName = "id")
     )
-    private Set<Episode> actorEpisodes;
+    private Set<Episode> episodes;
 }

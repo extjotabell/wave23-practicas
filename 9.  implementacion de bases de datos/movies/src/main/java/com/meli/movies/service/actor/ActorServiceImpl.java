@@ -33,4 +33,12 @@ public class ActorServiceImpl implements IActorService {
                 .toList();
         return new ActorsDTO(actors);
     }
+
+    @Override
+    public ActorsDTO findByMovie(String movie) {
+        List<ActorDTO> actors = repository.findByMovie(movie).stream()
+                .map(ActorMapper::map)
+                .toList();
+        return new ActorsDTO(actors);
+    }
 }

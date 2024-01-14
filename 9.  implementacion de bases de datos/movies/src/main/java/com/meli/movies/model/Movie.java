@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -32,9 +30,9 @@ public class Movie extends BaseEntity {
     @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
 
-    @OneToMany(mappedBy = "favoriteMovie", cascade = CascadeType.ALL)
-    private Set<Actor> actors;
+    @OneToMany(mappedBy = "favoriteMovie")
+    private Set<Actor> actorsFavoriteMovie;
 
-    @ManyToMany(mappedBy = "actorMovie")
-    private Set<Actor> actorMovies;
+    @ManyToMany(mappedBy = "movies")
+    private Set<Actor> actors;
 }

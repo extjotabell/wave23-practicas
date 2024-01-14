@@ -30,6 +30,6 @@ public class Episode extends BaseEntity {
     @JoinColumn(name = "season_id", nullable = false)
     private Season season;
 
-    @ManyToMany(mappedBy = "actorEpisodes")
-    private Set<Actor> actorEpisodes;
+    @ManyToMany(mappedBy = "episodes")
+    private Set<Actor> actors;
 }

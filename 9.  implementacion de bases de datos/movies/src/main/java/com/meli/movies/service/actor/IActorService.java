@@ -8,4 +8,6 @@ public interface IActorService {
     ActorsDTO findByFavoriteMovieNotNull();
 
     ActorsDTO findByRatingGreaterThan(BigDecimal rating);
+
+    ActorsDTO findByMovie(String movie);
 }
