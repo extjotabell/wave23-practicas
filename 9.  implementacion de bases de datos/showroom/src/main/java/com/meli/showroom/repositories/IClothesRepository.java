@@ -1,4 +1,7 @@
 package com.meli.showroom.repositories;
 
-public class IClothesRepository {
+import com.meli.showroom.entities.Clothes;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IClothesRepository extends JpaRepository<Clothes, Long>{
 }
