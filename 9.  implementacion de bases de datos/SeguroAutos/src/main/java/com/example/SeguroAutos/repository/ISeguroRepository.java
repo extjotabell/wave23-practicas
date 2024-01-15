@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ISeguroRepository {
+public interface ISeguroRepository extends JpaRepository<Vehiculo,Integer>{
 
     @Query("SELECT v FROM Vehiculo v")
     List<Vehiculo> getAllVehicles();
