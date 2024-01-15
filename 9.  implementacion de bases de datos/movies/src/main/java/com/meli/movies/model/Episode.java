@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "movies")
+@Table(name = "episodes")
 @Getter @Setter
 public class Episode extends BaseEntity {
 

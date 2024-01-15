@@ -26,7 +26,6 @@ public class Serie extends BaseEntity {
     @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "serie_id")
+    @OneToMany(mappedBy = "serie")
     private Set<Season> seasons;
 }

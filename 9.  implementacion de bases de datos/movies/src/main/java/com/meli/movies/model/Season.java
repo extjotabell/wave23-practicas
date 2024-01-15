@@ -24,6 +24,10 @@ public class Season extends BaseEntity {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "serie_id")
+    private Serie serie;
+
+    @OneToMany(mappedBy = "season")
     private Set<Episode> episodes;
 }

@@ -1,8 +1,11 @@
-package com.meli.movies.service;
+package com.meli.movies.service.serie;
 
+import com.meli.movies.dto.EpisodeDTO;
+import com.meli.movies.dto.EpisodesDTO;
 import com.meli.movies.dto.SerieDTO;
 import com.meli.movies.dto.SeriesDTO;
 import com.meli.movies.repository.ISerieRepository;
+import com.meli.movies.util.EpisodeMapper;
 import com.meli.movies.util.SerieMapper;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +25,14 @@ public class SerieServiceImpl implements ISerieService {
                 .toList();
 
         return new SeriesDTO(series);
+    }
+
+    @Override
+    public EpisodesDTO findEpisodesByActor(String actor) {
+        List<EpisodeDTO> episodes = repository.findEpisodesByActor(actor).stream()
+                .map(EpisodeMapper::map)
+                .toList();
+
+        return new EpisodesDTO(episodes);
     }
 }
