@@ -8,4 +8,8 @@ public interface IObraService {
     ObrasDTO findAll();
     ObrasDTO findByAutor(String autor);
     ObrasDTO findByNombre(String nombre);
+    ObrasDTO findByPaginasGreaterThan(String paginas);
+    ObrasDTO findByPublicacionBefore(String anio);
+    ObrasDTO findByPublicacionAfter(String anio);
+    ObrasDTO findByEditorial(String editorial);
 }

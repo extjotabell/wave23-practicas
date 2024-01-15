@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "12232970-a37b-4efa-a00e-60073bce61f8",
+		"name": "elasticsearch-obras",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar todas las obras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/obras",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cargar nueva obra",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"nombre\": \"Harry Potter y la piedra filosofal\",\n    \"autor\": \"J.K. Rowling\",\n    \"paginas\": \"254\",\n    \"editorial\": \"Salamandra\",\n    \"anioPublicacion\": \"1999\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/obras",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por autor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/obras/find-by-autor/Rowling",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-by-autor",
+						"Rowling"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por nombre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/obras/find-by-nombre/Harry Potter",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-by-nombre",
+						"Harry Potter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras con paginas mayor a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/obras/paginas-greater-than/200",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"paginas-greater-than",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras publicadas antes de",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/obras/publicacion-before/2021",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"publicacion-before",
+						"2021"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras publicadas luego de Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/obras/publicacion-after/2021",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"publicacion-after",
+						"2021"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por editorial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/obras/find-by-editorial/Salamandra",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-by-editorial",
+						"Salamandra"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

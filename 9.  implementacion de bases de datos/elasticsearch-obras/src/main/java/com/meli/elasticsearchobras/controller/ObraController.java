@@ -36,4 +36,24 @@ public class ObraController {
     public ResponseEntity<?> findByNombre(@PathVariable String nombre) {
         return new ResponseEntity<>(service.findByNombre(nombre), HttpStatus.OK);
     }
+
+    @GetMapping("/paginas-greater-than/{paginas}")
+    public ResponseEntity<?> findByPaginasGreaterThan(@PathVariable String paginas) {
+        return new ResponseEntity<>(service.findByPaginasGreaterThan(paginas), HttpStatus.OK);
+    }
+
+    @GetMapping("/publicacion-before/{anio}")
+    public ResponseEntity<?> findByPublicacionBefore(@PathVariable String anio) {
+        return new ResponseEntity<>(service.findByPublicacionBefore(anio), HttpStatus.OK);
+    }
+
+    @GetMapping("/publicacion-after/{anio}")
+    public ResponseEntity<?> findByPublicacionAfter(@PathVariable String anio) {
+        return new ResponseEntity<>(service.findByPublicacionAfter(anio), HttpStatus.OK);
+    }
+w
+    @GetMapping("/find-by-editorial/{editorial}")
+    public ResponseEntity<?> findByEditorial(@PathVariable String editorial) {
+        return new ResponseEntity<>(service.findByEditorial(editorial), HttpStatus.OK);
+    }
 }

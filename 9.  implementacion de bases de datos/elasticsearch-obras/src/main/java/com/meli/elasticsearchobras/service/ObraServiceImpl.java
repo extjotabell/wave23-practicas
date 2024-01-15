@@ -43,6 +43,30 @@ public class ObraServiceImpl implements IObraService {
         return new ObrasDTO(mapIterableObraToListObraDTO(iterable));
     }
 
+    @Override
+    public ObrasDTO findByPaginasGreaterThan(String pages) {
+        Iterable<Obra> iterable = repository.findByPagesGreaterThan(pages);
+        return new ObrasDTO(mapIterableObraToListObraDTO(iterable));
+    }
+
+    @Override
+    public ObrasDTO findByPublicacionBefore(String anio) {
+        Iterable<Obra> iterable = repository.findByPublicacionBefore(anio);
+        return new ObrasDTO(mapIterableObraToListObraDTO(iterable));
+    }
+
+    @Override
+    public ObrasDTO findByPublicacionAfter(String anio) {
+        Iterable<Obra> iterable = repository.findByPublicacionAfter(anio);
+        return new ObrasDTO(mapIterableObraToListObraDTO(iterable));
+    }
+
+    @Override
+    public ObrasDTO findByEditorial(String editorial) {
+        Iterable<Obra> iterable = repository.findByEditorial(editorial);
+        return new ObrasDTO(mapIterableObraToListObraDTO(iterable));
+    }
+
     private List<ObraDTO> mapIterableObraToListObraDTO(Iterable<Obra> iterable) {
         return StreamSupport.stream(iterable.spliterator(), false)
                 .map(obra -> mapper.convertValue(obra, ObraDTO.class))
