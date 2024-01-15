@@ -7,6 +7,7 @@ import com.meli.showroom.repositories.IClothesRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClothesService {
@@ -29,6 +30,15 @@ public class ClothesService {
     }
 
     public ClothesDTO getClothesByCode(String code) {
-        return objectMapper.convertValue(clothesRepository.findByCode(code), ClothesDTO.class);
+        Clothes existingClothes = clothesRepository.findByCode(code)
+                .orElseThrow(() -> new RuntimeException("Clothes not found"));
+        return objectMapper.convertValue(existingClothes, ClothesDTO.class);
+    }
+
+    public ClothesDTO updateClothes(String code,ClothesDTO clothesDTO) {
+        getClothesByCode(code);
+        Clothes newClothes = objectMapper.convertValue(clothesDTO, Clothes.class);
+        return objectMapper.convertValue(clothesRepository.save(newClothes),
+                                         ClothesDTO.class);
     }
 }

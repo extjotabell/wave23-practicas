@@ -33,4 +33,9 @@ public class ClothesController {
     public ResponseEntity<ClothesDTO> createClothes(@RequestBody ClothesDTO clothesDTO) {
         return new ResponseEntity<>(clothesService.createClothes(clothesDTO), HttpStatus.CREATED);
     }
+
+    @PutMapping("/{code}")
+    public ResponseEntity<ClothesDTO> updateClothes(@PathVariable String code, @RequestBody ClothesDTO clothesDTO) {
+        return new ResponseEntity<>(clothesService.updateClothes(code, clothesDTO), HttpStatus.OK);
+    }
 }
