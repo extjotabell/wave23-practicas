@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "b55da1cf-c506-4317-8557-0d839432f724",
+		"name": "seguros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31868001"
+	},
+	"item": [
+		{
+			"name": "findByPatente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seguros/findByPatente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seguros",
+						"findByPatente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByPatenteMarca",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seguros/findByPatenteMarca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seguros",
+						"findByPatenteMarca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByCurrentYear",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seguros/findByCurrentYear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seguros",
+						"findByCurrentYear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByPMM",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seguros/findByPMM",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seguros",
+						"findByPMM"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seguros/vehiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seguros",
+						"vehiculos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
