@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "b03be673-1e51-454f-bb04-70bc968a026a",
+		"name": "vehiculo-siniestro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32113280"
+	},
+	"item": [
+		{
+			"name": "save vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idVehiculo\": null,\n    \"patente\": \"2022 BMW\",\n    \"marca\": \"BMW\",\n    \"modelo\": \"2024\",\n    \"anio_de_fabricacion\": 2024,\n    \"color\": \"Negro\",\n    \"cantidad_de_ruedas\": 6\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/vehiculos",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"vehiculos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save siniestro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_siniestro\": null,\n    \"fecha_siniestro\": \"2022-03-01\",\n    \"perdida_economica\": 15000.0,\n    \"id_vehiculo_denunciado\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/siniestros",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"siniestros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get vehicle by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/vehiculos/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"vehiculos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get siniestro by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/siniestros/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"siniestros",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get patentes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/vehiculos/patentes",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"vehiculos",
+						"patentes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get patente marca",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/vehiculos/patentes-marcas",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"vehiculos",
+						"patentes-marcas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ">4 ruedas anio actual",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/vehiculos/patentes-ruedas-anio-actual",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"vehiculos",
+						"patentes-ruedas-anio-actual"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "perdida mayor 10k",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/siniestros/perdida-mayor-10k",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"siniestros",
+						"perdida-mayor-10k"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
