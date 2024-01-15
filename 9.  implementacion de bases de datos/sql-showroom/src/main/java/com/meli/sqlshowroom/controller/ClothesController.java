@@ -16,4 +16,9 @@ public class ClothesController {
     IClothesService service;
 
     public ClothesController(ClothesServiceImpl service) { this.service = service; }
+
+    @PostMapping
+    public ResponseEntity<?> save(@RequestBody ClothesDTO clothes) {
+        return new ResponseEntity<>(service.save(clothes), HttpStatus.CREATED);
+    }
 }

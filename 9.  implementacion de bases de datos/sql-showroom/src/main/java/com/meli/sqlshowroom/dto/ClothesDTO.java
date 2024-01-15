@@ -1,7 +1,6 @@
 package com.meli.sqlshowroom.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.meli.sqlshowroom.entity.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -14,7 +13,7 @@ public class ClothesDTO {
     private String brand;
     private String color;
     @JsonProperty("size_id")
-    private Integer sizeId;
+    private Long sizeId;
     private Integer stock;
     @JsonProperty("selling_price")
     private Double sellingPrice;
