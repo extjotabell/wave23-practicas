@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "3a1ac245-f1a8-4ad6-8928-33452f202a49",
+		"name": "movies-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Actores",
+			"item": [
+				{
+					"name": "Obtener actores con pelicula favorita",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/actors/favorite-movies",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"favorite-movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener actores con ranking mayor a",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/actors/rating-greater-than/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"rating-greater-than",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener actores por pelicula",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/actors/avatar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Peliculas",
+			"item": [
+				{
+					"name": "Obtener peliculas cuyos actores tengan rating superior a",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/movies/actors/rating-greater-than/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"actors",
+								"rating-greater-than",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener peliculas por género",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Series",
+			"item": [
+				{
+					"name": "Obtener series por cantidad de temporadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/series/seasons-greater-than/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"series",
+								"seasons-greater-than",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener episodios de series por actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
