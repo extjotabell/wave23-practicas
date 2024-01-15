@@ -82,4 +82,15 @@ public class ClothesServiceImpl implements IClothesService {
                 .toList()
         );
     }
+
+    @Override
+    public ClothesListDTO findByName(String name) {
+        List<Clothes> clothes = repository.findByName(name);
+        Validations.checkIfEmptyList(clothes);
+
+        return new ClothesListDTO(clothes.stream()
+                .map(ClothesMapper::map)
+                .toList()
+        );
+    }
 }

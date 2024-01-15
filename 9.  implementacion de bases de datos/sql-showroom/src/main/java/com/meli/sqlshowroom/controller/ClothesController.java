@@ -45,4 +45,9 @@ public class ClothesController {
     public ResponseEntity<?> findBySize(@PathVariable String size) {
         return new ResponseEntity<>(service.findBySize(size), HttpStatus.OK);
     }
+
+    @GetMapping("/name")
+    public ResponseEntity<?> findByName(@RequestParam("name") String name) {
+        return new ResponseEntity<>(service.findByName(name), HttpStatus.OK);
+    }
 }

@@ -13,4 +13,7 @@ import java.util.Optional;
 public interface IClothesRepository extends JpaRepository<Clothes, Long> {
     @Query("FROM Clothes c JOIN c.size s WHERE s.name = :size")
     List<Clothes> findBySize(@Param("size") String size);
+
+    @Query("FROM Clothes c WHERE c.name LIKE %:name%")
+    List<Clothes> findByName(@Param("name") String name);
 }
