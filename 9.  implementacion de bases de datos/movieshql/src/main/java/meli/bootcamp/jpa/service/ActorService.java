@@ -18,7 +18,7 @@ public class ActorService {
   }
 
   public List<ActorInfoDto> getAllWithFavouriteMovie() {
-    return this.repository.findWithFavouriteMovie().stream().map(a -> Mapper.map(a)).toList();
+    return this.repository.findByFavoriteMovieIdIsNotNull().stream().map(a -> Mapper.map(a)).toList();
   }
 
   public List<ActorInfoDto> getByRatingGreaterThan(BigDecimal rating) {

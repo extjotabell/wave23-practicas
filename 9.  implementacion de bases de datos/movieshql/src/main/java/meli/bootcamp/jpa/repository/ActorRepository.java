@@ -12,10 +12,8 @@ import meli.bootcamp.jpa.model.Actor;
 
 @Repository
 public interface ActorRepository extends JpaRepository<Actor, Integer> {
-  @Query("SELECT a FROM Actor a WHERE a.favoriteMovie IS NOT NULL")
-  public List<Actor> findWithFavouriteMovie();
+  public List<Actor> findByFavoriteMovieIdIsNotNull();
 
-  @Query("SELECT a FROM Actor a WHERE a.rating > :rating")
   public List<Actor> findByRatingGreaterThan(@Param("rating") BigDecimal rating);
 
   
