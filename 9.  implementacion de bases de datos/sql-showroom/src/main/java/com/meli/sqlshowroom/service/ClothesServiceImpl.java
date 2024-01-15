@@ -4,7 +4,6 @@ import com.meli.sqlshowroom.dto.ClothesDTO;
 import com.meli.sqlshowroom.dto.ClothesListDTO;
 import com.meli.sqlshowroom.entity.Clothes;
 import com.meli.sqlshowroom.entity.Size;
-import com.meli.sqlshowroom.exception.NotFoundException;
 import com.meli.sqlshowroom.repository.IClothesRepository;
 import com.meli.sqlshowroom.util.ClothesMapper;
 import com.meli.sqlshowroom.util.Validations;
@@ -45,13 +44,10 @@ public class ClothesServiceImpl implements IClothesService {
     }
 
     @Override
-    public ClothesListDTO findByCode(String code) {
-        List<Clothes> clothes = repository.findByCode(code);
+    public ClothesDTO findByCode(Long code) {
+        Optional<Clothes> clothes = repository.findById(code);
         Validations.checkIfEmpty(clothes);
 
-        return new ClothesListDTO(clothes.stream()
-                .map(ClothesMapper::map)
-                .toList()
-        );
+        return ClothesMapper.map(clothes.get());
     }
 }

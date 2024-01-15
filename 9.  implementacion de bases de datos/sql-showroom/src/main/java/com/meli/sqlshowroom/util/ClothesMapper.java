@@ -7,7 +7,7 @@ import com.meli.sqlshowroom.entity.Size;
 public class ClothesMapper {
 
     public static Clothes map(ClothesDTO dto, Size size) {
-        return new Clothes(dto.getId(),
+        return new Clothes(
                 dto.getCode(),
                 dto.getName(),
                 dto.getBrand(),
@@ -20,7 +20,6 @@ public class ClothesMapper {
 
     public static ClothesDTO map(Clothes clothes) {
         return new ClothesDTO(
-                clothes.getId(),
                 clothes.getCode(),
                 clothes.getName(),
                 clothes.getBrand(),

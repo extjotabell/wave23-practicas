@@ -15,8 +15,7 @@ import java.util.List;
 public class Clothes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String code;
+    private Long code;
     private String name;
     private String brand;
     private String color;

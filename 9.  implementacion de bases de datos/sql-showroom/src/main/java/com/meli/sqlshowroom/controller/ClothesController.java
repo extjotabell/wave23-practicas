@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 public class ClothesController {
     IClothesService service;
 
-    public ClothesController(ClothesServiceImpl service) { this.service = service; }
+    public ClothesController(ClothesServiceImpl service) {
+        this.service = service;
+    }
 
     @PostMapping
     public ResponseEntity<?> save(@RequestBody ClothesDTO clothes) {
@@ -23,9 +25,9 @@ public class ClothesController {
     public ResponseEntity<?> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
-    
+
     @GetMapping("/{code}")
-    public ResponseEntity<?> findByCode(@PathVariable String code) {
+    public ResponseEntity<?> findByCode(@PathVariable Long code) {
         return new ResponseEntity<>(service.findByCode(code), HttpStatus.OK);
     }
 }

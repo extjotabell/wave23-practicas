@@ -8,8 +8,7 @@ CREATE TABLE sizes (
 );
 
 CREATE TABLE clothes (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    code VARCHAR(255),
+    code BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     brand VARCHAR(255),
     color VARCHAR(255),

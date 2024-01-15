@@ -7,8 +7,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ClothesDTO {
-    private Long id;
-    private String code;
+    private Long code;
     private String name;
     private String brand;
     private String color;

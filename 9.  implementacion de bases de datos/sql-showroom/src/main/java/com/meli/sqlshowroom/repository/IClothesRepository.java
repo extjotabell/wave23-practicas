@@ -11,6 +11,4 @@ import java.util.Optional;
 
 @Repository
 public interface IClothesRepository extends JpaRepository<Clothes, Long> {
-    @Query("FROM Clothes c WHERE c.code = :code")
-    List<Clothes> findByCode(@Param("code") String code);
 }
