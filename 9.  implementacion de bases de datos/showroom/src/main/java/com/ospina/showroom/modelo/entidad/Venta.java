@@ -1,9 +1,12 @@
 package com.ospina.showroom.modelo.entidad;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Getter @Setter
 @Entity
 public class Venta {
 
@@ -14,7 +17,11 @@ public class Venta {
     private double total;
     private String medioPago;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "venta_numero")
+    @ManyToMany
+    @JoinTable(
+            name = "venta_prenda",
+            joinColumns = @JoinColumn(name = "venta_numero"),
+            inverseJoinColumns = @JoinColumn(name = "prenda_codigo")
+    )
     private List<Prenda> prendas;
 }
