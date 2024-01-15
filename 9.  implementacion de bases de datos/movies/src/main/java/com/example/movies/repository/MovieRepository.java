@@ -16,4 +16,7 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 
     @Query("select a from Actor a where a.rating >=:rating")
     List<Actor> findActorsWithRatingHigerThan(@Param("rating") double rating);
+
+    @Query("select a from Actor a inner join a.movies as m where m.title =:title ")
+    List<Actor> findActorsInMovie(@Param("title") String movieTitle);
 }

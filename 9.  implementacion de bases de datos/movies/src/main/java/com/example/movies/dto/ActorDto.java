@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -19,4 +21,5 @@ public class ActorDto implements Serializable {
     String lastName;
     BigDecimal rating;
     MovieDto favoriteMovie;
+    Set<MovieDto> movies;
 }

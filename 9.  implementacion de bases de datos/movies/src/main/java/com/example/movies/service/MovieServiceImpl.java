@@ -32,4 +32,10 @@ public class MovieServiceImpl implements MovieService {
         List<Actor> actors =repository.findActorsWithRatingHigerThan(rating);
         return actorsListToActorsListDto(actors);
     }
+
+    @Override
+    public ActorsListDto findActorsInMovie(String movieTitle) {
+        List<Actor> actors =repository.findActorsInMovie(movieTitle);
+        return  actorsListToActorsListDto(actors);
+    }
 }

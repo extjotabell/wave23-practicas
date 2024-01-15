@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter  @Setter
 @Entity @Table(name = "actors", schema = "movies_db")
@@ -34,5 +36,15 @@ public class Actor {
     @JoinColumn(name = "favorite_movie_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Movie favoriteMovie;
+
+    @ManyToMany
+    @JoinTable(
+            name = "actor_movie",
+            joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    )
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Set<Movie> movies = new LinkedHashSet<>();
+
 
 }

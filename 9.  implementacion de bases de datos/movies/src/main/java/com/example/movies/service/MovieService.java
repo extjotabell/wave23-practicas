@@ -6,4 +6,6 @@ public interface MovieService {
     ActorsListDto findActorsWithFavoriteMovie();
 
     ActorsListDto findActorsWithRatingHigerThan(double rating);
+
+    ActorsListDto findActorsInMovie(String movieTitle);
 }

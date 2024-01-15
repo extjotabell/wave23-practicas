@@ -25,6 +25,10 @@ public class movieController {
     @GetMapping("")
     public ResponseEntity<ActorsListDto> findActorsWithRatingHigerThan(@RequestParam double rating) {
         return new ResponseEntity<>(service.findActorsWithRatingHigerThan(rating), HttpStatus.OK);
-
     }
+    @GetMapping("/movie/{movieTitle}")
+    public ResponseEntity<ActorsListDto> findActorsInMovie(@PathVariable String movieTitle) {
+        return new ResponseEntity<>(service.findActorsInMovie(movieTitle), HttpStatus.OK);
+    }
+
 }
