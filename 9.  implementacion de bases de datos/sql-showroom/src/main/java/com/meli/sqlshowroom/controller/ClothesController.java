@@ -30,4 +30,9 @@ public class ClothesController {
     public ResponseEntity<?> findByCode(@PathVariable Long code) {
         return new ResponseEntity<>(service.findByCode(code), HttpStatus.OK);
     }
+
+    @PutMapping("/{code}")
+    public ResponseEntity<?> update(@PathVariable Long code, @RequestBody ClothesDTO clothesDTO) {
+        return new ResponseEntity<>(service.update(code, clothesDTO), HttpStatus.OK);
+    }
 }

@@ -2,15 +2,16 @@ package com.meli.sqlshowroom.service;
 
 import com.meli.sqlshowroom.dto.ClothesDTO;
 import com.meli.sqlshowroom.dto.ClothesListDTO;
+import com.meli.sqlshowroom.dto.MessageDTO;
 import com.meli.sqlshowroom.entity.Clothes;
 import com.meli.sqlshowroom.entity.Size;
+import com.meli.sqlshowroom.exception.NotFoundException;
 import com.meli.sqlshowroom.repository.IClothesRepository;
 import com.meli.sqlshowroom.util.ClothesMapper;
 import com.meli.sqlshowroom.util.Validations;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClothesServiceImpl implements IClothesService {
@@ -25,17 +26,16 @@ public class ClothesServiceImpl implements IClothesService {
 
     @Override
     public ClothesDTO save(ClothesDTO clothes) {
-        Optional<Size> size = sizeService.findById(clothes.getSizeId());
-        Validations.checkIfEmpty(size);
+        Size size = sizeService.findById(clothes.getSizeId());
 
-        repository.save(ClothesMapper.map(clothes, size.get()));
+        repository.save(ClothesMapper.map(clothes, size));
         return clothes;
     }
 
     @Override
     public ClothesListDTO findAll() {
         List<Clothes> clothes = repository.findAll();
-        Validations.checkIfEmpty(clothes);
+        Validations.checkIfEmptyList(clothes);
 
         return new ClothesListDTO(clothes.stream()
                 .map(ClothesMapper::map)
@@ -45,9 +45,21 @@ public class ClothesServiceImpl implements IClothesService {
 
     @Override
     public ClothesDTO findByCode(Long code) {
-        Optional<Clothes> clothes = repository.findById(code);
-        Validations.checkIfEmpty(clothes);
+        Clothes clothes = repository.findById(code)
+                .orElseThrow(() -> new NotFoundException("No se encontraron resultados para la prenda con code: " + code));
 
-        return ClothesMapper.map(clothes.get());
+        return ClothesMapper.map(clothes);
+    }
+
+    @Override
+    public MessageDTO update(Long code, ClothesDTO clothes) {
+        if (!repository.existsById(code)) {
+            throw new NotFoundException("No se encontraron resultados para la prenda con code: " + code);
+        }
+
+        Size size = sizeService.findById(clothes.getSizeId());
+
+        repository.save(ClothesMapper.map(clothes, size));
+        return new MessageDTO("Se actualizó correctamente la prenda con code: " + code);
     }
 }
