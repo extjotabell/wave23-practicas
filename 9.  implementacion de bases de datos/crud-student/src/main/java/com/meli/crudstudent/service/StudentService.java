@@ -2,7 +2,6 @@ package com.meli.crudstudent.service;
 
 import com.meli.crudstudent.model.Student;
 import com.meli.crudstudent.repository.StudentRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
