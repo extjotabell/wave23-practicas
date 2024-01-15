@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "b912e774-ac47-46e5-b6d7-9acfa45f8b29",
+		"name": "HQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612957"
+	},
+	"item": [
+		{
+			"name": "Listar nombre y apellido de todos los actores que trabajan en las películas con el género <género recibido por parámetro>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actors/favorite-movie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actors",
+						"favorite-movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los actores que tengan rating superior a <valor recibido por parámetro>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actors/rating?value=8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actors",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los actores que trabajan en la <película recibida por parámetro>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actors/movie?movieTitle=Avatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actors",
+						"movie"
+					],
+					"query": [
+						{
+							"key": "movieTitle",
+							"value": "Avatar"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todas las películas que pertenezcan al <género recibido por parámetro>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/genres?title=ciencia ficcion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"genres"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "ciencia ficcion"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todas las películas cuyos actores tengan rating superior a <valor recibido por parámetro>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/rating?value=8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todas las series que tengan más de <cantidad de temporadas recibida por parámetro> ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/series?value=8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"series"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los episodios (de cualquier serie) donde trabaja un <actor recibido por parámetro>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/episodes?name=Kaley&lastName=Cuoco",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"episodes"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Kaley"
+						},
+						{
+							"key": "lastName",
+							"value": "Cuoco"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
