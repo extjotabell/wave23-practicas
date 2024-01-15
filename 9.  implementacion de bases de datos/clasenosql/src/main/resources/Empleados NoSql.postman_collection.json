@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "88cbc085-90ac-44e7-91a3-5aa529ebf5fd",
+		"name": "Empleados NoSql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31669715"
+	},
+	"item": [
+		{
+			"name": "Empleados",
+			"item": [
+				{
+					"name": "Agregar empleado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Marcos Costanzo\",\n    \"edad\": \"25\",\n    \"ciudad\": \"Buenos Aires\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empleados/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleados",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los empleados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empleados/get-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleados",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar empleados por edad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empleados/find-by-edad/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleados",
+								"find-by-edad",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar empleados mayor a X edad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empleados/find-by-edad-mayor/24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleados",
+								"find-by-edad-mayor",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar empleados por nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empleados/find-by-name/Marcos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empleados",
+								"find-by-name",
+								"Marcos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Agregar producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Pelota\",\n    \"tipo\": \"Deportes\",\n    \"precio_venta\": 25.5,\n    \"precio_costo\": 15,\n    \"stock\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/productos/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos/get-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar empleados por tipo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos/find-by-type/deportes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"find-by-type",
+								"deportes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar productos con precio mayor a X",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos/find-by-price/15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"find-by-price",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar productos por nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/productos/find-by-name/pelota",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"find-by-name",
+								"pelota"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
