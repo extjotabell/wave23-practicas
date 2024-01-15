@@ -1,9 +1,9 @@
-package com.example.movies.service;
+package com.example.movies.service.actor;
 
-import com.example.movies.dto.ActorDto;
 import com.example.movies.dto.ActorsListDto;
 import com.example.movies.model.Actor;
-import com.example.movies.repository.MovieRepository;
+import com.example.movies.repository.ActorRepository;
+import com.example.movies.service.actor.ActorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,13 +11,13 @@ import java.util.List;
 import static com.example.movies.utils.Mappers.actorsListToActorsListDto;
 
 @Service
-public class MovieServiceImpl implements MovieService {
+public class ActorServiceImpl implements ActorService {
 
-    private final MovieRepository repository;
+    private final ActorRepository repository;
     ObjectMapper mapper = new ObjectMapper();
 
 
-    public MovieServiceImpl(MovieRepository repository) {
+    public ActorServiceImpl(ActorRepository repository) {
         this.repository = repository;
     }
 

@@ -1,8 +1,8 @@
-package com.example.movies.service;
+package com.example.movies.service.actor;
 
 import com.example.movies.dto.ActorsListDto;
 
-public interface MovieService {
+public interface ActorService {
     ActorsListDto findActorsWithFavoriteMovie();
 
     ActorsListDto findActorsWithRatingHigerThan(double rating);

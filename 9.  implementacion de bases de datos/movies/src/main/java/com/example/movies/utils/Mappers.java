@@ -2,7 +2,10 @@ package com.example.movies.utils;
 
 import com.example.movies.dto.ActorDto;
 import com.example.movies.dto.ActorsListDto;
+import com.example.movies.dto.MovieDto;
+import com.example.movies.dto.MoviesListDto;
 import com.example.movies.model.Actor;
+import com.example.movies.model.Movie;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
@@ -16,6 +19,13 @@ public class Mappers {
                 .map(actor -> mapper.convertValue(actor, ActorDto.class))
                 .toList();
         return new ActorsListDto(actorsList);
+    }
+
+    public static MoviesListDto moviesListToMoviesListDto(List<Movie> movies){
+        List<MovieDto> moviesList = movies.stream()
+                .map(movie -> mapper.convertValue(movie, MovieDto.class))
+                .toList();
+        return new MoviesListDto(moviesList);
     }
 
 }
