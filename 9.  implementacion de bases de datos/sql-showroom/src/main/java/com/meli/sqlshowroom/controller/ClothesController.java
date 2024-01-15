@@ -40,4 +40,9 @@ public class ClothesController {
     public ResponseEntity<?> delete(@PathVariable Long code) {
         return new ResponseEntity<>(service.delete(code), HttpStatus.OK);
     }
+
+    @GetMapping("/size/{size}")
+    public ResponseEntity<?> findBySize(@PathVariable String size) {
+        return new ResponseEntity<>(service.findBySize(size), HttpStatus.OK);
+    }
 }

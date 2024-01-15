@@ -71,4 +71,15 @@ public class ClothesServiceImpl implements IClothesService {
         repository.delete(clothes);
         return new MessageDTO("Se eliminó correctamente la prenda con code: " + code);
     }
+
+    @Override
+    public ClothesListDTO findBySize(String size) {
+        List<Clothes> clothes = repository.findBySize(size);
+        Validations.checkIfEmptyList(clothes);
+
+        return new ClothesListDTO(clothes.stream()
+                .map(ClothesMapper::map)
+                .toList()
+        );
+    }
 }

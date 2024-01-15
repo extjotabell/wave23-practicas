@@ -14,4 +14,6 @@ public interface IClothesService {
     MessageDTO update(Long code, ClothesDTO clothesDTO);
 
     MessageDTO delete(Long code);
+
+    ClothesListDTO findBySize(String size);
 }
