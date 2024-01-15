@@ -6,6 +6,8 @@ import com.meli.showroom.entities.Clothes;
 import com.meli.showroom.repositories.IClothesRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClothesService {
     private final IClothesRepository clothesRepository;
@@ -18,5 +20,11 @@ public class ClothesService {
         Clothes clothes = objectMapper.convertValue(clothesDTO, Clothes.class);
         return objectMapper.convertValue(clothesRepository.save(clothes),
                                          ClothesDTO.class);
+    }
+
+    public List<ClothesDTO> getAllClothes() {
+        return clothesRepository.findAll().stream()
+                                          .map(clothes -> objectMapper.convertValue(clothes, ClothesDTO.class))
+                                          .toList();
     }
 }
