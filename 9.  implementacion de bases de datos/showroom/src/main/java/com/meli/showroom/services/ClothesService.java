@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClothesService {
@@ -23,11 +24,12 @@ public class ClothesService {
                                          ClothesDTO.class);
     }
 
-    public List<ClothesDTO> getAllClothes() {
-        return clothesRepository.findAll().stream()
-                                          .map(clothes -> objectMapper.convertValue(clothes, ClothesDTO.class))
-                                          .toList();
-    }
+    public List<ClothesDTO> getAllClothes(Optional<String> name) {
+        List<Clothes> resultRepo = name.isPresent()? clothesRepository.findAllByName(name.get()) : clothesRepository.findAll();
+        return resultRepo.stream()
+                         .map(clothes -> objectMapper.convertValue(clothes, ClothesDTO.class))
+                         .toList();
+        }
 
     public ClothesDTO getClothesByCode(String code) {
         Clothes existingClothes = clothesRepository.findByCode(code)

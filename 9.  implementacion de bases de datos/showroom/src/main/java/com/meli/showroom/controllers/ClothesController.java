@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clothes")
@@ -19,8 +20,8 @@ public class ClothesController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ClothesDTO>> getAllClothes() {
-        return new ResponseEntity<>(clothesService.getAllClothes(), HttpStatus.OK);
+    public ResponseEntity<List<ClothesDTO>> getAllClothes(@RequestParam(required = false) String name) {
+        return new ResponseEntity<>(clothesService.getAllClothes(Optional.ofNullable(name)), HttpStatus.OK);
     }
 
     @GetMapping("/{code}")
@@ -44,7 +45,7 @@ public class ClothesController {
     }
 
     @DeleteMapping("/{code}")
-public ResponseEntity<Boolean> deleteClothes(@PathVariable String code) {
+    public ResponseEntity<Boolean> deleteClothes(@PathVariable String code) {
         return new ResponseEntity<>(clothesService.deleteClothes(code),HttpStatus.OK);
     }
 }

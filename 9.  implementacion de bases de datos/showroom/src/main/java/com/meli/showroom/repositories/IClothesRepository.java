@@ -13,4 +13,6 @@ public interface IClothesRepository extends JpaRepository<Clothes, Long>{
     //Find by size
     @Query("SELECT C FROM clothes C WHERE C.size = :size")
     List<Clothes> findBySize(String size);
+    @Query("SELECT c FROM clothes c WHERE lower(c.name) = lower(:name)")
+    List<Clothes> findAllByName(String name);
 }
