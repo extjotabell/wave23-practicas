@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "764a9458-ff1d-4ad7-b87a-348f6cc05455",
+		"name": "Elasticsearch - Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31369607"
+	},
+	"item": [
+		{
+			"name": "Save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Example Book\",\n  \"author\": \"John Doe\",\n  \"pages\": 200,\n  \"editorial\": \"Sample Publications\",\n  \"yearOfPublication\": 2022\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"name\": \"The Great Gatsby\",\n    \"author\": \"F. Scott Fitzgerald\",\n    \"pages\": 300,\n    \"editorial\": \"Scribner\",\n    \"yearOfPublication\": 1925\n  },\n  {\n    \"name\": \"To Kill a Mockingbird\",\n    \"author\": \"Harper Lee\",\n    \"pages\": 324,\n    \"editorial\": \"J.B. Lippincott & Co.\",\n    \"yearOfPublication\": 1960\n  },\n  {\n    \"name\": \"One Hundred Years of Solitude\",\n    \"author\": \"Gabriel Garcia Marquez\",\n    \"pages\": 417,\n    \"editorial\": \"Harper & Row\",\n    \"yearOfPublication\": 1967\n  },\n  {\n    \"name\": \"1984\",\n    \"author\": \"George Orwell\",\n    \"pages\": 328,\n    \"editorial\": \"Secker & Warburg\",\n    \"yearOfPublication\": 1949\n  },\n  {\n    \"name\": \"Pride and Prejudice\",\n    \"author\": \"Jane Austen\",\n    \"pages\": 279,\n    \"editorial\": \"T. Egerton\",\n    \"yearOfPublication\": 1813\n  },\n  {\n    \"name\": \"The Catcher in the Rye\",\n    \"author\": \"J.D. Salinger\",\n    \"pages\": 214,\n    \"editorial\": \"Little, Brown and Company\",\n    \"yearOfPublication\": 1951\n  },\n  {\n    \"name\": \"The Hobbit\",\n    \"author\": \"J.R.R. Tolkien\",\n    \"pages\": 310,\n    \"editorial\": \"George Allen & Unwin\",\n    \"yearOfPublication\": 1937\n  },\n  {\n    \"name\": \"The Shining\",\n    \"author\": \"Stephen King\",\n    \"pages\": 447,\n    \"editorial\": \"Doubleday\",\n    \"yearOfPublication\": 1977\n  },\n  {\n    \"name\": \"Anna Karenina\",\n    \"author\": \"Leo Tolstoy\",\n    \"pages\": 864,\n    \"editorial\": \"The Russian Messenger\",\n    \"yearOfPublication\": 1877\n  },\n  {\n    \"name\": \"Brave New World\",\n    \"author\": \"Aldous Huxley\",\n    \"pages\": 311,\n    \"editorial\": \"Chatto & Windus\",\n    \"yearOfPublication\": 1932\n  },\n  {\n    \"name\": \"The Lord of the Rings\",\n    \"author\": \"J.R.R. Tolkien\",\n    \"pages\": 1031,\n    \"editorial\": \"Allen & Unwin\",\n    \"yearOfPublication\": 1954\n  },\n  {\n    \"name\": \"Jane Eyre\",\n    \"author\": \"Charlotte Brontë\",\n    \"pages\": 624,\n    \"editorial\": \"Smith, Elder & Co.\",\n    \"yearOfPublication\": 1847\n  },\n  {\n    \"name\": \"Crime and Punishment\",\n    \"author\": \"Fyodor Dostoevsky\",\n    \"pages\": 671,\n    \"editorial\": \"The Russian Messenger\",\n    \"yearOfPublication\": 1866\n  },\n  {\n    \"name\": \"The Hunger Games\",\n    \"author\": \"Suzanne Collins\",\n    \"pages\": 374,\n    \"editorial\": \"Scholastic Corporation\",\n    \"yearOfPublication\": 2008\n  },\n  {\n    \"name\": \"Moby-Dick\",\n    \"author\": \"Herman Melville\",\n    \"pages\": 635,\n    \"editorial\": \"Harper & Brothers\",\n    \"yearOfPublication\": 1851\n  },\n  {\n    \"name\": \"Frankenstein\",\n    \"author\": \"Mary Shelley\",\n    \"pages\": 280,\n    \"editorial\": \"Lackington, Hughes, Harding, Mavor & Jones\",\n    \"yearOfPublication\": 1818\n  },\n  {\n    \"name\": \"The Odyssey\",\n    \"author\": \"Homer\",\n    \"pages\": 384,\n    \"editorial\": \"Various\",\n    \"yearOfPublication\": -700\n  },\n  {\n    \"name\": \"Wuthering Heights\",\n    \"author\": \"Emily Brontë\",\n    \"pages\": 337,\n    \"editorial\": \"Thomas Cautley Newby\",\n    \"yearOfPublication\": 1847\n  },\n  {\n    \"name\": \"The Da Vinci Code\",\n    \"author\": \"Dan Brown\",\n    \"pages\": 454,\n    \"editorial\": \"Doubleday\",\n    \"yearOfPublication\": 2003\n  },\n  {\n    \"name\": \"The Road\",\n    \"author\": \"Cormac McCarthy\",\n    \"pages\": 287,\n    \"editorial\": \"Knopf\",\n    \"yearOfPublication\": 2006\n  },\n  {\n    \"name\": \"Slaughterhouse-Five\",\n    \"author\": \"Kurt Vonnegut\",\n    \"pages\": 186,\n    \"editorial\": \"Dell Publishing\",\n    \"yearOfPublication\": 1969\n  },\n  {\n    \"name\": \"The Sun Also Rises\",\n    \"author\": \"Ernest Hemingway\",\n    \"pages\": 251,\n    \"editorial\": \"Scribner\",\n    \"yearOfPublication\": 1926\n  },\n  {\n    \"name\": \"The Bell Jar\",\n    \"author\": \"Sylvia Plath\",\n    \"pages\": 244,\n    \"editorial\": \"Heinemann\",\n    \"yearOfPublication\": 1963\n  },\n  {\n    \"name\": \"A Game of Thrones\",\n    \"author\": \"George R.R. Martin\",\n    \"pages\": 694,\n    \"editorial\": \"Bantam Spectra\",\n    \"yearOfPublication\": 1996\n  },\n  {\n    \"name\": \"The Catcher Was a Spy\",\n    \"author\": \"Nicholas Dawidoff\",\n    \"pages\": 464,\n    \"editorial\": \"Vintage\",\n    \"yearOfPublication\": 1994\n  },\n  {\n    \"name\": \"The Alchemist\",\n    \"author\": \"Paulo Coelho\",\n    \"pages\": 197,\n    \"editorial\": \"HarperCollins\",\n    \"yearOfPublication\": 1988\n  },\n  {\n    \"name\": \"The Grapes of Wrath\",\n    \"author\": \"John Steinbeck\",\n    \"pages\": 464,\n    \"editorial\": \"The Viking Press\",\n    \"yearOfPublication\": 1939\n  },\n  {\n    \"name\": \"The Handmaid's Tale\",\n    \"author\": \"Margaret Atwood\",\n    \"pages\": 311,\n    \"editorial\": \"McClelland and Stewart\",\n    \"yearOfPublication\": 1985\n  },\n  {\n    \"name\": \"The Girl with the Dragon Tattoo\",\n    \"author\": \"Stieg Larsson\",\n    \"pages\": 465,\n    \"editorial\": \"Norstedts Förlag\",\n    \"yearOfPublication\": 2005\n  },\n  {\n    \"name\": \"The Hound of the Baskervilles\",\n    \"author\": \"Arthur Conan Doyle\",\n    \"pages\": 272,\n    \"editorial\": \"George Newnes\",\n    \"yearOfPublication\": 1902\n  },\n  {\n    \"name\": \"The Picture of Dorian Gray\",\n    \"author\": \"Oscar Wilde\",\n    \"pages\": 254,\n    \"editorial\": \"Lippincott's Monthly Magazine\",\n    \"yearOfPublication\": 1890\n  },\n  {\n    \"name\": \"The Brothers Karamazov\",\n    \"author\": \"Fyodor Dostoevsky\",\n    \"pages\": 824,\n    \"editorial\": \"The Russian Messenger\",\n    \"yearOfPublication\": 1880\n  },\n  {\n    \"name\": \"The Wind-Up Bird Chronicle\",\n    \"author\": \"Haruki Murakami\",\n    \"pages\": 607,\n    \"editorial\": \"Shinchosha\",\n    \"yearOfPublication\": 1994\n  },\n  {\n    \"name\": \"The Martian\",\n    \"author\": \"Andy Weir\",\n    \"pages\": 369,\n    \"editorial\": \"Crown Publishing Group\",\n    \"yearOfPublication\": 2011\n  },\n  {\n    \"name\": \"A Clash of Kings\",\n    \"author\": \"George R.R. Martin\",\n    \"pages\": 761,\n    \"editorial\": \"Bantam Spectra\",\n    \"yearOfPublication\": 1998\n  },\n  {\n    \"name\": \"The Divine Comedy\",\n    \"author\": \"Dante Alighieri\",\n    \"pages\": 798,\n    \"editorial\": \"Various\",\n    \"yearOfPublication\": 1308\n  },\n  {\n    \"name\": \"The Secret Garden\",\n    \"author\": \"Frances Hodgson Burnett\",\n    \"pages\": 331,\n    \"editorial\": \"Frederick A. Stokes\",\n    \"yearOfPublication\": 1911\n  },\n  {\n    \"name\": \"The Color Purple\",\n    \"author\": \"Alice Walker\",\n    \"pages\": 295,\n    \"editorial\": \"Harcourt Brace Jovanovich\",\n    \"yearOfPublication\": 1982\n  },\n  {\n    \"name\": \"The Three Musketeers\",\n    \"author\": \"Alexandre Dumas\",\n    \"pages\": 704,\n    \"editorial\": \"Le Siècle\",\n    \"yearOfPublication\": 1844\n  }\n]\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/saveAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"saveAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "By author",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/find/author/J.R.R. Tolkien",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"find",
+						"author",
+						"J.R.R. Tolkien"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "By title",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/find/title/Hobbit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"find",
+						"title",
+						"Hobbit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "By editorial",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/find/editorial/The Russian Messenger",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"find",
+						"editorial",
+						"The Russian Messenger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "By pages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/find/pages/600",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"find",
+						"pages",
+						"600"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "By year after",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/find/year/after/2022",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"find",
+						"year",
+						"after",
+						"2022"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "By year before",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/find/year/before/1308",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"find",
+						"year",
+						"before",
+						"1308"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "By id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/library/12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
