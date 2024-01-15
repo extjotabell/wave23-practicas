@@ -1,7 +1,7 @@
 package com.example.showroom.controller;
 
-import com.example.showroom.dto.ClotheRequestDTO;
-import com.example.showroom.service.ClotheService;
+import com.example.showroom.dto.clothe.ClotheRequestDTO;
+import com.example.showroom.service.clothe.ClotheService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

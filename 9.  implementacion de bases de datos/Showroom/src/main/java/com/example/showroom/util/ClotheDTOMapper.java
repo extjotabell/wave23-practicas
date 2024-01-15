@@ -1,7 +1,7 @@
 package com.example.showroom.util;
 
-import com.example.showroom.dto.ClotheRequestDTO;
-import com.example.showroom.dto.ClotheResponseDTO;
+import com.example.showroom.dto.clothe.ClotheRequestDTO;
+import com.example.showroom.dto.clothe.ClotheResponseDTO;
 import com.example.showroom.model.Clothe;
 
 public class ClotheDTOMapper {

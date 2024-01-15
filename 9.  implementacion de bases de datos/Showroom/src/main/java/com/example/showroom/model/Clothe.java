@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "clothes")
 @Getter
@@ -24,6 +26,8 @@ public class Clothe {
     private Integer quantity;
     @Column(name = "sale_price")
     private Double salePrice;
+    @ManyToMany(mappedBy = "clothes")
+    private List<Sale> sales;
 
     public Clothe(String name, String type, String brand, String color, String size, Integer quantity, Double salePrice) {
         this.name = name;

@@ -1,8 +1,9 @@
-package com.example.showroom.service;
+package com.example.showroom.service.clothe;
 
-import com.example.showroom.dto.ClotheRequestDTO;
-import com.example.showroom.dto.ClotheResponseDTO;
+import com.example.showroom.dto.clothe.ClotheRequestDTO;
+import com.example.showroom.dto.clothe.ClotheResponseDTO;
 import com.example.showroom.repository.ClotheRepository;
+import com.example.showroom.service.clothe.ClotheService;
 import com.example.showroom.util.ClotheDTOMapper;
 import org.springframework.stereotype.Service;
 

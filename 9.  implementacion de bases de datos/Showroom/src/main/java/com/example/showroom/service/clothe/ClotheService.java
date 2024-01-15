@@ -1,7 +1,7 @@
-package com.example.showroom.service;
+package com.example.showroom.service.clothe;
 
-import com.example.showroom.dto.ClotheRequestDTO;
-import com.example.showroom.dto.ClotheResponseDTO;
+import com.example.showroom.dto.clothe.ClotheRequestDTO;
+import com.example.showroom.dto.clothe.ClotheResponseDTO;
 
 import java.util.List;
 
