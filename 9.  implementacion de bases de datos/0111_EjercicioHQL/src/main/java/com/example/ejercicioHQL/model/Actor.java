@@ -26,14 +26,14 @@ public class Actor {
     private String lastName;
     private Double rating;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "favorite_movie_id")
     Movie favoriteMovie;
 
-    @OneToMany(mappedBy = "actor")
+    @OneToMany(mappedBy = "actor", fetch = FetchType.LAZY)
     Set<ActorMovie> movies;
 
-    @OneToMany(mappedBy = "actor")
+    @OneToMany(mappedBy = "actor", fetch = FetchType.LAZY)
     Set<ActorEpisode> episodes;
 
 }

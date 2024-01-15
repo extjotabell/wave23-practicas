@@ -28,7 +28,7 @@ public class Movie {
     private Integer length;
 
     @ManyToOne
-    @JoinColumn(name = "genre_id", nullable = false)
+    @JoinColumn(name = "genre_id")
     Genre genre;
 
     @OneToMany(mappedBy = "favoriteMovie")

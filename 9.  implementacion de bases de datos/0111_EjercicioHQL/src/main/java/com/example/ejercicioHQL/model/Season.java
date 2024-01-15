@@ -28,7 +28,7 @@ public class Season {
     private LocalDate endDate;
 
     @ManyToOne
-    @JoinColumn(name = "serie_id")
+    @JoinColumn(name = "serie_id", referencedColumnName = "id")
     private Series series;
 
     @OneToMany(mappedBy = "season")
