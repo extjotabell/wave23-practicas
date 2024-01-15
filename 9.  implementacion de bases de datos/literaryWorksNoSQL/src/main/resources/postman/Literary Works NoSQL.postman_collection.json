@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "9d739cda-9a8f-46a8-8ee9-f29c1b7bf9e9",
+		"name": "Literary Works NoSQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612957"
+	},
+	"item": [
+		{
+			"name": "Guardar una obra literaria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"nameLiteraryWorks\": \"El Quijote\",\n    \"authorLiteraryWorks\": \"Miguel de Cervantes\",\n    \"quantityPagesLiteraryWorks\": 2000,\n    \"editorialLiteraryWorks\": \"Editorial XYZ\",\n    \"yearFirstEditionLiteraryWorks\": 1605\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/literary/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Guardar múltiples obras literarias",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": \"2\",\n        \"nameLiteraryWorks\": \"1984\",\n        \"authorLiteraryWorks\": \"George Orwell\",\n        \"quantityPagesLiteraryWorks\": 328,\n        \"editorialLiteraryWorks\": \"Secker and Warburg\",\n        \"yearFirstEditionLiteraryWorks\": 1949\n    },\n    {\n        \"id\": \"3\",\n        \"nameLiteraryWorks\": \"To Kill a Mockingbird\",\n        \"authorLiteraryWorks\": \"Harper Lee\",\n        \"quantityPagesLiteraryWorks\": 281,\n        \"editorialLiteraryWorks\": \"J. B. Lippincott & Co.\",\n        \"yearFirstEditionLiteraryWorks\": 1960\n    },\n    {\n        \"id\": \"4\",\n        \"nameLiteraryWorks\": \"Pride and Prejudice\",\n        \"authorLiteraryWorks\": \"Jane Austen\",\n        \"quantityPagesLiteraryWorks\": 279,\n        \"editorialLiteraryWorks\": \"T. Egerton\",\n        \"yearFirstEditionLiteraryWorks\": 1813\n    },\n    {\n        \"id\": \"5\",\n        \"nameLiteraryWorks\": \"The Great Gatsby\",\n        \"authorLiteraryWorks\": \"F. Scott Fitzgerald\",\n        \"quantityPagesLiteraryWorks\": 180,\n        \"editorialLiteraryWorks\": \"Charles Scribner's Sons\",\n        \"yearFirstEditionLiteraryWorks\": 1925\n    },\n    {\n        \"id\": \"6\",\n        \"nameLiteraryWorks\": \"Moby Dick\",\n        \"authorLiteraryWorks\": \"Herman Melville\",\n        \"quantityPagesLiteraryWorks\": 635,\n        \"editorialLiteraryWorks\": \"Harper & Brothers\",\n        \"yearFirstEditionLiteraryWorks\": 1851\n    },\n    {\n        \"id\": \"7\",\n        \"nameLiteraryWorks\": \"War and Peace\",\n        \"authorLiteraryWorks\": \"Leo Tolstoy\",\n        \"quantityPagesLiteraryWorks\": 1225,\n        \"editorialLiteraryWorks\": \"The Russian Messenger\",\n        \"yearFirstEditionLiteraryWorks\": 1869\n    },\n    {\n        \"id\": \"8\",\n        \"nameLiteraryWorks\": \"The Catcher in the Rye\",\n        \"authorLiteraryWorks\": \"J. D. Salinger\",\n        \"quantityPagesLiteraryWorks\": 277,\n        \"editorialLiteraryWorks\": \"Little, Brown and Company\",\n        \"yearFirstEditionLiteraryWorks\": 1951\n    },\n    {\n        \"id\": \"9\",\n        \"nameLiteraryWorks\": \"The Hobbit\",\n        \"authorLiteraryWorks\": \"J. R. R. Tolkien\",\n        \"quantityPagesLiteraryWorks\": 310,\n        \"editorialLiteraryWorks\": \"George Allen & Unwin\",\n        \"yearFirstEditionLiteraryWorks\": 1937\n    },\n    {\n        \"id\": \"10\",\n        \"nameLiteraryWorks\": \"Ulysses\",\n        \"authorLiteraryWorks\": \"James Joyce\",\n        \"quantityPagesLiteraryWorks\": 730,\n        \"editorialLiteraryWorks\": \"Sylvia Beach\",\n        \"yearFirstEditionLiteraryWorks\": 1922\n    },\n    {\n        \"id\": \"11\",\n        \"nameLiteraryWorks\": \"Don Quixote\",\n        \"authorLiteraryWorks\": \"Miguel de Cervantes\",\n        \"quantityPagesLiteraryWorks\": 1023,\n        \"editorialLiteraryWorks\": \"Francisco de Robles\",\n        \"yearFirstEditionLiteraryWorks\": 1605\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/literary/creates",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"creates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las obras literarias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/literary/works",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"works"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. Retornar las obras de un autor dado por el usuario.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/literary/find/author?name=Herman Melville",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"find",
+						"author"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Herman Melville"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Retornar las obras que contengan palabras dadas por el usuario en sus títulos.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/literary/find/title?name=1984",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"find",
+						"title"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "1984"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Retornar las obras con más cantidad de páginas que las indicadas por el usuario.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/literary/find/pages?quantity=1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"find",
+						"pages"
+					],
+					"query": [
+						{
+							"key": "quantity",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Retornar las obras que fueron publicadas antes y después de un año dado por el usuario (Antes)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/literary/find/before?year=1890",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"find",
+						"before"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "1890"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una obra literaria",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"nameLiteraryWorks\": \"El Quijote\",\n    \"authorLiteraryWorks\": \"Miguel de Cervantes\",\n    \"quantityPagesLiteraryWorks\": 2000,\n    \"editorialLiteraryWorks\": \"Francisco de Robles\",\n    \"yearFirstEditionLiteraryWorks\": 1605\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/literary/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Retornar las obras de una misma editorial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/literary/find/editorial?name=Francisco de Robles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"find",
+						"editorial"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Francisco de Robles"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Retornar las obras que fueron publicadas antes y después de un año dado por el usuario (Después)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/literary/find/after?year=1890",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"literary",
+						"find",
+						"after"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "1890"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
