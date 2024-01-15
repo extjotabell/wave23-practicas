@@ -8,4 +8,5 @@ public interface IClothesService {
 
     ClothesListDTO findAll();
 
+    ClothesListDTO findByCode(String code);
 }

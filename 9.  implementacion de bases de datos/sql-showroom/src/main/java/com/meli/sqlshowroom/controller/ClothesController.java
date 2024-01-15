@@ -23,5 +23,9 @@ public class ClothesController {
     public ResponseEntity<?> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
-
+    
+    @GetMapping("/{code}")
+    public ResponseEntity<?> findByCode(@PathVariable String code) {
+        return new ResponseEntity<>(service.findByCode(code), HttpStatus.OK);
+    }
 }

@@ -1,6 +1,5 @@
 package com.meli.sqlshowroom.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.sqlshowroom.dto.ClothesDTO;
 import com.meli.sqlshowroom.dto.ClothesListDTO;
 import com.meli.sqlshowroom.entity.Clothes;
@@ -8,6 +7,7 @@ import com.meli.sqlshowroom.entity.Size;
 import com.meli.sqlshowroom.exception.NotFoundException;
 import com.meli.sqlshowroom.repository.IClothesRepository;
 import com.meli.sqlshowroom.util.ClothesMapper;
+import com.meli.sqlshowroom.util.Validations;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,10 +27,7 @@ public class ClothesServiceImpl implements IClothesService {
     @Override
     public ClothesDTO save(ClothesDTO clothes) {
         Optional<Size> size = sizeService.findById(clothes.getSizeId());
-
-        if (size.isEmpty()) {
-            throw new NotFoundException("No se encontraron resultados de talles para el id: " + clothes.getSizeId());
-        }
+        Validations.checkIfEmpty(size);
 
         repository.save(ClothesMapper.map(clothes, size.get()));
         return clothes;
@@ -39,10 +36,18 @@ public class ClothesServiceImpl implements IClothesService {
     @Override
     public ClothesListDTO findAll() {
         List<Clothes> clothes = repository.findAll();
+        Validations.checkIfEmpty(clothes);
 
-        if (clothes.isEmpty()) {
-            throw new NotFoundException("No se encontraron resultados de prendas");
-        }
+        return new ClothesListDTO(clothes.stream()
+                .map(ClothesMapper::map)
+                .toList()
+        );
+    }
+
+    @Override
+    public ClothesListDTO findByCode(String code) {
+        List<Clothes> clothes = repository.findByCode(code);
+        Validations.checkIfEmpty(clothes);
 
         return new ClothesListDTO(clothes.stream()
                 .map(ClothesMapper::map)
