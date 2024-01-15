@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "3e8d6feb-41c4-45da-929c-83d9326fac87",
+		"name": "Employees NoSQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612957"
+	},
+	"item": [
+		{
+			"name": "Crear un empleado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"3\",\n    \"nameEmployee\": \"Pepe\",\n    \"lastNameEmployee\": \"Goya\",\n    \"ageEmployee\": \"30\",\n    \"cityEmployee\": \"Tabasco\",\n    \"provinceEmployee\": \"Villahermosa\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un empleado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"2\",\n    \"nameEmployee\": \"Alex\",\n    \"lastNameEmployee\": \"Diaz\",\n    \"ageEmployee\": \"30\",\n    \"cityEmployee\": \"Tabasco\",\n    \"provinceEmployee\": \"Villahermosa\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver todos los empleados",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
