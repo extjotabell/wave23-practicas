@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "560d5b9f-1898-4e36-8d4a-886fbc81bbe8",
+		"name": "Obras",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31669715"
+	},
+	"item": [
+		{
+			"name": "Agregar obra",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Obra de Pepe\",\n    \"autor\": \"Pepe Salerno\",\n    \"cant_paginas\": 45,\n    \"editorial\": \"Editorial Salerno\",\n    \"anio_publicacion\": 2020\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/obras/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las obras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/get-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"get-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por autor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/find-by-autor/Marcos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-by-autor",
+						"Marcos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras donde el título contenga X",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/find-title-contains/pepe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-title-contains",
+						"pepe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por cantidad de páginas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/find-by-pages-count/25",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-by-pages-count",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por año de publicación anterior a X",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/find-by-year/before/2023",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-by-year",
+						"before",
+						"2023"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por año de publicación posterior a X",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/find-by-year/after/2023",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-by-year",
+						"after",
+						"2023"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener obras por editorial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/find-by-editorial/Costanzo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"find-by-editorial",
+						"Costanzo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
