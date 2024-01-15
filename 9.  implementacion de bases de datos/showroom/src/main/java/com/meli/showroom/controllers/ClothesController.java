@@ -3,6 +3,8 @@ package com.meli.showroom.controllers;
 import com.meli.showroom.dtos.request.ClothesDTO;
 import com.meli.showroom.services.ClothesService;
 import lombok.Getter;
+import lombok.Value;
+import org.hibernate.annotations.AnyDiscriminatorValues;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +39,10 @@ public class ClothesController {
     @PutMapping("/{code}")
     public ResponseEntity<ClothesDTO> updateClothes(@PathVariable String code, @RequestBody ClothesDTO clothesDTO) {
         return new ResponseEntity<>(clothesService.updateClothes(code, clothesDTO), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{code}")
+public ResponseEntity<Boolean> deleteClothes(@PathVariable String code) {
+        return new ResponseEntity<>(clothesService.deleteClothes(code),HttpStatus.OK);
     }
 }

@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface IClothesRepository extends JpaRepository<Clothes, Long>{
     Optional<Clothes> findByCode(String code);
+    void deleteByCode(String code);
 }

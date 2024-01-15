@@ -5,15 +5,15 @@ import com.meli.showroom.dtos.request.ClothesDTO;
 import com.meli.showroom.entities.Clothes;
 import com.meli.showroom.repositories.IClothesRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClothesService {
     private final IClothesRepository clothesRepository;
     private final ObjectMapper objectMapper = new ObjectMapper();
-    public ClothesService(IClothesRepository clothesRepository, IClothesRepository Clothes) {
+    public ClothesService(IClothesRepository clothesRepository) {
         this.clothesRepository = clothesRepository;
     }
 
@@ -40,5 +40,17 @@ public class ClothesService {
         Clothes newClothes = objectMapper.convertValue(clothesDTO, Clothes.class);
         return objectMapper.convertValue(clothesRepository.save(newClothes),
                                          ClothesDTO.class);
+    }
+    @Transactional
+    public Boolean deleteClothes(String code) {
+        getClothesByCode(code);
+        try{
+            clothesRepository.deleteByCode(code);
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }
