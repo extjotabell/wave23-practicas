@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "5574f17f-5b64-4d3a-8725-bf3fd46b882f",
+		"name": "Showroom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Prenda",
+			"item": [
+				{
+					"name": "Crear una nueva prenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Vestido Floral\",\n  \"tipo\": \"Vestimenta\",\n  \"marca\": \"Zara\",\n  \"color\": \"Blanco/Rosa\",\n  \"talle\": \"S\",\n  \"cantidad\": 30,\n  \"precio_venta\": 69.99\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver todas las prendas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clothes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver una prenda en particular",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar una prenda en particular",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Vestido Floral\",\n  \"tipo\": \"Vestimenta\",\n  \"marca\": \"Zara\",\n  \"color\": \"Blanco/Rosa\",\n  \"talle\": \"S\",\n  \"cantidad\": 30,\n  \"precio_venta\": 69.99\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar una prenda en particular",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Vestido Floral\",\n  \"tipo\": \"Vestimenta\",\n  \"marca\": \"Zara\",\n  \"color\": \"Blanco/Rosa\",\n  \"talle\": \"S\",\n  \"cantidad\": 30,\n  \"precio_venta\": 69.99\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer todas las prendas de un determinado talle",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Vestido Floral\",\n  \"tipo\": \"Vestimenta\",\n  \"marca\": \"Zara\",\n  \"color\": \"Blanco/Rosa\",\n  \"talle\": \"S\",\n  \"cantidad\": 30,\n  \"precio_venta\": 69.99\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/size/34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"size",
+								"34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer todas las prendas por nombre",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Vestido Floral\",\n  \"tipo\": \"Vestimenta\",\n  \"marca\": \"Zara\",\n  \"color\": \"Blanco/Rosa\",\n  \"talle\": \"S\",\n  \"cantidad\": 30,\n  \"precio_venta\": 69.99\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes?name=jean",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "jean"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Venta",
+			"item": [
+				{
+					"name": "Crear Venta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fecha\": \"25/01/2024\",\n  \"total\": 79.99,\n  \"medio_pago\": \"Transferencia bancaria\",\n  \"prendas\": [\n    {\n      \"codigo\": 1\n    },\n    {\n      \"codigo\": 3\n    },\n    {\n      \"codigo\": 4\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sale",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver todas las ventas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sale",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver una venta en particular",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar una venta en particular",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fecha\": \"10/02/2024\",\n  \"total\": 89.95,\n  \"medio_pago\": \"Tarjeta de débito\",\n  \"prendas\": [\n    {\n      \"codigo\": 1\n    },\n    {\n      \"codigo\": 2\n    },\n    {\n      \"codigo\": 3\n    }\n  ]\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sale/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar una venta en particular",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer todas las prendas de una determinada fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale?date=20/01/2024",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "20/01/2024"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Traer la lista completa de prendas de una determinada venta.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale/clothes/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"clothes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
