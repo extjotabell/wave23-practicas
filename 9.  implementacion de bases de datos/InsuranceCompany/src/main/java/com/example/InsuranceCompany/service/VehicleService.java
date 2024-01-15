@@ -1,8 +1,7 @@
 package com.example.InsuranceCompany.service;
 
-import com.example.InsuranceCompany.dto.MessageDTO;
-import com.example.InsuranceCompany.dto.VehicleDTO;
-import com.example.InsuranceCompany.entity.Vehicle;
+import com.example.InsuranceCompany.dto.*;
+import com.example.InsuranceCompany.entity.*;
 import com.example.InsuranceCompany.exception.NotFoundException;
 import com.example.InsuranceCompany.repository.IVehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,9 @@ public class VehicleService implements IVehicleService{
     @Override
     public List<VehicleDTO> getVehicles() {
         List<Vehicle> vehicles = repository.findAll();
-        return entityToDTO(vehicles);
+        return vehicles.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -38,9 +39,14 @@ public class VehicleService implements IVehicleService{
 
     @Override
     public VehicleDTO updateVehicle(Long id, VehicleDTO dto) {
-        verifyVehicleExists(id);
-        repository.save(mapToEntity(dto));
-        return dto;
+        Vehicle vehicle = verifyVehicleExists(id);
+        vehicle.setPatent(dto.getPatent());
+        vehicle.setBrand(dto.getBrand());
+        vehicle.setModel(dto.getModel());
+        vehicle.setYearOfProduction(dto.getYearOfProduction());
+        vehicle.setNumberOfWheels(dto.getNumberOfWheels());
+        repository.save(vehicle);
+        return mapToDTO(vehicle);
     }
 
     @Override
@@ -48,6 +54,46 @@ public class VehicleService implements IVehicleService{
         Vehicle vehicle = verifyVehicleExists(id);
         repository.delete(vehicle);
         return new MessageDTO("Delete vehicle successfully.");
+    }
+
+    @Override
+    public List<VehiclePatentDTO> getAllPatents() {
+        List<VehiclePatent> vehicles = repository.getAllPatents();
+        return vehicles.stream()
+                .map(this::mapVehiclePatentToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VehiclePatentBrandDTO> getPatentAndBrandByYearOfManufacture() {
+        List<VehiclePatentBrand> vehicles = repository.getPatentAndBrandByYearOfManufacture();
+        return vehicles.stream()
+                .map(this::mapVehiclePatentBrandToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VehiclePatentDTO> getPatentByFourWheelsAndManufactureCurrentYear() {
+        List<VehiclePatent> vehicles = repository.getPatentByFourWheelsAndManufactureCurrentYear();
+        return vehicles.stream()
+                .map(this::mapVehiclePatentToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VehiclePatentBrandModelDTO> getPatentBrandModelByAccidentWithLossGreaterThan10000() {
+        List<VehiclePatentBrandModel> vehicles = repository.getPatentBrandModelByAccidentWithLossGreaterThan10000();
+        return vehicles.stream()
+                .map(this::mapVehiclePatentBrandModelToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VehiclePatentBrandLossDTO> getVehicleDetailsWithTotalLossGreaterThan10000() {
+        List<VehiclePatentBrandLoss> vehicles = repository.getVehicleDetailsWithTotalLossGreaterThan10000();
+        return vehicles.stream()
+                .map(this::mapVehiclePatentBrandLossToDTO)
+                .collect(Collectors.toList());
     }
 
     private Vehicle verifyVehicleExists(Long id){
@@ -58,8 +104,34 @@ public class VehicleService implements IVehicleService{
         return vehicle;
     }
 
-    private List<VehicleDTO> entityToDTO(List<Vehicle> vehicles) {
-        return vehicles.stream().map(this::mapToDTO).collect(Collectors.toList());
+    private VehiclePatentBrandLossDTO mapVehiclePatentBrandLossToDTO(VehiclePatentBrandLoss vehicle){
+        VehiclePatentBrandLossDTO vehicleDTO = new VehiclePatentBrandLossDTO();
+        vehicleDTO.setBrand(vehicle.getBrand());
+        vehicleDTO.setPatent(vehicle.getPatent());
+        vehicleDTO.setModel(vehicle.getModel());
+        vehicleDTO.setEconomicLoss(vehicle.getEconomicLoss());
+        return vehicleDTO;
+    }
+
+    private VehiclePatentBrandModelDTO mapVehiclePatentBrandModelToDTO(VehiclePatentBrandModel vehicle){
+        VehiclePatentBrandModelDTO vehicleDTO = new VehiclePatentBrandModelDTO();
+        vehicleDTO.setBrand(vehicle.getBrand());
+        vehicleDTO.setPatent(vehicle.getPatent());
+        vehicleDTO.setModel(vehicle.getModel());
+        return vehicleDTO;
+    }
+
+    private VehiclePatentBrandDTO mapVehiclePatentBrandToDTO(VehiclePatentBrand vehicle){
+        VehiclePatentBrandDTO vehicleDTO = new VehiclePatentBrandDTO();
+        vehicleDTO.setBrand(vehicle.getBrand());
+        vehicleDTO.setPatent(vehicle.getPatent());
+        return vehicleDTO;
+    }
+
+    private VehiclePatentDTO mapVehiclePatentToDTO(VehiclePatent vehicle){
+        VehiclePatentDTO vehicleDTO = new VehiclePatentDTO();
+        vehicleDTO.setPatent(vehicle.getPatent());
+        return vehicleDTO;
     }
 
     private VehicleDTO mapToDTO(Vehicle vehicle) {

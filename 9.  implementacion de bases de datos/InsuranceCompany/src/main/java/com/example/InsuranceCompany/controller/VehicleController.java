@@ -38,4 +38,29 @@ public class VehicleController {
         return new ResponseEntity<>(service.deleteVehicle(id), HttpStatus.OK);
     }
 
+    @GetMapping("/getAllPatents")
+    public ResponseEntity<?> getAllPatents() {
+        return new ResponseEntity<>(service.getAllPatents(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getPatentByYearOfManufacture")
+    public ResponseEntity<?> getPatentAndBrandByYearOfManufacture() {
+        return new ResponseEntity<>(service.getPatentAndBrandByYearOfManufacture(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getPatentByFourWheelsAndManufactureCurrentYear")
+    public ResponseEntity<?> getPatentByFourWheelsAndManufactureCurrentYear() {
+        return new ResponseEntity<>(service.getPatentByFourWheelsAndManufactureCurrentYear(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getPatentBrandModelByAccidentWithLossGreaterThan10000")
+    public ResponseEntity<?> getPatentBrandModelByAccidentWithLossGreaterThan10000() {
+        return new ResponseEntity<>(service.getPatentBrandModelByAccidentWithLossGreaterThan10000(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getVehicleDetailsWithTotalLossGreaterThan10000")
+    public ResponseEntity<?> getVehicleDetailsWithTotalLossGreaterThan10000() {
+        return new ResponseEntity<>(service.getVehicleDetailsWithTotalLossGreaterThan10000(), HttpStatus.OK);
+    }
+
 }

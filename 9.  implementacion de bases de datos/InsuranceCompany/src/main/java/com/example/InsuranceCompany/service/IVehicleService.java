@@ -1,7 +1,6 @@
 package com.example.InsuranceCompany.service;
 
-import com.example.InsuranceCompany.dto.MessageDTO;
-import com.example.InsuranceCompany.dto.VehicleDTO;
+import com.example.InsuranceCompany.dto.*;
 
 import java.util.List;
 
@@ -12,4 +11,9 @@ public interface IVehicleService {
     MessageDTO addvehicle(VehicleDTO vehicle);
     VehicleDTO updateVehicle(Long id, VehicleDTO vehicle);
     MessageDTO deleteVehicle(Long id);
+    List<VehiclePatentDTO> getAllPatents();
+    List<VehiclePatentBrandDTO> getPatentAndBrandByYearOfManufacture();
+    List<VehiclePatentDTO> getPatentByFourWheelsAndManufactureCurrentYear();
+    List<VehiclePatentBrandModelDTO> getPatentBrandModelByAccidentWithLossGreaterThan10000();
+    List<VehiclePatentBrandLossDTO> getVehicleDetailsWithTotalLossGreaterThan10000();
 }
