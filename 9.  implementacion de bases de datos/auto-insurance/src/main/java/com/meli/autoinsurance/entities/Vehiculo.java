@@ -18,7 +18,7 @@ public class Vehiculo {
     private String marca;
     private String modelo;
     @Column(name="anio_de_fabricacion")
-    private String anioDeFabricacion;
+    private Integer anioDeFabricacion;
     @Column(name="cantidad_de_ruedas")
     private Integer cantidadDeRuedas;
 }
