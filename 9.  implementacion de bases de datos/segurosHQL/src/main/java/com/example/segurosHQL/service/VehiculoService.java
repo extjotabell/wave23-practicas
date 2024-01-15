@@ -1,16 +1,14 @@
 package com.example.segurosHQL.service;
 
+import com.example.segurosHQL.model.dto.RespuestaDTO;
 import com.example.segurosHQL.model.dto.VehiculoDTO;
 import com.example.segurosHQL.model.entity.Vehiculo;
 import com.example.segurosHQL.repository.IVehiculoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class VehiculoService implements IVehiculoService{
@@ -49,11 +47,23 @@ public class VehiculoService implements IVehiculoService{
     @Override
     public List<VehiculoDTO> patentesAnioRuedas() {
         List<Vehiculo> vehiculos = repository.patentesAnioRuedas();
-        vehiculos.forEach(vehiculo -> System.out.println(vehiculo.toString()));
         return vehiculos.stream()
                 .map(vehiculo -> mapper.convertValue(vehiculo, VehiculoDTO.class))
                 .toList();
     }
 
+    @Override
+    public List<VehiculoDTO> perdidamayor() {
+        List<Vehiculo> vehiculos = repository.perdidamayor();
+        return vehiculos.stream()
+                .map(vehiculo -> mapper.convertValue(vehiculo, VehiculoDTO.class))
+                .toList();
+    }
 
+    @Override
+    public List<RespuestaDTO> perdidamayorvista() {
+        List<Object[]> vehiculos = repository.perdidamayorvista();
+        List<RespuestaDTO> respuesta = vehiculos.stream().map(v-> new RespuestaDTO("Patente: " + v[0] + " Marca: " + v[1] + " Modelo: " + v[2] + " Perdida: " + v[3])).toList();
+        return respuesta;
+    }
 }

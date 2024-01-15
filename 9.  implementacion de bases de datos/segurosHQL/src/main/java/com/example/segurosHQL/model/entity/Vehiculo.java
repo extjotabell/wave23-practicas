@@ -1,6 +1,5 @@
 package com.example.segurosHQL.model.entity;
 
-import com.example.segurosHQL.model.entity.Siniestro;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,8 +25,8 @@ public class Vehiculo {
     @Column(name = "cantidad_ruedas")
     private Integer cantidadRuedas;
 
-    @OneToMany
-    @JoinColumn(name = "id")
+    @OneToMany (cascade = CascadeType.ALL)
+    @JoinColumn(name = "vehiculo_id")
     private List<Siniestro> siniestros;
 }
 

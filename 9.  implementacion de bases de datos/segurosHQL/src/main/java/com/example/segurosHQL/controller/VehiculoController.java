@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -38,5 +37,14 @@ public class VehiculoController {
     }
 
     //Listar la matrícula, marca y modelo de todos los vehículos que hayan tenido un siniestro con pérdida mayor de 10000 pesos.
-    //Listar la matrícula, marca y modelo de todos los vehículos que hayan tenido un siniestro con pérdida mayor de 10000 pesos y mostrar a cuánto ascendió la pérdida total de todos ellos.
+    @GetMapping("/perdidamayor")
+    ResponseEntity<?> perdidamayor(){
+        return new ResponseEntity<>(service.perdidamayor(), HttpStatus.OK);
+    }
+    //Listar la matrícula, marca y modelo de todos los vehículos que hayan tenido un siniestro con pérdida mayor de 10000 pesos
+    // y mostrar a cuánto ascendió la pérdida total de todos ellos.
+    @GetMapping("/perdidamayorvista")
+    ResponseEntity<?> perdidamayorvista(){
+        return new ResponseEntity<>(service.perdidamayorvista(), HttpStatus.OK);
+    }
 }
