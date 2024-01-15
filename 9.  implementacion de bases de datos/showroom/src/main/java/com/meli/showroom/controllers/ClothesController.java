@@ -2,9 +2,6 @@ package com.meli.showroom.controllers;
 
 import com.meli.showroom.dtos.request.ClothesDTO;
 import com.meli.showroom.services.ClothesService;
-import lombok.Getter;
-import lombok.Value;
-import org.hibernate.annotations.AnyDiscriminatorValues;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +26,11 @@ public class ClothesController {
     @GetMapping("/{code}")
     public ResponseEntity<ClothesDTO> getClothesByCode(@PathVariable String code) {
         return new ResponseEntity<>(clothesService.getClothesByCode(code), HttpStatus.OK);
+    }
+
+    @GetMapping("/size/{size}")
+    public ResponseEntity<List<ClothesDTO>> getClothesBySize(@PathVariable String size) {
+        return new ResponseEntity<>(clothesService.getClothesBySize(size), HttpStatus.OK);
     }
 
     @PostMapping

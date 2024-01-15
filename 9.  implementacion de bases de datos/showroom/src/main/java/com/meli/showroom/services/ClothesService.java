@@ -53,4 +53,10 @@ public class ClothesService {
             return false;
         }
     }
+
+    public List<ClothesDTO> getClothesBySize(String size) {
+        return clothesRepository.findBySize(size).stream()
+                .map(clothes -> objectMapper.convertValue(clothes, ClothesDTO.class))
+                .toList();
+    }
 }
