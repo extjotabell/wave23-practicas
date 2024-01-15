@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "07caeca6-04b4-49cd-9270-c99f1b6cb446",
+		"name": "empleado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31868001"
+	},
+	"item": [
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Geronimo\",\n    \"apellido\":\"Schmidt\",\n    \"edad\":\"24\",\n    \"cuidad\":\"Lujan de Cuyo\",\n    \"provincia\":\"Mendoza\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/empleados/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empleados",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"3LMeDY0BzMJ_q4nPuZM7\",\n  \"nombre\": \"Geronimo\",\n  \"apellido\": \"Schmidt\",\n  \"edad\": 23,\n  \"cuidad\": \"Calchin\",\n  \"provincia\": \"Cordoba\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/empleados/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empleados",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/empleados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empleados"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
