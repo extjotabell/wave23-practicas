@@ -11,4 +11,7 @@ import java.util.List;
 public interface AutoRepository extends CrudRepository<Auto, Long> {
     @Query("select a.patente from Auto a ")
     List<String> getPatentes();
+
+    @Query("select a.patente, a.marca from Auto a order by a.anioFabricacion asc")
+    List<String> getPatenteMarcaOrdenado();
 }

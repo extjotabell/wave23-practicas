@@ -27,5 +27,9 @@ public class AutoController {
     public ResponseEntity<?> getPatentes() {
         return new ResponseEntity<>(autoService.getPatentes(), HttpStatus.OK);
     }
+    @GetMapping("/patente/marca")
+    public ResponseEntity<?> getPatenteMarcaOrdenado() {
+        return new ResponseEntity<>(autoService.getPatenteMarcaOrdenado(), HttpStatus.OK);
+    }
 
 }

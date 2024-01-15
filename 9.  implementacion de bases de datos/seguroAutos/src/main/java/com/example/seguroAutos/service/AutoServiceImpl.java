@@ -28,4 +28,9 @@ public class AutoServiceImpl implements  AutoService{
         autoRepository.save(autoDtoToAuto(auto));
         return new MessageDto("Nuevo auto registrado");
     }
+
+    @Override
+    public List<String> getPatenteMarcaOrdenado() {
+        return autoRepository.getPatenteMarcaOrdenado();
+    }
 }

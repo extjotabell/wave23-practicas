@@ -9,4 +9,6 @@ public interface AutoService {
     List<String> getPatentes();
 
     MessageDto addAuto(AutoDto auto);
+
+    List<String> getPatenteMarcaOrdenado();
 }
