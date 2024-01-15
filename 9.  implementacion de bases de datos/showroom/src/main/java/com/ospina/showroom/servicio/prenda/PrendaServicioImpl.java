@@ -1,11 +1,13 @@
 package com.ospina.showroom.servicio.prenda;
 
+import com.ospina.showroom.excepcion.NotFoundException;
 import com.ospina.showroom.modelo.dto.request.PrendaRequestDto;
 import com.ospina.showroom.modelo.entidad.Prenda;
 import com.ospina.showroom.repositorio.PrendaRepositorio;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PrendaServicioImpl implements PrendaServicio {
@@ -23,12 +25,17 @@ public class PrendaServicioImpl implements PrendaServicio {
 
     @Override
     public List<Prenda> obtenerPrendas(String nombre) {
-        return nombre != null ? prendaRepositorio.findByNombre(nombre) : (List<Prenda>) prendaRepositorio.findAll();
+        List<Prenda> prendas = nombre != null ? prendaRepositorio.findByNombre(nombre) : (List<Prenda>) prendaRepositorio.findAll();
+        if (prendas.isEmpty()) {
+            throw new NotFoundException("No se encontraron prendas con el nombre proporcionado: " + nombre);
+        }
+        return prendas;
     }
 
     @Override
     public Prenda obtenerPrendaPorCodigo(Long code) {
-        return prendaRepositorio.findByCodigo(code);
+        return Optional.ofNullable(prendaRepositorio.findByCodigo(code))
+                .orElseThrow(() -> new NotFoundException("No se encontró una prenda con el codigo proporcionado: " + code));
     }
 
     @Override
@@ -44,7 +51,11 @@ public class PrendaServicioImpl implements PrendaServicio {
 
     @Override
     public List<Prenda> obtenerPrendasPorTalla(String size) {
-        return prendaRepositorio.findByTalle(size);
+        List<Prenda> prendas = prendaRepositorio.findByTalle(size);
+        if (prendas.isEmpty()) {
+            throw new NotFoundException("No se encontraron prendas con la talla proporcionada: " + size);
+        }
+        return prendas;
     }
 
     private Prenda convertirDtoAPrenda(PrendaRequestDto dto, Prenda prenda) {
