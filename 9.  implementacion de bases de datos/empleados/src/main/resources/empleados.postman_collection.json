@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "8187aa57-49cf-4385-b487-56d255979a93",
+		"name": "empleados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31834440"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Sandra\",\n    \"apellido\": \"Morales\",\n    \"edad\": \"55\",\n    \"ciudad\": \"Mar del Plata\",\n    \"provincia\": \"Buenos Aires\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/empleados/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empleados",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Matías\",\n    \"apellido\": \"Ávido\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/empleados/jRe5DY0BJJaGZsO9uUq0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empleados",
+						"jRe5DY0BJJaGZsO9uUq0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\" : \"Titulo Test Nro 2\",\n    \"autores\": [{\"nombre\": \"Marcos Luna\"}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/empleados/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empleados",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
