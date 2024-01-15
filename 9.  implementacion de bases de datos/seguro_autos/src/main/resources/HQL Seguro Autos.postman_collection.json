@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "9fcba043-9ec2-4082-a221-41aaafbb233e",
+		"name": "HQL Seguro Autos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31669715"
+	},
+	"item": [
+		{
+			"name": "Obtener patentes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/patents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"patents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener patente y marca ordenado por fecha fabricación",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/patents-brand",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"patents-brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener patente de vehículos de más de 4 ruedas y fabricados en el año actual",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/patents/filter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"patents",
+						"filter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener datos de vehículo con siniestros con pérdida mayor a 10000",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/sinister/filter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"sinister",
+						"filter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener datos de vehículo con siniestros con pérdida mayor a 10000 total",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicles/sinister/filter/total",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles",
+						"sinister",
+						"filter",
+						"total"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
