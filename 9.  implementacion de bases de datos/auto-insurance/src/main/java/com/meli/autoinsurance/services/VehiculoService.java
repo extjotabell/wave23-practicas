@@ -1,8 +1,8 @@
 package com.meli.autoinsurance.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meli.autoinsurance.dtos.PatenteMarcaDTO;
-import com.meli.autoinsurance.dtos.VehiculoDTO;
+import com.meli.autoinsurance.dtos.response.PatenteMarcaDTO;
+import com.meli.autoinsurance.dtos.response.VehiculoDTO;
 import com.meli.autoinsurance.entities.Vehiculo;
 import com.meli.autoinsurance.repositories.IVehiculoRepository;
 import org.springframework.stereotype.Service;

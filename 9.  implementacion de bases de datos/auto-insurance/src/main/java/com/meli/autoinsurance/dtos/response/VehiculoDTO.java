@@ -1,4 +1,4 @@
-package com.meli.autoinsurance.dtos;
+package com.meli.autoinsurance.dtos.response;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
 package com.meli.autoinsurance.controllers;
 
-import com.meli.autoinsurance.dtos.PatenteMarcaDTO;
-import com.meli.autoinsurance.dtos.VehiculoDTO;
+import com.meli.autoinsurance.dtos.response.PatenteMarcaDTO;
+import com.meli.autoinsurance.dtos.response.VehiculoDTO;
 import com.meli.autoinsurance.services.VehiculoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -16,5 +16,4 @@ public interface IVehiculoRepository extends JpaRepository<Vehiculo, Long> {
     //Listar la patente de todos los vehículos que tengan más de cuatro ruedas y hayan sido fabricados en el corriente año.
     @Query("SELECT V.patente FROM vehiculos V WHERE V.cantidadDeRuedas > 4 AND V.anioDeFabricacion = year(current_date())")
     List<String> getPatenteByCuatroRuedasAnioDeFabricacionActual();
-    
 }
