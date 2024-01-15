@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "54304bd3-dd1d-4801-9e3d-f75ae2285248",
+		"name": "Obras Literarias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31609463"
+	},
+	"item": [
+		{
+			"name": "crear",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Cien años de soledad\",\n    \"autor\": \"Gabriel García Márquez\",\n    \"cantidadPaginas\": 432,\n    \"editorial\": \"Editorial Sudamericana\",\n    \"anioPublicacion\": 1967\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/obraliteraria",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obraliteraria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"1984\",\n    \"autor\": \"George Orwell\",\n    \"cantidadPaginas\": 328,\n    \"editorial\": \"Secker & Warburg\",\n    \"anioPublicacion\": 1949\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/obraliteraria",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obraliteraria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtner todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar por autor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findbyname/gabriel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findbyname",
+						"gabriel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar por titulo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findbytitle/Cien",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findbytitle",
+						"Cien"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar por cantidad de paginas (mayores)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findbypages/200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findbypages",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar por año de publicación (antes)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findbyyearbefore/1950",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findbyyearbefore",
+						"1950"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar por año de publicación (después)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findbyyearafter/1950",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findbyyearafter",
+						"1950"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar por editorial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findbyeditorial/Sudamericana",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findbyeditorial",
+						"Sudamericana"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
