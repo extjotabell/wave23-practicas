@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "d95c6bcd-7712-4974-bcb1-9651994643e1",
+		"name": "Company Vehicles Insurance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612957"
+	},
+	"item": [
+		{
+			"name": "Crear un vehiculo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patent_vehicles\": \"ABC123\",\n    \"brand_vehicles\": \"Toyota\",\n    \"model_vehicles\": \"Corolla\",\n    \"year_build_vehicles\": 2024,\n    \"quantity_wheels_vehicles\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/insurance/vehicles/saveVehicle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insurance",
+						"vehicles",
+						"saveVehicle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un siniestro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 11,\n    \"accident_date\": \"2024-01-01\",\n    \"economic_loss\": 2093.23,\n    \"vehicle_id\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/saveAccident",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"saveAccident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar las patentes de todos los vehículos registrados.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/insurance/vehicles/patents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insurance",
+						"vehicles",
+						"patents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar la patente y la marca de todos los vehículos ordenados por año de fabricación.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/insurance/vehicles/patents-brands",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insurance",
+						"vehicles",
+						"patents-brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar la patente de todos los vehículos que tengan más de cuatro ruedas y hayan sido fabricados en el corriente año.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/insurance/vehicles/4-wheels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insurance",
+						"vehicles",
+						"4-wheels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar la matrícula, marca y modelo de todos los vehículos que hayan tenido un siniestro con pérdida mayor de 10000 pesos.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/insurance/vehicles/accidents-loss",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insurance",
+						"vehicles",
+						"accidents-loss"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar la matrícula, marca y modelo de todos los vehículos que hayan tenido un siniestro con pérdida mayor de 10000 pesos y mostrar a cuánto ascendió la pérdida total de todos ellos.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/insurance/vehicles/accidents-loss-total",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insurance",
+						"vehicles",
+						"accidents-loss-total"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
