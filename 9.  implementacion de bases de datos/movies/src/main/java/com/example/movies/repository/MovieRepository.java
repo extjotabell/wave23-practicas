@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends CrudRepository<Movie, Long> {
     @Query("select a from Actor a where a.favoriteMovie is not null")
-    //@Query("select a from Actor a")
     List<Actor> findActorsByFavoriteMovieNotNull();
 
     @Query("select a from Actor a where a.rating >=:rating")

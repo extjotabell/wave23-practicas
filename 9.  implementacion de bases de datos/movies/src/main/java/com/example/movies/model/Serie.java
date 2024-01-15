@@ -1,16 +1,15 @@
 package com.example.movies.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 
 @Getter @Setter
-@Entity @Table(name = "movies", schema = "movies_db")
-public class Movie {
+@Entity @Table(name = "series", schema = "movies_db")
+public class Serie {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", columnDefinition = "int UNSIGNED not null")
@@ -25,21 +24,14 @@ public class Movie {
     @Column(name = "title", nullable = false, length = 500)
     private String title;
 
-    @Column(name = "rating", nullable = false, precision = 3, scale = 1)
-    private BigDecimal rating;
-
-    @Column(name = "awards", columnDefinition = "int UNSIGNED not null")
-    private Long awards;
-
     @Column(name = "release_date", nullable = false)
     private Instant releaseDate;
 
-    @Column(name = "length", columnDefinition = "int UNSIGNED")
-    private Long length;
+    @Column(name = "end_date", nullable = false)
+    private Instant endDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Genre genre;
 
 }
