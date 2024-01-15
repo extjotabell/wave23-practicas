@@ -24,6 +24,11 @@ public class ClothesController {
         return new ResponseEntity<>(clothesService.getAllClothes(), HttpStatus.OK);
     }
 
+    @GetMapping("/{code}")
+    public ResponseEntity<ClothesDTO> getClothesByCode(@PathVariable String code) {
+        return new ResponseEntity<>(clothesService.getClothesByCode(code), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<ClothesDTO> createClothes(@RequestBody ClothesDTO clothesDTO) {
         return new ResponseEntity<>(clothesService.createClothes(clothesDTO), HttpStatus.CREATED);

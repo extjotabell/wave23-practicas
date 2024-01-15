@@ -27,4 +27,8 @@ public class ClothesService {
                                           .map(clothes -> objectMapper.convertValue(clothes, ClothesDTO.class))
                                           .toList();
     }
+
+    public ClothesDTO getClothesByCode(String code) {
+        return objectMapper.convertValue(clothesRepository.findByCode(code), ClothesDTO.class);
+    }
 }
