@@ -12,4 +12,6 @@ public interface IClothesService {
     ClothesDTO findByCode(Long code);
 
     MessageDTO update(Long code, ClothesDTO clothesDTO);
+
+    MessageDTO delete(Long code);
 }

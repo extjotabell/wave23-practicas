@@ -62,4 +62,13 @@ public class ClothesServiceImpl implements IClothesService {
         repository.save(ClothesMapper.map(clothes, size));
         return new MessageDTO("Se actualizó correctamente la prenda con code: " + code);
     }
+
+    @Override
+    public MessageDTO delete(Long code) {
+        Clothes clothes = repository.findById(code)
+                .orElseThrow(() -> new NotFoundException("No se encontraron resultados para la prenda con code: " + code));
+
+        repository.delete(clothes);
+        return new MessageDTO("Se eliminó correctamente la prenda con code: " + code);
+    }
 }

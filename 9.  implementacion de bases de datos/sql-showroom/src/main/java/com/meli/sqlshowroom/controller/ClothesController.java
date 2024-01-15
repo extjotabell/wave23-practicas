@@ -35,4 +35,9 @@ public class ClothesController {
     public ResponseEntity<?> update(@PathVariable Long code, @RequestBody ClothesDTO clothesDTO) {
         return new ResponseEntity<>(service.update(code, clothesDTO), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{code}")
+    public ResponseEntity<?> delete(@PathVariable Long code) {
+        return new ResponseEntity<>(service.delete(code), HttpStatus.OK);
+    }
 }
