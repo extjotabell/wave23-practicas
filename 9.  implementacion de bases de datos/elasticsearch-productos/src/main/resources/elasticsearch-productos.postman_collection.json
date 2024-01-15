@@ -1,0 +1,36 @@
+{
+	"info": {
+		"_postman_id": "3166a45c-f7f1-4a02-806d-8b50e4fb82a4",
+		"name": "elasticsearch-productos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cargar nuevo producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"12345\",\n  \"name\": \"Sample Product\",\n  \"type\": \"Electronics\",\n  \"price\": \"29.99\",\n  \"costPrice\": \"15.50\",\n  \"stock\": \"100\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
