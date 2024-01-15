@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "12893acf-8896-47d4-bf8e-ee597365216e",
+		"name": "sql-showroom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear una nueva prenda",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": 1,\n  \"name\": \"Remera\",\n  \"brand\": \"Example Brand\",\n  \"color\": \"Blue\",\n  \"size_id\": 1,\n  \"stock\": 50,\n  \"selling_price\": 29.99\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/clothes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clothes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Devolver todas las prendas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clothes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clothes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Devolver una prenda por code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clothes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clothes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una prenda en particular",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": 1,\n  \"name\": \"New name\",\n  \"brand\": \"New Brand\",\n  \"color\": \"New color\",\n  \"size_id\": 2,\n  \"stock\": 50,\n  \"selling_price\": 29.99\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/clothes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clothes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una prenda",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clothes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clothes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Devolver todas las prendas de un talle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clothes/size/Small",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clothes",
+						"size",
+						"Small"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todas las prendas en cuyo nombre contenga param",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clothes/name?name=remera",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clothes",
+						"name"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "remera"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
