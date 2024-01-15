@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "60311ba2-94ba-49f0-bfd7-ee40f9aca422",
+		"name": "obras-elastic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31868001"
+	},
+	"item": [
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"El Principito\",\n    \"autor\": \"Juan\",\n    \"cantidadPaginas\": 11,\n    \"editorial\": \"Sugus\",\n    \"fechaPublicacion\": 2011\n}\n\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/obras/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find by autor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/findByAutor?nombreAutor=James",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"findByAutor"
+					],
+					"query": [
+						{
+							"key": "nombreAutor",
+							"value": "James"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByTitle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/filterByTitle/J.K",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"filterByTitle",
+						"J.K"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find by pages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/findByPages/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"findByPages",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find by fecha less than",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/findByYearLessThan/2008",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"findByYearLessThan",
+						"2008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find by fecha greater than",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/findByYearGreaterThan/2008",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"findByYearGreaterThan",
+						"2008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find by editorial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/obras/findByEditorial/Sugus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"obras",
+						"findByEditorial",
+						"Sugus"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
