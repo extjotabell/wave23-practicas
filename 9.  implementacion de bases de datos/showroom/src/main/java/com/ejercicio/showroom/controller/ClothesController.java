@@ -44,4 +44,9 @@ public class ClothesController {
     public ResponseEntity<?> getALlClothesBySize(@PathVariable String size) {
         return new ResponseEntity<>(clothesService.getAllClothesBySize(size), HttpStatus.OK);
     }
+
+    @GetMapping("")
+    public ResponseEntity<?> getAllClothes() {
+        return new ResponseEntity<>(clothesService.getAllClothes(), HttpStatus.OK);
+    }
 }

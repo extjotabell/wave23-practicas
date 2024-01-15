@@ -1,4 +1,4 @@
-package com.ejercicio.showroom.service;
+package com.ejercicio.showroom.service.Interface;
 
 
 import com.ejercicio.showroom.dto.ClothesDTO;

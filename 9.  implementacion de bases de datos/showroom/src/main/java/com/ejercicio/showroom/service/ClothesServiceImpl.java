@@ -3,6 +3,7 @@ package com.ejercicio.showroom.service;
 import com.ejercicio.showroom.dto.ClothesDTO;
 import com.ejercicio.showroom.model.Clothes;
 import com.ejercicio.showroom.repository.IClothesRepository;
+import com.ejercicio.showroom.service.Interface.IClothesService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.persistence.EntityNotFoundException;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ClothesServiceImpl implements IClothesService{
+public class ClothesServiceImpl implements IClothesService {
     private IClothesRepository clothesRepository;
 
     public ClothesServiceImpl(IClothesRepository clothesRepository) {
