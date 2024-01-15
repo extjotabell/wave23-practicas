@@ -17,4 +17,17 @@ public class ClothesMapper {
                 size
         );
     }
+
+    public static ClothesDTO map(Clothes clothes) {
+        return new ClothesDTO(
+                clothes.getId(),
+                clothes.getCode(),
+                clothes.getName(),
+                clothes.getBrand(),
+                clothes.getColor(),
+                clothes.getSize().getId(),
+                clothes.getStock(),
+                clothes.getSellingPrice()
+        );
+    }
 }
