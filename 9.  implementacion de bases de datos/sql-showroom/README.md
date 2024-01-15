@@ -3,7 +3,11 @@
 
 Ejercitación extra, práctica individual de implementación de bases de datos.
 
-## Preparación de la Tabla Sizes
+## Utilizando MySQL
+En caso de utilizar MySQL ejecutar el siguiente [Script SQL](https://github.com/extjotabell/wave23-practicas/blob/leiva_florencia/9.%20%20implementacion%20de%20bases%20de%20datos/sql-showroom/src/main/resources/showroom.sql)
+
+## Utilizando H2
+### Preparación de la Tabla Sizes
 
 Antes de realizar cualquier inserción de datos en la aplicación, es necesario insertar los siguientes datos en la tabla "sizes".
 
