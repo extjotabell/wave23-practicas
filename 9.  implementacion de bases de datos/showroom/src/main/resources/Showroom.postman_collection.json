@@ -1,0 +1,396 @@
+{
+	"info": {
+		"_postman_id": "9dd3090a-19c7-4569-93cb-34a91d18e2ca",
+		"name": "Showroom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31669715"
+	},
+	"item": [
+		{
+			"name": "Prenda",
+			"item": [
+				{
+					"name": "Agregar prenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigo\": 25,\n    \"nombre\": \"Jean elastizado\",\n    \"tipo\": \"Pantalon\",\n    \"marca\": \"Zara\",\n    \"color\": \"Azul\",\n    \"talle\": 38,\n    \"cantidad\": 20,\n    \"precio_venta\": 10500.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todas las prendas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clothes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener prendas por código",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/get/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"get",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar prendas por código",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Jean elastizado actualizado\",\n    \"tipo\": \"Pantalon\",\n    \"marca\": \"Zara\",\n    \"color\": \"Azul\",\n    \"talle\": 38,\n    \"cantidad\": 20,\n    \"precio_venta\": 10500.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/update/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"update",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar prendas por código",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Jean elastizado actualizado\",\n    \"tipo\": \"Pantalon\",\n    \"marca\": \"Zara\",\n    \"color\": \"Azul\",\n    \"talle\": 38,\n    \"cantidad\": 20,\n    \"precio_venta\": 10500.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/delete/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"delete",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener prendas por talle",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Jean elastizado actualizado\",\n    \"tipo\": \"Pantalon\",\n    \"marca\": \"Zara\",\n    \"color\": \"Azul\",\n    \"talle\": 38,\n    \"cantidad\": 20,\n    \"precio_venta\": 10500.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/size/38",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"size",
+								"38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener prendas por nombre",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Jean elastizado actualizado\",\n    \"tipo\": \"Pantalon\",\n    \"marca\": \"Zara\",\n    \"color\": \"Azul\",\n    \"talle\": 38,\n    \"cantidad\": 20,\n    \"precio_venta\": 10500.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clothes/get-by-name?name=jean",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clothes",
+								"get-by-name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "jean"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Venta",
+			"item": [
+				{
+					"name": "Agregar una venta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha\": \"2023-02-25\",\n    \"total\": 520.5,\n    \"medio_pago\": \"Efectivo\",\n    \"prendas\": [\n        {\n            \"codigo\": 25\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sale",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todas las ventas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener la venta con id X",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar una venta X",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha\": \"2023-02-25\",\n    \"total\": 520.5,\n    \"medio_pago\": \"Tarjeta\",\n    \"prendas\": [\n        {\n            \"codigo\": 25\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sale/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar una venta X",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener ventas de una fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale/get-by-date?date=2023-02-25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"get-by-date"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-02-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener prendas de venta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/sale/clothes/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sale",
+								"clothes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
