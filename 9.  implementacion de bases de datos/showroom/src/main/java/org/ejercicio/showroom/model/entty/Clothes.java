@@ -1,6 +1,5 @@
 package org.ejercicio.showroom.model.entty;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,10 +10,9 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(indexName = "showroom")
+@Document(indexName = "clothes")
 @TypeAlias("clothes")
 public class Clothes {
-    @jakarta.persistence.Id
     @Id
     private String id;
     private String code;

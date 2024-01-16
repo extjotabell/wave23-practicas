@@ -3,7 +3,6 @@ package org.ejercicio.showroom.service;
 import org.ejercicio.showroom.model.dto.ClothesDto;
 import org.ejercicio.showroom.model.entty.Clothes;
 import org.ejercicio.showroom.repository.IClothesRepository;
-import org.ejercicio.showroom.repository.ISaleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -12,40 +11,38 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 @Service
-public class ShowroomServiceImpl implements IShowroomService {
+public class ClothesServiceImpl implements IClothesService {
 
-    private final IClothesRepository clothesRepository;
-    private final ISaleRepository saleRepository;
+    private final IClothesRepository repository;
 
     private final ModelMapper modelMapper = new ModelMapper();
 
-    public ShowroomServiceImpl(IClothesRepository clothesRepository, ISaleRepository saleRepository) {
-        this.clothesRepository = clothesRepository;
-        this.saleRepository = saleRepository;
+    public ClothesServiceImpl(IClothesRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public ClothesDto saveClothes(ClothesDto clothesDto) {
-        Clothes clothes = clothesRepository.save(modelMapper.map(clothesDto, Clothes.class));
+        Clothes clothes = repository.save(modelMapper.map(clothesDto, Clothes.class));
         return modelMapper.map(clothes, ClothesDto.class);
     }
 
     @Override
     public List<ClothesDto> getClothes() {
-        Iterable<Clothes> iterable = clothesRepository.findAll();
+        Iterable<Clothes> iterable = repository.findAll();
         return getClothesDtos(StreamSupport
                 .stream(iterable.spliterator(), false));
     }
 
     @Override
     public ClothesDto getClothesCode(String code) {
-        Clothes clothes = clothesRepository.findByCode(code);
+        Clothes clothes = repository.findByCode(code);
         return modelMapper.map(clothes, ClothesDto.class);
     }
 
     @Override
     public ClothesDto editClothes(ClothesDto clothesDto, String code) {
-        Clothes clothes = clothesRepository.findByCode(code);
+        Clothes clothes = repository.findByCode(code);
         clothes.setCode(clothesDto.getCode());
         clothes.setName(clothesDto.getName());
         clothes.setType(clothesDto.getType());
@@ -54,19 +51,19 @@ public class ShowroomServiceImpl implements IShowroomService {
         clothes.setSize(clothesDto.getSize());
         clothes.setCount(clothesDto.getCount());
         clothes.setPrice(clothesDto.getPrice());
-        clothesRepository.save(clothes);
+        repository.save(clothes);
         return modelMapper.map(clothes, ClothesDto.class);
     }
 
     @Override
     public void deleteClothes(String code) {
-        Clothes clothes = clothesRepository.findByCode(code);
-        clothesRepository.delete(clothes);
+        Clothes clothes = repository.findByCode(code);
+        repository.delete(clothes);
     }
 
     @Override
     public List<ClothesDto> getClothesSize(Integer size) {
-        List<Clothes> clothes = clothesRepository.findBySize(size);
+        List<Clothes> clothes = repository.findBySize(size);
         return getClothesDtos(clothes
                 .stream());
     }
@@ -79,7 +76,7 @@ public class ShowroomServiceImpl implements IShowroomService {
 
     @Override
     public List<ClothesDto> getClothesName(String name) {
-        List<Clothes> clothes = clothesRepository.findByName(name);
+        List<Clothes> clothes = repository.findByName(name);
         return getClothesDtos(clothes
                 .stream());
     }

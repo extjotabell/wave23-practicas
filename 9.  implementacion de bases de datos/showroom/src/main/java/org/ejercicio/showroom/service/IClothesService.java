@@ -4,7 +4,7 @@ import org.ejercicio.showroom.model.dto.ClothesDto;
 
 import java.util.List;
 
-public interface IShowroomService {
+public interface IClothesService {
     ClothesDto saveClothes(ClothesDto clothesDto);
 
     List<ClothesDto> getClothes();

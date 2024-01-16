@@ -1,19 +1,19 @@
 package org.ejercicio.showroom.controller;
 
 import org.ejercicio.showroom.model.dto.ClothesDto;
-import org.ejercicio.showroom.service.IShowroomService;
-import org.ejercicio.showroom.service.ShowroomServiceImpl;
+import org.ejercicio.showroom.service.IClothesService;
+import org.ejercicio.showroom.service.ClothesServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/clothes")
-public class ShowroomController {
+public class ClothesController {
 
-    private final IShowroomService service;
+    private final IClothesService service;
 
-    public ShowroomController(ShowroomServiceImpl service) {
+    public ClothesController(ClothesServiceImpl service) {
         this.service = service;
     }
 

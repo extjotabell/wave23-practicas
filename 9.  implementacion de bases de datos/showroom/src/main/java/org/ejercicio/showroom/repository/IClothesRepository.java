@@ -15,8 +15,6 @@ public interface IClothesRepository extends ElasticsearchRepository<Clothes, Str
     @Query("{\"match\": {\"size\": \"?0\"}}")
     List<Clothes> findBySize(Integer size);
 
-
     @Query("{\"match\": {\"name\": \"?0\"}}")
-
     List<Clothes> findByName(String name);
 }
