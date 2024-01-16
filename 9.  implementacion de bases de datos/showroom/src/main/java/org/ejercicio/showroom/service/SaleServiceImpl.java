@@ -53,4 +53,10 @@ public class SaleServiceImpl implements ISaleService {
         repository.save(sale);
         return modelMapper.map(sale, SaleDto.class);
     }
+
+    @Override
+    public void deleteSale(Integer number) {
+        Sale sale = repository.findByNumber(number);
+        repository.delete(sale);
+    }
 }

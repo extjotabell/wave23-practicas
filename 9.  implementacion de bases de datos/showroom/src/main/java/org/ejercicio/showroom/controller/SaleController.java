@@ -38,4 +38,10 @@ public class SaleController {
                                         @PathVariable Integer number) {
         return new ResponseEntity<>(service.editSale(saleDto, number), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{number:[0-9]+}")
+    public ResponseEntity<?> deleteClothes(@PathVariable Integer number) {
+        service.deleteSale(number);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
