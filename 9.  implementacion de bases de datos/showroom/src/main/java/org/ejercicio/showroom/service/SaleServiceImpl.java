@@ -1,13 +1,12 @@
 package org.ejercicio.showroom.service;
 
-import org.ejercicio.showroom.model.dto.ClothesDto;
 import org.ejercicio.showroom.model.dto.SaleDto;
-import org.ejercicio.showroom.model.entty.Clothes;
 import org.ejercicio.showroom.model.entty.Sale;
 import org.ejercicio.showroom.repository.ISaleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
@@ -58,5 +57,14 @@ public class SaleServiceImpl implements ISaleService {
     public void deleteSale(Integer number) {
         Sale sale = repository.findByNumber(number);
         repository.delete(sale);
+    }
+
+    @Override
+    public List<SaleDto> getSalesDate(LocalDate date) {
+        List<Sale> sales = repository.findAllByDate(date);
+        return sales
+                .stream()
+                .map(sale -> modelMapper.map(sale, SaleDto.class))
+                .toList();
     }
 }

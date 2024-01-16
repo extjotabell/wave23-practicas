@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("/api/sale")
 public class SaleController {
@@ -43,5 +45,11 @@ public class SaleController {
     public ResponseEntity<?> deleteClothes(@PathVariable Integer number) {
         service.deleteSale(number);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @GetMapping(params = "date")
+    public ResponseEntity<?> getSalesDate(@RequestParam LocalDate date){
+        return new ResponseEntity<>(service.getSalesDate(date), HttpStatus.OK);
     }
 }

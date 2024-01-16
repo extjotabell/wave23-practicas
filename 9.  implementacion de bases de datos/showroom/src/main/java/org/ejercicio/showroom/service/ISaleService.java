@@ -2,6 +2,7 @@ package org.ejercicio.showroom.service;
 
 import org.ejercicio.showroom.model.dto.SaleDto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ISaleService {
@@ -14,4 +15,6 @@ public interface ISaleService {
     SaleDto editSale(SaleDto saleDto, Integer number);
 
     void deleteSale(Integer number);
+
+    List<SaleDto> getSalesDate(LocalDate date);
 }
