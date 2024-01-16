@@ -25,6 +25,12 @@ public class SaleController {
     @GetMapping
     public ResponseEntity<?> getSales() {
         return new ResponseEntity<>(service.getSales(), HttpStatus.OK);
-
     }
+
+    @GetMapping("/{number:[0-9]+}")
+    public ResponseEntity<?> getClothesCode(@PathVariable Integer number) {
+        return new ResponseEntity<>(service.getSaleNumber(number), HttpStatus.OK);
+    }
+
+    
 }

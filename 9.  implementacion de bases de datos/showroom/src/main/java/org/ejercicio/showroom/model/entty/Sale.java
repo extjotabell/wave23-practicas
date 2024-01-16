@@ -22,6 +22,7 @@ import static org.springframework.data.elasticsearch.annotations.FieldType.Date;
 public class Sale {
     @Id
     private String id;
+    private Integer number;
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Field(type = Date, pattern = "yyyy-MM-dd")
     private LocalDate date;

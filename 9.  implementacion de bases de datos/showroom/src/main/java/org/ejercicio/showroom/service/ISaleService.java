@@ -8,4 +8,6 @@ public interface ISaleService {
     SaleDto saveSale(SaleDto saleDto);
 
     List<SaleDto> getSales();
+
+    SaleDto getSaleNumber(Integer number);
 }

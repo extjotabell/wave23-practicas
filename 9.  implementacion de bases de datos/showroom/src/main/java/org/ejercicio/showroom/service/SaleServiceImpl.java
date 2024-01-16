@@ -1,12 +1,13 @@
 package org.ejercicio.showroom.service;
 
+import org.ejercicio.showroom.model.dto.ClothesDto;
 import org.ejercicio.showroom.model.dto.SaleDto;
+import org.ejercicio.showroom.model.entty.Clothes;
 import org.ejercicio.showroom.model.entty.Sale;
 import org.ejercicio.showroom.repository.ISaleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
@@ -34,5 +35,11 @@ public class SaleServiceImpl implements ISaleService {
                 .stream(saleIterator.spliterator(), false)
                 .map(sale -> modelMapper.map(sale, SaleDto.class))
                 .toList();
+    }
+
+    @Override
+    public SaleDto getSaleNumber(Integer number) {
+        Sale sale = repository.findByNumber(number);
+        return modelMapper.map(sale, SaleDto.class);
     }
 }

@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class SaleDto {
     private String id;
+    private Integer number;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
     private Double total;
