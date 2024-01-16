@@ -1,6 +1,8 @@
 package org.ejercicio.showroom.service;
 
+import org.ejercicio.showroom.model.dto.ClothesDto;
 import org.ejercicio.showroom.model.dto.SaleDto;
+import org.ejercicio.showroom.model.entty.Clothes;
 import org.ejercicio.showroom.model.entty.Sale;
 import org.ejercicio.showroom.repository.ISaleRepository;
 import org.modelmapper.ModelMapper;
@@ -65,6 +67,17 @@ public class SaleServiceImpl implements ISaleService {
         return sales
                 .stream()
                 .map(sale -> modelMapper.map(sale, SaleDto.class))
+                .toList();
+    }
+
+    @Override
+    public List<ClothesDto> getClothesOfSale(Integer number) {
+        Sale sale = repository.findByNumber(number);
+        List<Clothes> clothes = sale.getClothesList();
+
+        return clothes
+                .stream()
+                .map(cloth -> modelMapper.map(cloth, ClothesDto.class))
                 .toList();
     }
 }

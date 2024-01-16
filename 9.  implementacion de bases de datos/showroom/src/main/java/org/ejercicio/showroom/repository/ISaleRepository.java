@@ -1,5 +1,6 @@
 package org.ejercicio.showroom.repository;
 
+import org.ejercicio.showroom.model.entty.Clothes;
 import org.ejercicio.showroom.model.entty.Sale;
 import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

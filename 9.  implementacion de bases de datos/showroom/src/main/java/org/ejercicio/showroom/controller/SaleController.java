@@ -49,7 +49,12 @@ public class SaleController {
 
 
     @GetMapping(params = "date")
-    public ResponseEntity<?> getSalesDate(@RequestParam LocalDate date){
+    public ResponseEntity<?> getSalesDate(@RequestParam LocalDate date) {
         return new ResponseEntity<>(service.getSalesDate(date), HttpStatus.OK);
+    }
+
+    @GetMapping("/clothes/{number}")
+    public ResponseEntity<?> getClothesOfSale(@PathVariable Integer number) {
+        return new ResponseEntity<>(service.getClothesOfSale(number), HttpStatus.OK);
     }
 }
