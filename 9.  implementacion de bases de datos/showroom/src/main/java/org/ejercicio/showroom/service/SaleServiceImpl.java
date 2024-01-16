@@ -42,4 +42,15 @@ public class SaleServiceImpl implements ISaleService {
         Sale sale = repository.findByNumber(number);
         return modelMapper.map(sale, SaleDto.class);
     }
+
+    @Override
+    public SaleDto editSale(SaleDto saleDto, Integer number) {
+        Sale sale = repository.findByNumber(number);
+        sale.setDate(saleDto.getDate());
+        sale.setTotal(saleDto.getTotal());
+        sale.setPaymentMethod(saleDto.getPaymentMethod());
+        sale.setClothesList(saleDto.getClothesList());
+        repository.save(sale);
+        return modelMapper.map(sale, SaleDto.class);
+    }
 }

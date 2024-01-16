@@ -1,5 +1,6 @@
 package org.ejercicio.showroom.controller;
 
+import org.ejercicio.showroom.model.dto.ClothesDto;
 import org.ejercicio.showroom.model.dto.SaleDto;
 import org.ejercicio.showroom.service.ISaleService;
 import org.ejercicio.showroom.service.SaleServiceImpl;
@@ -32,5 +33,9 @@ public class SaleController {
         return new ResponseEntity<>(service.getSaleNumber(number), HttpStatus.OK);
     }
 
-    
+    @PutMapping("/{number:[0-9]+}")
+    public ResponseEntity<?> getClothes(@RequestBody SaleDto saleDto,
+                                        @PathVariable Integer number) {
+        return new ResponseEntity<>(service.editSale(saleDto, number), HttpStatus.OK);
+    }
 }
