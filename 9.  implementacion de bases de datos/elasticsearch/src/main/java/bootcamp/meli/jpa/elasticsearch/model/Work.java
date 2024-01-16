@@ -8,6 +8,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @AllArgsConstructor
@@ -19,6 +20,7 @@ public class Work {
 
   private String description;
 
+  @Setter
   @Field(type = FieldType.Nested, includeInParent = true)
   private FinishedInfo finishedInfo;
 
