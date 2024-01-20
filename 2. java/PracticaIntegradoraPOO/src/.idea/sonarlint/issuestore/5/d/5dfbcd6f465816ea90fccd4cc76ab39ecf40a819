@@ -1,0 +1,14 @@
+
+]
+java:S1854
+";Remove this useless assignment to local variable "dominic".(ŸýË†þÿÿÿÿ8áÀ ¨Ò1
+U
+java:S1854	"8Remove this useless assignment to local variable "zeus".(ó¹‡á8áÀ ¨Ò1
+F
+java:S1481	")Remove this unused "zeus" local variable.(ó¹‡á8åÀ ¨Ò1
+N
+java:S1481
+",Remove this unused "dominic" local variable.(ŸýË†þÿÿÿÿ8æÀ ¨Ò1
+I
+java:S1125"'Remove the unnecessary boolean literal.(ß‡ùüùÿÿÿÿ8æÀ ¨Ò1
+L	java:S106!"+Replace this use of System.out by a logger.(ß’ÞÎüÿÿÿÿ8éÀ ¨Ò1

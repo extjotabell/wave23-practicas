@@ -1,28 +1,28 @@
 
 q
-java:S1192"ODefine a constant instead of duplicating this literal "Circuito chico" 3 times.(Ç‰ ¿øÿÿÿÿ8ÙËˆÑÏ1
-L	java:S106"+Replace this use of System.out by a logger.(§”ˆÙşÿÿÿÿ8ÜÍˆÑÏ1
-G	java:S106"+Replace this use of System.out by a logger.(­Ñ‹µ8İÍˆÑÏ1
-L	java:S106"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8İÍˆÑÏ1
-L	java:S106""+Replace this use of System.out by a logger.(ÂÚûÿÿÿÿ8ŞÍˆÑÏ1
-F	java:S106#"+Replace this use of System.out by a logger.(‹¡ÔT8ŞÍˆÑÏ1
-G	java:S106$"+Replace this use of System.out by a logger.(ú¦†ÿ8ßÍˆÑÏ1
-L	java:S106%"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8ßÍˆÑÏ1
-L	java:S106="+Replace this use of System.out by a logger.(Öåœüÿÿÿÿ8áÍˆÑÏ1
+java:S1192"ODefine a constant instead of duplicating this literal "Circuito chico" 3 times.(Ç‰ ¿øÿÿÿÿ8Ëì‰ïĞ1
+L	java:S106"+Replace this use of System.out by a logger.(§”ˆÙşÿÿÿÿ8•ï‰ïĞ1
+G	java:S106"+Replace this use of System.out by a logger.(­Ñ‹µ8—ï‰ïĞ1
+L	java:S106"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8—ï‰ïĞ1
+L	java:S106""+Replace this use of System.out by a logger.(ÂÚûÿÿÿÿ8šï‰ïĞ1
+F	java:S106#"+Replace this use of System.out by a logger.(‹¡ÔT8šï‰ïĞ1
+G	java:S106$"+Replace this use of System.out by a logger.(ú¦†ÿ8œï‰ïĞ1
+L	java:S106%"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8ï‰ïĞ1
+L	java:S106="+Replace this use of System.out by a logger.(Öåœüÿÿÿÿ8¢ï‰ïĞ1
 V
-java:S2864>"4Iterate over the "entrySet" instead of the "keySet".(²˜ËÏøÿÿÿÿ8áÍˆÑÏ1
-G	java:S106?"+Replace this use of System.out by a logger.(§¥Ü8áÍˆÑÏ1
-L	java:S106A"+Replace this use of System.out by a logger.(©İïÁüÿÿÿÿ8âÍˆÑÏ1
-L	java:S106B"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8âÍˆÑÏ1
-G	java:S106H"+Replace this use of System.out by a logger.(¬ÂóÊ8âÍˆÑÏ1
-L	java:S106L"+Replace this use of System.out by a logger.(€§Íùÿÿÿÿ8ãÍˆÑÏ1
-G	java:S106W"+Replace this use of System.out by a logger.(Ôıõò8åÍˆÑÏ1
-L	java:S106Z"+Replace this use of System.out by a logger.(óôá‹ıÿÿÿÿ8æÍˆÑÏ1
-F	java:S106\"+Replace this use of System.out by a logger.(ŸŠÖ[8èÍˆÑÏ1
-G	java:S106b"+Replace this use of System.out by a logger.(¡ÂÂö8éÍˆÑÏ1
-F	java:S106d"+Replace this use of System.out by a logger.(ŸŠÖ[8éÍˆÑÏ1
-G	java:S106y"+Replace this use of System.out by a logger.(Ğœ¤ü8íÍˆÑÏ1
-G	java:S106z"+Replace this use of System.out by a logger.(øâÂë8íÍˆÑÏ1
-G	java:S106{"+Replace this use of System.out by a logger.(ßî¿™8íÍˆÑÏ1
-L	java:S106|"+Replace this use of System.out by a logger.(£ÿü×ûÿÿÿÿ8íÍˆÑÏ1
-L	java:S106}"+Replace this use of System.out by a logger.(ÓëâÆÿÿÿÿÿ8îÍˆÑÏ1
+java:S2864>"4Iterate over the "entrySet" instead of the "keySet".(²˜ËÏøÿÿÿÿ8¢ï‰ïĞ1
+G	java:S106?"+Replace this use of System.out by a logger.(§¥Ü8£ï‰ïĞ1
+L	java:S106A"+Replace this use of System.out by a logger.(©İïÁüÿÿÿÿ8¤ï‰ïĞ1
+L	java:S106B"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8¥ï‰ïĞ1
+G	java:S106H"+Replace this use of System.out by a logger.(¬ÂóÊ8¦ï‰ïĞ1
+L	java:S106L"+Replace this use of System.out by a logger.(€§Íùÿÿÿÿ8¨ï‰ïĞ1
+G	java:S106W"+Replace this use of System.out by a logger.(Ôıõò8¬ï‰ïĞ1
+L	java:S106Z"+Replace this use of System.out by a logger.(óôá‹ıÿÿÿÿ8®ï‰ïĞ1
+F	java:S106\"+Replace this use of System.out by a logger.(ŸŠÖ[8¯ï‰ïĞ1
+G	java:S106b"+Replace this use of System.out by a logger.(¡ÂÂö8±ï‰ïĞ1
+F	java:S106d"+Replace this use of System.out by a logger.(ŸŠÖ[8²ï‰ïĞ1
+G	java:S106y"+Replace this use of System.out by a logger.(Ğœ¤ü8·ï‰ïĞ1
+G	java:S106z"+Replace this use of System.out by a logger.(øâÂë8¸ï‰ïĞ1
+G	java:S106{"+Replace this use of System.out by a logger.(ßî¿™8¸ï‰ïĞ1
+L	java:S106|"+Replace this use of System.out by a logger.(£ÿü×ûÿÿÿÿ8¸ï‰ïĞ1
+L	java:S106}"+Replace this use of System.out by a logger.(ÓëâÆÿÿÿÿÿ8¹ï‰ïĞ1
