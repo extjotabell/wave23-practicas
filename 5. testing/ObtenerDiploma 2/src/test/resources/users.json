@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "studentName": "Juan",
+    "subjects": [
+      {
+        "name": "Matemática",
+        "score": 9
+      },
+      {
+        "name": "Física",
+        "score": 7
+      },
+      {
+        "name": "Química",
+        "score": 6
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "studentName": "Pedro",
+    "subjects": [
+      {
+        "name": "Matemática",
+        "score": 10
+      },
+      {
+        "name": "Física",
+        "score": 8
+      },
+      {
+        "name": "Química",
+        "score": 4
+      }
+    ]
+  }
+]
+
+{
+  "id":2,
+  "studentName":"Pedro",
+  "message":"El alumno Pedro ha obtenido un promedio de 7.33. Puedes mejorar.",
+  "averageScore":7.333333333333333,
+  "subjects":
+  [
+    {"name":"MatemÃ¡tica","score":10.0},
+    {"name":"FÃ­sica","score":8.0},
+    {"name":"QuÃ­mica","score":4.0}
+  ]
+}
