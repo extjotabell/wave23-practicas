@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "6becb0cf-97b4-475d-9a36-38748e879466",
+		"name": "Zapatillas Deportivas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Agregar campos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mappings\": {\n        \"properties\": {\n            \"nombre\": {\n                \"type\": \"text\"\n            },\n            \"marca\": {\n                \"type\": \"text\"\n            },\n            \"categoria\": {\n                \"type\": \"text\"\n            },\n            \"color\": {\n                \"type\": \"text\"\n            }\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/zapatillas_deportivas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas_deportivas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar registros",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"AirForce 1\",\n    \"marca\": \"Nike\",\n    \"categoria\": \"Urbanas\",\n    \"color\": \"Blanco\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/zapatillas_deportivas/_doc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"zapatillas_deportivas",
+						"_doc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
