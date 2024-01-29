@@ -1,0 +1,13 @@
+
+L	java:S106"+Replace this use of System.out by a logger.(èÜ²üÿÿÿÿ8‡ØÕ1
+L	java:S106#"+Replace this use of System.out by a logger.(±¤¾İüÿÿÿÿ8ˆØÕ1
+L	java:S106("+Replace this use of System.out by a logger.(èÜ²üÿÿÿÿ8‰ØÕ1
+L	java:S106,"+Replace this use of System.out by a logger.(âç×Ÿùÿÿÿÿ8ŠØÕ1
+G	java:S1061"+Replace this use of System.out by a logger.(¸ªû8ØÕ1
+G	java:S1063"+Replace this use of System.out by a logger.(¯™¨8ØÕ1
+J
+java:S1068"-Remove this unused "distancia" private field.(…Ú«å8”ØÕ1
+P
+java:S1068"3Remove this unused "premioEnDolares" private field.(É»“Î8”ØÕ1
+L
+java:S1068"*Remove this unused "nombre" private field.(µÿï„ùÿÿÿÿ8•ØÕ1

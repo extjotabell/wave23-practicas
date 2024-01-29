@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8a6a85c-8963-4af8-a692-c29a0f585ca7" name="Changes" comment="" />
+    <list default="true" id="d8a6a85c-8963-4af8-a692-c29a0f585ca7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,6 +152,8 @@
       <workItem from="1704214179120" duration="14204000" />
       <workItem from="1704291793158" duration="1944000" />
       <workItem from="1704983295346" duration="80000" />
+      <workItem from="1706275650889" duration="6220000" />
+      <workItem from="1706501977261" duration="240000" />
     </task>
     <servers />
   </component>

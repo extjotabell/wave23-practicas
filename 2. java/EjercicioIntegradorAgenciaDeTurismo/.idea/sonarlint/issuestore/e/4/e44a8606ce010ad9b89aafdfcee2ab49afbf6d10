@@ -1,0 +1,11 @@
+
+t
+java:S1192	"RDefine a constant instead of duplicating this literal "este es un boleto" 3 times.(áéšÀıÿÿÿÿ8æÏ¨Õ1
+k
+java:S1192"NDefine a constant instead of duplicating this literal "Hotel de lujo" 3 times.(ìîŠ8çÏ¨Õ1
+d
+java:S1192"GDefine a constant instead of duplicating this literal "Hilton" 3 times.(ìîŠ8çÏ¨Õ1
+0
+java:S1220""Move this file to a named package.
+L	java:S106"+Replace this use of System.out by a logger.(Û’Ëòÿÿÿÿÿ8ñÏ¨Õ1
+L	java:S106"+Replace this use of System.out by a logger.(àØ‹Êúÿÿÿÿ8óÏ¨Õ1

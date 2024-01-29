@@ -1,0 +1,8 @@
+
+>
+java:S1172	"(Remove this unused method parameter "b".(ÅØôÆ
+E	java:S106"+Replace this use of System.out by a logger.(‚ªæ¾ÿÿÿÿÿ
+@
+java:S1068"%Remove this unused "a" private field.(Ş‹®øÿÿÿÿ
+@
+java:S1068"%Remove this unused "b" private field.(Ø¾ì±üÿÿÿÿ

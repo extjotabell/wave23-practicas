@@ -23,3 +23,7 @@ s
 Csrc/test/java/com/meli/socialmeli/services/UserServiceImplTest.java,8/3/83c924df64c75677d1813b5f00c1e401a3066548
 `
 0src/test/java/util/UserEntityUtilsGenerator.java,8/3/83bb9addfd08b1aa93e59ad951e9942e15ec96f8
+|
+Lsrc/main/java/com/meli/socialmeli/exceptions/custom/DataSourceException.java,8/5/85a7be83db3379634f07e4c3ea1373ab04fcf933
+|
+Lsrc/main/java/com/meli/socialmeli/exceptions/custom/BadRequestException.java,f/9/f9bc234b2bf658d26a228c3b17236495f8d8b7bf

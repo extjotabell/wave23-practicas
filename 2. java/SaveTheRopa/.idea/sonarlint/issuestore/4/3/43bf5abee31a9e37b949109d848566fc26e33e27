@@ -1,0 +1,7 @@
+
+0
+java:S1220""Move this file to a named package.
+S
+java:S2696	"6Make the enclosing method "static" or remove this set.(¡ƒü§8˜»½Õ1
+G	java:S106"+Replace this use of System.out by a logger.(Ò–üÌ8™»½Õ1
+L	java:S106"+Replace this use of System.out by a logger.(¶ƒ¤Æşÿÿÿÿ8™»½Õ1

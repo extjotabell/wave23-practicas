@@ -1,0 +1,19 @@
+
+Y
+)src/com/company/PracticaExecepciones.java,0/f/0f9455b7766eea059bc76390d8dccabd75948364
+I
+src/com/company/Main.java,4/a/4a831b10439099d44774d0ccc387e808deffaeab
+O
+src/com/company/Ejercicio1.java,5/3/53c329d1a556cbd7c26e4bfeca2d56c1938bfd83
+d
+4src/com/company/ejercicio1/PracticaExecepciones.java,b/4/b4607d056f425def5a1c44303b181e56f67482fe
+]
+-src/com/company/ejercicio2/Distribuidora.java,1/3/137243af9c956c6278fcafe98ccf49b538b88f18
+\
+,src/com/company/ejercicio2/NoPerecedero.java,d/0/d0e8a8ccd1ca856f3cf9fcf3ed7fa5db4c571362
+Z
+*src/com/company/ejercicio2/Perecedero.java,9/8/98212f64487aea1abefa10608bf132948c49c7d6
+X
+(src/com/company/ejercicio2/Producto.java,c/7/c78f702d5db6aa4545ab8779051da60c387cd1bc
+T
+$src/com/company/ejercicio1/Main.java,5/3/5304a2bd1070f91d9b648adc525ab53fd6e7834e
